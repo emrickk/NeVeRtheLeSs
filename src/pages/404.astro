@@ -15,12 +15,45 @@ const recentPosts = (await getCollection('posts'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
 
+// Every CDN photo in the recent posts' bodies, each pointing back at its
+// post. The page shows one at random per visit (script below); the first,
+// the newest post's opening photo, is the no-JS fallback.
+interface PoolPhoto {
+  src: string;
+  alt: string;
+  href: string;
+  titleZh: string;
+  titleEn: string;
+}
+const photoPool: PoolPhoto[] = [];
+const seenPhotos = new Set<string>();
+for (const post of recentPosts) {
+  const text = resolveLangText(post.data, tmap);
+  const postRef = {
+    href: withBase(`/posts/${post.id}/`),
+    titleZh: text.titleZh ?? post.data.title,
+    titleEn: text.titleEn ?? post.data.title,
+  };
+  const addPhoto = (src: string | undefined, alt: string) => {
+    if (!src || seenPhotos.has(src)) return;
+    seenPhotos.add(src);
+    photoPool.push({ src, alt, ...postRef });
+  };
+  const body = post.body ?? '';
+  for (const m of body.matchAll(/!\[([^\]]*)\]\((https:\/\/cdn\.theneverless\.com\/[^)\s]+)\)/g)) {
+    addPhoto(m[2], m[1]);
+  }
+  for (const m of body.matchAll(/<img\s[^>]*>/g)) {
+    addPhoto(
+      m[0].match(/src="(https:\/\/cdn\.theneverless\.com\/[^"]+)"/)?.[1],
+      m[0].match(/alt="([^"]*)"/)?.[1] ?? ''
+    );
+  }
+}
+const firstPhoto = photoPool[0];
+
 const copy = {
   title: { zh: '找不到这个页面', en: 'Page not found' },
-  desc: {
-    zh: '写了二十年，有些链接会断，有些文章搬了家。搜标题里的一两个词，通常能找到。',
-    en: 'Twenty years of posts: some links break, some posts move. Search a word or two from the title; it usually turns up.',
-  },
   search: { zh: '搜索', en: 'Search' },
   home: { zh: '首页', en: 'Home' },
   recent: { zh: '最近的文章', en: 'Recent posts' },
@@ -29,7 +62,7 @@ const copy = {
 
 <BaseLayout
   title="Page not found"
-  description={`${copy.desc.zh} · ${copy.desc.en}`}
+  description="The page you requested does not exist."
   robots="noindex, follow"
   canonicalUrl={withBase('/404.html')}
   pageUrl={withBase('/404.html')}
@@ -38,13 +71,50 @@ const copy = {
     <div class="not-found-inner">
       <p class="not-found-code" aria-hidden="true">404</p>
       <h1 class="not-found-title"><LangText text={copy.title} /></h1>
-      <p class="not-found-desc"><LangText text={copy.desc} /></p>
       <div class="not-found-actions">
         <a href={withBase('/search')} class="btn btn-primary" data-search-palette-trigger="true">
           <LangText text={copy.search} />
         </a>
         <a href={withBase('/')} class="btn btn-secondary"><LangText text={copy.home} /></a>
       </div>
+
+      {
+        firstPhoto && (
+          <figure class="not-found-photo">
+            <a class="not-found-photo-link" href={firstPhoto.href} data-not-found-photo>
+              <img src={firstPhoto.src} alt={firstPhoto.alt} decoding="async" />
+            </a>
+            <figcaption class="not-found-photo-caption">
+              <span class="lang lang-zh" data-orig
+                >照片来自<a href={firstPhoto.href} data-not-found-caption-zh
+                  >《{firstPhoto.titleZh}》</a
+                ></span
+              ><span class="lang lang-en"
+                >Photo from <a href={firstPhoto.href} data-not-found-caption-en
+                  >{firstPhoto.titleEn}</a
+                ></span
+              >
+            </figcaption>
+          </figure>
+        )
+      }
+      <script is:inline define:vars={{ photoPool }}>
+        (() => {
+          const link = document.querySelector('[data-not-found-photo]');
+          const img = link ? link.querySelector('img') : null;
+          const capZh = document.querySelector('[data-not-found-caption-zh]');
+          const capEn = document.querySelector('[data-not-found-caption-en]');
+          if (!link || !img || !capZh || !capEn || photoPool.length < 2) return;
+          const pick = photoPool[Math.floor(Math.random() * photoPool.length)];
+          link.href = pick.href;
+          img.src = pick.src;
+          img.alt = pick.alt;
+          capZh.href = pick.href;
+          capZh.textContent = '《' + pick.titleZh + '》';
+          capEn.href = pick.href;
+          capEn.textContent = pick.titleEn;
+        })();
+      </script>
 
       {
         recentPosts.length > 0 && (

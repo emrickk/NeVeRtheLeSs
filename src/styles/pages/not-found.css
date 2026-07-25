@@ -1,5 +1,5 @@
 .not-found-main {
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: var(--space-10) var(--space-6) var(--space-24);
   min-height: calc(100dvh - var(--nav-height) - 120px);
@@ -11,9 +11,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
+  width: 100%;
 }
 
 .not-found-code {
+  grid-area: code;
   font-size: clamp(4rem, 14vw, 7.5rem);
   font-weight: var(--weight-bold);
   letter-spacing: -0.05em;
@@ -24,6 +26,7 @@
 }
 
 .not-found-title {
+  grid-area: title;
   font-size: var(--text-title-1);
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-tight);
@@ -31,24 +34,69 @@
   color: var(--label-primary);
 }
 
-.not-found-desc {
-  font-size: var(--text-callout);
-  color: var(--label-secondary);
-  margin: 0;
-  max-width: 360px;
-  line-height: var(--leading-snug);
-}
-
 .not-found-actions {
+  grid-area: actions;
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
   margin-top: var(--space-3);
+  align-self: start;
+}
+
+/* A random photo from the recent posts, linking to the post it came from.
+   Photos vary in aspect, so the link box reserves a fixed height and the
+   image fits inside uncropped; the random swap never shifts the layout. */
+.not-found-photo {
+  grid-area: photo;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.not-found-photo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: min(46vh, 380px);
+}
+
+.not-found-photo-link img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.not-found-photo-caption {
+  font-size: var(--text-footnote);
+  color: var(--label-tertiary);
+  text-align: center;
+}
+
+.not-found-photo-caption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.not-found-photo-caption a:hover {
+  color: var(--color-blue);
+  text-decoration-color: currentColor;
 }
 
 /* A 404 here is usually a stale permalink, so offer the newest posts as a
    landing spot instead of leaving the visitor at a dead end. */
 .not-found-recent {
+  grid-area: recent;
   width: 30rem;
   max-width: 100%;
   margin-top: var(--space-6);
@@ -108,4 +156,28 @@
   font-variant-numeric: tabular-nums;
   line-height: 1.35;
   white-space: nowrap;
+}
+
+/* Two columns on wide screens: text and list on the left, photo on the
+   right spanning the column height. */
+@media (min-width: 960px) {
+  .not-found-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    grid-template-areas:
+      'code photo'
+      'title photo'
+      'actions photo'
+      'recent photo';
+    gap: var(--space-5) var(--space-12);
+    align-items: center;
+  }
+
+  .not-found-photo {
+    align-self: center;
+  }
+
+  .not-found-photo-link {
+    height: min(56vh, 460px);
+  }
 }
