@@ -12,7 +12,7 @@ translationKey: 'amsterdam-windows'
 
 ![旅馆房间的双扇窗和窗外的阿姆斯特丹屋顶](https://cdn.theneverless.com/2026/07/amsterdam-hotel-window-room.webp)
 
-第二天下午钻进九小街：九条小街在运河中间织成一小片网，店一家挨着一家。桥头是这一带最好的位置，一对情侣把自行车往栏杆边一支，趴在那里看街。我们站在他们身后，看他们看街。谁也不急着走。
+下午钻进九小街：九条小街在运河中间织成一小片网，店一家挨着一家。桥头是这一带最好的位置，一对情侣把自行车往栏杆边一支，趴在那里研究下一步动作。我们站在他们身后，看他们看街。谁也不急着走。
 
 ![九小街桥头趴在栏杆上看街的情侣](https://cdn.theneverless.com/2026/07/amsterdam-nine-streets-couple.webp)
 
