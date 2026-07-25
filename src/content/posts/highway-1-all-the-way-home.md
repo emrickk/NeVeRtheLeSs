@@ -8,7 +8,7 @@ lang: 'en'
 translationKey: 'highway-1-all-the-way-home'
 ---
 
-In the spring of 2017, Highway 1 broke. The Pfeiffer Canyon Bridge in Big Sur was sentenced to death in February and torn down in March, and for the rest of that year the most famous coastal road in the world simply did not go through. That same spring, on the other side of the Pacific, a film called This Is Not What I Expected came out. Its closing song was sung by Cheer Chen, with lyrics by Han Han:
+In the spring of 2017, Highway 1 broke. The Pfeiffer Canyon Bridge in Big Sur was sentenced to death in February and torn down in March, and for the rest of that year the most famous coastal road in the world simply did not go through. That same spring, on the other side of the Pacific, a film called This Is Not What I Expected came out. Cheer Chen sang its closing song, with lyrics by Han Han:
 
 > 说一号公路上 那座桥断了 我们还去吗\
 > 要不再说呢 会修一年吧\
@@ -26,7 +26,7 @@ The bridge took eight months to rebuild, for once beating the song's estimate. B
 
 Go? Of course. Ten days later we were on the road.
 
-January is not Highway 1's best season, but it is the California coast's secret spring: after the rains the hills turn a green that will not survive June, and the tour buses have not figured this out yet. Good views, few people, perfect for pulling over along the way and climbing onto the rocks.
+January falls outside Highway 1's best season and is the California coast's secret spring: after the rains the hills turn a green that will not survive June, and the tour buses have not figured this out yet. Good views, few people, perfect for pulling over along the way and climbing onto the rocks.
 
 It barely counts as early spring, and the surf is heavy. Each set rolls in, and first you feel the chill coming through the rocks beneath your feet; your ears get their turn after. Draw your gaze back from the sea, and you find the hills wearing the emerald-green velvet they get for only two months a year.
 
@@ -40,7 +40,7 @@ Highway 1 is a long way from home. Drive a little farther and it is usually dusk
 
 ![The living room in February: a red mug, a bear-shaped chair, trees in every window](https://cdn.theneverless.com/2026/07/teddy-bear-chair-living-room.webp)
 
-This is the other side of the story. While Highway 1 was being repaired, we moved (what does that have to do with anything?). We moved in the fall. By the weekend the clocks went back an hour, the place was already put together and the pumpkins were out.
+While Highway 1 was being repaired, we moved (what does that have to do with anything?). We moved in the fall. By the weekend the clocks went back an hour, the place was already put together and the pumpkins were out.
 
 ![The corner of the new home: dried flowers and yarn pumpkins in the afternoon sun](https://cdn.theneverless.com/2026/07/new-home-pumpkin-corner.webp)
 
