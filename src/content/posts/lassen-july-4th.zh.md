@@ -7,7 +7,7 @@ translationKey: lassen-july-4th
 
 7月4日的长周末，我们往北去Lassen火山国家公园过节，顺路在Martinez停了一站：John Muir的老宅。老宅如今紧挨着一条高速，好在高速的名字给足了面子，就叫John Muir Parkway。
 
-房子是Muir岳父盖的，Muir后半辈子就住在这里，管着一大片果园，顺便把国家公园这个主意写进了美国人的脑子里。屋里从地板到天花板一水的深色木头；下午的太阳把窗户烧成一块亮白，房间反而显得更暗。照片里这间是岳父的书房，门口的牌子写着Strentzel Office；Muir自己写字的那间在楼上。
+房子是Muir岳父盖的，Muir在这儿住了最后二十来年，管着一大片果园，顺便把国家公园这个主意写进了美国人的脑子里。屋里从地板到天花板一水的深色木头；下午的太阳把窗户烧成一块亮白，房间反而显得更暗。照片里这间是岳父的书房，门口的牌子写着Strentzel Office；Muir自己写字的那间在楼上。
 
 ![Muir老宅里的Strentzel书房，深色木头和下午的阳光](https://cdn.theneverless.com/2026/07/muir-strentzel-office-2.webp)
 
@@ -41,7 +41,5 @@ translationKey: lassen-july-4th
 ![松荫下折叠椅里的老爷子](https://cdn.theneverless.com/2026/07/lake-helen-camp-chair-2.webp)
 
 公路在湖这头拐了个弯，路肩上停满了车；下面的湖岸铺着毯子和椅子，一看就是下午铺开就没打算收。7月4日，这些人给国家过生日的方式，是把车开进公园，在水边找块平地坐下来，然后什么也不干。
-
-我又想起前一天Martinez那间昏暗的书房。Muir写了一辈子，多半就是想说服人们：这样的下午，值得专门留出一块地方来过。湖边这些人未必读过他一个字，但椅子都已经支好了。对一个写字的人来说，没有比这更好的版税了。
 
 ![傍晚湖岸边的毯子和椅子](https://cdn.theneverless.com/2026/07/lake-helen-picnic-shore-2.webp)
