@@ -15,26 +15,87 @@ import { git, save } from './checkpoint.mjs'
 import {
   computeChangeSet,
   hashChangeSet,
+  isDraftPost,
+  parseFrontmatterScalars,
+  primaryPostPath,
   renderReviewPage,
   resolveBaseRef,
   reviewTargets,
   routeSlugForPostFile,
+  scalarIsTrue,
   slugForPostFile,
   writeManifest,
 } from './preview-posts.mjs'
 import { runChecks, verdict } from './release-check.mjs'
-import { runFastChecks } from './fast-checks.mjs'
+import {
+  isCanonicalFlatPostPath,
+  isHeroPath,
+  isPostPath,
+  resolveHeroReference,
+  resolveHeroReferenceFromContent,
+  runFastChecks,
+  validatePostPathLocation,
+} from './fast-checks.mjs'
 
-const POSTS_PREFIX = 'src/content/posts/'
 const ACTIONS_URL = 'https://github.com/emrickk/emrickk.github.io/actions'
 const USAGE =
   'usage: npm run ship -- [--preflight] [--yes --digest <d>] [--only <path> ...] [--fast] [--message <msg>] [--port N] [--no-open]'
 
 export function partitionPurity(paths) {
   return {
-    posts: paths.filter((p) => p.startsWith(POSTS_PREFIX)).sort(),
-    other: paths.filter((p) => !p.startsWith(POSTS_PREFIX)).sort(),
+    posts: paths.filter(isPostPath).sort(),
+    heroes: paths.filter(isHeroPath).sort(),
+    other: paths.filter((p) => !isPostPath(p) && !isHeroPath(p)).sort(),
   }
+}
+
+export function postPathsFor(changeSet) {
+  return changeSet.filter(isPostPath)
+}
+
+// Resolve the hero references owned by a logical post set. Sibling files use
+// their primary post's frontmatter, where Astro stores heroImage.
+export function referencedHeroesForPosts(root, postPaths) {
+  const heroes = new Set()
+  const errors = []
+  const primaryPaths = [...new Set(postPaths.map(primaryPostPath))].sort()
+  for (const postPath of primaryPaths) {
+    const location = validatePostPathLocation(root, postPath)
+    if (location.status === 'error') {
+      errors.push(location.detail)
+      continue
+    }
+    if (location.status === 'missing' || isDraftPost(root, postPath)) continue
+    const result = resolveHeroReference(root, postPath)
+    if (result.status === 'error') errors.push(result.detail)
+    if (result.status === 'ok') heroes.add(result.path)
+  }
+  return { heroes: [...heroes].sort(), errors }
+}
+
+export function sharedHeroOwners(root, heroPaths, selectedPostPaths) {
+  const changedHeroes = new Set(heroPaths)
+  const selectedPrimaries = new Set(selectedPostPaths.map(primaryPostPath))
+  const owners = []
+  const trackedPosts = (
+    git(['ls-tree', '-r', '--name-only', '-z', 'HEAD', '--', 'src/content/posts'], { cwd: root }) ||
+    ''
+  )
+    .split('\0')
+    .filter((postPath) => isCanonicalFlatPostPath(postPath))
+    .filter((postPath) => !/\.(?:en|zh)\.(?:md|mdx)$/.test(postPath))
+  for (const postPath of trackedPosts) {
+    if (selectedPrimaries.has(postPath)) continue
+    const content = git(['show', `HEAD:${postPath}`], { cwd: root })
+    if (scalarIsTrue(parseFrontmatterScalars(content).draft)) continue
+    const reference = resolveHeroReferenceFromContent(root, postPath, content, {
+      checkFile: false,
+    })
+    if (reference.status === 'ok' && changedHeroes.has(reference.path)) {
+      owners.push({ hero: reference.path, post: postPath })
+    }
+  }
+  return owners.sort((a, b) => a.hero.localeCompare(b.hero) || a.post.localeCompare(b.post))
 }
 
 // Freshness token binding an approval to the exact reviewed content: 12 hex
@@ -48,7 +109,7 @@ export function changeSetDigest(files) {
 }
 
 export function commitMessageFor(changeSet) {
-  const slugs = [...new Set(changeSet.map((p) => slugForPostFile(p)))]
+  const slugs = [...new Set(postPathsFor(changeSet).map((p) => slugForPostFile(p)))]
   return `post: update ${slugs.join(', ')}`
 }
 
@@ -71,7 +132,7 @@ export function rawDiffPaths(root, baseRef) {
 // commits that exist only on local main (committed but not pushed).
 export function originStatus(root) {
   const hasOrigin = Boolean(
-    git(['rev-parse', '--verify', '-q', 'origin/main'], { cwd: root, allowFail: true }),
+    git(['rev-parse', '--verify', '-q', 'origin/main'], { cwd: root, allowFail: true })
   )
   if (!hasOrigin) return { hasOrigin, ahead: 0, localAhead: 0 }
   const counts = git(['rev-list', '--left-right', '--count', 'origin/main...main'], { cwd: root })
@@ -87,8 +148,9 @@ export function originStatus(root) {
 // status 'abort' (exit 1), 'empty' (exit 0), or 'ok' with changeSet and
 // digest. Fetch failures warn and fall back to the last-known origin/main.
 // `only` (repo-relative paths) scopes the shipped change set to the given
-// post files; purity still checks the whole tree, so non-post changes
-// anywhere keep blocking, and unselected post edits simply stay pending.
+// changed post files; purity still checks the whole tree, so unrelated paths
+// keep blocking, and unselected post edits simply stay pending. Referenced
+// changed hero covers are the sole allowed non-post additions.
 // `strictSync` (fast lane) additionally requires local main to be exactly
 // origin/main: `git push` pushes the whole branch, so any unpushed local
 // commit would ride along with the scoped publish otherwise.
@@ -110,7 +172,7 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
       status: 'abort',
       detail:
         `origin/main has ${ahead} commit(s) not in local main; ` +
-        'reconcile in a Claude session (or git pull --rebase when comfortable) before shipping',
+        'reconcile in a regular coding session (or git pull --rebase when comfortable) before shipping',
     }
   }
   if (strictSync && hasOrigin && localAhead > 0) {
@@ -118,25 +180,92 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
       status: 'abort',
       detail:
         `local main has ${localAhead} unpushed commit(s); a scoped publish pushes the whole ` +
-        'branch and would carry them along. Push or reconcile them in a Claude session first',
+        'branch and would carry them along. Push or reconcile them in a regular coding session first',
     }
   }
   const baseRef = resolveBaseRef(root)
-  const { other } = partitionPurity(rawDiffPaths(root, baseRef))
+  const {
+    posts: changedPosts,
+    heroes: changedHeroes,
+    other,
+  } = partitionPurity(rawDiffPaths(root, baseRef))
   if (other.length > 0) {
     return {
       status: 'abort',
       detail:
-        'ship only publishes post edits, but these changed too:\n  ' +
+        'ship only publishes post edits and their referenced hero covers, but these changed too:\n  ' +
         other.join('\n  ') +
-        '\nhandle this in a Claude session instead',
+        '\nhandle this in a regular coding session instead',
     }
   }
-  let changeSet = computeChangeSet(root, { baseRef })
+
+  let normalizedOnly = null
   if (only && only.length > 0) {
-    const wanted = new Set(only.map((p) => p.replace(/^\.\//, '')))
-    changeSet = changeSet.filter((p) => wanted.has(p))
+    normalizedOnly = [...new Set(only)].sort()
+    const invalid = normalizedOnly.filter((p) => !isCanonicalFlatPostPath(p))
+    if (invalid.length > 0) {
+      return {
+        status: 'abort',
+        detail: '--only accepts post paths, but received:\n  ' + invalid.join('\n  '),
+      }
+    }
   }
+
+  const postPathsToValidate = new Set()
+  for (const postPath of [...changedPosts, ...(normalizedOnly || [])]) {
+    postPathsToValidate.add(postPath)
+    postPathsToValidate.add(primaryPostPath(postPath))
+  }
+  const invalidPostLocations = [...postPathsToValidate]
+    .sort()
+    .map((postPath) => validatePostPathLocation(root, postPath))
+    .filter((result) => result.status === 'error')
+    .map((result) => result.detail)
+  if (invalidPostLocations.length > 0) {
+    return {
+      status: 'abort',
+      detail: 'invalid post path:\n  ' + invalidPostLocations.join('\n  '),
+    }
+  }
+
+  let postSet = postPathsFor(computeChangeSet(root, { baseRef }))
+  let postChangeSet = postSet
+  if (normalizedOnly) {
+    const wanted = new Set(normalizedOnly)
+    postChangeSet = postChangeSet.filter((p) => wanted.has(p))
+    postSet = postChangeSet
+  }
+
+  const referenced = referencedHeroesForPosts(root, postSet)
+  if (referenced.errors.length > 0) {
+    return {
+      status: 'abort',
+      detail: 'invalid heroImage reference:\n  ' + referenced.errors.join('\n  '),
+    }
+  }
+  const referencedSet = new Set(referenced.heroes)
+  const unreferencedHeroes = changedHeroes.filter((p) => !referencedSet.has(p))
+  if (unreferencedHeroes.length > 0) {
+    return {
+      status: 'abort',
+      detail:
+        'changed hero cover(s) are not referenced by the selected post set:\n  ' +
+        unreferencedHeroes.join('\n  '),
+    }
+  }
+  const heroChangeSet = changedHeroes.filter((p) => referencedSet.has(p))
+  if (heroChangeSet.length > 0) {
+    const shared = sharedHeroOwners(root, heroChangeSet, postSet)
+    if (shared.length > 0) {
+      return {
+        status: 'abort',
+        detail:
+          'ship cannot change a hero cover also used by an unselected post:\n  ' +
+          shared.map(({ hero, post }) => `${hero} -> ${post}`).join('\n  '),
+      }
+    }
+  }
+  const changeSet = [...postChangeSet, ...heroChangeSet].sort()
   if (changeSet.length === 0) {
     return {
       status: 'empty',
@@ -144,7 +273,28 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
       baseRef,
     }
   }
-  return { status: 'ok', baseRef, changeSet, digest: changeSetDigest(hashChangeSet(root, changeSet)) }
+  return {
+    status: 'ok',
+    baseRef,
+    postSet,
+    changeSet,
+    digest: changeSetDigest(hashChangeSet(root, changeSet)),
+  }
+}
+
+const TREE_CHANGED_DETAIL =
+  'the tree changed since the review (another session?); nothing committed, start over'
+
+export function recheckApprovedChangeSet(
+  root,
+  approvedDigest,
+  { only = null, strictSync = false } = {}
+) {
+  const current = preflight(root, { fetch: false, only, strictSync })
+  if (current.status !== 'ok' || current.digest !== approvedDigest) {
+    return { status: 'abort', detail: TREE_CHANGED_DETAIL }
+  }
+  return current
 }
 
 // The only git mutations in ship: one explicit-path commit and one push.
@@ -153,7 +303,7 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
 export function commitAndPush(
   root,
   changeSet,
-  { message, trailer = Boolean(process.env.CLAUDECODE), push = true } = {},
+  { message, trailer = Boolean(process.env.CLAUDECODE), push = true } = {}
 ) {
   const body = trailer
     ? `${message}\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>`
@@ -208,9 +358,18 @@ async function watchDeploy(root, sha, slugs) {
       runs = JSON.parse(
         execFileSync(
           'gh',
-          ['run', 'list', '--workflow', 'deploy.yml', '--limit', '1', '--json', 'status,conclusion,headSha'],
-          { cwd: root, encoding: 'utf8' },
-        ),
+          [
+            'run',
+            'list',
+            '--workflow',
+            'deploy.yml',
+            '--limit',
+            '1',
+            '--json',
+            'status,conclusion,headSha',
+          ],
+          { cwd: root, encoding: 'utf8' }
+        )
       )
     } catch {
       console.log('gh unavailable; watch the deploy at ' + ACTIONS_URL)
@@ -255,7 +414,7 @@ export async function main(values) {
     console.log(pre.detail)
     return 0
   }
-  console.log(`post change(s) vs ${pre.baseRef} (${pre.changeSet.length}):`)
+  console.log(`publish change(s) vs ${pre.baseRef} (${pre.changeSet.length}):`)
   for (const p of pre.changeSet) console.log('  ' + p)
   console.log(`changeset digest: ${pre.digest}`)
   if (values.preflight) return 0
@@ -275,7 +434,7 @@ export async function main(values) {
       mkdirSync(join(root, '.preview'), { recursive: true })
       writeFileSync(
         reviewFile,
-        renderReviewPage(reviewTargets(root, pre.changeSet), { host: 'localhost', port: values.port }),
+        renderReviewPage(reviewTargets(root, pre.postSet), { host: 'localhost', port: values.port })
       )
       server = spawn('npx', ['astro', 'preview', '--port', values.port], {
         cwd: root,
@@ -307,11 +466,12 @@ export async function main(values) {
     // reviewed content. A concurrent session's post edit (or any new
     // non-post change) landing after the review aborts here.
     const approved = values.yes ? values.digest : pre.digest
-    const now = preflight(root, { fetch: false, only, strictSync: Boolean(values.fast) })
-    if (now.status !== 'ok' || now.digest !== approved) {
-      console.error(
-        'the tree changed since the review (another session?); nothing recorded, start over',
-      )
+    const now = recheckApprovedChangeSet(root, approved, {
+      only,
+      strictSync: Boolean(values.fast),
+    })
+    if (now.status !== 'ok') {
+      console.error(now.detail)
       return 1
     }
     if (!values.fast) {
@@ -328,7 +488,7 @@ export async function main(values) {
 
     if (values.fast) {
       console.log('\nrunning fast checks...')
-      const errors = runFastChecks(root, now.changeSet)
+      const errors = await runFastChecks(root, now.changeSet)
       if (errors.length > 0) {
         console.error('fast checks failed:\n  ' + errors.join('\n  '))
         return 1
@@ -342,18 +502,30 @@ export async function main(values) {
       if (!summary.startsWith('VERDICT: GO')) return 1
     }
 
-    const sha = commitAndPush(root, now.changeSet, {
-      message: values.message || commitMessageFor(now.changeSet),
+    // Checks can take long enough for another session to edit a selected post
+    // or hero. Re-bind the approved digest immediately before the explicit
+    // commit, then use only this final path set below.
+    const final = recheckApprovedChangeSet(root, approved, {
+      only,
+      strictSync: Boolean(values.fast),
+    })
+    if (final.status !== 'ok') {
+      console.error(final.detail)
+      return 1
+    }
+
+    const sha = commitAndPush(root, final.changeSet, {
+      message: values.message || commitMessageFor(final.postSet),
     })
     console.log(`pushed ${sha.slice(0, 7)} to origin/main`)
     const conclusion = await watchDeploy(root, sha, [
-      ...new Set(now.changeSet.map((p) => routeSlugForPostFile(root, p))),
+      ...new Set(final.postSet.map((p) => routeSlugForPostFile(root, p))),
     ])
     if (values.fast && conclusion !== 'success' && conclusion !== 'unknown') {
       console.error(
         'deploy failed: the post is NOT live (the site stays on the previous version) ' +
           'and main is blocked until this is fixed. Fix the post and publish again, ' +
-          'or revert in a Claude session.',
+          'or revert in a regular coding session.'
       )
       return 1
     }
@@ -368,7 +540,7 @@ export async function main(values) {
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   let values
   try {
-    ({ values } = parseArgs({
+    ;({ values } = parseArgs({
       options: {
         message: { type: 'string' },
         port: { type: 'string', default: '4322' },
@@ -399,6 +571,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     (err) => {
       console.error(err.message)
       process.exit(1)
-    },
+    }
   )
 }

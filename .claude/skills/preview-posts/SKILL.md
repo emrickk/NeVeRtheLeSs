@@ -23,4 +23,5 @@ The owner reviews every preview-relevant change in a real browser against the re
 - This gate does not replace the release checklist or the push rule: pushing stays a human decision after a GO verdict.
 - `npm run ship` (skill: ship-posts) records the same manifest-based approval as part of its
   one-command flow, so `.preview/manifest.json` has two writers; both bind approval to exact
-  content hashes.
+  content hashes. The Nevertheless Editor `--fast --only` lane is the explicit exception:
+  it binds its scoped bytes to the publish digest but does not write this manifest.

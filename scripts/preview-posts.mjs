@@ -52,14 +52,78 @@ export function primaryPostPath(path) {
   return path.replace(/\.(?:en|zh)\.(md|mdx)$/, '.$1')
 }
 
+// Minimal YAML scalar parsing for frontmatter fields used by the safety
+// tooling. A # begins a comment only outside quotes and when separated from
+// the scalar, matching the inline-comment forms accepted by Astro's parser.
+function stripYamlInlineComment(value) {
+  let quote = null
+  let escaped = false
+  for (let i = 0; i < value.length; i += 1) {
+    const char = value[i]
+    if (quote === '"') {
+      if (escaped) {
+        escaped = false
+      } else if (char === '\\') {
+        escaped = true
+      } else if (char === '"') {
+        quote = null
+      }
+      continue
+    }
+    if (quote === "'") {
+      if (char === "'" && value[i + 1] === "'") {
+        i += 1
+      } else if (char === "'") {
+        quote = null
+      }
+      continue
+    }
+    if (char === '"' || char === "'") {
+      quote = char
+    } else if (char === '#' && (i === 0 || /\s/.test(value[i - 1]))) {
+      return value.slice(0, i)
+    }
+  }
+  return value
+}
+
+export function parseFrontmatterScalars(raw) {
+  const block = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  const data = {}
+  if (!block) return data
+  for (const line of block[1].split(/\r?\n/)) {
+    const kv = line.match(/^([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$/)
+    if (!kv) continue
+    let value = stripYamlInlineComment(kv[2]).trim()
+    const quoted = value.match(/^(['"])([\s\S]*)\1$/)
+    if (quoted) {
+      value =
+        quoted[1] === '"'
+          ? quoted[2].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+          : quoted[2].replace(/''/g, "'")
+    }
+    data[kv[1]] = value
+  }
+  return data
+}
+
+export function scalarIsTrue(value) {
+  return typeof value === 'string' && value.toLowerCase() === 'true'
+}
+
 function git(args, { cwd, allowFail = false } = {}) {
   try {
     return execFileSync('git', args, {
-      cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 64 * 1024 * 1024,
+      cwd,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      maxBuffer: 64 * 1024 * 1024,
     }).replace(/\n$/, '')
   } catch (err) {
     if (allowFail) return null
-    throw new Error(`git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`)
+    throw new Error(
+      `git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`
+    )
   }
 }
 
@@ -69,8 +133,7 @@ function git(args, { cwd, allowFail = false } = {}) {
 export function isDraftPost(root, path) {
   const p = join(root, primaryPostPath(path))
   if (!existsSync(p)) return false
-  const fm = readFileSync(p, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  return fm ? /^draft:\s*true\s*$/m.test(fm[1]) : false
+  return scalarIsTrue(parseFrontmatterScalars(readFileSync(p, 'utf8')).draft)
 }
 
 // A published post flipped to draft REMOVES a live page, which is exactly
@@ -80,8 +143,7 @@ export function wasDraftAtBase(root, path, baseRef) {
   const primary = primaryPostPath(path)
   const content = git(['show', `${baseRef}:${primary}`], { cwd: root, allowFail: true })
   if (content === null) return true
-  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  return fm ? /^draft:\s*true\s*$/m.test(fm[1]) : false
+  return scalarIsTrue(parseFrontmatterScalars(content).draft)
 }
 
 // Same fallback as release-check's secret scan: origin/main when it exists
@@ -101,7 +163,10 @@ export function resolveBaseRef(root) {
 // merge-base cannot be determined, keep the full diff against the base ref.
 export function resolveDiffBase(root, baseRef) {
   if (baseRef === 'HEAD') return { ref: 'HEAD', headBehind: false }
-  const baseSha = git(['rev-parse', '--verify', '-q', `${baseRef}^{commit}`], { cwd: root, allowFail: true })
+  const baseSha = git(['rev-parse', '--verify', '-q', `${baseRef}^{commit}`], {
+    cwd: root,
+    allowFail: true,
+  })
   const mergeBase = baseSha && git(['merge-base', 'HEAD', baseSha], { cwd: root, allowFail: true })
   if (!mergeBase || mergeBase === baseSha) return { ref: baseRef, headBehind: false }
   return { ref: mergeBase, headBehind: true }
@@ -143,7 +208,8 @@ export function computeChangeSet(root, { baseRef = resolveBaseRef(root) } = {}) 
     .filter((path) => {
       const kind = classifyPath(path)
       if (kind === null) return false
-      if (kind === 'post' && isDraftPost(root, path) && wasDraftAtBase(root, path, diffBase)) return false
+      if (kind === 'post' && isDraftPost(root, path) && wasDraftAtBase(root, path, diffBase))
+        return false
       if (path === 'package.json' && !packageJsonAffectsSite(root, diffBase)) return false
       return true
     })
@@ -208,7 +274,10 @@ function manifestPath(root) {
 // files map exclusively.
 export function writeManifest(root, files, { baseRef }) {
   mkdirSync(join(root, '.preview'), { recursive: true })
-  writeFileSync(manifestPath(root), JSON.stringify({ approvedAt: new Date().toISOString(), baseRef, files }, null, 2) + '\n')
+  writeFileSync(
+    manifestPath(root),
+    JSON.stringify({ approvedAt: new Date().toISOString(), baseRef, files }, null, 2) + '\n'
+  )
 }
 
 export function readManifest(root) {
@@ -238,7 +307,8 @@ export function manifestDiff(currentFiles, manifest) {
   return problems
 }
 
-const REMEDIATION = 'run npm run preview-posts, review in the browser, then npm run preview-posts -- --approve'
+const REMEDIATION =
+  'run npm run preview-posts, review in the browser, then npm run preview-posts -- --approve'
 
 // Release-check check 12. Cheap: git plus hashing, no build or server.
 // When the base ref has commits HEAD lacks, every verdict says so: the
@@ -254,10 +324,14 @@ export function checkPostPreview(root, { baseRef, changeSet: changeSetOverride }
       ? ` (${base} has commits not in HEAD; change set is local work vs their merge-base)`
       : '') + scopedNote
   const changeSet = changeSetOverride ?? computeChangeSet(root, { baseRef: base })
-  if (changeSet.length === 0) return { status: 'SKIP', detail: `no preview-relevant changes${note}` }
+  if (changeSet.length === 0)
+    return { status: 'SKIP', detail: `no preview-relevant changes${note}` }
   const manifest = readManifest(root)
   if (!manifest) {
-    return { status: 'FAIL', detail: `${changeSet.length} preview-relevant change(s) with no approval; ${REMEDIATION}${note}` }
+    return {
+      status: 'FAIL',
+      detail: `${changeSet.length} preview-relevant change(s) with no approval; ${REMEDIATION}${note}`,
+    }
   }
   const currentFiles = hashChangeSet(root, changeSet)
   const problems = manifestDiff(currentFiles, manifest)
@@ -268,11 +342,18 @@ export function checkPostPreview(root, { baseRef, changeSet: changeSetOverride }
   }
   const settled = Object.keys(manifest.files).filter((path) => !(path in currentFiles)).length
   const settledNote = settled ? `; ${settled} approved file(s) already committed or reverted` : ''
-  return { status: 'PASS', detail: `${changeSet.length} changed file(s) covered by preview approval${settledNote}${note}` }
+  return {
+    status: 'PASS',
+    detail: `${changeSet.length} changed file(s) covered by preview approval${settledNote}${note}`,
+  }
 }
 
 function escapeHtml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
 export function renderReviewPage(targets, { host, port }) {
@@ -324,7 +405,7 @@ function localIp() {
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   let values
   try {
-    ({ values } = parseArgs({
+    ;({ values } = parseArgs({
       options: {
         approve: { type: 'boolean', default: false },
         port: { type: 'string', default: '4322' },
@@ -342,7 +423,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const { headBehind } = resolveDiffBase(root, baseRef)
   const baseLabel = headBehind ? `the merge-base of HEAD and ${baseRef}` : baseRef
   if (headBehind) {
-    console.log(`note: ${baseRef} has commits not in HEAD (another session may have pushed); comparing against their merge-base so only local changes count`)
+    console.log(
+      `note: ${baseRef} has commits not in HEAD (another session may have pushed); comparing against their merge-base so only local changes count`
+    )
   }
   const changeSet = computeChangeSet(root, { baseRef })
 
@@ -355,7 +438,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     for (const p of changeSet) console.log('  ' + p)
     writeManifest(root, hashChangeSet(root, changeSet), { baseRef: baseLabel })
     console.log('approval recorded; release-check check 12 passes until any of these files change')
-    console.log('caution: this covers every preview-relevant change in the tree, including any from other sessions; make sure the list matches what was reviewed')
+    console.log(
+      'caution: this covers every preview-relevant change in the tree, including any from other sessions; make sure the list matches what was reviewed'
+    )
     process.exit(0)
   }
 

@@ -8,20 +8,20 @@ Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astr
 
 ## Commands
 
-| Command | Action |
-| --- | --- |
-| `npm run dev` / `build` / `preview` | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /_edit |
-| `npm run preview-posts` | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety) |
-| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier |
-| `npm run images` | Daily image pipeline: optimize + upload staged photos (see below) |
-| `npm run images:migrate` | One-time backfill CLI, already executed; dry-run by default |
-| `npm run test:images` | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials |
-| `npm run test:rehype` | Rehype plugin test suite (image gallery detection) |
-| `npm run test:editor` | Post editor API test suite (`node:test`) |
-| `npm run checkpoint` | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety) |
-| `npm run release-check` | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety) |
-| `npm run ship` | One-command publish for post edits: review, approve, release-check, commit, push (see Safety) |
-| `npm run test:safety` | Test suite for the three safety CLIs |
+| Command                                          | Action                                                                                                                                    |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit                               |
+| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                              |
+| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                   |
+| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                         |
+| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                               |
+| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials                                                  |
+| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                        |
+| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                  |
+| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                 |
+| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                 |
+| `npm run ship`                                   | One-command publish for post edits and directly referenced changed hero covers: review, approve, release-check, commit, push (see Safety) |
+| `npm run test:safety`                            | Test suite for the three safety CLIs                                                                                                      |
 
 ## Architecture
 
@@ -36,9 +36,10 @@ Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astr
 ## Safety
 
 - **Checkpoints** (`npm run checkpoint`, skill: `.Codex/skills/checkpoint/`): file-level snapshots of the working tree in hidden local refs. Auto-saved at session start (hook in `.Codex/settings.json`) and by every release check. Restore before push mistakes become deploy mistakes.
-- **Release checklist** (`npm run release-check`, skill: `.Codex/skills/release-check/`): required before any push to `main`. Ends in GO / NO-GO; pushing remains a human decision (rule 5).
+- **Release checklist** (`npm run release-check`, skill: `.Codex/skills/release-check/`): required before manual or agent-driven pushes to `main`. Ends in GO / NO-GO; pushing remains a human decision (rule 5). The Nevertheless Editor scoped fast lane is the explicit exception described below.
 - **Post preview gate** (`npm run preview-posts`, skill: `.Codex/skills/preview-posts/`): the owner reviews every changed post in the browser against the production build; approval is hash-keyed in git-ignored `.preview/` and release-check check 12 is NO-GO when preview-relevant files changed without it.
-- **Ship** (`npm run ship`, skill: `.Codex/skills/ship-posts/`): one-command publish for changes that touch only `src/content/posts/`; chains checkpoint, preview review, approval, release-check, commit, and push with the approval digest-bound to the reviewed content. Anything beyond post files still goes through the full manual flow.
+- **Ship** (`npm run ship`, skill: `.Codex/skills/ship-posts/`): one-command publish for changed posts plus changed local hero covers directly referenced by those posts. It chains checkpoint, preview review, approval, release-check, explicit-path commit, and push with the approval digest-bound to the reviewed bytes. Unrelated assets and every other path still require the full manual flow.
+- **Nevertheless Editor fast lane** (`npm run ship -- --fast --only ...`): scoped to the open post, its existing translation sibling, and only their directly referenced changed hero cover. It requires local `main` to equal `origin/main`, binds every selected byte into the digest, runs focused post and image checks, commits explicit paths, and treats the GitHub Actions build as the final deploy gate. It intentionally does not create a production-preview approval or run the whole-tree release checklist.
 - **Post-deploy rollback**: `git revert` the bad commit(s) on `main` and push; the Pages workflow redeploys the previous good state.
 
 ## Project status (last updated 2026-07-14)

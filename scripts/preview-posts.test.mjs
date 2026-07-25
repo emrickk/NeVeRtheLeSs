@@ -11,6 +11,7 @@ import {
   hashChangeSet,
   isDraftPost,
   manifestDiff,
+  parseFrontmatterScalars,
   primaryPostPath,
   readManifest,
   renderReviewPage,
@@ -74,6 +75,25 @@ test('primaryPostPath maps siblings to the primary file', () => {
   assert.equal(primaryPostPath('src/content/posts/venice.md'), 'src/content/posts/venice.md')
 })
 
+test('parseFrontmatterScalars strips inline comments outside quoted values', () => {
+  const parsed = parseFrontmatterScalars(
+    "---\ndraft: true # hidden\nheroImage: 'cover#one.webp' # local cover\n---\n"
+  )
+  assert.equal(parsed.draft, 'true')
+  assert.equal(parsed.heroImage, 'cover#one.webp')
+})
+
+test('draft detection accepts YAML boolean casing', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, 'src/content/posts/wip.md', '---\ntitle: T\ndraft: TRUE # hidden\n---\nv1\n')
+  run(root, ['add', 'src/content/posts/wip.md'])
+  run(root, ['commit', '-q', '-m', 'mixed-case draft'])
+  write(root, 'src/content/posts/wip.md', '---\ntitle: T\ndraft: True # hidden\n---\nv2\n')
+  assert.equal(isDraftPost(root, 'src/content/posts/wip.md'), true)
+  assert.deepEqual(computeChangeSet(root, { baseRef: 'HEAD' }), [])
+})
+
 test('computeChangeSet: modified, untracked, deleted, and irrelevant paths', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
@@ -111,6 +131,17 @@ test('computeChangeSet: a post edited while draft at the base ref stays excluded
   run(root, ['add', 'src/content/posts/wip.md'])
   run(root, ['commit', '-q', '-m', 'draft'])
   write(root, 'src/content/posts/wip.md', '---\ntitle: T\ndraft: true\n---\nv2\n')
+  assert.deepEqual(computeChangeSet(root, { baseRef: 'HEAD' }), [])
+})
+
+test('computeChangeSet: inline-comment drafts are detected in current and base content', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, 'src/content/posts/wip.md', '---\ntitle: T\ndraft: true # hidden\n---\nv1\n')
+  run(root, ['add', 'src/content/posts/wip.md'])
+  run(root, ['commit', '-q', '-m', 'inline-comment draft'])
+  write(root, 'src/content/posts/wip.md', '---\ntitle: T\ndraft: true # still hidden\n---\nv2\n')
+  assert.equal(isDraftPost(root, 'src/content/posts/wip.md'), true)
   assert.deepEqual(computeChangeSet(root, { baseRef: 'HEAD' }), [])
 })
 
@@ -296,7 +327,7 @@ test('reviewTargets: posts map to their pages, siblings to the primary page', (t
   write(root, 'src/content/posts/beta.en.md', 'english\n')
   assert.deepEqual(
     reviewTargets(root, ['src/content/posts/alpha.md', 'src/content/posts/beta.en.md']),
-    ['/posts/alpha/', '/posts/beta/'],
+    ['/posts/alpha/', '/posts/beta/']
   )
 })
 
@@ -307,7 +338,7 @@ test('reviewTargets: deleted primary goes to the homepage, deleted sibling to th
   // gone.md does not exist on disk; beta.en.md does not exist but beta.md does
   assert.deepEqual(
     reviewTargets(root, ['src/content/posts/gone.md', 'src/content/posts/beta.en.md']),
-    ['/', '/posts/beta/'],
+    ['/', '/posts/beta/']
   )
 })
 
@@ -315,10 +346,11 @@ test('reviewTargets: site-wide changes add homepage and the representative post'
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
   write(root, 'src/content/posts/alpha.md', FM)
-  assert.deepEqual(
-    reviewTargets(root, ['src/content/posts/alpha.md', 'src/styles/x.css']),
-    ['/', '/posts/alpha/', `/posts/${REPRESENTATIVE_POST}/`],
-  )
+  assert.deepEqual(reviewTargets(root, ['src/content/posts/alpha.md', 'src/styles/x.css']), [
+    '/',
+    '/posts/alpha/',
+    `/posts/${REPRESENTATIVE_POST}/`,
+  ])
 })
 
 test('reviewTargets: note changes map to the notes timeline', (t) => {
@@ -327,7 +359,7 @@ test('reviewTargets: note changes map to the notes timeline', (t) => {
   write(root, 'src/content/posts/alpha.md', FM)
   assert.deepEqual(
     reviewTargets(root, ['src/content/notes/20100805-090000.md', 'src/content/posts/alpha.md']),
-    ['/notes/', '/posts/alpha/'],
+    ['/notes/', '/posts/alpha/']
   )
 })
 
@@ -343,7 +375,10 @@ test('hashChangeSet: sha256 per file, deleted sentinel for missing files', (t) =
   write(root, 'src/content/posts/alpha.md', 'abc')
   const files = hashChangeSet(root, ['src/content/posts/alpha.md', 'src/content/posts/gone.md'])
   // sha256 of "abc"
-  assert.equal(files['src/content/posts/alpha.md'], 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad')
+  assert.equal(
+    files['src/content/posts/alpha.md'],
+    'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'
+  )
   assert.equal(files['src/content/posts/gone.md'], 'deleted')
 })
 
@@ -364,7 +399,11 @@ test('manifestDiff reports edits and additions, ignores settled approvals', (t) 
   t.after(() => cleanup(root))
   write(root, 'src/content/posts/alpha.md', 'v1')
   write(root, 'src/content/posts/beta.md', 'v1')
-  writeManifest(root, hashChangeSet(root, ['src/content/posts/alpha.md', 'src/content/posts/beta.md']), { baseRef: 'HEAD' })
+  writeManifest(
+    root,
+    hashChangeSet(root, ['src/content/posts/alpha.md', 'src/content/posts/beta.md']),
+    { baseRef: 'HEAD' }
+  )
   const manifest = readManifest(root)
   write(root, 'src/content/posts/alpha.md', 'v2')
   // beta.md is approved but absent from the current change set (committed or
@@ -514,7 +553,11 @@ test('checkPostPreview: approved deletion passes until the file returns', (t) =>
 test('checkPostPreview: an unapproved note change fails', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
-  write(root, 'src/content/notes/20100805-090000.md', "---\ndate: '2010-08-05T09:00:00.000Z'\ntweetId: '9001'\nsource: 'https://x.com/u/status/9001'\ntweetCount: 1\n---\n\nbody\n")
+  write(
+    root,
+    'src/content/notes/20100805-090000.md',
+    "---\ndate: '2010-08-05T09:00:00.000Z'\ntweetId: '9001'\nsource: 'https://x.com/u/status/9001'\ntweetCount: 1\n---\n\nbody\n"
+  )
   assert.equal(checkPostPreview(root, { baseRef: 'HEAD' }).status, 'FAIL')
 })
 
@@ -536,7 +579,10 @@ test('renderReviewPage links every target against the given host and port', () =
 })
 
 test('renderReviewPage escapes HTML metacharacters in targets', () => {
-  const html = renderReviewPage(['/posts/x"><script>alert(1)</script>/'], { host: 'localhost', port: '4322' })
+  const html = renderReviewPage(['/posts/x"><script>alert(1)</script>/'], {
+    host: 'localhost',
+    port: '4322',
+  })
   assert.ok(!html.includes('<script>'), 'raw <script> must not appear')
   assert.ok(html.includes('&quot;'), 'quotes must be escaped')
   assert.ok(html.includes('&lt;script&gt;'), 'angle brackets must be escaped')
@@ -553,10 +599,7 @@ test('routeSlugForPostFile prefers the frontmatter slug and falls back to filena
       mkdirSync(dirname(join(root, rel)), { recursive: true })
       writeFileSync(join(root, rel), content)
     }
-    write(
-      'src/content/posts/file-name.md',
-      "---\ntitle: 'X'\nslug: 'custom-url'\n---\nBody.\n",
-    )
+    write('src/content/posts/file-name.md', "---\ntitle: 'X'\nslug: 'custom-url'\n---\nBody.\n")
     write('src/content/posts/plain.md', "---\ntitle: 'Y'\n---\nBody.\n")
     assert.equal(routeSlugForPostFile(root, 'src/content/posts/file-name.md'), 'custom-url')
     // The sibling routes through its primary's slug

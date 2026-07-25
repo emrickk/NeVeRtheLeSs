@@ -3,9 +3,28 @@
 Date: 2026-07-16
 Status: Approved by owner (design conversation), pending spec review
 
+## 2026-07-24 amendment: scoped editor publishing
+
+The standalone Nevertheless Editor now invokes `ship` with `--fast --only`
+for a one-click publish of the open post and its existing translation sibling.
+This fast lane is deliberately narrower than the interactive flow: local
+`main` must exactly match `origin/main`, the selected bytes are digest-bound,
+focused validators run, and the GitHub Actions production build is the final
+deploy gate. It does not write a production-preview approval or run the
+whole-tree release checklist.
+
+`ship` may also include a changed file under `src/assets/hero/` when, and only
+when, one of the selected posts directly references that exact file through
+`heroImage`. The referenced cover participates in purity, digest, freshness,
+validation, explicit-path commit, and push. Unreferenced hero files and every
+other non-post path still abort. Every lane also refuses a changed cover that
+is shared with an unselected post, because that would alter an unreviewed page.
+This amendment supersedes the original post-only and no-partial-shipping limits
+below for these two narrow cases.
+
 ## Purpose
 
-After editing posts (typically in the /_edit editor), the owner publishes with a single
+After editing posts (typically in the /\_edit editor), the owner publishes with a single
 memorable command instead of the four-step manual sequence (preview, approve, release-check,
 commit and push). `npm run ship` chains the existing gates in order with one human
 confirmation in the middle. It automates the sequence, not the judgment: the owner still
