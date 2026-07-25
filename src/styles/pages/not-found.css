@@ -14,12 +14,12 @@
 }
 
 .not-found-code {
-  font-size: clamp(5rem, 20vw, 10rem);
+  font-size: clamp(4rem, 14vw, 7.5rem);
   font-weight: var(--weight-bold);
   letter-spacing: -0.05em;
   line-height: 1;
   margin: 0;
-  color: var(--fill-secondary);
+  color: var(--fill-primary);
   user-select: none;
 }
 
@@ -44,4 +44,68 @@
   gap: var(--space-3);
   flex-wrap: wrap;
   margin-top: var(--space-3);
+}
+
+/* A 404 here is usually a stale permalink, so offer the newest posts as a
+   landing spot instead of leaving the visitor at a dead end. */
+.not-found-recent {
+  width: 30rem;
+  max-width: 100%;
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--separator);
+}
+
+.not-found-recent-heading.eyebrow-accent {
+  margin: 0 0 var(--space-3);
+  font-weight: var(--weight-accent-label);
+}
+
+.not-found-recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.not-found-recent-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-1) 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.not-found-recent-title {
+  font-size: var(--text-callout);
+  font-weight: 500;
+  color: var(--label-primary);
+  line-height: 1.35;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 5px;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.not-found-recent-item:hover .not-found-recent-title {
+  color: var(--color-blue);
+  text-decoration-color: currentColor;
+}
+
+.not-found-recent-date {
+  color: var(--label-tertiary);
+  font-size: var(--date-meta-size);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+  white-space: nowrap;
 }

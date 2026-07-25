@@ -1,25 +1,81 @@
 ---
 import '../styles/pages/not-found.css';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import LangText from '../components/LangText.astro';
+import LangTitle from '../components/LangTitle.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths';
+import { buildTranslationMap, resolveLangText } from '../utils/translations';
+
+const tmap = await buildTranslationMap();
+
+const recentPosts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const copy = {
+  title: { zh: '找不到这个页面', en: 'Page not found' },
+  desc: {
+    zh: '写了二十年，有些链接会断，有些文章搬了家。搜标题里的一两个词，通常能找到。',
+    en: 'Twenty years of posts: some links break, some posts move. Search a word or two from the title; it usually turns up.',
+  },
+  search: { zh: '搜索', en: 'Search' },
+  home: { zh: '首页', en: 'Home' },
+  recent: { zh: '最近的文章', en: 'Recent posts' },
+};
 ---
 
 <BaseLayout
   title="Page not found"
-  description="The page you requested does not exist."
+  description={`${copy.desc.zh} · ${copy.desc.en}`}
   robots="noindex, follow"
   canonicalUrl={withBase('/404.html')}
   pageUrl={withBase('/404.html')}
 >
   <main class="not-found-main" id="main-content">
     <div class="not-found-inner">
-      <p class="not-found-code">404</p>
-      <h1 class="not-found-title">Page not found</h1>
-      <p class="not-found-desc">The URL may be wrong, or the page may have been removed.</p>
+      <p class="not-found-code" aria-hidden="true">404</p>
+      <h1 class="not-found-title"><LangText text={copy.title} /></h1>
+      <p class="not-found-desc"><LangText text={copy.desc} /></p>
       <div class="not-found-actions">
-        <a href={withBase('/')} class="btn btn-primary">Home</a>
-        <a href={withBase('/posts')} class="btn btn-secondary">All posts</a>
+        <a href={withBase('/search')} class="btn btn-primary" data-search-palette-trigger="true">
+          <LangText text={copy.search} />
+        </a>
+        <a href={withBase('/')} class="btn btn-secondary"><LangText text={copy.home} /></a>
       </div>
+
+      {
+        recentPosts.length > 0 && (
+          <nav class="not-found-recent" aria-labelledby="not-found-recent-heading">
+            <h2 id="not-found-recent-heading" class="not-found-recent-heading eyebrow-accent">
+              <LangText text={copy.recent} />
+            </h2>
+            <ul class="not-found-recent-list">
+              {recentPosts.map((post) => {
+                const text = resolveLangText(post.data, tmap);
+
+                return (
+                  <li>
+                    <a href={withBase(`/posts/${post.id}/`)} class="not-found-recent-item">
+                      <LangTitle
+                        tag="span"
+                        class="not-found-recent-title"
+                        zh={text.titleZh}
+                        en={text.titleEn}
+                        orig={post.data.lang ?? 'zh'}
+                        fallback={post.data.title}
+                      />
+                      <FormattedDate date={post.data.pubDate} class="not-found-recent-date" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )
+      }
     </div>
   </main>
 </BaseLayout>

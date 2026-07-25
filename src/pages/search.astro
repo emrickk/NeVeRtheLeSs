@@ -1,16 +1,27 @@
 ---
 import '../styles/pages/search.css';
+import LangText from '../components/LangText.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths';
+
+const copy = {
+  title: { zh: '搜索', en: 'Search' },
+  loading: { zh: '搜索加载中', en: 'Loading search...' },
+  description: { zh: '搜索这个博客的文章', en: 'Search posts' },
+};
 ---
 
-<BaseLayout title="Search" description="Search posts" robots="noindex, follow">
+<BaseLayout
+  title="Search"
+  description={`${copy.description.zh} · ${copy.description.en}`}
+  robots="noindex, follow"
+>
   <main id="main-content" class="search-main">
     <div class="search-header">
-      <h1 class="search-title">Search</h1>
+      <h1 class="search-title"><LangText text={copy.title} /></h1>
     </div>
     <div id="search" class="search-ui" aria-busy="true">
-      <p class="search-loading" role="status">Loading search...</p>
+      <p class="search-loading" role="status"><LangText text={copy.loading} /></p>
       <noscript>
         <style>
           .search-loading {
@@ -18,7 +29,14 @@ import { withBase } from '../utils/paths';
           }
         </style>
         <p class="search-fallback">
-          Search needs JavaScript. Browse the <a href={withBase('/posts/')}>posts archive</a> instead.
+          <!-- Each language keeps its own sentence because the archive link sits
+               mid-sentence, so LangText (plain text pairs) cannot wrap it. -->
+          <span class="lang lang-zh" data-orig
+            >搜索需要 JavaScript，可以直接浏览<a href={withBase('/posts/')}>文章存档</a>。</span
+          ><span class="lang lang-en"
+            >Search needs JavaScript. Browse the <a href={withBase('/posts/')}>posts archive</a>
+            instead.</span
+          >
         </p>
       </noscript>
     </div>
