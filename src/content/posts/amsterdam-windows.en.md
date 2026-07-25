@@ -32,5 +32,3 @@ Somewhere along the way the clouds mostly gave up and the light turned gold. Hou
 All through Amsterdam I kept turning one thing over: why are the windows here so big? Houses have big windows, boats have big windows, the café gave its whole street-facing wall to glass, nothing like American houses with their small, careful windows. And yet the Dutch are famous for their boundaries: they say what they mean and keep the rules in plain sight. I thought about it the whole way back and only got halfway there: however big the glass, it never means "come in." It means "look all you want."
 
 We had bought tickets to watch Amsterdam from behind glass; the houseboat owners pulled up chairs on their own bow and watched boatload after boatload of us go by. Nobody minded.
-
-![Houseboats in the golden evening light, people sunning on deck](https://cdn.theneverless.com/2026/07/amsterdam-houseboat-golden-hour.webp)
