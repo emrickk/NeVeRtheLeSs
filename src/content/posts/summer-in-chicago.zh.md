@@ -5,9 +5,9 @@ lang: zh
 translationKey: summer-in-chicago
 ---
 
-这次芝加哥的主题是暴走和建筑。订了建筑游轮，剩下的交给两条腿。芝加哥当然要看建筑，毕竟盖出了世界上第一栋摩天楼，而且芝加哥人从没让任何人忘记过这件事，不是吗？
+这次芝加哥的主题是暴走和建筑。芝加哥当然要看建筑，毕竟盖出了世界上第一栋摩天楼，而且芝加哥人从没让任何人忘记过这件事，不是吗？
 
-我们先坐的游轮。从水面上看，这座城市中心的结构一目了然。河是最底下的一层：船在河上，桥在船上，火车在桥上，火车再往上是高楼。
+我们先坐的游轮。河是最底下的一层：船在河上，桥在船上，火车在桥上，火车再往上是高楼。
 
 ![从河上看市中心，高架桥上的列车和两岸的高楼](https://cdn.theneverless.com/2026/07/chicago-river-corridor.webp)
 
@@ -19,8 +19,6 @@ translationKey: summer-in-chicago
 </div>
 
 ![路障后面一条空荡荡的市中心街道，前景一只锥桶，高架列车从上面开过](https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp)
-
-走回河边，整个旅程头一次往下看：游船从栏杆底下开过去，每一把椅子都坐着人。其中一条船旁边，一个划皮划艇的，独占剩下的整条河。
 
 ![从岸上往下看，坐满人的游船旁边划过一条皮划艇](https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp)
 

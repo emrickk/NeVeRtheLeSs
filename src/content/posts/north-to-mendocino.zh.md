@@ -5,7 +5,7 @@ lang: zh
 translationKey: north-to-mendocino
 ---
 
-Mendocino之旅是晚饭后拖Google Maps拖出来的：一个在北边三小时车程、临着海、我们俩都没什么概念的名字。计划就到此为止。
+Mendocino之旅是晚饭后拖Google Maps拖出来的：一个在北边三小时车程、临着海的名字。计划就到此为止。
 
 周六清晨出发，发现海岸越往北越换脾气。过了金门大桥，沙滩和海风的耐心似乎一起用完，到了附近的Albion小镇，只剩下崖壁、涌浪，和被风压平的草。
 
@@ -17,7 +17,7 @@ Mendocino之旅是晚饭后拖Google Maps拖出来的：一个在北边三小时
 
 ![Albion河口的木制栈桥](https://cdn.theneverless.com/2026/07/albion-river-bridge.webp)
 
-而酒店房间的草坪则到一道木栅栏为止，栅栏就是全部的看台：再往前，地面撒手，海湾接管。差不多一下午我就站在那儿，看同一幅景做细小的变奏：涌浪加工着海蚀柱，蒲苇接住光，又把它放掉。我知道这几张照片出奇的相似，但是来和我一起看海吧🐶
+而酒店房间的草坪则到一道木栅栏为止，栅栏就是全部的看台：涌浪加工着海蚀柱，蒲苇接住光，又把它放掉。我知道这几张照片出奇的相似，但是来和我一起看海吧🐶
 
 ![木栅栏外的Albion海湾](https://cdn.theneverless.com/2026/07/albion-cove-fence.webp)
 
@@ -27,8 +27,6 @@ Mendocino之旅是晚饭后拖Google Maps拖出来的：一个在北边三小时
 </div>
 
 ![海湾对面的海岬与蒲苇](https://cdn.theneverless.com/2026/07/albion-headland-pampas.webp)
-
-出酒店走走。草坪上头的白房子把阳台留给海面；房子附近的草地上两张野餐桌笔直地指着海平线。这段海岸上虽然风大，但是没有人想要把东西背对着海。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/white-house-flagpole.webp" alt="白栅栏后的白房子和旗杆" loading="lazy" />

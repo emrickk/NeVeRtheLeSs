@@ -8,11 +8,11 @@ lang: 'en'
 translationKey: 'another-city-walk-in-san-francisco'
 ---
 
-One Saturday in July 2024, a week after the last downtown walk, we were back: errands in the city, finished early, a new camera that had never been outside, and roughly the same route, wandered more than planned. Looking back, the day had a second thread running through it, though it took the whole walk to see.
+One Saturday in July 2024, a week after the last downtown walk, we were back: errands in the city, finished early, a new camera that had never been outside, and roughly the same route, wandered more than planned.
 
 ## City Lights
 
-City Lights has kept the same argument going since 1953. Lawrence Ferlinghetti and Peter Martin opened it as the first all-paperback bookstore in the country; three years later Ferlinghetti published Allen Ginsberg's Howl, stood trial for obscenity over it, and won. To this day the banner in the window is hand-painted: BOOKS NOT BOMBS.
+City Lights has kept the same argument going since 1953. Lawrence Ferlinghetti and Peter Martin opened it as the first all-paperback bookstore in the country; three years later Ferlinghetti published Allen Ginsberg's Howl, stood trial for obscenity over it, and won.
 
 But the noisy world stays outside the glass, and inside it is quiet; in a seventy-year-old bookstore, the woman on the stool was reading her phone.
 
@@ -22,8 +22,6 @@ But the noisy world stays outside the glass, and inside it is quiet; in a sevent
 </div>
 
 ## Columbus Avenue
-
-Columbus Tower has Coppola, who has looked after it since the seventies. The orange three-story down the way has nobody: it leans like the next strong wind could put it down, and it hasn't gone down. Downtown keeps its small survivors the only way it knows: surrounded.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-columbus-tower.webp" alt="Columbus Tower from a block away, towers rising behind" loading="lazy" />
@@ -41,7 +39,7 @@ Outside the architecture bookstore from last week, an Akita occupied a rear car 
 
 ## The prettiest corner
 
-The white bank at 701 Montgomery, built in 1909 for John Fugazi, the first home of Transamerica, is still the prettiest thing on its block: arched windows, a cornice like a crown. The banks on this street each found a caretaker, a bookstore, a golf center; this one drew the Church of Scientology. A shame is about the size of it.
+The white bank at 701 Montgomery, the first home of Transamerica, is still the prettiest thing on its block. The banks on this street each found a caretaker, a bookstore, a golf center; this one drew the Church of Scientology. A shame is about the size of it.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-701-montgomery-corner.webp" alt="The white 1909 bank building at 701 Montgomery" loading="lazy" />
@@ -54,18 +52,18 @@ Two blocks on, the pyramid takes care of itself: the concrete trusses at its fee
 
 ## What happens to banks
 
-456 Montgomery is the orange building's other possible ending. Just as small, just as outgrown by its own street; but where that one leans and stays whole, this one got converted: the marble front kept like a specimen at the foot of the tower that replaced it, gold letters intact, an indoor golf center behind the brass doors. Standing perfectly straight, and a pity: only the face is left.
+The marble front kept at the foot of the tower that replaced it. Standing perfectly straight, and a pity: only the face is left.
 
 ![The preserved bank front of 456 Montgomery Plaza at the foot of a tower](https://cdn.theneverless.com/2026/07/sf-456-montgomery.webp)
 
-The colonnade at 400 California stands on the site of William Ralston's Bank of California. When the bank broke in August 1875, Ralston went for his usual swim in the bay and did not come back. At 465, behind the door with a gilded X, is the Merchants Exchange, where ship owners once watched the Gate for their arrivals, and where Julia Morgan kept her office for most of her career. Both names come up again.
+The colonnade at 400 California stands on the site of William Ralston's Bank of California. When the bank broke in August 1875, Ralston went for his usual swim in the bay and did not come back. At 465, behind the door with a gilded X, is the Merchants Exchange.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-california-colonnade.webp" alt="The granite colonnade of the old Bank of California on California Street" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-465-california-door.webp" alt="A door of the Merchants Exchange at 465 California, flowers outside" loading="lazy" />
 </div>
 
-Downtown San Francisco is past its best these days, and one of these halls stood open to show it: chandeliers lit, the counter curving around air, no business being done. Banks built themselves like temples so you would believe they could never close. The building, it turns out, is still keeping that promise; the bank isn't.
+Downtown San Francisco is past its best these days, and one of these halls stood open to show it: chandeliers lit, the counter curving around air. Banks built themselves like temples so you would believe they could never close. The building, it turns out, is still keeping that promise; the bank isn't.
 
 ![An empty banking hall, chandeliers lit, sunlight on the marble floor](https://cdn.theneverless.com/2026/07/sf-empty-bank-lobby.webp)
 
@@ -77,24 +75,20 @@ Market Street keeps walking its old-timers: the F line runs mid-century PCC stre
 
 ## One Montgomery, round two
 
-One Montgomery is waiting for its next caretaker. Willis Polk's banking hall, landmarked, vacant since Wells Fargo left; last week it was simply empty, this week it had grown easels, big photographs of itself in its prime. Somebody is auditioning tenants, and the pitch is the building's own past.
+One Montgomery is waiting for its next caretaker. Willis Polk's banking hall, landmarked, vacant since Wells Fargo left; last week it was simply empty, this week it had grown easels. Somebody is auditioning tenants, and the pitch is the building's own past.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-one-montgomery-hall-2.webp" alt="The vacant banking hall at One Montgomery" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-one-montgomery-easels.webp" alt="Easels with photographs of the building's past inside One Montgomery" loading="lazy" />
 </div>
 
-The marble stair to the vaults still curls down behind its bronze rail.
-
 ![The marble stair to the vaults at One Montgomery](https://cdn.theneverless.com/2026/07/sf-vault-stair-front.webp)
 
 ## Post Street
 
-Polk once more on the way over: the Hobart Building, said to be the one he called his best, with its name out over Market.
-
 ![The Hobart Building's name over Market Street, towers layered behind](https://cdn.theneverless.com/2026/07/sf-hobart-lettering.webp)
 
-The most dutiful caretaker on the route is at 57 Post. The Mechanics' Institute has been lending books since 1854; Albert Pissis put up this building in 1910, and business has not stopped since. The country's oldest chess club is here too.
+The most dutiful caretaker on the route is at 57 Post. The Mechanics' Institute has been lending books since 1854. The country's oldest chess club is here too.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-mechanics-stair.webp" alt="The spiral staircase of the Mechanics' Institute seen from below" loading="lazy" />
@@ -103,7 +97,7 @@ The most dutiful caretaker on the route is at 57 Post. The Mechanics' Institute 
 
 ## The Palace
 
-The Palace was Ralston's other monument; it opened five weeks after the bay took him. Over the bar, Maxfield Parrish's Pied Piper has hung since the hotel's 1909 reopening, and once, the caretaking fell to the whole city: in 2013 the owners tried to send the painting to auction in New York, and the objection was loud enough that they changed their minds, cleaned it, and hung it back. The children of Hamelin are still following; at the Market Street windows, the afternoon reduced everyone to silhouettes.
+The Palace was Ralston's other monument; it opened five weeks after the bay took him. Over the bar hangs Maxfield Parrish's Pied Piper, and once, the caretaking fell to the whole city: in 2013 the owners tried to send the painting to auction in New York, and the objection was loud enough that they changed their minds, cleaned it, and hung it back. The children of Hamelin are still following.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-pied-piper.webp" alt="Maxfield Parrish's Pied Piper mural above the bar at the Palace Hotel" loading="lazy" />
@@ -112,7 +106,7 @@ The Palace was Ralston's other monument; it opened five weeks after the bay took
 
 ## Third and Market
 
-The Hearst Building holds the corner of Third and Market, where the Examiner used to run. The entrance, tile and copper and coats of arms, is Julia Morgan's; her again. Inside it is empty too, waiting for a tenant like half the grand rooms on this walk.
+The Hearst Building holds the corner of Third and Market, where the Examiner used to run. The entrance, tile and copper and coats of arms, is Julia Morgan's. Inside it is empty too.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-hearst-door.webp" alt="The ornate entrance of the Hearst Building" loading="lazy" />
@@ -121,7 +115,7 @@ The Hearst Building holds the corner of Third and Market, where the Examiner use
 
 ## Six o'clock
 
-The storefronts may be empty, but the street ran fully staffed, and busy.
+The storefronts may be empty, but the street ran fully staffed.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-market-scooter.webp" alt="A man in a yellow shirt on an orange scooter at a streetcar stop" loading="lazy" />
@@ -138,6 +132,6 @@ The balcony at home faces another downtown: San Jose, it turns out, is not a sma
 
 ![Downtown San Jose at dusk](https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp)
 
-The two chairs on the balcony hold the best seat of the day. In the glass, the living room and the city sit in the same pane. Next time, a walk down there.
+The two chairs on the balcony hold the best seat of the day. Next time, a walk down there.
 
 ![Two chairs on the balcony, the living room reflected in the glass over the city](https://cdn.theneverless.com/2026/07/sj-balcony.webp)

@@ -23,13 +23,11 @@ Up close it turns out the front end is all texture: the blacked-out kidney grill
   <img src="https://cdn.theneverless.com/2026/07/bmw-850-headlight.webp" alt="Laser headlight in close-up" loading="lazy" />
 </div>
 
-Then the sun dropped below the tree line and everything changed. The same paint that had been reading silver all evening suddenly went warm, and every panel picked up its own version of the sunset.
+Then the sun dropped below the tree line. The same paint that had been reading silver all evening suddenly went warm, and every panel picked up its own version of the sunset.
 
 ![Front three-quarter view in golden light](https://cdn.theneverless.com/2026/07/bmw-850-front-golden.webp)
 
 ![Head-on, staring straight into the camera](https://cdn.theneverless.com/2026/07/bmw-850-head-on.webp)
-
-The low sun came straight through the spokes of the wheels and laid the whole side of the car out in gold. This might be my favorite frame of the evening.
 
 ![Side profile with the sun flaring through the wheels](https://cdn.theneverless.com/2026/07/bmw-850-side-pano.webp)
 
@@ -41,8 +39,6 @@ The rear got a set of its own. The taillights stretch into the haunches, and the
 </div>
 
 ![Rear three-quarter view catching the last of the sun](https://cdn.theneverless.com/2026/07/bmw-850-rear-golden.webp)
-
-Wide shots for scale: an entire parking lot, one car, nobody else around. The white COMPACT stencils on the asphalt are the only audience.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/bmw-850-lot-wide.webp" alt="Wide shot of the car alone in the lot" loading="lazy" />

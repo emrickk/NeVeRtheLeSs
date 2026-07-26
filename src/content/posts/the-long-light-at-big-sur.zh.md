@@ -19,21 +19,19 @@ description: 'Big Sur 的两天一夜'
 
 ## 下午换了主人
 
-进了房间，发现房间是刻意的暗，里里外外都是红杉木，窗帘的活儿由森林代劳。能进来的光都先在树里走过一遭，到屋里已经是温的。桌上等着一盘奶酪，一小杯深色又甜的东西，还有一个被七月闲置的壁炉。
+进了房间，发现房间是刻意的暗，里里外外都是红杉木，窗帘的活儿由森林代劳。能进来的光都先在树里走过一遭，到屋里已经是温的。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-desk-window.webp" alt="窗光里的书桌和皮椅" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-shutter-light.webp" alt="从百叶窗缝里断成细条的阳光" loading="lazy" />
 </div>
 
-我们本来打算放下行李就出去走走。结果这个下午悄悄换了主人：一个小时给了椅子，一个小时给了阳台。窗外的森林一直亮着，我们隔着窗户看它，心态跟看雨差不多，庆幸自己待在这一边。
+我们本来打算放下行李就出去走走。结果一个小时给了椅子，一个小时给了阳台。窗外的森林一直亮着，我们隔着窗户看它，庆幸自己待在这一边。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-fireplace-corner.webp" alt="壁炉旁的角落，光从半开的百叶窗进来" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-welcome-plate.webp" alt="房间桌上的一只盘子和一杯酒" loading="lazy" />
 </div>
-
-后来还是出了门。这里的房子零零散散地藏在林子里，看见一段屋顶都算一个发现；小路从橡树底下钻过去，出来就是一片金色的坡。这些当然都是安排好的，这种地方什么都是安排好的，好在树的年纪足够大，守得住这个秘密。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-cabin-redwoods.webp" alt="几乎藏进红杉林里的木房子" loading="lazy" />
@@ -46,7 +44,7 @@ description: 'Big Sur 的两天一夜'
 
 然后，来了这么多年，我们第一次留下来看完日落。
 
-原来大苏尔的日落不是一个瞬间，是一场有自己节奏的慢事。海走得最早，在树缝里那一小格先暗下去，那时天上还热闹着。
+海走得最早，在树缝里那一小格先暗下去，那时天上还热闹着。
 
 太阳顺着松树慢慢往下挪，在枝子里停了很久；一直没人留意的月亮，原来早就到了，淡淡地挂在红杉尖上等换班。
 
@@ -54,8 +52,6 @@ description: 'Big Sur 的两天一夜'
   <img src="https://cdn.theneverless.com/2026/07/big-sur-sunset-pines.webp" alt="沉到一排松树后面的太阳" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-moon-redwoods.webp" alt="深色红杉树梢上方的月亮" loading="lazy" />
 </div>
-
-坚持得最久的是山。草地先变金色，再变琥珀色，粗大的树干各有一面还亮着。对面的山脊在我们这边全蓝下来之后，还在太阳里泡了很久。黑在这里不是落下来的，是山谷自己做的一件事，按部就班，有先有后。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-hillside-last-light.webp" alt="最后的光越过山坡、红杉和一面墙" loading="lazy" />

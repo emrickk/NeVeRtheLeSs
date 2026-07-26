@@ -7,7 +7,7 @@ translationKey: two-days-in-the-redwoods
 
 去年七月，我们在加州最北端的海岸边待了一个周末，那里是红杉生长的地方。一百年前，人们在这片海岸大规模伐木，硬是撑起了 Eureka 这样一座大城。如今城市不复当年，红杉和数不清的蕨类还在，我们过来看看。
 
-开到 Redwood 国家公园要 7 个小时，前一晚我们住在路上 Ferndale 一家老旅馆里。这个镇也曾经繁华，街上尽是 Gothic Revival 和 Queen Anne 风格的房子。我们住的这家 Gingerbread Mansion 也不例外，客厅大概一百年都没怎么变过：花纹墙纸，贴着瓷砖的壁炉，壁炉架上立着烛台。确实是那个时代。
+开到 Redwood 国家公园要 7 个小时，前一晚我们住在路上 Ferndale 一家老旅馆里。这个镇也曾经繁华，街上尽是 Gothic Revival 和 Queen Anne 风格的房子。我们住的这家 Gingerbread Mansion 也不例外，客厅大概一百年都没怎么变过。确实是那个时代。
 
 ![旅馆客厅，瓷砖壁炉和老墙纸](https://cdn.theneverless.com/2026/07/redwood-inn-parlor.webp)
 
@@ -26,33 +26,31 @@ translationKey: two-days-in-the-redwoods
 
 ![海岸森林里长满苔藓的小径](https://cdn.theneverless.com/2026/07/redwood-mossy-trail.webp)
 
-走完 Trillium Falls Trail，傍晚我们回到 Airbnb 附近的水边，又回到人类的故事里了，尺度瞬间变得亲密。一个人遛着狗走在我们前面，狗一路埋着头，把潮线上的浮木挨个检查过去。回到房间，房间里那盏灯也不觉得昏暗了。
+走完 Trillium Falls Trail，傍晚我们回到 Airbnb 附近的水边。一个人遛着狗走在我们前面，狗一路埋着头，把潮线上的浮木挨个检查过去。回到房间，房间里那盏灯也不觉得昏暗了。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/redwood-beach-dusk.webp" alt="黄昏的岸边，一个遛狗的人走在潮线上" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/redwood-room-lamp.webp" alt="房间里的台灯" loading="lazy" />
 </div>
 
-隔天早上，我们去了 Grove of Titans。小径配得上这个名字：一对老夫妇始终走在我们前面，在树干前小得像两个孩子。红杉总在跟你玩这个把戏：周围没有东西可供比较，直到有人走进视野。我突然想到 Ferndale 那些木头房子。它们已经够老了，可盖起来的时候，这些树早就是老树了。
+隔天早上，我们去了 Grove of Titans。小径配得上这个名字：一对老夫妇始终走在我们前面，在树干前小得像两个孩子。我突然想到 Ferndale 那些木头房子。它们已经够老了，可盖起来的时候，这些树早就是老树了。
 
 ![木栈道上方的巨杉，前方是一对老夫妇](https://cdn.theneverless.com/2026/07/redwood-giants-boardwalk.webp)
 
-出了林子上到海岸公路，雾还是像一堵墙，而且完全没有要散的意思。雾把前后的景物都截断了，眼睛没了参照，不再确定自己看见了什么。先冒出来的是车灯，然后才是轮廓：一辆老式大众巴士从我们身边爬坡而过，转眼又没入了雾里。车出现过吗？
+出了林子上到海岸公路，雾还是像一堵墙，而且完全没有要散的意思。雾把前后的景物都截断了，眼睛没了参照，不再确定自己看见了什么。一辆老式大众巴士从我们身边爬坡而过，转眼又没入了雾里。车出现过吗？
 
 ![海岸公路上，从雾里驶出的大众巴士和骑行者](https://cdn.theneverless.com/2026/07/redwood-fog-vw-bus.webp)
-
-骑自行车的人……真的存在吗？
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/redwood-fog-cyclist.webp" alt="骑进浓雾里的长途骑行者" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/redwood-fog-bike-sign.webp" alt="雾中的礼让自行车路牌，SHARE THE ROAD" loading="lazy" />
 </div>
 
-不过话说回来，这场雾不是来堵路的。这里夏天几乎不下雨，红杉的水就靠它：雾在针叶上凝成水，再一滴一滴落回林子里。所以它才不肯散。
+不过话说回来，这场雾不是来堵路的。这里夏天几乎不下雨，红杉的水就靠它：雾在针叶上凝成水，再一滴一滴落回林子里。
 
 ![弯道处消失在雾墙里的公路](https://cdn.theneverless.com/2026/07/redwood-fog-curve.webp)
 
-我们继续往回开。往内陆走了没多远，雾终于认输了。林下的绿色重新亮起来。下车，小径从倒下的巨木之间穿过，那些木头比我们开来的车还大。
+我们继续往回开。往内陆走了没多远，雾终于认输了。下车，小径从倒下的巨木之间穿过。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/redwood-fern-hillside.webp" alt="长满蕨类的山坡，远处有徒步的人" loading="lazy" />
@@ -61,7 +59,7 @@ translationKey: two-days-in-the-redwoods
 
 ![阳光重新照进林子，小径边是倒下的巨木](https://cdn.theneverless.com/2026/07/redwood-sunlit-grove.webp)
 
-回程我们没走高速，挑了那条慢的，就是从树干之间穿过去的那条。那是以前的 101，新高速修好之后，老路就被留在了树中间。傍晚的太阳斜斜地打进来，一道一道铺在路面上。
+回程我们没走高速。那是以前的 101，新高速修好之后，老路就被留在了树中间。傍晚的太阳斜斜地打进来，一道一道铺在路面上。
 
 ![傍晚的光斜落在穿过红杉林的公路上](https://cdn.theneverless.com/2026/07/redwood-evening-light.webp)
 
@@ -70,6 +68,6 @@ translationKey: two-days-in-the-redwoods
   <img src="https://cdn.theneverless.com/2026/07/redwood-avenue-curve.webp" alt="在巨树之间转弯的公路" loading="lazy" />
 </div>
 
-一百年前来的人是来砍树的，我们来只是为了看它们一眼。人类过来并不容易，雾会在每个傍晚从太平洋涌进来，蕨类会一次次把小径盖住，这条路也依然会是窄窄的一条。两天并不长，不过这些树本来就活在另一种时间里。
+人类过来并不容易，雾会在每个傍晚从太平洋涌进来，蕨类会一次次把小径盖住，这条路也依然会是窄窄的一条。两天并不长，不过这些树本来就活在另一种时间里。
 
 ![巨杉之间窄窄的一条公路](https://cdn.theneverless.com/2026/07/redwood-avenue-narrow-road.webp)

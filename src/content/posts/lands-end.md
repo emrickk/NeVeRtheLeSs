@@ -8,25 +8,21 @@ lang: 'en'
 translationKey: 'lands-end'
 ---
 
-October is San Francisco's real summer: the fog takes a few weeks off, and the city remembers it lives on an ocean. One clear evening in October 2025 we went out to Lands End, the corner where the city plainly runs out of land, to do what everyone goes there to do: watch the sun go down.
+October is San Francisco's real summer: the fog takes a few weeks off, and the city remembers it lives on an ocean. One evening we went out to Lands End to watch the sun go down.
 
-The first stop is a window nobody gets seated at anymore. Louis', the diner above the rocks, opened in 1937 and closed in 2020, eighty-three years and three generations of the same family later. The tables are still set. The Cliff House next door, the bigger act, went dark a few months after it.
+The first stop is a window nobody gets seated at anymore. Louis', the diner above the rocks, opened in 1937 and closed in 2020, three generations of the same family later. The Cliff House next door, the bigger act, went dark a few months after it.
 
 ![The set tables of Louis' diner behind glass, the Pacific out the window](https://cdn.theneverless.com/2026/07/lands-end-diner-window.webp)
 
 ## The plaza
 
-Behind the Cliff House sits the Camera Obscura. It is not a building shaped like a camera; it is a camera. Since 1946, a rotating mirror on the roof has been throwing a live picture of Seal Rocks onto a dish inside the dark room.
-
 ![The camera-shaped Camera Obscura building on its plaza in evening light](https://cdn.theneverless.com/2026/07/lands-end-camera-obscura.webp)
 
 ## The ruins
 
-Down the stairs, the concrete outlines in the cove are what is left of Sutro Baths: seven pools under a glass roof in 1896, billed as the largest in the world, burned down in 1966. The ocean has been taking the site back ever since.
+Down the stairs, the concrete outlines in the cove are what is left of Sutro Baths: seven pools under a glass roof in 1896, burned down in 1966. The ocean has been taking the site back ever since.
 
 ![A person leaning on the curved concrete parapet above the sea](https://cdn.theneverless.com/2026/07/lands-end-parapet.webp)
-
-The Cliff House above it is the third or fourth Cliff House, depending on how you count.
 
 ![The white Cliff House building on the cliff edge above the surf](https://cdn.theneverless.com/2026/07/lands-end-cliff-house.webp)
 

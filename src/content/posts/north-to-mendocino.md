@@ -8,7 +8,7 @@ lang: 'en'
 translationKey: 'north-to-mendocino'
 ---
 
-The trip came out of dragging Google Maps around after dinner: a name three hours north, on the water, that neither of us knew much about. The planning ended there.
+The trip came out of dragging Google Maps around after dinner: a name three hours north, on the water. The planning ended there.
 
 We left early Saturday morning, and the coast changed temper the farther north we drove. Past the Golden Gate the beaches and the wind's patience run out together, and by the little town of Albion there was nothing left but cliff, swell, and wind-flattened grass.
 
@@ -20,7 +20,7 @@ The bridge is wartime carpentry. In 1944 the steel clearly had somewhere more im
 
 ![The wooden trestle bridge over the Albion River mouth](https://cdn.theneverless.com/2026/07/albion-river-bridge.webp)
 
-The lawn runs out at a split-rail fence, and the fence is the whole show: past it the ground lets go and the cove takes over. I stood there the better part of an afternoon, watching the same view run small variations on itself, the swell working the sea stack, the pampas grass catching the light and letting it go. I know these pictures look surprisingly alike. Come watch the sea with me anyway 🐶
+The lawn runs out at a split-rail fence, and the fence is the whole show: the swell working the sea stack, the pampas grass catching the light and letting it go. I know these pictures look surprisingly alike. Come watch the sea with me anyway 🐶
 
 ![The cove at Albion over a split-rail fence](https://cdn.theneverless.com/2026/07/albion-cove-fence.webp)
 
@@ -30,8 +30,6 @@ The lawn runs out at a split-rail fence, and the fence is the whole show: past i
 </div>
 
 ![Pampas grass under the headland across the cove](https://cdn.theneverless.com/2026/07/albion-headland-pampas.webp)
-
-We took a walk out from the inn. The white house up the lawn gives its porch to the sea, and on the grass nearby two picnic tables point straight at the horizon. The wind up here is serious, but nobody wants to build anything with its back to the water.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/white-house-flagpole.webp" alt="A white house and flagpole behind a white fence" loading="lazy" />

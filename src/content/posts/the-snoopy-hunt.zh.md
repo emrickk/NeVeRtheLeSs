@@ -13,13 +13,11 @@ translationKey: the-snoopy-hunt
 
 然而快二十年后的一个周六下午在街上走，实际的数目要稀薄得多。
 
-在酒店办理入住，还没开始找，酒店门口的Lucy先找到了我们：头上戴着花，站在两棵杜松中间张开手臂，是在谢幕，或者只是在享受生活？
-
 ![两棵杜松之间的Lucy雕像，黄色碎花裙，张开手臂](https://cdn.theneverless.com/2026/07/lucy-statue-yellow-dress.webp)
 
 ## Day jobs
 
-回到街上，收获多了起来，而且好像有一些规律：留下来的这些，都有工作。路边鸟窝里的Woodstock穿着打补丁的工装，戴一顶船形帽。咖啡座旁边守着街角的Snoopy，看起来显然是在当服务员。
+回到街上，收获多了起来，而且好像有一些规律：留下来的这些，都有工作。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/woodstock-nest-statue-street.webp" alt="路边鸟窝里的Woodstock雕像，穿工装，戴船形帽" loading="lazy" />
@@ -39,7 +37,7 @@ Charlie Brown一只手搭在Snoopy头上，背对着公园，看着车流，自�
 
 ## 五点以后
 
-半个下午很快过去，找累了。在两个雕像之间，我们拐进了一家旧货店，那种其实是"别人的下午"仓库的店：橱窗里亮着Budweiser的霓虹灯，玻璃柜从里面透出光，柜子顶上还停着一辆老爷车。
+半个下午很快过去，找累了。在两个雕像之间，我们拐进了一家旧货店。
 
 ![旧货店橱窗，Budweiser霓虹灯，柜子顶上停着一辆老爷车](https://cdn.theneverless.com/2026/07/antique-shop-budweiser-neon.webp)
 
@@ -50,14 +48,12 @@ Charlie Brown一只手搭在Snoopy头上，背对着公园，看着车流，自�
   <img src="https://cdn.theneverless.com/2026/07/box-of-old-photographs.webp" alt="装满老照片的纸箱，最上面是一张和两只花栗鼠玩偶的合影" loading="lazy" />
 </div>
 
-出了旧货店继续逛。Santa Rosa已经不如从前，五点以后，街道差不多交给了晚班，downtown基本上只剩餐厅，街上的人要么在等着下班，要么在下班的路上。
+出了旧货店继续逛。五点以后，街道差不多交给了晚班，downtown基本上只剩餐厅，街上的人要么在等着下班，要么在下班的路上。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/santa-rosa-evening-sidewalk.webp" alt="傍晚的人行道，一个人拎着东西走回家" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/enter-sign-evening-street.webp" alt="前景是红色的ENTER牌子，街对面一个人守着自行车坐着" loading="lazy" />
 </div>
-
-好在雕像们不下班。红杉树下的长椅上，Marcie把书一直看进了傍晚；Charlie则继续当他不下班的列车员。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/snoopy-bench-statue-evening.webp" alt="红杉树下的长椅上，银色的Marcie雕像在看书" loading="lazy" />
@@ -70,7 +66,7 @@ Charlie Brown一只手搭在Snoopy头上，背对着公园，看着车流，自�
 
 ## 博物馆和冰场
 
-周日属于Schulz博物馆。草坪上这些雕像的饭碗比市中心的稳，至少不用工作了：一只睡在画满音符的狗屋顶上的Snoopy；一个Linus，举着栅栏柱那么大的铅笔，毯子系在肩上当披风，罩衫的填字格里拼着他自己的名字。
+周日属于Schulz博物馆。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/snoopy-doghouse-statue.webp" alt="趴在画满音符的狗屋上睡觉的Snoopy" loading="lazy" />
@@ -83,14 +79,12 @@ Charlie Brown一只手搭在Snoopy头上，背对着公园，看着车流，自�
 
 ![卡通飞船墙上的舷窗，泡泡里有一只Snoopy](https://cdn.theneverless.com/2026/07/museum-spaceship-porthole.webp)
 
-停车场对面就是Schulz在1969年自己盖的冰场，他在那里一直滑到最后。大堂咖啡馆里，他常坐的那张桌子至今还留着。我们点了一杯奶油多得过分的东西，看门口台座上一只白色的Snoopy跳他的快乐舞（我就说不工作了吧）。
+停车场对面就是Schulz在1969年自己盖的冰场。大堂咖啡馆里，他常坐的那张桌子至今还留着。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/warm-puppy-cafe-drink.webp" alt="Warm Puppy咖啡馆纸杯里堆着奶油的饮料，杯子上印着厨师Snoopy" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/dancing-snoopy-statue.webp" alt="黑色台座上跳快乐舞的白色Snoopy雕像" loading="lazy" />
 </div>
-
-这里的雕像很明显也是运动主题了：Charlie换上了黄色冰球头盔，脚边放着冰球；Woodstock一身裁判条纹，坐在鸟浴盆里，看上去吹不了任何比赛。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/hockey-charlie-brown-statue.webp" alt="穿队长球衣、戴黄色冰球头盔的雕像，脚边有一枚冰球" loading="lazy" />

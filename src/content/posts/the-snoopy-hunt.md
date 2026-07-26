@@ -16,13 +16,11 @@ First, the arithmetic. For three summers starting in 2005 the city put fiberglas
 
 Walking the streets on a Saturday afternoon almost twenty years later, the real number is a lot thinner.
 
-We were still checking in when Lucy found us first, right at the hotel door: flowers in her hair, arms open between two junipers. Taking a bow, or just enjoying life?
-
 ![A fiberglass Lucy statue in a yellow flowered dress, arms open between two junipers](https://cdn.theneverless.com/2026/07/lucy-statue-yellow-dress.webp)
 
 ## Day jobs
 
-Back on the street the finds picked up, and a pattern emerged: the ones that stayed all have jobs. A Woodstock on his nest by the curb, in a patched work shirt and a garrison cap. A Snoopy holding the corner by the café tables, quite obviously the waiter.
+Back on the street the finds picked up, and a pattern emerged: the ones that stayed all have jobs.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/woodstock-nest-statue-street.webp" alt="A Woodstock statue in a garrison cap and patched work shirt, in a nest by the curb" loading="lazy" />
@@ -42,7 +40,7 @@ Some corners come in pairs: a Lucy in pink playing tourist, a camera slung on he
 
 ## After five
 
-Half the afternoon went by fast, and the hunting got tiring. Between two statues we turned into an antiques shop, the kind that is really a warehouse of other people's afternoons: a Budweiser sign burning neon in the window, display cases lit from inside, and an antique car parked on top of the cabinets.
+Half the afternoon went by fast, and the hunting got tiring. Between two statues we turned into an antiques shop.
 
 ![An antique shop window with a Budweiser neon sign, an antique car parked above the cabinets](https://cdn.theneverless.com/2026/07/antique-shop-budweiser-neon.webp)
 
@@ -53,14 +51,12 @@ The records inside are filed by year. Next to them sat a cardboard box, full of 
   <img src="https://cdn.theneverless.com/2026/07/box-of-old-photographs.webp" alt="A box of old photographs, a print of two costumed chipmunks on top" loading="lazy" />
 </div>
 
-Out of the shop, we kept wandering. Santa Rosa is not what it used to be. After five the streets mostly hand themselves over to the evening shift, downtown is pretty much down to its restaurants, and everyone still out is either waiting to get off work or already on the way home.
+Out of the shop, we kept wandering. After five the streets mostly hand themselves over to the evening shift, downtown is pretty much down to its restaurants, and everyone still out is either waiting to get off work or already on the way home.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/santa-rosa-evening-sidewalk.webp" alt="An evening sidewalk under awnings, a man walking home with groceries" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/enter-sign-evening-street.webp" alt="A red ENTER sign in the foreground, a man sitting with his bicycle across the street" loading="lazy" />
 </div>
-
-The statues, thankfully, do not get off work. On a bench under the redwoods Marcie read straight into the evening, and Charlie kept on being a train conductor whose shift never ends.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/snoopy-bench-statue-evening.webp" alt="A silver Marcie statue reading a book on a bench under redwoods" loading="lazy" />
@@ -73,7 +69,7 @@ The statues, thankfully, do not get off work. On a bench under the redwoods Marc
 
 ## The museum and the rink
 
-Sunday belonged to the Schulz Museum. The statues on its lawn have it better than the ones downtown: no more work at all. A Snoopy asleep on a doghouse painted over with music; a Linus holding a pencil the size of a fence post, his blanket knotted on like a cape, LINUS spelled into the crossword print of his smock.
+Sunday belonged to the Schulz Museum.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/snoopy-doghouse-statue.webp" alt="A Snoopy asleep on a doghouse painted with music notes" loading="lazy" />
@@ -86,14 +82,12 @@ Sunday belonged to the Schulz Museum. The statues on its lawn have it better tha
 
 ![A porthole in a cartoon spaceship wall, a Snoopy floating inside the bubble](https://cdn.theneverless.com/2026/07/museum-spaceship-porthole.webp)
 
-Across the parking lot is the ice arena Schulz built himself in 1969 and skated at until the end. The café in its lobby still keeps his table reserved. We ordered something with too much whipped cream and watched a white Snoopy do his happy dance on the pedestal by the door (see, told you: no more work).
+Across the parking lot is the ice arena Schulz built himself in 1969. The café in its lobby still keeps his table reserved.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/warm-puppy-cafe-drink.webp" alt="A whipped cream drink in a Warm Puppy Café cup, chef Snoopy printed on it" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/dancing-snoopy-statue.webp" alt="A white Snoopy statue doing the happy dance on a black pedestal" loading="lazy" />
 </div>
-
-The statues here are clearly on a sports theme: Charlie has changed into a yellow hockey helmet, a puck at his feet, and Woodstock is in referee stripes, sitting in a birdbath and looking unfit to officiate anything.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/hockey-charlie-brown-statue.webp" alt="A statue in a captain's jersey and yellow hockey helmet, a puck at his feet" loading="lazy" />

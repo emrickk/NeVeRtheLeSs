@@ -21,7 +21,7 @@ Montalvo sits in the foothills above Saratoga, a 1912 villa that Senator James P
 
 ![The dark hall of Villa Montalvo, an arched glass door opening onto the courtyard](https://cdn.theneverless.com/2026/07/montalvo-arched-door-courtyard.webp)
 
-No event today, by the look of it, though the house really did feel like one resting between two. Without the lights, the rooms were already going dark.
+No event today, by the look of it, though the house really did feel like one resting between two.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/montalvo-veranda-through-glass.webp" alt="Folding tables on the sunlit veranda, seen through the glass" loading="lazy" />

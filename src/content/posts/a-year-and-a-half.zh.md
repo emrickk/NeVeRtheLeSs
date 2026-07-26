@@ -18,7 +18,7 @@ Montalvo 在 Saratoga 的山脚下，1912 年建的房子，本来是参议员 J
 
 ![Montalvo 幽暗的大厅，拱形玻璃门外是院子](https://cdn.theneverless.com/2026/07/montalvo-arched-door-courtyard.webp)
 
-今天估计是没活动，房子确实也像一栋在两场活动之间歇着的房子。不过因为没灯，房间里已经暗下去了。
+今天估计是没活动，房子确实也像一栋在两场活动之间歇着的房子。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/montalvo-veranda-through-glass.webp" alt="隔着玻璃看外面的游廊，折叠桌收在阳光里" loading="lazy" />

@@ -22,21 +22,19 @@ The first thing the hotel does is take the ocean away. Lunch is still up on the 
 
 ## The afternoon changes owners
 
-The room is dark on purpose, redwood inside and out, with the forest doing the work of curtains. Whatever light gets in has been through the trees first and arrives already gentled. A plate of cheese was waiting, and a small glass of something dark and sweet, and a fireplace that July had left with nothing to do.
+The room is dark on purpose, redwood inside and out, with the forest doing the work of curtains. Whatever light gets in has been through the trees first and arrives already gentled.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-desk-window.webp" alt="The desk and a leather chair in the window light" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-shutter-light.webp" alt="Sunlight breaking into narrow bars through the window shutters" loading="lazy" />
 </div>
 
-We meant to drop the bags and go walk. Instead the afternoon quietly changed owners: an hour to the chair, an hour to the balcony. The forest stayed bright on the other side of the window, and we watched it the way you watch rain, glad to be on this side.
+We meant to drop the bags and go walk. Instead an hour went to the chair, an hour to the balcony. The forest stayed bright on the other side of the window, and we watched it, glad to be on this side.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-fireplace-corner.webp" alt="The corner by the fireplace, light through half-open shutters" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-welcome-plate.webp" alt="A plate and a glass of wine on the table in the room" loading="lazy" />
 </div>
-
-Eventually we did walk. The buildings here are scattered into the forest so thoroughly that a roofline reads as a discovery, and the paths duck under oaks and come out on golden hillsides. All of it is arranged, of course; at a place like this everything is arranged. But the trees are old enough to keep the secret.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-cabin-redwoods.webp" alt="A wooden building almost hidden among redwoods" loading="lazy" />
@@ -49,7 +47,7 @@ Dinner was back up on the ridge, at the hour when the sun comes in level and per
 
 Then, after all these years of coming here, we finally stayed for the rest.
 
-Sunset in Big Sur is not an event, it turns out. It is a slow business with an order of its own. The ocean leaves first, dimming in its one gap between the trees while the sky above is still busy.
+The ocean leaves first, dimming in its one gap between the trees while the sky above is still busy.
 
 The sun takes its time coming down through the pines, and a moon nobody had noticed turns out to have been up for hours, waiting for its shift.
 
@@ -57,8 +55,6 @@ The sun takes its time coming down through the pines, and a moon nobody had noti
   <img src="https://cdn.theneverless.com/2026/07/big-sur-sunset-pines.webp" alt="The sun setting behind a line of pines" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/big-sur-moon-redwoods.webp" alt="The moon above the dark tops of redwoods" loading="lazy" />
 </div>
-
-The hills hold out longest. The grass goes gold, then amber; the big trunks each keep one lit side. Across the valley the far ridge stays in full sun long after our side has gone blue. Dark does not fall here. It is something the valley does to itself, in order, at its own pace.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/big-sur-hillside-last-light.webp" alt="Late light crossing a hillside, redwoods, and one wall" loading="lazy" />

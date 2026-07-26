@@ -1,84 +1,74 @@
 ---
 translationKey: 'red-rocks-and-blueprints'
 lang: 'zh'
-title: '塞多纳，登月与圣石'
+title: 'Sedona，登月与圣石'
 description: '在亚利桑那的三天。'
 ---
 
-十一月初，我们飞到凤凰城，提了车，一路向北开进高原沙漠。行程表上写的是去看红岩，走着走着却变成了一趟关于蓝图的旅行：好像每一个爱上这片沙漠的人，来的时候手里都攥着一张。建筑师带来了他的冬季营地，他的学徒带来了一整座城，一位雕塑家带来了她揣了二十年的教堂，NASA带来的是月亮。
+十一月初，我们飞到凤凰城，提了车，一路向北开进高原沙漠。行程表上写的是去看红岩，走着走着却变成了一趟关于蓝图的旅行：好像每一个爱上这片沙漠的人，来的时候手里都攥着一张。
 
-## 塞多纳的最后一道光
+## Sedona的最后一道光
 
-塞多纳坐在一整面红色砂岩的山墙下面，这座小镇真正的节目每天傍晚准时开演。那种红，按教科书说是氧化铁，但到了五点钟左右，教科书就失效了：岩壁从铁锈色烧成炭火色，再一路暗成灰烬色，光从哪一面石头上退场，就再也不回来，像一座大房子里的窗户挨个熄灯。
+Sedona坐在一整面红色砂岩的山墙下面，这座小镇真正的节目每天傍晚准时开演：岩壁从铁锈色烧成炭火色，再一路暗成灰烬色，光从哪一面石头上退场，就再也不回来。
 
-![黄昏时分，杜松枝影里的塞多纳红岩](https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp)
-
-到观景台的时候，光滑的红石坡上已经坐了不少人，全都朝着同一个方向，像一场演出的观众。我们也坐下，一直坐到最后一座山头熄灭。
+![黄昏时分，杜松枝影里的Sedona红岩](https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp)
 
 ![坐在红石坡上看最后一道光落在山头](https://cdn.theneverless.com/2026/07/sedona-sunset-watcher.webp)
 
 ## 地上的一个洞
 
-第二天早上，我们开车经过弗拉格斯塔夫继续往东，一直开到黄松林让位给草和风的地方。五万年前，一块直径大约五十米的镍铁，从天上砸在了这里。它留下的是一只一公里多宽的碗，深到把华盛顿纪念碑放进去，碑尖都够不着坑沿。
+第二天早上，我们开车经过Flagstaff继续往东，一直开到黄松林让位给草和风的地方。五万年前，一块直径大约五十米的镍铁，从天上砸在了这里。
 
 ![从坑沿俯瞰陨石坑，栈道在碗底显得很小](https://cdn.theneverless.com/2026/07/meteor-crater-rim.webp)
 
-这个坑至今还是私人地产。一位叫巴林杰（Daniel Barringer）的矿业工程师在1903年买下了它，顶着当时整个地质学界的反对，坚持说这是天上砸出来的伤口，然后花光了家产往下钻探，去找那块其实早在撞击瞬间就汽化殆尽的铁。天上的事他说对了，家产也真的花光了。
+这个坑至今还是私人地产。一位叫Daniel Barringer的矿业工程师在1903年买下了它。
 
-到了六十年代，美国把每一块联邦预算里的四分多钱都花在太空计划上的那些年，NASA把宇航员送到这里来排练，因为在整个地球上，这里长得最像他们要去的地方。站在坑沿上，那个年代给人的感觉和这个坑本身一模一样：我们知道它发生过，证据就摆在眼前，但隔了这么久，它已经不太能落回"可信"的范畴了，它从记忆退进了神话，一个国家曾经拿出预算的百分之四去做一件事，而脚下这片土地，本来就长得像月亮。
+到了六十年代，美国把每一块联邦预算里的四分多钱都花在太空计划上的那些年，NASA把宇航员送到这里来排练。站在坑沿上，那个年代给人的感觉和这个坑本身一模一样：我们知道它发生过，不过地缘政治变化之后的半个世纪仿佛永远，它似乎也从记忆变成了神话。
 
 ![游客中心院子里站着一套宇航服，身后的墙框住一片沙漠](https://cdn.theneverless.com/2026/07/meteor-crater-astronaut.webp)
 
-游客中心的院子里立着一套宇航服，站得笔直，身后的墙把沙漠框成一幅壁画。里面没有人。它看上去很有耐心。
-
 ## 回到人间
 
-下午早些时候我们回到塞多纳。圣十字教堂直接从红岩里长出来，一根混凝土的十字架就是它的脊椎。雕塑家Marguerite Brunswig Staude早在三十年代就动过这个念头，那一版是为布达佩斯设计的现代主义大教堂，合作者是赖特的儿子，后来被战争收走了。二十年后，教堂落回了地面，嵌进这块它简直像是从中风化出来的石头里。
+下午早些时候我们回到Sedona。圣十字教堂直接从红岩里长出来，一根混凝土的十字架就是它的脊椎。雕塑家Marguerite Brunswig Staude早在三十年代就动过这个念头。二十年后，教堂落回了地面，嵌进这块它简直像是从中风化出来的石头里。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/chapel-of-the-holy-cross.webp" alt="从红岩中生长出来的圣十字教堂" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/tlaquepaque-arch.webp" alt="Tlaquepaque的拱门下挂着的织物" loading="lazy" />
 </div>
 
-溪边的Tlaquepaque是七十年代建的艺术村，建的时候就刻意做出"一直都在这里"的样子，到如今也快弄假成真了：梧桐从院子中间长出来，拱门上挂着铃铛，织毯晾在拱廊下面，像一批升了职的衣服。
-
 ## 沙漠营地
 
-这趟旅行的最后一个上午，很早就被预定给了西塔里埃森。几年前，我们在宾夕法尼亚树林深处的流水别墅，站在那几层混凝土托盘的下面；这一次轮到它的另一极：1937年，七十岁、按理说早该退休的赖特，在麦克道尔山脚下的一块台地上，给自己搭起的冬季营地。
+这趟旅行的最后一个上午，很早就被预定给了Taliesin West。几年前，我们在宾夕法尼亚树林深处的流水别墅，站在那几层混凝土托盘的下面；这一次轮到它的另一极：1937年，七十岁、按理说早该退休的Wright，在McDowell山脚下的一块台地上，给自己搭起的冬季营地。
 
-![西塔里埃森入口处的台阶和一棵老树](https://cdn.theneverless.com/2026/07/taliesin-west-steps.webp)
+![Taliesin West入口处的台阶和一棵老树](https://cdn.theneverless.com/2026/07/taliesin-west-steps.webp)
 
-这里的墙，就是被竖起来的沙漠。赖特和学徒们从坡上捡来石英岩，把平整的那一面贴着木模板摆好，往后面浇混凝土。他管这叫"沙漠砌石"，凑近了看，就像地质现象被人劝进了直角里。石墙上方，屋顶是绷在红杉木桁架上的帆布，倾角和身后的群山一致，于是整座营地趴在地景里，像一件自己长出来、然后被稍微收拾过的东西。
+这里的墙，就是被竖起来的沙漠。Wright和学徒们从坡上捡来石英岩，把平整的那一面贴着木模板摆好，往后面浇混凝土。他管这叫"沙漠砌石"，凑近了看，就像地质现象被人劝进了直角里。石墙上方，屋顶是绷在红杉木桁架上的帆布，倾角和身后的群山一致，于是整座营地趴在地景里。
 
 <div class="img-grid">
-  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-courtyard.webp" alt="西塔里埃森的院子，雕塑后面是沙漠" loading="lazy" />
-  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-pool.webp" alt="西塔里埃森的水池和草坪" loading="lazy" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-courtyard.webp" alt="Taliesin West的院子，雕塑后面是沙漠" loading="lazy" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-pool.webp" alt="Taliesin West的水池和草坪" loading="lazy" />
 </div>
 
-赖特有意让这里保持一半帐篷的状态。头几年干脆没有玻璃，只有帆布帘子和沙漠的空气；直到今天，光仍然是从屋顶上下来的，像透过一盏纸灯笼：正午不用开灯，天花板自己会发亮。他喜欢先把过道压到让你的肩膀都察觉出来的高度，再把你放进一间朝着山谷横向敞开的屋子。他说站在这里，是"越过世界边沿望出去的一眼"，这一回，广告词和货是相符的。
+Wright有意让这里保持一半帐篷的状态。光仍然是从屋顶上下来的，像透过一盏纸灯笼：正午不用开灯，天花板自己会发亮。他喜欢先把过道压到让你的肩膀都察觉出来的高度，再把你放进一间朝着山谷横向敞开的屋子。他说站在这里，是"越过世界边沿望出去的一眼"。
 
-![西塔里埃森的绘图室，长桌上还摊着图纸](https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp)
+![Taliesin West的绘图室，长桌上还摊着图纸](https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp)
 
-绘图室是整个营地的心脏，一整条用光做成的长屋，当年学社的人整个冬天都在这里干活。桌上至今摊着图纸，像所有人只是暂时离开，去为午饭吃什么吵架了。坡下的花园厅玩的是反过来的把戏：低低的石墙，红色的长椅，头顶的帆布发着光，三角梅在高窗里一层层堆上去，像一场守规矩的火。
-
-![西塔里埃森的花园厅，帆布屋顶下的红色长椅](https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp)
+![Taliesin West的花园厅，帆布屋顶下的红色长椅](https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp)
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/taliesin-west-bougainvillea.webp" alt="高窗外的三角梅，地上铺着一块蓝图纹样的地毯" loading="lazy" />
-  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-red-window.webp" alt="西塔里埃森一扇朝着花园开的小窗" loading="lazy" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-red-window.webp" alt="Taliesin West一扇朝着花园开的小窗" loading="lazy" />
 </div>
 
-那间屋子的地上，铺着一块印成图纸模样的地毯，生怕有人忘了这座房子是干什么用的。整座营地到处都在玩同一个开洞的游戏：一间黑屋子，墙上挂着一个亮着的花园；一扇画框大小的窗，干的就是一幅画的活。
+整座营地到处都在玩同一个开洞的游戏：一间黑屋子，墙上挂着一个亮着的花园；一扇画框大小的窗，干的就是一幅画的活。
 
 <div class="img-grid">
-  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-shade.webp" alt="西塔里埃森幽暗的室内，望向阳光下的院子" loading="lazy" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-shade.webp" alt="Taliesin West幽暗的室内，望向阳光下的院子" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/taliesin-west-sunroom.webp" alt="半透明屋顶下洒满阳光的一角" loading="lazy" />
 </div>
 
-在这里过冬的学徒们后来散向各处，盖出了那个世纪剩下的部分。其中一个叫保罗·索莱里，1970年去了山谷上游，用混凝土浇他自己的乌托邦：阿科桑蒂（Arcosanti），一座挂在"未来之城"梦想上的铸钟工坊。我们从凤凰城开上来的路上，专门绕去看了它。这条师承的脉络一眼就能认出来：同样是"房子应该从它站着的土地里长出来"的信念，只是瞄准了另一个世纪。
-
-赖特在这座营地里过冬，直到1959年在凤凰城去世，九十一岁。半年后，古根海姆开馆。
+Wright在这座营地里过冬，直到1959年在凤凰城去世，九十一岁。半年后，古根海姆开馆。
 
 ## 离开
 
-沙漠不收藏废墟，它收藏意图：有的建成了，有的只浇了一半，有一张真的到过月亮。至于我们，只带回了鞋上的红土，过了好几天才掸干净。
+沙漠不收藏废墟，它收藏意图：有的建成了，有一张真的到过月亮。至于我们，只带回了鞋上的红土，过了好几天才掸干净。

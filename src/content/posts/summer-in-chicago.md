@@ -8,9 +8,9 @@ lang: 'en'
 translationKey: 'summer-in-chicago'
 ---
 
-The theme of this Chicago trip was simple: walk hard, look at buildings. We booked the architecture cruise and left the rest to our feet. Chicago is for buildings, of course; this is the city that put up the world's first skyscraper, and Chicagoans have never once let anyone forget it, have they?
+The theme of this Chicago trip was simple: walk hard, look at buildings. Chicago is for buildings, of course; this is the city that put up the world's first skyscraper, and Chicagoans have never once let anyone forget it, have they?
 
-We started with the cruise. From the water, the structure of downtown explains itself. The river is the bottom floor: boats on the river, bridges over the boats, trains over the bridges, and above the trains, the towers.
+We started with the cruise. The river is the bottom floor: boats on the river, bridges over the boats, trains over the bridges, and above the trains, the towers.
 
 ![The river corridor downtown, an El train on the bridge, towers on both banks](https://cdn.theneverless.com/2026/07/chicago-river-corridor.webp)
 
@@ -22,8 +22,6 @@ A boat only shows you so much. We got off and started wandering. Chicago thinks 
 </div>
 
 ![An empty downtown street behind barricades, a traffic cone in the foreground, an El train crossing above](https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp)
-
-Back at the river we looked down for the first time all trip: tour boats passed below the railing, every chair taken. Beside one of them, a man in a kayak had the rest of the river to himself.
 
 ![A packed tour boat on the river with a lone kayaker alongside, seen from above](https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp)
 

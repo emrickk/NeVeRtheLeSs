@@ -28,7 +28,7 @@ Go? Of course. Ten days later we were on the road.
 
 January falls outside Highway 1's best season and is the California coast's secret spring: after the rains the hills turn a green that will not survive June, and the tour buses have not figured this out yet. Good views, few people, perfect for pulling over along the way and climbing onto the rocks.
 
-It barely counts as early spring, and the surf is heavy. Each set rolls in, and first you feel the chill coming through the rocks beneath your feet; your ears get their turn after. Draw your gaze back from the sea, and you find the hills wearing the emerald-green velvet they get for only two months a year.
+It barely counts as early spring, and the surf is heavy. Each set rolls in, and first you feel the chill coming through the rocks beneath your feet; your ears get their turn after.
 
 ![The green winter hills of Big Sur in the side mirror](https://cdn.theneverless.com/2026/07/hills-in-the-side-mirror.webp)
 

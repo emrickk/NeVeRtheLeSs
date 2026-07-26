@@ -5,7 +5,7 @@ title: 'Patagonia的春天'
 description: '风，冰，距离，和每天都比我们撑得久的光。'
 ---
 
-2025年11月底，我们去了公路能到达的差不多最南的地方：智利 Patagonia 的 Puerto Natales 和百内国家公园。那里正是晚春，而 Patagonia 的晚春意味着：草甸是绿的，每座山顶都有雪，篱笆边开着花，风大得可以让人斜着身子靠上去。
+2025年11月底，我们去了公路能到达的差不多最南的地方：智利 Patagonia 的 Puerto Natales 和百内国家公园。
 
 ## Puerto Natales
 
@@ -17,8 +17,6 @@ description: '风，冰，距离，和每天都比我们撑得久的光。'
 </div>
 
 ![安静街道上的一辆红色老爷车](https://cdn.theneverless.com/2026/07/puerto-natales-red-car.webp)
-
-走到水边，树把风出卖了：它们全都朝同一个方向倾斜，被几十年的风梳成一个发型。峡湾对岸的山上已经有了雪。
 
 ![峡湾边被风梳过的树，远处是雪山](https://cdn.theneverless.com/2026/07/puerto-natales-windswept-trees.webp)
 
@@ -36,7 +34,7 @@ description: '风，冰，距离，和每天都比我们撑得久的光。'
 
 ## 山下的一天
 
-百内其实没有"景点"这个复数概念。它只有一个景，被光线和天气整天重新布置。我们开得很慢，停得很勤，把活儿都交给山：这一小时是红屋顶和黄色的荆豆花做前景，下一小时就换成角峰立在绿松石色的水面上。
+百内其实没有"景点"这个复数概念。它只有一个景，被光线和天气整天重新布置。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/red-roofs-yellow-gorse.webp" alt="云层下的红屋顶与黄色荆豆花" loading="lazy" />
@@ -56,7 +54,7 @@ description: '风，冰，距离，和每天都比我们撑得久的光。'
 
 ## 去百内塔的路
 
-第二天我们把公园里的路开了个来回。Lago Pehoé 的蓝不太讲道理，湖心的小岛上有一家旅舍，靠一条长长的木栈桥连着岸，属于那种镜头随便往哪儿一指、它都能让照片变好看的建筑。
+第二天我们把公园里的路开了个来回。Lago Pehoé 的蓝不太讲道理，属于那种镜头随便往哪儿一指、它都能让照片变好看的地方。
 
 ![佩霍埃湖心小岛上的旅舍与木栈桥](https://cdn.theneverless.com/2026/07/lago-pehoe-hosteria.webp)
 
@@ -65,19 +63,17 @@ description: '风，冰，距离，和每天都比我们撑得久的光。'
   <img src="https://cdn.theneverless.com/2026/07/road-to-the-torres.webp" alt="通向百内塔的砂石路" loading="lazy" />
 </div>
 
-靠近东门，水换了一副性格：Laguna Amarga 的岸边结着一圈白色的矿物，湖后面，公园因之得名的三座花岗岩塔终于露面。棚子旁边有一条长椅，正对着它们。
+靠近东门，水换了一副性格。湖后面，公园因之得名的三座花岗岩塔终于露面。
 
 ![两个人坐在长椅上，隔着苦湖白色的水面望百内塔](https://cdn.theneverless.com/2026/07/laguna-amarga-bench.webp)
 
-傍晚我们开回西边的路上追最后一段光，车门在风里摔得砰砰响。那天夜里，一朵荚状云像锅盖一样扣在峰顶上，我们在大堂的窗前一直看到草甸的绿色彻底熄灭。
+傍晚我们开回西边的路上追最后一段光，车门在风里摔得砰砰响。那天夜里，一朵荚状云像锅盖一样扣在峰顶上。
 
 ![暮光中的角峰，路上有一辆小小的车](https://cdn.theneverless.com/2026/07/cuernos-evening-road.webp)
 
 ![黄昏时分，荚状云扣在山顶上，摄于大堂窗前](https://cdn.theneverless.com/2026/07/lounge-window-dusk.webp)
 
 ## 离开
-
-Puerto Natales 机场大概是我们飞过的最小的机场：一个登机口，一座橙色屋顶的塔台，候机厅有一扇教堂式的高窗，窗里装着雪山。登机是从雪糕筒之间走过去的，一路按着帽子。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/puerto-natales-airport.webp" alt="候机厅高窗下喝咖啡的人影" loading="lazy" />
@@ -86,7 +82,7 @@ Puerto Natales 机场大概是我们飞过的最小的机场：一个登机口�
 
 ![走过停机坪登机](https://cdn.theneverless.com/2026/07/boarding-at-puerto-natales.webp)
 
-北上的航班是这趟旅行最后的礼物。有半个小时，舷窗里只有 Southern Patagonian Ice Field：冰川在黑色山脊之间编成辫子淌下来，一整个无人居住的冰的国度。
+北上的航班是这趟旅行最后的礼物：冰川在黑色山脊之间编成辫子淌下来，一整个无人居住的冰的国度。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/icefield-from-above.webp" alt="飞机上俯瞰南巴塔哥尼亚冰原" loading="lazy" />

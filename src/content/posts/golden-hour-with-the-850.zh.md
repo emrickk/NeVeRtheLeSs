@@ -20,13 +20,11 @@ description: '2024年8月的一个周六傍晚：空旷的停车场，最后一�
   <img src="https://cdn.theneverless.com/2026/07/bmw-850-headlight.webp" alt="激光大灯特写" loading="lazy" />
 </div>
 
-然后太阳落到树线以下，一切都变了。刚才还是银色的车漆忽然暖了起来，每一块钣金都映出自己的那一份晚霞。
+然后太阳落到树线以下。刚才还是银色的车漆忽然暖了起来，每一块钣金都映出自己的那一份晚霞。
 
 ![金色光线下的前45度](https://cdn.theneverless.com/2026/07/bmw-850-front-golden.webp)
 
 ![正面直视镜头](https://cdn.theneverless.com/2026/07/bmw-850-head-on.webp)
-
-低角度的夕阳直接从轮辐之间穿过来，把整个车侧铺成一片金色。这可能是当晚我最喜欢的一张。
 
 ![夕阳从轮毂间穿过的侧面全景](https://cdn.theneverless.com/2026/07/bmw-850-side-pano.webp)
 
@@ -38,8 +36,6 @@ description: '2024年8月的一个周六傍晚：空旷的停车场，最后一�
 </div>
 
 ![接住最后一缕阳光的后45度](https://cdn.theneverless.com/2026/07/bmw-850-rear-golden.webp)
-
-拉远两张看看比例：一整个停车场，一台车，再没有别人。地上白色的COMPACT字样是唯一的观众。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/bmw-850-lot-wide.webp" alt="空旷停车场里的广角全景" loading="lazy" />

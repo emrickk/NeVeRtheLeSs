@@ -8,7 +8,7 @@ lang: 'en'
 translationKey: 'springtime-in-patagonia'
 ---
 
-At the end of November 2025, we went about as far south as roads go: Puerto Natales and Torres del Paine, in Chilean Patagonia. It was late spring down there, which in Patagonia means green meadows, snow on every summit, flowers along the fences, and wind that you can lean into.
+At the end of November 2025, we went about as far south as roads go: Puerto Natales and Torres del Paine, in Chilean Patagonia.
 
 ## Puerto Natales
 
@@ -20,8 +20,6 @@ The town sits on a sound that the charts call Última Esperanza, Last Hope, name
 </div>
 
 ![An old red car parked on a quiet street](https://cdn.theneverless.com/2026/07/puerto-natales-red-car.webp)
-
-Down by the water the trees give the wind away. They all lean in the same direction, combed by decades of it, and across the sound the mountains already have snow.
 
 ![Wind-combed trees by the sound, snow-covered mountains beyond](https://cdn.theneverless.com/2026/07/puerto-natales-windswept-trees.webp)
 
@@ -39,7 +37,7 @@ We stayed at a hotel on the plain by the river. Its best piece of furniture was 
 
 ## A day under the massif
 
-Torres del Paine does not really have sights, plural. It is one sight, rearranged all day long by light and weather. We drove slowly, stopped often, and let the mountain do the work: red roofs and yellow gorse in the foreground one hour, the horns of the Cuernos over turquoise water the next.
+Torres del Paine does not really have sights, plural. It is one sight, rearranged all day long by light and weather.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/red-roofs-yellow-gorse.webp" alt="Red roofs and yellow gorse under a clouded massif" loading="lazy" />
@@ -59,7 +57,7 @@ Sunset came around ten. We watched it from the lounge: first the clouds catching
 
 ## The road to the Torres
 
-The next day we drove the long way through the park. At Lago Pehoé the water is an implausible blue, and a little hostería sits on its own islet at the end of a wooden footbridge, one of those buildings that improves every photograph pointed anywhere near it.
+The next day we drove the long way through the park. At Lago Pehoé the water is an implausible blue, one of those places that improves every photograph pointed anywhere near it.
 
 ![The hostería on its islet in Lago Pehoé, at the end of a footbridge](https://cdn.theneverless.com/2026/07/lago-pehoe-hosteria.webp)
 
@@ -68,19 +66,17 @@ The next day we drove the long way through the park. At Lago Pehoé the water is
   <img src="https://cdn.theneverless.com/2026/07/road-to-the-torres.webp" alt="A gravel road running toward the Torres" loading="lazy" />
 </div>
 
-Toward the eastern entrance the water changes character: Laguna Amarga is rimmed with white minerals, and behind it the three granite towers that give the park its name finally show themselves. By the shelter there is a bench that faces them straight on.
+Toward the eastern entrance the water changes character. Behind it the three granite towers that give the park its name finally show themselves.
 
 ![Two people on a bench facing the Torres across the white water of Laguna Amarga](https://cdn.theneverless.com/2026/07/laguna-amarga-bench.webp)
 
-By evening we were back on the western roads, chasing the last light with the car doors slamming in the wind. That night a lenticular cloud sat down on the summits like a lid, and we watched from the lounge window until the green of the meadow finally went out.
+By evening we were back on the western roads, chasing the last light with the car doors slamming in the wind. That night a lenticular cloud sat down on the summits like a lid.
 
 ![The Cuernos in evening light, a car small on the road below](https://cdn.theneverless.com/2026/07/cuernos-evening-road.webp)
 
 ![A lenticular cloud capping the massif at dusk, from the lounge window](https://cdn.theneverless.com/2026/07/lounge-window-dusk.webp)
 
 ## Leaving
-
-Puerto Natales airport may be the smallest we have ever flown out of: one gate, one control tower with an orange roof, and a cathedral window in the terminal with snow peaks in it. You walk to the plane between traffic cones, holding your hat.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/puerto-natales-airport.webp" alt="Silhouettes at a café table under the terminal window" loading="lazy" />
@@ -89,7 +85,7 @@ Puerto Natales airport may be the smallest we have ever flown out of: one gate, 
 
 ![Walking out to the plane on the tarmac](https://cdn.theneverless.com/2026/07/boarding-at-puerto-natales.webp)
 
-The flight north was the trip's last gift. For half an hour the window was nothing but the Southern Patagonian Ice Field: glaciers braiding down between black ridges, an entire country of ice with nobody in it.
+The flight north was the trip's last gift: glaciers braiding down between black ridges, an entire country of ice with nobody in it.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/icefield-from-above.webp" alt="The Southern Patagonian Ice Field from the plane" loading="lazy" />

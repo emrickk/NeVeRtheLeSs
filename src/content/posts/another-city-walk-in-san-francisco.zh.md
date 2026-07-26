@@ -5,11 +5,11 @@ lang: zh
 translationKey: another-city-walk-in-san-francisco
 ---
 
-2024年7月的又一个周六，上一次漫步过后一个星期，我们又去了市中心：进城办事，事情办完得早，新相机还没出过门，路线几乎又瞎走了一遍。事后回想，这一天其实还有第二条线，走完才看出来。
+2024年7月的又一个周六，上一次漫步过后一个星期，我们又去了市中心：进城办事，事情办完得早，新相机还没出过门，路线几乎又瞎走了一遍。
 
 ## 城市之光
 
-城市之光这一架吵了七十年，没换过题目。1953年，Lawrence Ferlinghetti和Peter Martin把它开成全美第一家只卖平装书的书店；三年后Ferlinghetti出版了金斯堡的《嚎叫》，为此站上被告席，被控传播淫秽物，赢了。到今天，橱窗里的横幅还是手写的：BOOKS NOT BOMBS。
+城市之光这一架吵了七十年，没换过题目。1953年，Lawrence Ferlinghetti和Peter Martin把它开成全美第一家只卖平装书的书店；三年后Ferlinghetti出版了金斯堡的《嚎叫》，为此站上被告席，被控传播淫秽物，赢了。
 
 不过玻璃外面是闹哄哄的街，玻璃里面很静；七十年的书店，凳子上的姑娘低头看的是手机。
 
@@ -19,8 +19,6 @@ translationKey: another-city-walk-in-san-francisco
 </div>
 
 ## 哥伦布街
-
-哥伦布塔有Coppola，从七十年代照顾到今天。街那头那栋橘红色的三层小楼谁也没有：它歪得像下一阵大风就能把它放倒，可它没倒。市中心留小幸存者的方式只有一种：团团围住。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-columbus-tower.webp" alt="隔着一个街口的哥伦布塔，背后是高楼" loading="lazy" />
@@ -38,7 +36,7 @@ translationKey: another-city-walk-in-san-francisco
 
 ## 最好看的街角
 
-Montgomery街701号的白色小银行，1909年为John Fugazi而建，泛美公司最早的家，如今还是这个街区最好看的房子：拱窗，檐口像一顶王冠。这条街上的银行各有人照顾，书店、高尔夫，偏偏它抽中了山达基。可惜，大概就是这个意思。
+Montgomery街701号的白色小银行，泛美公司最早的家，如今还是这个街区最好看的房子。这条街上的银行各有人照顾，书店、高尔夫，偏偏它抽中了山达基。可惜，大概就是这个意思。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-701-montgomery-corner.webp" alt="蒙哥马利街701号1909年的白色银行小楼" loading="lazy" />
@@ -51,18 +49,18 @@ Montgomery街701号的白色小银行，1909年为John Fugazi而建，泛美公�
 
 ## 银行的下场
 
-456 Montgomery是那栋橘红色小楼的另一种结局。一样的小，一样被自己的街甩在了后面；只是那一栋歪着也还是一栋完整的楼，这一栋被改造过了：大理石门脸像标本一样留在接替它的高楼脚下，金字还在，铜门里面是一家室内高尔夫。站得笔直，可惜只剩一张脸。
+大理石门脸留在接替它的高楼脚下。站得笔直，可惜只剩一张脸。
 
 ![456 Montgomery Plaza被保留下来的银行门脸，脚下是一栋高楼](https://cdn.theneverless.com/2026/07/sf-456-montgomery.webp)
 
-加州街400号的柱廊，站的是William Ralston的加州银行的旧址。1875年8月银行倒下，Ralston照常去海湾游泳，没有回来。465号，那扇镀金X的门后面是Merchants Exchange，船东们从前在这栋楼里瞭望金门，等自家的船进港；Julia Morgan的事务所也在这里开了大半辈子。这两个名字待会儿都还会出现。
+加州街400号的柱廊，站的是William Ralston的加州银行的旧址。1875年8月银行倒下，Ralston照常去海湾游泳，没有回来。465号，那扇镀金X的门后面是Merchants Exchange。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-california-colonnade.webp" alt="加州街上老加州银行的花岗岩柱廊" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-465-california-door.webp" alt="加州街465号Merchants Exchange的一扇门，门边摆着花" loading="lazy" />
 </div>
 
-三藩CBD已经大不如前，走过去看，这些楼里有一间大厅开着门：吊灯亮着，柜台绕着空气弯成一道弧，但是不营业了。银行把自己盖成神庙，是要让人相信它永远不会关门。看来房子到今天还守着这个承诺，银行没有。
+三藩CBD已经大不如前，走过去看，这些楼里有一间大厅开着门：吊灯亮着，柜台绕着空气弯成一道弧。银行把自己盖成神庙，是要让人相信它永远不会关门。看来房子到今天还守着这个承诺，银行没有。
 
 ![空置的银行大厅，吊灯亮着，阳光落在大理石地面上](https://cdn.theneverless.com/2026/07/sf-empty-bank-lobby.webp)
 
@@ -74,24 +72,20 @@ Market Street把自己的老古董拉出来继续遛着：F线跑的是上世纪
 
 ## One Montgomery，第二次
 
-One Montgomery正等着下一个照顾它的人。Willis Polk的营业大厅，挂着文物保护的名分，富国银行走后一直空着；上礼拜它只是空着，这礼拜多了几个画架，架上是它自己当年的大照片。有人在替它面试新租客，卖点就是它的过去。
+One Montgomery正等着下一个照顾它的人。Willis Polk的营业大厅，挂着文物保护的名分，富国银行走后一直空着；上礼拜它只是空着，这礼拜多了几个画架。有人在替它面试新租客，卖点就是它的过去。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-one-montgomery-hall-2.webp" alt="One Montgomery空置的营业大厅" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-one-montgomery-easels.webp" alt="One Montgomery大厅里摆着这栋楼旧照片的画架" loading="lazy" />
 </div>
 
-通往保险库的大理石旋梯还在铜栏杆后面转下去。
-
 ![One Montgomery通往保险库的大理石旋梯](https://cdn.theneverless.com/2026/07/sf-vault-stair-front.webp)
 
 ## Post街
 
-过去的路上又遇到Polk：Hobart大厦，据说他自认最好的作品，把名字挑在市场街上空。
-
 ![市场街上空Hobart大厦的名字，背后层层叠着高楼](https://cdn.theneverless.com/2026/07/sf-hobart-lettering.webp)
 
-这条路线上照顾得最尽心的，在Post街57号。Mechanics' Institute从1854年借书借到今天。Albert Pissis 1910年盖起这一栋楼，从此生意没有停过。全国最老的国际象棋俱乐部也在这里。
+这条路线上照顾得最尽心的，在Post街57号。Mechanics' Institute从1854年借书借到今天。全国最老的国际象棋俱乐部也在这里。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-mechanics-stair.webp" alt="从楼下仰看Mechanics' Institute的旋转楼梯" loading="lazy" />
@@ -100,7 +94,7 @@ One Montgomery正等着下一个照顾它的人。Willis Polk的营业大厅，�
 
 ## The Palace Hotel
 
-皇宫酒店是Ralston的另一座纪念碑，在海湾收走他五个星期之后开了业。吧台上方挂着Maxfield Parrish的《花衣魔笛手》，1909年酒店重张时挂上去的；也有一次，照顾这件事轮到了全城：2013年东家想把画送去纽约拍卖，全城的骂声足够响，他们改了主意，把画修了修，挂了回去。哈默尔恩的孩子们还在跟着走；市场街一侧的窗前，下午的光把人都压成了剪影。
+皇宫酒店是Ralston的另一座纪念碑，在海湾收走他五个星期之后开了业。吧台上方挂着Maxfield Parrish的《花衣魔笛手》；也有一次，照顾这件事轮到了全城：2013年东家想把画送去纽约拍卖，全城的骂声足够响，他们改了主意，把画修了修，挂了回去。哈默尔恩的孩子们还在跟着走。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-pied-piper.webp" alt="皇宫酒店吧台上方Maxfield Parrish的花衣魔笛手壁画" loading="lazy" />
@@ -109,7 +103,7 @@ One Montgomery正等着下一个照顾它的人。Willis Polk的营业大厅，�
 
 ## 第三街和Market街
 
-Hearst大厦守着第三街和市场街的路口，《考察家报》当年就在这里办公。门脸上的瓷砖、紫铜和纹章是Julia Morgan的手笔，又是她。里面也空着，和这一路一半的大房间一样在等租客。
+Hearst大厦守着第三街和市场街的路口，《考察家报》当年就在这里办公。门脸上的瓷砖、紫铜和纹章是Julia Morgan的手笔。里面也空着。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-hearst-door.webp" alt="赫斯特大厦华丽的入口" loading="lazy" />
@@ -118,7 +112,7 @@ Hearst大厦守着第三街和市场街的路口，《考察家报》当年就�
 
 ## 六点钟
 
-虽然门面都空着，街面上倒是满员运转，人还挺多。
+虽然门面都空着，街面上倒是满员运转。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-market-scooter.webp" alt="电车站边穿黄T恤骑橘红色滑板车的男人" loading="lazy" />
@@ -135,6 +129,6 @@ Hearst大厦守着第三街和市场街的路口，《考察家报》当年就�
 
 ![黄昏时从阳台望出去的圣何塞市中心](https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp)
 
-阳台上的两把椅子，占着这一天最好的一个位子。玻璃上，客厅和楼下的城市叠在同一层里。下次下去走走。
+阳台上的两把椅子，占着这一天最好的一个位子。下次下去走走。
 
 ![阳台上的两把椅子，玻璃上映着客厅和楼下的城市](https://cdn.theneverless.com/2026/07/sj-balcony.webp)

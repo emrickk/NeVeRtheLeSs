@@ -12,7 +12,7 @@ San Francisco put a phoenix on its flag in 1900, six years before the fire every
 
 ## North Beach
 
-We started at Columbus Tower, the copper flatiron from 1907. From across the street it is a handsome green; up close the copper is streaked and running rust at the window frames, with a rust-orange fire escape bolted up the flank. Coppola has owned it since the seventies, film company upstairs, Café Zoetrope on the ground floor under red awnings, a neon Cafe Bar sign screwed onto the turret and unlit at two in the afternoon. Kearny Street was empty enough for a Saturday that the crosswalk belonged to one man in black walking away from us and somebody jogging a small dog.
+We started at Columbus Tower, the copper flatiron from 1907. Coppola has owned it since the seventies, film company upstairs, Café Zoetrope on the ground floor under red awnings, a neon Cafe Bar sign screwed onto the turret and unlit at two in the afternoon.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-cafe-zoetrope-corner.webp" alt="The Café Zoetrope corner under Columbus Tower, a man crossing the empty street" loading="lazy" />
@@ -21,11 +21,11 @@ We started at Columbus Tower, the copper flatiron from 1907. From across the str
 
 ## Jackson Square
 
-One block east, Jackson Square holds the blocks that came through 1906 with their walls still up. The corner of Jackson and Montgomery went up in 1853 as the Bank of Lucas, Turner & Co, and the man who supervised the construction was William Tecumseh Sherman, some years before Atlanta. The gold rush money left a long time ago. The ground floor now offers high-quality teeth whitening in a relaxing setting.
+One block east, Jackson Square holds the blocks that came through 1906 with their walls still up.
 
 ![The 1853 Bank of Lucas, Turner and Co at Jackson and Montgomery](https://cdn.theneverless.com/2026/07/sf-sherman-bank-jackson.webp)
 
-Around the corner, in the same building, is William Stout Architectural Books: plywood shelves to the ceiling, a black Eames lounge chair parked in the aisle, a carton of new stock open on the floor. The Eames Institute has run the store since 2022, which accounts for the chair. Sherman's bank now keeps a room full of books about buildings. The alleys behind it are the narrowest part of the old city, brick on both sides, a lantern out on a bracket, and at the far end a new stucco wall with a hedge in a planter.
+Around the corner, in the same building, is William Stout Architectural Books. Sherman's bank now keeps a room full of books about buildings.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-stout-books.webp" alt="Plywood shelves and an Eames lounge chair inside William Stout Architectural Books" loading="lazy" />
@@ -34,14 +34,14 @@ Around the corner, in the same building, is William Stout Architectural Books: p
 
 ## Two Transamericas
 
-A block down Montgomery, where Columbus comes in at an angle, is a white beaux-arts corner from 1909: John Fugazi's bank for the Italian immigrants of North Beach, later the first office of the Transamerica Corporation. On the rounded turret, in the band of stone where a bank would have carved its own name, it now says CHURCH OF SCIENTOLOGY, with a cross set in a roundel beside it. The doors were open and a sandwich board was out on the sidewalk. That is one kind of afterlife. Whether it is a good one, I don't know.
+A block down Montgomery, where Columbus comes in at an angle, is a white beaux-arts corner from 1909: John Fugazi's bank for the Italian immigrants of North Beach, later the first office of the Transamerica Corporation.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-old-transamerica.webp" alt="The 1909 Fugazi bank at 701 Montgomery, Church of Scientology carved on the turret" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-two-transamericas.webp" alt="The cornice of the old Transamerica building against the Transamerica Pyramid" loading="lazy" />
 </div>
 
-Across the street the corporation's own monument goes up forty-eight floors and closes to a point. It was finished in 1972, and it follows you all afternoon: over the copper turret in North Beach, past an old cornice two blocks south, and later, reflected in the windows of a bank tower on California Street. Its base is a grove of splayed concrete legs you can walk under, and in the middle of them a tree stands black against the white and throws its shadow back onto the concrete.
+Across the street the corporation's own monument goes up forty-eight floors and closes to a point. It was finished in 1972, and it follows you all afternoon: over the copper turret in North Beach, past an old cornice two blocks south.
 
 ![Concrete legs at the base of the Transamerica Pyramid, a tree in silhouette](https://cdn.theneverless.com/2026/07/sf-pyramid-base.webp)
 
@@ -63,7 +63,7 @@ The decades in between are all here too. One Bush, the Crown Zellerbach tower fr
 
 ## One Montgomery
 
-At Post Street the door of One Montgomery was open, so we went in. Willis Polk built the hall in 1908 for the First National Bank. It passed to Crocker, then to Wells Fargo, which moved out in 2019. The room is landmarked, so it stays exactly as it is, gold lettering along the wall still promising armored vaults to nobody in particular. Sherman's bank got its bookstore and Fugazi's got its church. The grandest of the three has not come back as anything yet.
+At Post Street the door of One Montgomery was open, so we went in. Willis Polk built the hall in 1908 for the First National Bank. It passed to Wells Fargo, which moved out in 2019. The room is landmarked, so it stays exactly as it is.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-one-montgomery-hall.webp" alt="The empty banking hall at One Montgomery" loading="lazy" />
@@ -72,7 +72,7 @@ At Post Street the door of One Montgomery was open, so we went in. Willis Polk b
 
 ## Market Street
 
-Polk turns up again on Market Street. The Hobart Building, from 1914, is terracotta on three sides and flat on the fourth, still waiting for the neighbor that was supposed to cover that side; the name is lettered across the blank wall instead. He is said to have thought it his best work. Down on the sidewalk it was the ordinary business of a Saturday afternoon: falafel, burgers, a man striding out of the crosswalk with his coat over one arm and a coffee in his hand.
+Polk turns up again on Market Street. The Hobart Building.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-hobart-building.webp" alt="The Hobart Building with its name lettered on the blank wall" loading="lazy" />
@@ -85,14 +85,14 @@ The Palace Hotel keeps the Garden Court behind its doors, under a leaded glass r
 
 ## Union Square
 
-Post Street runs up to Union Square, where a band was playing under two white tents: a woman on guitar, a bald man on drums, a grey-haired man at the keyboard in a Candlestick Park t-shirt. Candlestick came down in 2015. Overhead hung plastic wisteria and wire butterflies, and the audience was one couple on a granite bench, holding hands, half turned away from the stage. The buildings behind the square have been swapped out era by era, 1900s cornice, 1980s granite, Salesforce Tower closing the end of the street. What people come here to do has not changed much. There was surely a band on this square in the 1980s too, and somebody sitting nearby not quite listening.
+Post Street runs up to Union Square. The buildings behind the square have been swapped out era by era, 1900s cornice, 1980s granite, Salesforce Tower closing the end of the street. There was surely a band on this square in the 1980s too, and somebody sitting nearby not quite listening.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/sf-union-square-band.webp" alt="A band under white tents on Union Square, one couple listening on a bench" loading="lazy" />
   <img src="https://cdn.theneverless.com/2026/07/sf-post-street-towers.webp" alt="Post Street stacking eras of towers, Salesforce Tower at the end" loading="lazy" />
 </div>
 
-The oldest thing still doing the job it was built for came past at Powell and Post, loaded to the running boards, one rider filming and the conductor in a hi-vis vest hanging off the back. On the front standard was the city flag, the phoenix out on its rounds.
+The oldest thing still doing the job it was built for came past at Powell and Post. On the front standard was the city flag, the phoenix out on its rounds.
 
 ![A Powell Street cable car passing Saks, riders on the running boards](https://cdn.theneverless.com/2026/07/sf-powell-cable-car.webp)
 
@@ -107,7 +107,7 @@ Powell climbs from there. From the top of Nob Hill the downtown towers stand cle
 
 ## Clay Street
 
-The last institution of the day was on Clay Street: the Chinese YWCA, built in 1932 to Julia Morgan's design, brick with cast stone arches and a signboard reading 女青年會 hung out over the sidewalk. It has been the Chinese Historical Society of America since 2001. Downhill behind it, the pyramid again.
+The last institution of the day was on Clay Street: the Chinese YWCA, built in 1932 to Julia Morgan's design. Downhill behind it, the pyramid again.
 
 ![The Chinese YWCA sign on Clay Street, the Transamerica Pyramid beyond](https://cdn.theneverless.com/2026/07/sf-ywca-pyramid.webp)
 
