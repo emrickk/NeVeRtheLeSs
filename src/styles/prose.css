@@ -336,6 +336,12 @@
   margin: 0;
 }
 
+/* An odd image count would leave an empty grid cell; let the last image
+   fill the row instead. */
+.prose ul.image-gallery li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 /* Callout boxes.
    Usage: <div class="callout callout-tip"> ... </div>
    Types: callout-tip / callout-warning / callout-note */
