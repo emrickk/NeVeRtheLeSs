@@ -1,23 +1,23 @@
 ---
 title: Lassen, 7月4日
-description: Lassen周末：7月4日的Manzanita湖，傍晚Lake Helen的碎光，和去程路上Muir的老宅。
+description: Lassen周末：小黄石不太属实，但是加州夏天的湖管够
 lang: zh
 translationKey: lassen-july-4th
 ---
 
-7月4日的长周末，我们往北去Lassen火山国家公园过节，顺路在美国国家公园系统的创始人John Muir的老宅停了一站。
+7月4日的长周末，我们决定划掉国家公园清单上的Lassen国家公园。
 
-房子是Muir岳父盖的，Muir在这儿住了最后二十来年，管着一大片果园，顺便把国家公园这个主意写进了美国人的脑子里。
+路上路过了Muir的故居。来之前不知道背景故事，来了才知道原来Muir这么大来头。这个故居他住了二十多年，在这期间，顺便把国家公园这个主意写进了美国人的脑子里。
 
 ![Muir老宅里的Strentzel书房，深色木头和下午的阳光](https://cdn.theneverless.com/2026/07/muir-strentzel-office-2.webp)
 
 ## Manzanita湖
 
-当天下午进公园。Manzanita湖就在北门旁边，Lassen火山顶着七月还没化完的几块雪站在湖对面，湖面照原样又给了一遍。
+当天下午进公园。Manzanita湖就在北门旁边，抬头一看，Lassen火山顶着七月还没化完的几块雪站在湖对面。
 
 ![Manzanita湖上的Lassen火山和倒影](https://cdn.theneverless.com/2026/07/lassen-peak-manzanita-lake-2.webp)
 
-湖上是过节的样子：桨板一块接一块往外漂，皮划艇上的人穿着救生衣认真地划。
+湖则是一副典型的长周末的样子：湖上一堆桨板，湖边一堆躺椅。
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/manzanita-lake-paddleboards-2.webp" alt="松枝间Manzanita湖上的桨板" loading="lazy" />
@@ -26,20 +26,15 @@ translationKey: lassen-july-4th
 
 ![Manzanita湖和Lassen火山的全景](https://cdn.theneverless.com/2026/07/manzanita-lake-pano-2.webp)
 
-火山本尊这趟我们也爬了。不过回头看，真正留下来的不是山顶，是夏天：晒得发亮的高山湖，和湖边不赶时间的人。
-
 ## Lake Helen
 
-傍晚沿着公园公路往山上开，在一个蓝得过分的湖边停了下来。应该是叫Lake Helen，说实话我没记太清。
+傍晚沿着公园公路往山上开，我们在另一个蓝得过分的湖边停了下来。这时候太阳快要下山了，湖里不再有人，太阳一低，整个湖面就亮成了碎片，湖好看了很多。
 
-太阳一低，整个湖面就亮成了碎片。一对年轻人坐在岸边的石头上，肩挨着肩。
+湖边上还是人来人往。我想这么多年过去了，这么多人选择国家公园过长周末，湖也还是这么蓝。如果Muir知道的话应该非常开心。
 
-![Lake Helen岸边石头上的一对年轻人](https://cdn.theneverless.com/2026/07/lake-helen-couple-2.webp)
-
-不远处一位老爷子显然有备而来：折叠椅支在松荫里，人往里一躺，凉鞋翘着，手里一罐东西，慢慢地喝。这个傍晚他哪儿也不打算去了。
-
-![松荫下折叠椅里的老爷子](https://cdn.theneverless.com/2026/07/lake-helen-camp-chair-2.webp)
-
-公路在湖这头拐了个弯，路肩上停满了车；下面的湖岸铺着毯子和椅子。7月4日，这些人给国家过生日的方式，是把车开进公园，在水边找块平地坐下来，然后什么也不干。Muir要是看到了，估计挺开心。
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/lake-helen-couple-2.webp" alt="Lake Helen岸边石头上的一对年轻人" loading="lazy" />
+  <img src="https://cdn.theneverless.com/2026/07/lake-helen-camp-chair-2.webp" alt="松荫下折叠椅里的老爷子" loading="lazy" />
+</div>
 
 ![傍晚湖岸边的毯子和椅子](https://cdn.theneverless.com/2026/07/lake-helen-picnic-shore-2.webp)
