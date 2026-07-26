@@ -1,6 +1,6 @@
 ---
-title: 'Santa Rosa, June'
-description: 'Looking for Snoopy in Santa Rosa: Charlie Brown, Snoopy, and their friends.'
+title: 'The Snoopy Hunt: A Day in Santa Rosa'
+description: 'Featuring Charlie Brown, Lucy, and friends'
 pubDate: '2024-07-05'
 heroImage: '../../assets/hero/2026/07/snoopy-hunt-cover.webp'
 category: 'Journal'

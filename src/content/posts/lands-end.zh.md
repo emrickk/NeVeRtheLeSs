@@ -1,8 +1,8 @@
 ---
 translationKey: 'lands-end'
 lang: 'zh'
-title: '旧金山的天涯海角'
-description: '十月的一个傍晚，在旧金山的尽头。'
+title: 'Lands End, 三藩'
+description: '我们又来旧金山的天涯海角了'
 ---
 
 十月是旧金山真正的夏天：雾休假去了，全城这才想起来自己住在海边。我们傍晚去了Lands End：看日落。

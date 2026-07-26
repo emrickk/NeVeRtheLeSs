@@ -1,8 +1,8 @@
 ---
 translationKey: 'downtown-off-duty'
 lang: 'zh'
-title: '市中心下班了'
-description: '从 Miro 出门，穿过圣何塞市中心和 SJSU。没有目的地，也没有赶路的理由。'
+title: 'San Jose 扫街'
+description: '作为一个市中心，San Jose 的 downtown 安静得不像话'
 ---
 
 那时候我住在圣何塞市中心的 Miro。六月的一天下午，我带着相机下楼散步。

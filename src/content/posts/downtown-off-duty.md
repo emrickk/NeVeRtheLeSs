@@ -1,6 +1,6 @@
 ---
 title: 'Downtown, Off Duty'
-description: 'An afternoon walk from Miro through downtown San Jose and SJSU, with no destination and no reason to hurry.'
+description: 'For a downtown, San Jose is ridiculously quiet'
 pubDate: '2024-06-19'
 heroImage: '../../assets/hero/2026/07/sj-downtown-cover.webp'
 category: 'Journal'

@@ -1,8 +1,8 @@
 ---
 translationKey: 'red-rocks-and-blueprints'
 lang: 'zh'
-title: 'Sedona，登月与圣石'
-description: '在亚利桑那的三天。'
+title: 'Sedona, 亚利桑那'
+description: '一个陨石坑，一座灵力小城，和一个营地的故事'
 ---
 
 十一月初，我们飞到凤凰城，提了车，一路向北开进高原沙漠。行程表上写的是去看红岩，走着走着却变成了一趟关于蓝图的旅行：好像每一个爱上这片沙漠的人，来的时候手里都攥着一张。

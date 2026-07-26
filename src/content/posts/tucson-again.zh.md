@@ -1,8 +1,8 @@
 ---
 translationKey: 'tucson-again'
 lang: 'zh'
-title: '重返图森'
-description: '三四年后回图森，看看仙人掌。'
+title: '重返 Tucson'
+description: '三年后再回图森，图森未来已经没有未来了'
 ---
 
 二月中的长周末，我飞到凤凰城，提了车，一路向南开去 Tucson。

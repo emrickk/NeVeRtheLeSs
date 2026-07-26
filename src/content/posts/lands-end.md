@@ -1,6 +1,6 @@
 ---
 title: 'Lands End, San Francisco'
-description: 'An October evening at the edge of San Francisco.'
+description: 'Back at the edge of San Francisco, again'
 pubDate: '2025-10-19'
 heroImage: '../../assets/hero/2026/07/lands-end-cover.webp'
 category: 'Journal'

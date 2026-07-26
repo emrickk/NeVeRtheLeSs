@@ -1,6 +1,6 @@
 ---
-title: 'Lassen, July 4th'
-description: "A Lassen weekend: the little-Yellowstone billing doesn't quite hold up, but California's summer lakes come in full supply."
+title: 'Lassen Volcanic National Park'
+description: 'The little-Yellowstone billing doesn''t quite hold up, but the lakes are all-you-can-eat'
 pubDate: '2026-07-04'
 heroImage: '../../assets/hero/2026/07/lassen-cover.webp'
 category: 'Journal'

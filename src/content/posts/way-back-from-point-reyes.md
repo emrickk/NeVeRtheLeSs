@@ -1,6 +1,6 @@
 ---
-title: 'Point Reyes, August'
-description: 'Two silhouettes at sunset'
+title: 'Point Reyes, California'
+description: 'Oh, we saw the tule elk!'
 pubDate: '2024-08-31'
 heroImage: '../../assets/hero/2026/07/point-reyes-cover.webp'
 category: 'Journal'

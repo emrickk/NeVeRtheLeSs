@@ -1,6 +1,6 @@
 ---
-title: 'Rapa Nui, or Easter Island?'
-description: 'Rapa Nui: stone figures across the island, the South Pacific wind, and a civilization stopped in its tracks.'
+title: 'Easter Island. Sorry, Rapa Nui'
+description: 'Nine hundred statues, the South Pacific wind, and a civilization that stopped mid-carve'
 pubDate: '2025-12-02'
 heroImage: '../../assets/hero/2026/07/rapa-nui-cover.webp'
 category: 'Journal'

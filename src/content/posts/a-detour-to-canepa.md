@@ -1,6 +1,6 @@
 ---
-title: 'A detour to Canepa'
-description: 'A building beside the road to Santa Cruz turned out to be Canepa: an Abarth parked in the window light, a workshop seen from a balcony, a floor of 911s, and the Giant Dipper at dusk to finish the day.'
+title: 'The Canepa Museum'
+description: 'A museum disguised as a dealership, or is it the other way around?'
 pubDate: '2024-10-19'
 heroImage: '../../assets/hero/2024/10/canepa-cover.webp'
 category: 'Journal'

@@ -1,8 +1,8 @@
 ---
 translationKey: 'this-is-home'
 lang: 'zh'
-title: '这就是家'
-description: 'Miro 的家，圣何塞市中心的高处。大多数日子，家里动静最大的是太阳。'
+title: 'Miro, San Jose'
+description: '我在这里住了两年'
 ---
 
 家在圣何塞市中心的高处，占着楼角，窗户朝东、朝南、朝西。太阳从一头进来，从另一头出去。这个市中心不太吵，大多数日子，家里动静最大的就是它。

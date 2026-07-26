@@ -1,6 +1,6 @@
 ---
-title: Yosemite 刚刚好
-description: 六月的 Yosemite：瀑布正满，太阳不烈，连停车场都有空。
+title: '优胜美地国家公园'
+description: '一个过于好听的中文译名，和一个挤满了人的国家公园'
 pubDate: 2026-06-14
 heroImage: ../../assets/hero/2026/07/yosemite-cover.webp
 category: Journal

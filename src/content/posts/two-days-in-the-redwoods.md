@@ -1,6 +1,6 @@
 ---
-title: 'Redwood, July'
-description: 'The coast redwoods: giant trees, fern-lined trails, and the fog on the coast highway.'
+title: 'Redwood National Park'
+description: 'We came to have a look at the coast redwoods: giant trees, ferns, and the fog on the coast highway'
 pubDate: '2026-07-12'
 heroImage: '../../assets/hero/2026/07/redwood-cover.webp'
 category: 'Journal'

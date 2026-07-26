@@ -1,5 +1,5 @@
 ---
-title: 'Chicago, July'
+title: 'Walking Chicago'
 description: 'City on foot!'
 pubDate: '2025-07-20'
 heroImage: '../../assets/hero/2026/07/summer-in-chicago-cover.webp'

@@ -1,6 +1,6 @@
 ---
-title: 'Another City Walk in San Francisco'
-description: 'Another lap of downtown San Francisco, one week and one new camera later.'
+title: 'San Francisco, Again Again'
+description: 'One more lap of downtown!'
 pubDate: '2024-07-13'
 heroImage: '../../assets/hero/2026/07/another-sf-city-walk-cover.webp'
 category: 'Journal'

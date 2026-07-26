@@ -1,6 +1,6 @@
 ---
 title: Oak Alley 种植园
-description: 去了一趟 Oak Alley 种植园。
+description: '新奥尔良太好吃了！'
 lang: zh
 translationKey: oak-alley-plantation
 ---

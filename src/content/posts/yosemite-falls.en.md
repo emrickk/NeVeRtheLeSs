@@ -1,8 +1,8 @@
 ---
 translationKey: 'yosemite-falls'
 lang: 'en'
-title: 'Yosemite on a summer day'
-description: 'A June Sunday in Yosemite: full waterfalls, gentle sun, and even room in the parking lot.'
+title: 'Yosemite National Park'
+description: 'A name too pretty, and a park too full'
 ---
 
 On a Sunday in early June we decided to drive into Yosemite Valley. The snowmelt was still coming down from the high country and the falls were running full; plenty of cloud, good light. A good day for one of the Bay Area's three great clichés.

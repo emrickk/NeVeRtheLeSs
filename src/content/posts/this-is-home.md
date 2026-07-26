@@ -1,6 +1,6 @@
 ---
-title: 'This Is Home'
-description: 'Our apartment at Miro, high over downtown San Jose, where most days the loudest thing in the house is the sun.'
+title: 'Miro, San Jose'
+description: 'Home for two years'
 pubDate: '2025-09-09'
 heroImage: '../../assets/hero/2026/07/miro-home-cover.webp'
 category: 'Journal'

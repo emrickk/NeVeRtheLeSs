@@ -1,8 +1,8 @@
 ---
 translationKey: 'springtime-in-patagonia'
 lang: 'zh'
-title: 'Patagonia的春天'
-description: '风，冰，距离，和每天都比我们撑得久的光。'
+title: '巴塔哥尼亚, 智利'
+description: '谁说的巴塔哥尼亚归来不看山？我太同意了'
 ---
 
 2025年11月底，我们去了公路能到达的差不多最南的地方：Patagonia。

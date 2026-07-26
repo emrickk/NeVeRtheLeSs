@@ -1,6 +1,6 @@
 ---
-title: '阿姆斯特丹的窗'
-description: '阿姆斯特丹：旅馆的窗，咖啡馆的门，和一整条玻璃做的船。'
+title: '阿姆斯特丹, 荷兰'
+description: '我觉得阿姆斯特丹还是要从船上看'
 pubDate: '2026-06-15'
 heroImage: '../../assets/hero/2026/07/amsterdam-cover.webp'
 category: 'Journal'

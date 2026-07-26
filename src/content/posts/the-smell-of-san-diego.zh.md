@@ -1,6 +1,6 @@
 ---
-title: 圣地亚哥, 7 月
-description: 回到 San Diego：海边一个真正漂亮的日落，和阴天里的 gliderport。
+title: '圣地亚哥, California'
+description: '我的私藏小镇，和阴天的 Gliderport'
 lang: zh
 translationKey: the-smell-of-san-diego
 ---

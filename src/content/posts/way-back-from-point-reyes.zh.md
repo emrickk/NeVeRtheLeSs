@@ -1,6 +1,6 @@
 ---
-title: Point Reyes, 8 月
-description: 日落里的两个剪影
+title: 'Point Reyes, California'
+description: 'oh，我们看到图莱里麋鹿了！'
 lang: zh
 translationKey: way-back-from-point-reyes
 ---

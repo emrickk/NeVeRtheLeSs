@@ -1,6 +1,6 @@
 ---
-title: 'No golf on the 18th fairway'
-description: 'The 2024 Pebble Beach Concours: a spec board quoting 986 horsepower, picnics facing the sea with their backs to the show, and a road test in white smoke'
+title: 'Pebble Beach Concours, 2024'
+description: 'No golf on the 18th fairway today'
 pubDate: '2024-08-18'
 heroImage: '../../assets/hero/2026/07/concours-cover.webp'
 category: 'Journal'

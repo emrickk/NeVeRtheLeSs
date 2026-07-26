@@ -1,8 +1,8 @@
 ---
 translationKey: 'they-never-see-the-sunrise'
 lang: 'zh'
-title: '拉帕努伊，还是复活节岛？'
-description: '满岛的石像，南太平洋的风，和突然停顿的文明。'
+title: '复活节岛。哦不，Rapa Nui'
+description: '来这里感受石像，南太平洋的风，和一个突然停顿的文明'
 ---
 
 2025年11月底，在去巴塔哥尼亚的路上，我们从圣地亚哥往西飞了五个小时，一头扎进太平洋。就在大洋看起来毫无别的打算时，它端出了一条跑道。

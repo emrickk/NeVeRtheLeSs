@@ -1,6 +1,6 @@
 ---
-title: Mendocino, 11月
-description: Mendocino周末：深秋的早晨，一号公路最后一座木桥和Point Cabrillo的灯塔。
+title: 'Mendocino, California'
+description: '还是一号公路主题，不过这次一路北上'
 lang: zh
 translationKey: north-to-mendocino
 ---

@@ -1,8 +1,8 @@
 ---
 translationKey: 'amsterdam-windows'
 lang: 'en'
-title: 'The Windows of Amsterdam'
-description: 'Amsterdam: a hotel window, a café door, and a whole boat made of glass.'
+title: 'Amsterdam, the Netherlands'
+description: 'I still say Amsterdam is best seen from a boat'
 ---
 
 On our first morning in Amsterdam the sky was gray. The hotel window came in two pages: on the left, a row of old houses packed shoulder to shoulder; on the right, a clock tower in the distance. No two houses were the same height, and each wore a different hat. Together they looked like a family portrait.

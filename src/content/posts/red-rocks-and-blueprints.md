@@ -1,6 +1,6 @@
 ---
-title: 'Sedona, the moonshot and the sacred stones'
-description: 'Three days in Arizona.'
+title: 'Sedona, Arizona'
+description: 'A meteor crater, a town that runs on vortex energy, and the story of a camp'
 pubDate: '2025-11-10'
 heroImage: '../../assets/hero/2026/07/sedona-cover.webp'
 category: 'Journal'

@@ -1,6 +1,6 @@
 ---
-title: 'Springtime in Patagonia'
-description: 'Wind, ice, distance, and days when the light outlasted us.'
+title: 'Patagonia, Chile'
+description: 'Whoever said no mountain is worth looking at after Patagonia: I couldn''t agree more'
 pubDate: '2025-12-09'
 heroImage: '../../assets/hero/2026/07/patagonia-cover.webp'
 category: 'Journal'

@@ -1,6 +1,6 @@
 ---
-title: 'Rome, 9 Hours or 900 Years Behind?'
-description: 'My camera was nine hours behind Rome. Rome itself, give or take, was nine hundred years behind.'
+title: 'Rome'
+description: 'Were we walking the Roman Empire, or the capital of Italy?'
 pubDate: '2026-06-02'
 heroImage: '../../assets/hero/2026/07/nine-hours-slow-cover.webp'
 category: 'Journal'

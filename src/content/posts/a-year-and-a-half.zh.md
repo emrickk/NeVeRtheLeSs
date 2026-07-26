@@ -1,6 +1,6 @@
 ---
-title: 湾区一年
-description: 来到湾区的一年，当然是要用洗车来纪念啦。
+title: '搬到湾区一年了'
+description: '一周年的纪念活动当然是……洗车啦'
 lang: zh
 translationKey: a-year-and-a-half
 ---

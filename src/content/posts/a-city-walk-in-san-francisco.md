@@ -1,6 +1,6 @@
 ---
 title: 'A City Walk in San Francisco'
-description: 'A Saturday afternoon'
+description: 'Yet another Saturday afternoon in San Francisco'
 pubDate: '2024-07-06'
 heroImage: '../../assets/hero/2026/07/sf-city-walk-cover.webp'
 category: 'Journal'

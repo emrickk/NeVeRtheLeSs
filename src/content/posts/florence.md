@@ -1,6 +1,6 @@
 ---
-title: 佛罗伦萨, 6 月
-description: 佛罗伦萨：美第奇家族的主题乐园和不结束的日落
+title: '佛罗伦萨, 意大利'
+description: '美第奇家族的主题乐园和不结束的日落'
 pubDate: 2026-06-06
 heroImage: ../../assets/hero/2026/07/florence-cover.webp
 category: Journal

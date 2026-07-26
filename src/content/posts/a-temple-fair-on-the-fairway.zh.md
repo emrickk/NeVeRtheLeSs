@@ -1,8 +1,8 @@
 ---
 translationKey: 'a-temple-fair-on-the-fairway'
 lang: 'zh'
-title: '18号球道不打球'
-description: '2024年8月的圆石滩车展：986匹马力的规格牌，背对车展面朝大海的野餐和冒白烟的路考'
+title: '圆石滩老爷车展, 2024'
+description: '今天的 18 号球道不打球'
 ---
 
 圆石滩的18号球道，大概是全世界被拍得最多的一段高尔夫球场。每年八月的第三个星期天它不打球：从1950年起，Concours d'Elegance 就开在这片草皮上，老爷车的世界里没有比这更高的舞台。

@@ -1,6 +1,6 @@
 ---
 title: 'Oak Alley Plantation'
-description: 'A visit to Oak Alley Plantation.'
+description: 'New Orleans is delicious!'
 pubDate: '2025-12-03'
 heroImage: '../../assets/hero/2026/07/oak-alley-cover.webp'
 category: 'Journal'

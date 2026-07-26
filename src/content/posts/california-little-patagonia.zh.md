@@ -1,6 +1,6 @@
 ---
-title: 10 月, 395 公路
-description: '十月中的 395 号公路：Big Pine 的绿松石湖水和 Temple Crag，Bishop Creek 金黄的白杨，Mono 湖的石灰华塔，和一条牧羊人面包。'
+title: '395 公路, 十月'
+description: '你当然可以在加州看到枫叶，只不过枫树不太努力'
 lang: zh
 translationKey: california-little-patagonia
 ---

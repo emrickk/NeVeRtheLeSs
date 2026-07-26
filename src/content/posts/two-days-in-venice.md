@@ -1,6 +1,6 @@
 ---
-title: '威尼斯的日落'
-description: '威尼斯：数不清的桥，坐不腻的船，和一座用颜色盖成的岛。'
+title: '威尼斯, 意大利'
+description: '别的我不管，但是威尼斯真的太浪漫了'
 pubDate: '2026-06-10'
 heroImage: '../../assets/hero/2026/07/venice-cover.webp'
 homeFeatured: true

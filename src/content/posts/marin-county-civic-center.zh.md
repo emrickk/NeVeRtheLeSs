@@ -1,8 +1,8 @@
 ---
 translationKey: 'marin-county-civic-center'
 lang: 'zh'
-title: '马林县市政中心'
-description: '赖特的最后一件作品，至今仍在使用，也仍然像未来。'
+title: 'Marin Civic Center'
+description: '探访 Frank Lloyd Wright 的最后一件作品'
 ---
 
 去年七月，我们从旧金山出发，一路向北去看[红杉](/posts/two-days-in-the-redwoods/)。在见到那些树之前，我们先在 San Rafael 下了101号公路，开十分钟去看 Frank Lloyd Wright 设计的 Marin County Civic Center。

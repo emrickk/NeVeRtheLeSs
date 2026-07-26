@@ -1,6 +1,6 @@
 ---
-title: Redwood, July
-description: 海岸红杉林：巨树，蕨类夹道的小径，和海岸公路的雾
+title: '红杉树国家公园'
+description: '来看海岸红杉林：巨树和蕨类，还有海岸公路的雾'
 lang: zh
 translationKey: two-days-in-the-redwoods
 ---

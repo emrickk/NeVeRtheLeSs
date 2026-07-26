@@ -1,6 +1,6 @@
 ---
 title: 'Highway 1'
-description: 'Highway 1 was, for once, unbroken, so we snuck in a trip.'
+description: 'For once the whole road was open, so we hurried out'
 pubDate: '2026-07-20'
 heroImage: '../../assets/hero/2026/07/highway-1-cover.webp'
 category: 'Journal'

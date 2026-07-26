@@ -1,6 +1,6 @@
 ---
-title: 'Mendocino, November'
-description: 'A Mendocino weekend: a late-autumn morning, the last wooden bridge on Highway 1, and the lighthouse at Point Cabrillo.'
+title: 'Mendocino, California'
+description: 'Highway 1 again, but this time northbound all the way'
 pubDate: '2024-11-08'
 heroImage: '../../assets/hero/2026/07/mendocino-cover.webp'
 category: 'Journal'

@@ -1,6 +1,6 @@
 ---
-title: Santa Rosa, June
-description: 在Santa Rosa找Snoopy：Charlie Brown、Snoopy和他们的朋友们
+title: '寻找 Snoopy：Santa Rosa 一日游'
+description: '还有 Charlie Brown、Lucy 和他们的朋友们'
 lang: zh
 translationKey: the-snoopy-hunt
 ---

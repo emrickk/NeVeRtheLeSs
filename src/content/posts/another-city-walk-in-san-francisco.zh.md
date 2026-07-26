@@ -1,6 +1,6 @@
 ---
-title: 旧金山暴走第二弹
-description: 带着新相机又走了一遍三藩
+title: '我又又来三藩了'
+description: '再逛三藩 CBD！'
 lang: zh
 translationKey: another-city-walk-in-san-francisco
 ---

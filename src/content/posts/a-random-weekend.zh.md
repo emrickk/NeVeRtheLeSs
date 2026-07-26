@@ -1,6 +1,6 @@
 ---
-title: 一个周末
-description: Valencia街的下午，和在Lands End待到太阳落完
+title: '我又来三藩了'
+description: 'Valencia 街的下午，和 Lands End 的日落'
 lang: zh
 translationKey: a-random-weekend
 ---

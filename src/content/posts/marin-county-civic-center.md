@@ -1,6 +1,6 @@
 ---
-title: 'Marin County Civic Center'
-description: 'Frank Lloyd Wright’s last commission, still in use and still looking like the future.'
+title: 'Marin Civic Center'
+description: 'A visit to Frank Lloyd Wright''s last commission'
 pubDate: '2026-03-15'
 heroImage: '../../assets/hero/2026/07/marin-civic-center-cover.webp'
 category: 'Journal'

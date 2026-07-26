@@ -1,6 +1,6 @@
 ---
-title: 'A Weekend'
-description: 'An afternoon on Valencia Street, and staying at Lands End until the sun was done.'
+title: 'San Francisco, Again'
+description: 'An afternoon on Valencia Street, and the sunset at Lands End'
 pubDate: '2024-06-23'
 heroImage: '../../assets/hero/2026/07/random-weekend-cover.webp'
 category: 'Journal'

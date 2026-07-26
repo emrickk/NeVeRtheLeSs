@@ -1,6 +1,6 @@
 ---
-title: Napa, April
-description: 我们来 Napa 玩，没有喝酒
+title: 'Napa, California'
+description: '我们来酒庄玩，但是不喝酒！'
 lang: zh
 translationKey: road-to-napa
 ---

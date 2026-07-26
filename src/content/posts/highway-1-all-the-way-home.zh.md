@@ -1,6 +1,6 @@
 ---
 title: 一号公路
-description: '趁着一号公路难得不断，我们偷偷去了一次'
+description: '趁着一号公路难得不是断的，我们赶紧去了一次'
 lang: zh
 translationKey: highway-1-all-the-way-home
 ---

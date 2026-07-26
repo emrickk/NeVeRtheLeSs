@@ -1,6 +1,6 @@
 ---
-title: 'A portrait session with M850i'
-description: 'A Saturday evening in August 2024: an empty parking lot, the last hour of sun, and a portrait session with the M850i Gran Coupe.'
+title: 'M850i Gran Coupe'
+description: 'The last hour of Saturday''s sun, and my new toy'
 pubDate: '2024-08-05'
 heroImage: '../../assets/hero/2026/07/bmw-850-cover.webp'
 category: 'Journal'

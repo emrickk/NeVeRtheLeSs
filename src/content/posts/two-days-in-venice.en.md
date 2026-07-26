@@ -1,8 +1,8 @@
 ---
 translationKey: 'two-days-in-venice'
 lang: 'en'
-title: 'Sunset in Venice'
-description: 'Venice: countless bridges, boat rides that never get old, and an island built out of color.'
+title: 'Venice, Italy'
+description: 'I came prepared to be disappointed. Venice really is that romantic.'
 ---
 
 The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, and then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I had come prepared to be disappointed, but hmm, maybe, just maybe, this wasn't a wasted trip after all.

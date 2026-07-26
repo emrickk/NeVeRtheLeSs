@@ -1,6 +1,6 @@
 ---
-title: 'One night in Big Sur'
-description: 'Two days and one night in Big Sur.'
+title: 'Big Sur, Highway 1'
+description: 'Ducking into the mountains just off Highway 1'
 pubDate: '2025-07-13'
 heroImage: '../../assets/hero/2026/07/big-sur-long-light-cover.webp'
 category: 'Journal'

@@ -1,6 +1,6 @@
 ---
-title: 'San Diego, July'
-description: 'Back in San Diego: one truly beautiful sunset on the beach, and the gliderport on a cloudy day.'
+title: 'San Diego, California'
+description: 'The town I keep to myself, and the gliderport on a gray day'
 pubDate: '2024-07-26'
 heroImage: '../../assets/hero/2026/07/san-diego-cover.webp'
 category: 'Journal'

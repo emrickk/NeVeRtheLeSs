@@ -1,5 +1,5 @@
 ---
-title: 芝加哥，7 月
+title: '暴走芝加哥'
 description: 城市暴走！
 lang: zh
 translationKey: summer-in-chicago

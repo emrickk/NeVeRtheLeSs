@@ -1,6 +1,6 @@
 ---
 title: 'A Year in the Bay'
-description: 'One year in the Bay Area. Of course the way to celebrate is a car wash.'
+description: 'The anniversary celebration, naturally... a car wash'
 pubDate: '2024-07-12'
 heroImage: '../../assets/hero/2026/07/a-year-and-a-half-cover.webp'
 category: 'Journal'

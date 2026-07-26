@@ -1,6 +1,6 @@
 ---
-title: 'Napa, April'
-description: 'A trip to Napa without drinking.'
+title: 'Napa, California'
+description: 'We went winery-hopping, and we don''t even drink!'
 pubDate: '2025-04-08'
 heroImage: '../../assets/hero/2026/07/road-to-napa-cover.webp'
 category: 'Journal'

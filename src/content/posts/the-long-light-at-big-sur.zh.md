@@ -1,8 +1,8 @@
 ---
 translationKey: 'the-long-light-at-big-sur'
 lang: 'zh'
-title: '在 Big Sur 住一晚'
-description: 'Big Sur 的两天一夜'
+title: 'Big Sur, 一号公路'
+description: '钻进一号公路边上的山里'
 ---
 
 我们常去 Big Sur，一天来回。但是说实话，Big Sur 卡在一个尴尬的距离上：当天来回有点紧张，住一晚又感觉没必要。所以回程总像课间来赶我回去上课的班主任，光线正好、人也正尽兴的时候，就得结束了。

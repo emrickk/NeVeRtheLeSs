@@ -1,8 +1,8 @@
 ---
 translationKey: 'florence'
 lang: 'en'
-title: 'Florence, June'
-description: 'Florence: a Medici family theme park and a sunset that would not end.'
+title: 'Florence, Italy'
+description: 'A Medici family theme park, and a sunset that would not end'
 ---
 
 Xu Zhimo rendered Firenze in Chinese as "翡冷翠," roughly "cold jade." The name is so famous that before I came, I had always associated Florence with cold and with the green of jade. We arrived in the evening and checked into a hotel in the old town. I opened the window to find the neighbors' shutters and a tree full of green. At first glance, the name almost fit. Two strange portraits hung in the room, each sitter's eyes completely covered by a cloud. I did not give them much thought. Designer hotel.

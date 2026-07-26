@@ -1,6 +1,6 @@
 ---
-title: 'October, US 395'
-description: "Mid-October on US 395: the turquoise lakes and Temple Crag of Big Pine, golden aspens up Bishop Creek, the tufa towers of Mono Lake, and a loaf of sheepherder bread."
+title: 'US 395, October'
+description: 'Yes, California has maple leaves. No, the maples are not trying very hard'
 pubDate: '2024-10-13'
 heroImage: '../../assets/hero/2026/07/us395-cover.webp'
 category: 'Journal'

@@ -1,6 +1,6 @@
 ---
 title: 'Tucson, Again'
-description: 'Back after three or four years, to see the saguaros.'
+description: 'Back after three years. The company that brought me here is gone; the saguaros aren''t'
 pubDate: '2026-02-14'
 heroImage: '../../assets/hero/2026/07/tucson-cover.webp'
 category: 'Journal'
