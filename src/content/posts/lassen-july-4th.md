@@ -8,19 +8,19 @@ lang: 'en'
 translationKey: 'lassen-july-4th'
 ---
 
-For the Fourth of July long weekend we drove north to Lassen Volcanic National Park, with one stop on the way, in Martinez: John Muir's old house. A freeway runs hard against the property these days; at least it has the manners to call itself the John Muir Parkway.
+For the Fourth of July long weekend we drove north to Lassen Volcanic National Park, with one stop on the way: the old house of John Muir, the father of America's national parks.
 
-The house was built by Muir's father-in-law. Muir spent his last twenty-odd years here, ran a large fruit ranch, and on the side wrote the idea of the national park into America's head. Inside it is dark wood from floor to ceiling; the afternoon sun burned the window a solid white and somehow made the room feel darker. The room in the photo is the father-in-law's study, the sign by the door says Strentzel Office. The room where Muir did his writing is upstairs.
+The house was built by Muir's father-in-law. Muir spent his last twenty-odd years here, ran a large fruit ranch, and on the side wrote the idea of the national park into America's head.
 
 ![The Strentzel office in the Muir house, dark wood and afternoon sun](https://cdn.theneverless.com/2026/07/muir-strentzel-office-2.webp)
 
 ## Manzanita Lake
 
-We entered the park the next afternoon. Manzanita Lake sits right by the northwest entrance, Lassen Peak stands across it under what July has left of the snow, and the lake hands the whole thing back in full.
+We entered the park that same afternoon. Manzanita Lake sits right by the northwest entrance, Lassen Peak stands across it under what July has left of the snow, and the lake hands the whole thing back in full.
 
 ![Lassen Peak and its reflection over Manzanita Lake](https://cdn.theneverless.com/2026/07/lassen-peak-manzanita-lake-2.webp)
 
-The lake was in its holiday mood: paddleboards drifting out one after another, kayakers in life vests paddling in earnest, and plenty of people paddling nothing at all, just sitting on the water.
+The lake was in its holiday mood: paddleboards drifting out one after another, kayakers in life vests paddling in earnest.
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/manzanita-lake-paddleboards-2.webp" alt="Paddleboarders on Manzanita Lake, through pine branches" loading="lazy" />
@@ -43,6 +43,6 @@ A little way off, an old man had clearly come prepared: folding chair pitched in
 
 ![An old man reclining in a camp chair in the pine shade above the lake](https://cdn.theneverless.com/2026/07/lake-helen-camp-chair-2.webp)
 
-The road bends around this end of the lake and the shoulder was parked solid; on the shore below, blankets and chairs lay spread out with no visible intention of being packed up. The Fourth of July, and this is how these people threw the country its birthday party: drive into a park, find a flat spot by the water, and do nothing.
+The road bends around this end of the lake and the shoulder was parked solid; on the shore below, blankets and chairs lay spread out. The Fourth of July, and this is how these people threw the country its birthday party: drive into a park, find a flat spot by the water, and do nothing. If Muir could see it, I figure he would be pretty pleased.
 
 ![Blankets and chairs along the lakeshore in the evening light](https://cdn.theneverless.com/2026/07/lake-helen-picnic-shore-2.webp)

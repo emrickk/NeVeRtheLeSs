@@ -15,7 +15,7 @@ It took until the next morning to see how literal the name was. The room is smal
 
 ![The room's many-paned window, looking across at a row of gables and the bridge beyond](https://cdn.theneverless.com/2026/07/B0013378.webp)
 
-Looking down from the same window is another matter. At the dock below, a queue ran under a red canopy and around the corner, everyone waiting for a boat. What they were lining up to see and what we were seeing without getting out of the room were the same thing.
+Looking down from the same window is another matter. At the dock below, a queue ran under a red canopy and around the corner, everyone waiting for a boat.
 
 ![Looking down from the window at the crowd queuing for boats under a red canopy](https://cdn.theneverless.com/2026/07/B0013381.webp)
 
@@ -29,21 +29,15 @@ The boat kept going and the old town ran out fast. The banks turned into cranes 
 
 ![Past the old town: a crane, a white house and an iron bridge along the bank](https://cdn.theneverless.com/2026/07/B0013390.webp)
 
-In the afternoon we went up the belfry. From up there St Nicholas' Church is reduced to a roof, and the only thing really moving is the trams, sliding past close along its side, one after another, with the red roofs running out past where you can see.
+In the afternoon we went up the belfry. From up there St Nicholas' Church is reduced to a roof. And the church across the way looks like an alien spaceship, really a very different style from Rome.
 
 ![Looking down from the belfry at the roof of St Nicholas' Church and the trams passing it](https://cdn.theneverless.com/2026/07/B0013418.webp)
 
-In the evening we walked round to the back of the old town, and one turn in, the people were gone.
-
-Two doors stood side by side, one wooden, one navy, number 21. Roses came down off the wall and hollyhocks had seeded themselves out of the cracks between the stones, grown as tall as the door.
+In the evening we walked round to the back of the old town.
 
 ![Two doors side by side in a lane, roses on the wall and hollyhocks out of the stones](https://cdn.theneverless.com/2026/07/B0013427.webp)
 
-Further along was a brick arch, and through it a stretch of grass and a few plane trees. One person sat on a bench, too far off to tell what they were doing. Bicycles leaned against the foot of the wall.
-
 ![Grass, plane trees and a lone figure on a bench seen through a brick arch](https://cdn.theneverless.com/2026/07/B0013431.webp)
-
-Another row of bicycles stood in a rack, not one of them wearing a serious lock. A red shirt hung drying in a window, and someone had put a couple of marks on the brick.
 
 ![A row of bicycles against a wall, a red shirt hanging in a window](https://cdn.theneverless.com/2026/07/B0013432.webp)
 

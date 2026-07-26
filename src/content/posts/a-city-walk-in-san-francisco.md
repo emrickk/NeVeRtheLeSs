@@ -1,6 +1,6 @@
 ---
 title: 'A City Walk in San Francisco'
-description: 'A Saturday afternoon across downtown San Francisco: a city with a phoenix on its flag, banks living on as bookstores and churches, one grand hall still empty, and a plain red door holding the last of the light.'
+description: 'A Saturday afternoon'
 pubDate: '2024-07-06'
 heroImage: '../../assets/hero/2026/07/sf-city-walk-cover.webp'
 category: 'Journal'

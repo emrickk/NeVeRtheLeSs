@@ -5,9 +5,7 @@ title: 'Sunset in Venice'
 description: 'Venice: countless bridges, boat rides that never get old, and an island built out of color.'
 ---
 
-The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, and then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I had come prepared to be disappointed, and it flattened me anyway. She stood at the water's edge for a long time.
-
-![A woman looking out over the Grand Canal outside Santa Lucia station](https://cdn.theneverless.com/2026/07/venice-arrival-grand-canal.webp)
+The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, and then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I had come prepared to be disappointed, but hmm, maybe, just maybe, this wasn't a wasted trip after all.
 
 In Venice, the city bus is a boat. Running a boat is obviously more trouble than driving a bus, but here it is still just the way people get to work and back home. The boat docks, people file on and off, locals and tourists packed onto the same deck, each going about their own business.
 

@@ -16,14 +16,11 @@ translationKey: 'amsterdam-windows'
 
 ![九小街桥头趴在栏杆上看街的情侣](https://cdn.theneverless.com/2026/07/amsterdam-nine-streets-couple.webp)
 
-
 ![从咖啡馆里望向敞开的店门和门楣上的彩色玻璃](https://cdn.theneverless.com/2026/07/amsterdam-cheese-shop-door.webp)
 
 傍晚上了运河游船。阿姆斯特丹还是适合从水上逛。船拐进老城，一座塔从窗框和倒影中间探出来。它叫 Montelbaanstoren，四百年前塔顶刚装上钟的时候，它半夜也响，阿姆斯特丹人给它起了个外号：疯雅普。我们路过的时候它一声没吭，大概是响累了。
 
-
 ![玻璃顶游船的船舱，对岸是 EYE 电影博物馆](https://cdn.theneverless.com/2026/07/amsterdam-glass-boat-eye.webp)
-
 
 ![窗框和倒影中间的 Montelbaanstoren 塔](https://cdn.theneverless.com/2026/07/amsterdam-montelbaanstoren.webp)
 
