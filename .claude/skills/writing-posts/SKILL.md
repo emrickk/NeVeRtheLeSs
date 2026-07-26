@@ -58,6 +58,17 @@ The sequence for any authorized draft, rewrite, or translation:
 
 At handoff: the preview link (see preview-posts), the structural choices he may want to reverse, and content-bearing additions or interpretive choices disclosed (not routine mechanics). Prose that is genuinely yours, an English sync of his zh rewrite for example, is declared as yours; he sees it before it ships.
 
+### Titles and subtitles across languages (owner rulings, 2026-07-26)
+
+When the owner sets a title or subtitle in one language, the other language starts from his line: understand what it means and says, then say that natively. Both failure directions got rejected in the same campaign: word-for-word renderings read like Google Translate, and freelance replacements composed from the post body ("which to a saguaro rounds to zero") are not his line either. The post is still read first, but as the key for decoding his line, not as a quarry for a new one.
+
+- Parse the line before rendering it: who is speaking, what the particles do. 来看海岸红杉林 meant "we came to look" (the post's own 我们过来看看), not an invitation to the reader; "Come see for yourself" was a WTF-grade miss.
+- The subtitle never restates the title. 我们又来旧金山的天涯海角了 works under "Lands End, 三藩" because the idiom translates the English title into Chinese; rendering it back into English under a title that already says Lands End gave "end of the world" and a blowup. His own earlier subtitle for the same post is the sanctioned degree of echo.
+- Wordplay that cannot cross the language stays behind. 图森未来已经没有未来了 disses TuSimple, never Tucson; the EN keeps the sentiment (the company is gone, the saguaros are fine) and drops the pun. A glossed pun ("Tucson's Future has no future") retargeted the joke at the town he loves and was rejected with profanity.
+- Marketing formulas are tells: "Come see for yourself", "Come for X, stay for Y", "Forget everything else". His subtitles are a person talking (deadpan parallels, cheeky confessions, skeptic surrenders), never copy.
+- When the native rendering will not come, his own post usually holds it: the shipped Venice subtitle is the post's opening beat ("I came prepared to be disappointed") carrying the zh surrender 真的太浪漫了.
+- Current title register, settled in the same campaign: mostly "Place, Region" with a halfwidth comma and space in both languages (根特, 比利时 / Venice, Italy), joke titles allowed (复活节岛。哦不，Rapa Nui / Easter Island. Sorry, Rapa Nui).
+
 ## Hard invariants
 
 These hold for every post, every genre:
