@@ -8,15 +8,15 @@ lang: 'en'
 translationKey: 'lassen-july-4th'
 ---
 
-For the Fourth of July long weekend, we decided to cross Lassen off our national parks list.
+For the long weekend, we decided to go have a look at Lassen Volcanic National Park. And, while we were at it, the Muir house on the way.
 
-On the way we passed John Muir's old house. I didn't know the backstory going in; only once there did I learn what a big deal Muir was. He lived in this house for twenty-odd years, and in those years, on the side, wrote the idea of the national park into America's head.
+Going in I had no real notion of Muir; all I knew was that a forest north of San Francisco carries the name. It took a walk around the house to learn he was the man who popularized the idea of the national park for Americans. Then it dawned on me that I had never once thought about this: I had always taken it as a matter of course that national parks should exist.
 
 ![The Strentzel office in the Muir house, dark wood and afternoon sun](https://cdn.theneverless.com/2026/07/muir-strentzel-office-2.webp)
 
 ## Manzanita Lake
 
-We entered the park that same afternoon. Manzanita Lake sits right by the northwest entrance: look up, and Lassen Peak stands across the water under what July has left of the snow.
+We reached the edge of the park that afternoon. One exhausting crater later, we doubled back and drove into the park. Manzanita Lake sits right by the northwest entrance: look up, and Lassen Peak stands across the water under what July has left of the snow.
 
 ![Lassen Peak and its reflection over Manzanita Lake](https://cdn.theneverless.com/2026/07/lassen-peak-manzanita-lake-2.webp)
 
@@ -31,7 +31,7 @@ The lake, meanwhile, wore the standard long-weekend look: a pile of paddleboards
 
 ## Lake Helen
 
-Toward evening we followed the park road uphill and stopped beside another lake of a frankly excessive blue. The sun was about to go down by then and no one was left in the water; as it dropped, the whole surface broke into glitter, and the lake got a lot better-looking for it.
+Toward evening we followed the park road uphill. The sulphur stuff turned out to be far too small-scale to be interesting, so we stopped beside another lake of a frankly excessive blue instead. The sun was about to go down by then and no one was left in the water; as it dropped, the whole surface broke into glitter, and the lake got a lot better-looking for it.
 
 The shore was still busy with people coming and going. I thought: all these years on, this many people choosing a national park for their long weekend, and the lake still this blue. If Muir knew, he would be very pleased.
 
