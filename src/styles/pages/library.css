@@ -1,0 +1,271 @@
+/* /library: the owner's watched films and played games as a poster grid.
+   Follows the site's token system; the comment overlay reuses the prose
+   blockquote treatment (2px accent left border). */
+
+.library-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-6) var(--space-24);
+
+  /* Comment overlay surfaces (theme-aware; tokens.css has no note colors). */
+  --lib-note-grad: rgba(255, 255, 255, 0.96);
+  --lib-note-ink: rgba(24, 31, 36, 0.92);
+  --lib-note-ink2: rgba(24, 31, 36, 0.4);
+  --lib-chip-bg: rgba(255, 255, 255, 0.78);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .library-main {
+    --lib-note-grad: rgba(8, 10, 12, 0.94);
+    --lib-note-ink: rgba(239, 247, 250, 0.88);
+    --lib-note-ink2: rgba(239, 247, 250, 0.38);
+    --lib-chip-bg: rgba(16, 20, 22, 0.78);
+  }
+}
+
+[data-theme='dark'] .library-main {
+  --lib-note-grad: rgba(8, 10, 12, 0.94);
+  --lib-note-ink: rgba(239, 247, 250, 0.88);
+  --lib-note-ink2: rgba(239, 247, 250, 0.38);
+  --lib-chip-bg: rgba(16, 20, 22, 0.78);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+
+.library-header {
+  max-width: var(--max-width-content);
+}
+
+.library-title {
+  font-size: clamp(2.125rem, 5vw, 2.875rem);
+  font-weight: 650;
+  letter-spacing: -0.016em;
+  margin: 0;
+  line-height: 1.04;
+}
+
+.library-desc {
+  margin: var(--space-3) 0 0;
+  color: var(--label-tertiary);
+  font-size: var(--text-subheadline);
+  line-height: var(--leading-normal);
+}
+
+/* ── Tabs ───────────────────────────────────────────────── */
+
+.library-tabs {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin: var(--space-10) 0 var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--separator);
+}
+
+.library-tab {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--text-headline);
+  color: var(--label-quaternary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.library-tab:hover {
+  color: var(--label-secondary);
+}
+
+.library-tab[aria-pressed='true'] {
+  color: var(--label-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.library-tab b {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-caption-2);
+  color: var(--label-quaternary);
+  margin-left: 5px;
+}
+
+.library-tab[aria-pressed='true'] b {
+  color: var(--color-accent);
+}
+
+.library-tab-sep {
+  color: var(--label-quaternary);
+  font-size: var(--text-subheadline);
+}
+
+.library-sortnote {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption-2);
+  color: var(--label-quaternary);
+}
+
+/* ── Grid and cards ─────────────────────────────────────── */
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-8) var(--space-4);
+}
+
+.library-grid[hidden] {
+  display: none;
+}
+
+.lib-card {
+  position: relative;
+}
+
+.lib-card:hover,
+.lib-card.open {
+  z-index: 20;
+}
+
+.lib-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--fill-tertiary);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.lib-card:hover .lib-poster {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Keep the cover still while its comment overlay is out. */
+.lib-card.has-note:hover .lib-poster,
+.lib-card.has-note.open .lib-poster {
+  transform: none;
+}
+
+.lib-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lib-spine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--space-4);
+  text-align: center;
+  font-size: var(--text-footnote);
+  color: var(--label-secondary);
+}
+
+.lib-chip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: var(--text-caption-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--lib-chip-bg);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--color-accent);
+  font-weight: var(--weight-medium);
+}
+
+.lib-title {
+  margin-top: 9px;
+  font-size: var(--text-footnote);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lib-meta {
+  margin-top: 3px;
+  font-size: var(--text-caption-2);
+  color: var(--label-tertiary);
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+}
+
+.lib-meta .stars {
+  color: var(--color-warning);
+  letter-spacing: 0.08em;
+}
+
+.lib-meta .hrs {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption-1);
+  color: var(--color-accent);
+}
+
+/* ── Comment overlay: gradient over the cover, blockquote marker ── */
+
+.lib-note {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 13px 12px;
+  background: linear-gradient(180deg, transparent 8%, var(--lib-note-grad) 62%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+  pointer-events: none;
+}
+
+.lib-card:hover .lib-note,
+.lib-card.open .lib-note {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lib-note .c {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 10px;
+  font-size: var(--text-footnote);
+  line-height: 1.7;
+  color: var(--lib-note-ink);
+  overflow-y: auto;
+  max-height: 72%;
+}
+
+.lib-note .d {
+  margin-top: 8px;
+  padding-left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: var(--lib-note-ink2);
+}
+
+/* ── Small screens ──────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .library-main {
+    padding: var(--space-12) var(--space-4) var(--space-16);
+  }
+
+  .library-grid {
+    grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+    gap: var(--space-6) var(--space-3);
+  }
+
+  .library-sortnote {
+    display: none;
+  }
+}

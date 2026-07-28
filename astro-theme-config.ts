@@ -37,6 +37,7 @@ const config = {
   nav: [
     { label: 'Posts', labelZh: '文章', href: '/posts' },
     { label: 'Notes', labelZh: '随记', href: '/notes' },
+    { label: 'Library', labelZh: '书影音', href: '/library' },
   ] as NavItem[],
 
   // Footer links stay visible by default so readers have a stable way to move around.

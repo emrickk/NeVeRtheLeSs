@@ -1,0 +1,170 @@
+---
+import '../styles/pages/library.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LangText from '../components/LangText.astro';
+import movies from '../data/library/movies.json';
+import games from '../data/library/games.json';
+
+// Cover thumbnails live on R2; scripts/library/build-snapshot.mjs uploads them.
+const CDN = 'https://cdn.theneverless.com/library';
+
+const stars = (r: number) => '★'.repeat(r);
+
+type Row = {
+  id: string;
+  t: string;
+  y?: number;
+  tv?: boolean;
+  s?: string;
+  h?: number;
+  r?: number;
+  c?: string;
+  m?: string;
+  w?: boolean;
+  nc?: boolean;
+};
+
+const movieRows = movies as Row[];
+const gameRows = games as Row[];
+---
+
+<BaseLayout title="Library" description="What I've binged influences me, kinda.">
+  <main id="main-content" class="library-main">
+    <header class="library-header">
+      <h1 class="library-title"><LangText text={{ zh: '没干正事', en: 'Off Duty' }} /></h1>
+      <p class="library-desc">
+        <LangText
+          text={{
+            zh: '可能被这些电影和游戏影响了一点点。',
+            en: "What I've binged influences me, kinda.",
+          }}
+        />
+      </p>
+    </header>
+
+    <div class="library-tabs" role="group" aria-label="Library sections">
+      <button class="library-tab" data-tab="movies" aria-pressed="true">
+        <LangText text={{ zh: '影视', en: 'Films' }} /><b>{movieRows.length}</b>
+      </button>
+      <span class="library-tab-sep" aria-hidden="true">·</span>
+      <button class="library-tab" data-tab="games" aria-pressed="false">
+        <LangText text={{ zh: '游戏', en: 'Games' }} /><b>{gameRows.length}</b>
+      </button>
+      <span class="library-sortnote" data-note="movies">
+        <LangText text={{ zh: '按标记时间排序', en: 'by date watched' }} />
+      </span>
+      <span class="library-sortnote" data-note="games" hidden>
+        <LangText text={{ zh: '按游戏时长排序', en: 'by hours played' }} />
+      </span>
+    </div>
+
+    <div class="library-grid" data-grid="movies">
+      {
+        movieRows.map((d) => (
+          <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+            <div class="lib-poster">
+              {d.nc ? (
+                <div class="lib-spine">{d.t}</div>
+              ) : (
+                <img
+                  src={`${CDN}/movies/${d.id}.jpg`}
+                  alt={d.t}
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="600"
+                />
+              )}
+              {d.w && (
+                <span class="lib-chip">
+                  <LangText text={{ zh: '在看', en: 'Watching' }} />
+                </span>
+              )}
+              {d.c && (
+                <div class="lib-note">
+                  <div class="c">{d.c}</div>
+                  <div class="d">{d.m}</div>
+                </div>
+              )}
+            </div>
+            <div class="lib-title">{d.t}</div>
+            <div class="lib-meta">
+              <span>
+                {d.y}
+                {d.tv && d.s ? ` · S${d.s}` : ''}
+              </span>
+              {d.r ? (
+                <span class="stars" aria-label={`${d.r} / 5`}>
+                  {stars(d.r)}
+                </span>
+              ) : null}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="library-grid" data-grid="games" hidden>
+      {
+        gameRows.map((d) => (
+          <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+            <div class="lib-poster">
+              {d.nc ? (
+                <div class="lib-spine">{d.t}</div>
+              ) : (
+                <img
+                  src={`${CDN}/games/${d.id}.jpg`}
+                  alt={d.t}
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="600"
+                />
+              )}
+              {d.c && (
+                <div class="lib-note">
+                  <div class="c">{d.c}</div>
+                  <div class="d">{d.m}</div>
+                </div>
+              )}
+            </div>
+            <div class="lib-title">{d.t}</div>
+            <div class="lib-meta">
+              {d.h ? <span class="hrs">{d.h} h</span> : <span>{d.y}</span>}
+              {d.r ? (
+                <span class="stars" aria-label={`${d.r} / 5`}>
+                  {stars(d.r)}
+                </span>
+              ) : null}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const tabs = document.querySelectorAll('.library-tab');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const key = tab.dataset.tab;
+        tabs.forEach((t) => t.setAttribute('aria-pressed', String(t === tab)));
+        document.querySelectorAll('[data-grid]').forEach((g) => {
+          g.hidden = g.dataset.grid !== key;
+        });
+        document.querySelectorAll('[data-note]').forEach((n) => {
+          n.hidden = n.dataset.note !== key;
+        });
+      });
+    });
+    // Touch: tap a commented cover to toggle its note.
+    document.querySelectorAll('[data-grid]').forEach((grid) => {
+      grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.lib-card.has-note');
+        if (card) card.classList.toggle('open');
+      });
+    });
+  })();
+</script>
