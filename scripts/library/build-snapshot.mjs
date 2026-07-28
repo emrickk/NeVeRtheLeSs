@@ -19,6 +19,7 @@
  * in HOLD_ENTRIES are excluded completely (owner decisions).
  */
 
+import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -57,6 +58,16 @@ const DO_COVERS = flag('--covers')
 
 const GENERIC_SEASON = /^season\s*\d+$/i
 
+/** Content-hashed cover filename, e.g. "12345.a1b2c3d4.jpg". A refreshed
+ *  source cover gets a new URL, so the CDN's immutable caching never serves
+ *  a stale image; unchanged covers keep their key and are skipped on upload. */
+function coverName(srcDir, id) {
+  const file = join(srcDir, `${id}.jpg`)
+  if (!existsSync(file)) return null
+  const h = createHash('sha1').update(readFileSync(file)).digest('hex').slice(0, 8)
+  return `${id}.${h}.jpg`
+}
+
 /** English display title. TV rows use the show-level title: the season-level
  *  title_en is often "Season N" or a marketing alias (Squid Game S1 shows as
  *  "Round Six"). */
@@ -94,8 +105,8 @@ function buildMovies(coverMisses) {
     .filter((r) => (r.status === 'collect' || r.status === 'do') && !HOLD_ENTRIES.has(r.douban_id))
     .sort((a, b) => (b.marked_at || '').localeCompare(a.marked_at || ''))
   return keep.map((r) => {
-    const nc = !existsSync(join(SOURCE, 'covers', `${r.douban_id}.jpg`))
-    if (nc) coverMisses.push(`movie ${r.douban_id} ${r.title_zh}`)
+    const cv = coverName(join(SOURCE, 'covers'), r.douban_id)
+    if (!cv) coverMisses.push(`movie ${r.douban_id} ${r.title_zh}`)
     return compactRow({
       id: r.douban_id,
       t: movieTitle(r),
@@ -106,7 +117,8 @@ function buildMovies(coverMisses) {
       c: r.my_comment.trim(),
       m: (r.marked_at || '').slice(0, 10),
       w: r.status === 'do', // still watching
-      nc,
+      cv,
+      nc: !cv,
     })
   })
 }
@@ -129,8 +141,8 @@ function buildGames(coverMisses) {
   untracked.sort((a, b) => rating(b.my_rating) - rating(a.my_rating))
   return [...tracked, ...untracked].map((g) => {
     const h = gameHours(g)
-    const nc = !existsSync(join(SOURCE, 'covers-games', `${g.id}.jpg`))
-    if (nc) coverMisses.push(`game ${g.id} ${g.name_en || g.name_zh}`)
+    const cv = coverName(join(SOURCE, 'covers-games'), g.id)
+    if (!cv) coverMisses.push(`game ${g.id} ${g.name_en || g.name_zh}`)
     return compactRow({
       id: g.id,
       t: g.name_en || g.name_zh,
@@ -139,7 +151,8 @@ function buildGames(coverMisses) {
       r: rating(g.my_rating),
       c: g.my_comment.trim(),
       m: (g.marked_at || '').slice(0, 10),
-      nc,
+      cv,
+      nc: !cv,
     })
   })
 }
@@ -158,7 +171,7 @@ async function uploadCovers(rows, srcDir, keyPrefix) {
     for (;;) {
       const row = queue.shift()
       if (!row) return
-      const key = `${keyPrefix}/${row.id}.jpg`
+      const key = `${keyPrefix}/${row.cv}`
       if (await objectExists(client, config.bucket, key)) {
         skipped += 1
         continue

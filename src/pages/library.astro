@@ -21,6 +21,7 @@ type Row = {
   c?: string;
   m?: string;
   w?: boolean;
+  cv?: string;
   nc?: boolean;
 };
 
@@ -67,7 +68,7 @@ const gameRows = games as Row[];
                 <div class="lib-spine">{d.t}</div>
               ) : (
                 <img
-                  src={`${CDN}/movies/${d.id}.jpg`}
+                  src={`${CDN}/movies/${d.cv}`}
                   alt={d.t}
                   loading="lazy"
                   decoding="async"
@@ -113,7 +114,7 @@ const gameRows = games as Row[];
                 <div class="lib-spine">{d.t}</div>
               ) : (
                 <img
-                  src={`${CDN}/games/${d.id}.jpg`}
+                  src={`${CDN}/games/${d.cv}`}
                   alt={d.t}
                   loading="lazy"
                   decoding="async"
