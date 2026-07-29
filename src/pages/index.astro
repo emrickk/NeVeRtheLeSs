@@ -5,8 +5,11 @@ import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import FeaturedPostGrid from '../components/FeaturedPostGrid.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import LangText from '../components/LangText.astro';
 import LangTitle from '../components/LangTitle.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import movies from '../data/library/movies.json';
+import games from '../data/library/games.json';
 import {
   DATE_LOCALE,
   SITE_TITLE,
@@ -102,6 +105,27 @@ const featuredPlaceholderStyle = (id: string) => {
 // or retina screens get an upscaled srcset variant.
 const featuredThumbSizes = (img: ImageMetadata) =>
   `(max-width: 600px) calc(100vw - 32px), ${Math.round(420 * Math.max(6 / 7, img.width / img.height))}px`;
+
+// Same CDN base as src/pages/library.astro.
+const LIBRARY_CDN = 'https://cdn.theneverless.com/library';
+
+type LibRow = { t: string; cv?: string; nc?: boolean };
+
+// First N rows with a cover, deduped by title (series seasons collapse to one).
+// movies.json is already sorted by date watched; games.json by hours played.
+const shelfPick = (rows: LibRow[], base: string, n: number) => {
+  const seen = new Set<string>();
+  const out: { src: string; t: string }[] = [];
+  for (const d of rows) {
+    if (!d.cv || d.nc || seen.has(d.t)) continue;
+    seen.add(d.t);
+    out.push({ src: `${LIBRARY_CDN}/${base}/${d.cv}`, t: d.t });
+    if (out.length === n) break;
+  }
+  return out;
+};
+
+const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'games', 2)];
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -234,6 +258,35 @@ const featuredThumbSizes = (img: ImageMetadata) =>
             </a>
           </div>
           <FeaturedPostGrid posts={gridPosts} />
+        </section>
+      )
+    }
+
+    {
+      libraryShelf.length > 0 && (
+        <section class="home-library-section">
+          <div class="home-library-header">
+            <span class="home-library-label">
+              <LangText text={{ zh: '没干正事', en: 'Off Duty' }} />
+            </span>
+            <a href={withBase('/library')} class="view-all">
+              Library →
+            </a>
+          </div>
+          <div class="home-library-shelf">
+            {libraryShelf.map((item) => (
+              <a href={withBase('/library')} class="home-library-item" aria-label={item.t}>
+                <img
+                  src={item.src}
+                  alt={item.t}
+                  loading="lazy"
+                  decoding="async"
+                  width="200"
+                  height="300"
+                />
+              </a>
+            ))}
+          </div>
         </section>
       )
     }

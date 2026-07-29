@@ -8,7 +8,8 @@
 
 .hero,
 .featured-section,
-.posts-section {
+.posts-section,
+.home-library-section {
   max-width: var(--max-width-content);
 }
 
@@ -347,6 +348,56 @@
   }
 }
 
+/* ── Library shelf ───────────────────────── */
+.home-library-section {
+  padding-top: var(--space-16);
+}
+
+.home-library-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.home-library-label {
+  font-size: var(--text-footnote);
+  font-weight: var(--weight-accent-label);
+  color: var(--label-tertiary);
+}
+
+.home-library-shelf {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: var(--space-3);
+}
+
+.home-library-item {
+  display: block;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--fill-tertiary);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.home-library-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  opacity: 1;
+}
+
+.home-library-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0; /* base.css rounds bare imgs; the item clips instead */
+}
+
 /* ── Responsive ──────────────────────────── */
 @media (max-width: 900px) {
   .hero {
@@ -410,6 +461,12 @@
 
   .featured-title {
     font-size: 1.5rem;
+  }
+
+  /* Two rows of four on phones. */
+  .home-library-shelf {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
   }
 }
 
