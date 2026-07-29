@@ -81,13 +81,20 @@ const gameRows = games as Row[];
                   <LangText text={{ zh: '在看', en: 'Watching' }} />
                 </span>
               )}
-              {d.c && (
-                <div class="lib-note">
-                  <div class="c">{d.c}</div>
-                  <div class="d">{d.m}</div>
-                </div>
-              )}
             </div>
+            {d.c && (
+              <aside class="lib-note">
+                <p class="c">{d.c}</p>
+                <div class="m">
+                  {d.r ? (
+                    <span class="stars" aria-hidden="true">
+                      {stars(d.r)}
+                    </span>
+                  ) : null}
+                  <span class="d">{d.m}</span>
+                </div>
+              </aside>
+            )}
             <div class="lib-title">{d.t}</div>
             <div class="lib-meta">
               <span>
@@ -122,13 +129,20 @@ const gameRows = games as Row[];
                   height="600"
                 />
               )}
-              {d.c && (
-                <div class="lib-note">
-                  <div class="c">{d.c}</div>
-                  <div class="d">{d.m}</div>
-                </div>
-              )}
             </div>
+            {d.c && (
+              <aside class="lib-note">
+                <p class="c">{d.c}</p>
+                <div class="m">
+                  {d.r ? (
+                    <span class="stars" aria-hidden="true">
+                      {stars(d.r)}
+                    </span>
+                  ) : null}
+                  <span class="d">{d.m}</span>
+                </div>
+              </aside>
+            )}
             <div class="lib-title">{d.t}</div>
             <div class="lib-meta">
               {d.h ? <span class="hrs">{d.h} h</span> : <span>{d.y}</span>}
@@ -148,20 +162,42 @@ const gameRows = games as Row[];
 <script is:inline>
   (function () {
     const tabs = document.querySelectorAll('.library-tab');
+    const grids = document.querySelectorAll('[data-grid]');
+
+    // The floating note (wide viewports) opens to the right; cards whose
+    // note would cross the grid's right edge open to the left instead.
+    // 260 = 14px gap + 240px note width + slack.
+    function placeNotes(grid) {
+      if (grid.hidden) return;
+      const gridRight = grid.getBoundingClientRect().right;
+      grid.querySelectorAll('.lib-card.has-note').forEach((card) => {
+        const flip = card.getBoundingClientRect().right + 260 > gridRight;
+        card.classList.toggle('note-flip', flip);
+      });
+    }
+
+    grids.forEach(placeNotes);
+    let raf = 0;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => grids.forEach(placeNotes));
+    });
+
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
         const key = tab.dataset.tab;
         tabs.forEach((t) => t.setAttribute('aria-pressed', String(t === tab)));
-        document.querySelectorAll('[data-grid]').forEach((g) => {
+        grids.forEach((g) => {
           g.hidden = g.dataset.grid !== key;
         });
         document.querySelectorAll('[data-note]').forEach((n) => {
           n.hidden = n.dataset.note !== key;
         });
+        grids.forEach(placeNotes);
       });
     });
     // Touch: tap a commented cover to toggle its note.
-    document.querySelectorAll('[data-grid]').forEach((grid) => {
+    grids.forEach((grid) => {
       grid.addEventListener('click', (e) => {
         const card = e.target.closest('.lib-card.has-note');
         if (card) card.classList.toggle('open');

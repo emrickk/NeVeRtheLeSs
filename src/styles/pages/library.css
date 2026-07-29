@@ -1,6 +1,8 @@
 /* /library: the owner's watched films and played games as a poster grid.
-   Follows the site's token system; the comment overlay reuses the prose
-   blockquote treatment (2px accent left border). */
+   Follows the site's token system; the comment note reuses the prose
+   blockquote treatment (2px accent left border). Narrow viewports show the
+   comment as a gradient overlay over the cover; from 700px up it floats
+   beside the poster as a tilted serif margin note. */
 
 .library-main {
   max-width: 1080px;
@@ -213,11 +215,17 @@
   color: var(--color-accent);
 }
 
-/* ── Comment overlay: gradient over the cover, blockquote marker ── */
+/* ── Comment note ───────────────────────────────────────── */
+/* The note is a sibling of .lib-poster (the poster clips its children), so
+   the narrow-viewport overlay mirrors the poster box via aspect-ratio. */
 
 .lib-note {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -235,6 +243,7 @@
 }
 
 .lib-note .c {
+  margin: 0;
   border-left: 2px solid var(--color-accent);
   padding-left: 10px;
   font-size: var(--text-footnote);
@@ -244,13 +253,106 @@
   max-height: 72%;
 }
 
-.lib-note .d {
+.lib-note .m {
   margin-top: 8px;
   padding-left: 12px;
+}
+
+.lib-note .m .stars {
+  display: none;
+  color: var(--color-warning);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.lib-note .m .d {
   font-family: var(--font-mono);
   font-size: 0.625rem;
   letter-spacing: 0.08em;
   color: var(--lib-note-ink2);
+}
+
+/* ── Floating margin note beside the poster (4+ grid columns) ── */
+/* The handoff asks for this from 601px, but at 3 grid columns a 240px note
+   cannot fit on either side of a middle-column poster; from 700px the grid
+   always has 4+ columns and every position fits. */
+
+@media (min-width: 700px) {
+  /* The note no longer covers the cover, so commented cards lift again. */
+  .lib-card.has-note:hover .lib-poster,
+  .lib-card.has-note.open .lib-poster {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .lib-note {
+    inset: auto;
+    top: -2px;
+    left: calc(100% + 14px);
+    aspect-ratio: auto;
+    width: 240px;
+    z-index: 30;
+    display: block;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--separator);
+    border-radius: var(--radius-lg);
+    padding: 14px 15px;
+    box-shadow: var(--shadow-lg);
+    transform: rotate(-1.8deg) translateY(10px);
+    transition:
+      opacity var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out);
+  }
+
+  /* Invisible bridge over the 14px gap so the pointer can reach the note. */
+  .lib-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    width: 14px;
+  }
+
+  .lib-card:hover .lib-note,
+  .lib-card.open .lib-note {
+    transform: rotate(-1.8deg) translateY(0);
+  }
+
+  /* Cards near the grid's right edge open leftwards (JS sets note-flip). */
+  .lib-card.note-flip .lib-note {
+    left: auto;
+    right: calc(100% + 14px);
+  }
+
+  .lib-card.note-flip .lib-note::before {
+    right: auto;
+    left: 100%;
+  }
+
+  .lib-note .c {
+    font-family: Georgia, 'Noto Serif SC', 'Songti SC', serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .lib-note .m {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .lib-note .m .stars {
+    display: inline;
+  }
+
+  .lib-note .m .d {
+    margin-left: auto;
+  }
 }
 
 /* ── Small screens ──────────────────────────────────────── */
