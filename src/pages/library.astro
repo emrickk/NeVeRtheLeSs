@@ -8,7 +8,8 @@ import games from '../data/library/games.json';
 // Cover thumbnails live on R2; scripts/library/build-snapshot.mjs uploads them.
 const CDN = 'https://cdn.theneverless.com/library';
 
-const stars = (r: number) => '★'.repeat(r);
+// Half-star ratings render letterboxd-style: ★★★★½.
+const stars = (r: number) => '★'.repeat(Math.floor(r)) + (r % 1 >= 0.5 ? '½' : '');
 
 type Row = {
   id: string;

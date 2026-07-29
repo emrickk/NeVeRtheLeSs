@@ -47,3 +47,6 @@ image-staging/
 originals/
 scripts/images/.manifest.json
 scripts/images/.manifest-notes.json
+
+# library page: local cover sources for works absent from the douban export
+scripts/library/covers-extra/
