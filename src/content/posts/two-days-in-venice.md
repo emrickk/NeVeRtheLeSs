@@ -9,6 +9,8 @@ lang: 'zh'
 translationKey: 'two-days-in-venice'
 ---
 
+<img src="https://cdn.theneverless.com/2026/08/venice-header-strip-v2.webp" alt="救主堂和横穿水面的皮划艇组成的极简杂志拼贴" style="width: 100%; aspect-ratio: 9 / 1; object-fit: cover;" />
+
 从佛罗伦萨过来的火车，最后几分钟是在海上开的：长堤两边都是水，然后一头扎进圣露西亚车站。出了站，台阶底下就是大运河。威尼斯不给人缓冲的时间，一出门就是全部。我虽然做好了失望的准备，但是觉得 hmm 可能也许还是没白来啊。
 
 在威尼斯，公交车是船。开船当然比开车麻烦，不过到了这里，也不过就是上班和回家。船靠站，人上人下，本地人和游客挤在同一条船上，各自做自己的事情。

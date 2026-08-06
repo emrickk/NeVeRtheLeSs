@@ -2,8 +2,10 @@
 translationKey: 'two-days-in-venice'
 lang: 'en'
 title: 'Venice, Italy'
-description: 'I came prepared to be disappointed. Venice really is that romantic.'
+description: 'Whatever else you say about it, Venice really is that romantic.'
 ---
+
+<img src="https://cdn.theneverless.com/2026/08/venice-header-strip-v2.webp" alt="A minimal zine strip of the Redentore and a line of kayakers crossing the water" style="width: 100%; aspect-ratio: 9 / 1; object-fit: cover;" />
 
 The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, and then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I had come prepared to be disappointed, but hmm, maybe, just maybe, this wasn't a wasted trip after all.
 
@@ -28,7 +30,7 @@ By noon we reached the Accademia Bridge. Looking out from the middle, this is pr
 
 ![The Grand Canal and the Salute seen from the Accademia Bridge](https://cdn.theneverless.com/2026/07/venice-grand-canal-from-accademia.webp)
 
-After four hundred steps in Florence, Venice was far more polite: the Campanile di San Marco has an elevator. One "ding" and the whole city spread out beyond the wire mesh, the piazza shrunk to a courtyard, red roofs running all the way to the lagoon.
+After four hundred steps in Florence, Venice was far more polite: the Campanile di San Marco has an elevator. One "ding" and the whole city spread out beyond the wire mesh: the piazza shrank to a courtyard, and red roofs ran all the way to the lagoon.
 
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/venice-campanile-lookout.webp" alt="A visitor looking over Venice through the Campanile's wire mesh">
@@ -44,7 +46,7 @@ The colonnade of the Doge's Palace was cool. Between the columns, San Giorgio Ma
 
 In the evening Venice becomes a different city. The tourists drain away like a tide, the light turns to gold, and on a wall beside a cafe the star jasmine blooms with no restraint whatsoever.
 
-Before sunset the alleys go dark first, keeping one lamp at the far end, and behind the lamp the lagoon glows. No wonder old stories always seem to happen in Venice: a boy and a girl stand on a bridge and promise to be each other's special someone from then on. Standing in light like this, anyone would believe them.
+Before sunset, the alleys darken first, leaving one lamp at the far end and the lagoon glowing behind it. No wonder old stories always seem to happen in Venice: a boy and a girl stand on a bridge and agree that from then on, they will be each other's special someone. In light like this, anyone would believe it.
 
 ![A glowing lagoon and streetlamp at the end of a dark alley](https://cdn.theneverless.com/2026/07/venice-sunset-alley.webp)
 
@@ -58,7 +60,7 @@ Later we found a corner with hardly any tourists, sat for a while, stood for a w
 
 ![A Venetian canal glowing in the sunset](https://cdn.theneverless.com/2026/07/venice-golden-canal.webp)
 
-The next morning we took a gondola. The gondolier rowed us into waterways with room for exactly one boat, bridge after bridge sliding past overhead. Near the end the walls suddenly opened and we slipped out onto the Grand Canal, like stepping from backstage into the theater.
+The next morning we took a gondola. The gondolier rowed us into waterways with room for exactly one boat, bridge after bridge sliding past overhead. Near the end, the walls suddenly opened and we slipped out onto the Grand Canal, like stepping from backstage onto the stage.
 
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/venice-gondola-bridge.webp" alt="A gondola passing beneath a low bridge">
@@ -69,11 +71,11 @@ The midday vaporetto ran out to Murano. At the Colonna stop, through the boat wi
 
 ![Passengers at the Colonna stop seen through a vaporetto window](https://cdn.theneverless.com/2026/07/murano-colonna-vaporetto.webp)
 
-The glass island is quieter than its reputation. Behind the brick arches, an empty courtyard and a tree's worth of green, and an afternoon that seemed to have no end.
+The island of glass was quieter than its reputation. Beyond the brick arches lay an empty courtyard and a whole tree's worth of green. There seemed to be more afternoon than we could use.
 
 ![An empty courtyard behind brick arches on Murano](https://cdn.theneverless.com/2026/07/murano-quiet-corner.webp)
 
-Burano is the island of color. It made sense the moment the afternoon boat docked: this little island does not hold back with the paint, one color per house, and even the laundry on the lines looks coordinated. A blue window is set into a yellow wall, with flowers blooming beneath the sill.
+Burano is the island of color. The moment the afternoon boat docked, it was obvious why: this little island does not hold back on paint. Every house gets a color of its own, and even the laundry on the lines looks coordinated. A blue window is set into a yellow wall, with flowers blooming beneath the sill.
 
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/burano-lane.webp" alt="A lane between colorful houses on Burano">
@@ -91,4 +93,4 @@ By evening we were back on the main island, just in time for another sunset. A g
 <img src="https://cdn.theneverless.com/2026/07/venice-last-canal.webp" alt="A small blue boat in the shadows of a narrow canal">
 </div>
 
-They say Venice is sinking, a few millimeters every year. Everything I heard before the trip was true as well: the crowds, the packed boats, the tourists everywhere. What nobody mentioned is that missing one boat buys you half an empty city, and that a sinking city holds things up this steadily: bridges, boats, and two people whose feet were sore and who still did not want to leave.
+They say Venice is slowly sinking, a few millimeters every year. Everything else I had heard before the trip was true too: the crowds, the packed boats, the tourists everywhere. But nobody said that missing one boat could buy you half an empty city. Nobody said that a city could be sinking and still hold everything so steadily: bridges, boats, and two people with aching feet who still did not want to go back.
