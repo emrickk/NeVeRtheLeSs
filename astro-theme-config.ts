@@ -76,7 +76,7 @@ const config = {
     mode: 'giscus-custom',
     provider: 'giscus',
     giscus: {
-      repo: 'emrickk/emrickk.github.io',
+      repo: 'emrickk/NeVeRtheLeSs',
       repoId: 'R_kgDOTWatYA',
       category: 'Announcements',
       categoryId: 'DIC_kwDOTWatYM4DBD9Y',

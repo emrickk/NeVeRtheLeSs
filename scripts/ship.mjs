@@ -37,7 +37,7 @@ import {
   validatePostPathLocation,
 } from './fast-checks.mjs'
 
-const ACTIONS_URL = 'https://github.com/emrickk/emrickk.github.io/actions'
+const ACTIONS_URL = 'https://github.com/emrickk/NeVeRtheLeSs/actions'
 const USAGE =
   'usage: npm run ship -- [--preflight] [--yes --digest <d>] [--only <path> ...] [--fast] [--message <msg>] [--port N] [--no-open]'
 
