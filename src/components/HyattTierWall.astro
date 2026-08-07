@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const wallUrl = '/interactive/hyatt-tier-wall/';
+---
+
+<section class="hyatt-tier-wall" aria-label={title}>
+  <iframe src={wallUrl} title={title} loading="eager" referrerpolicy="no-referrer"></iframe>
+</section>
+
+<style>
+  .hyatt-tier-wall {
+    background: #efefe8;
+    height: 100dvh;
+    inset: 0;
+    margin: 0;
+    position: fixed;
+    width: 100vw;
+    z-index: 2147483647;
+  }
+
+  iframe {
+    border: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<style is:global>
+  html:has(.hyatt-tier-wall),
+  body:has(.hyatt-tier-wall) {
+    overflow: hidden;
+  }
+</style>
