@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src 'self' blob: data: https://cdn.theneverless.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Hyatt Rating Wall</title>
 <style>:root {
   color-scheme: light dark;
@@ -997,7 +997,8 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
       color: var(--hrw-ink);
       cursor: pointer;
       min-height: 58px;
-      padding: 10px 12px;
+      padding: 10px 24px 10px 12px;
+      position: relative;
       text-align: left;
       transition: background-color .12s ease, color .12s ease;
     }
@@ -1006,6 +1007,142 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
     #hyatt-rating-wall-full .hrw-hotel[aria-pressed="true"] {
       background: var(--hrw-blue);
       color: #fff;
+    }
+
+    #hyatt-rating-wall-full .hrw-dogear {
+      border-left: 16px solid transparent;
+      border-top: 16px solid var(--hrw-ink);
+      height: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0;
+    }
+
+    #hyatt-rating-wall-full .hrw-post {
+      animation: hrw-post-in .14s ease-out;
+      background: #fff;
+      border-top: 1px solid var(--hrw-ink);
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+    }
+
+    /* Switching hotels rebuilds the panel, and across tier rows it lands somewhere
+       else entirely. The fade marks it as new content without animating layout. */
+    @keyframes hrw-post-in {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #hyatt-rating-wall-full .hrw-post { animation: none; }
+    }
+
+    #hyatt-rating-wall-full .hrw-post-rail {
+      align-items: center;
+      border-right: 1px solid var(--hrw-ink);
+      display: flex;
+      flex-direction: column;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      gap: 9px;
+      padding: 14px 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #hyatt-rating-wall-full .hrw-post-chip {
+      background: var(--hrw-ink);
+      color: var(--hrw-bg);
+      padding: 2px 7px;
+    }
+
+    #hyatt-rating-wall-full .hrw-post-close {
+      background: transparent;
+      border: 1px solid var(--hrw-ink);
+      color: var(--hrw-ink);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      padding: 3px 9px;
+      text-transform: uppercase;
+    }
+
+    #hyatt-rating-wall-full .hrw-post-close:hover {
+      background: var(--hrw-ink);
+      color: var(--hrw-bg);
+    }
+
+    #hyatt-rating-wall-full .hrw-post-content {
+      padding: 16px 18px 20px;
+    }
+
+    #hyatt-rating-wall-full .hrw-post-prints {
+      align-items: flex-start;
+      border-top: 1px solid var(--hrw-ink);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 22px;
+      margin-top: 11px;
+      padding: 16px 2px 8px;
+    }
+
+    #hyatt-rating-wall-full .hrw-print {
+      background: #fff;
+      border: 1px solid var(--hrw-ink);
+      box-shadow: 2px 3px 0 rgba(14,14,13,.18);
+      max-width: 100%;
+      padding: 9px;
+    }
+
+    #hyatt-rating-wall-full .hrw-print-frame {
+      background: #e6e6dd;
+      overflow: hidden;
+    }
+
+    #hyatt-rating-wall-full .hrw-print-frame img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict {
+      display: flex;
+      gap: 12px;
+      padding: 11px 0;
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict:first-child {
+      padding-top: 0;
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict + .hrw-verdict {
+      border-top: 1px solid var(--hrw-ink);
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict-score {
+      align-self: flex-start;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 5px;
+      padding: 1px 7px;
+      white-space: nowrap;
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict-name {
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      line-height: 1.1;
+    }
+
+    #hyatt-rating-wall-full .hrw-verdict-note {
+      font-size: 15px;
+      line-height: 1.35;
+      margin-top: 4px;
+      max-width: 78ch;
     }
 
 
@@ -1026,6 +1163,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
       #hyatt-rating-wall-full .hrw-selected-score { font-size: 22px; }
       #hyatt-rating-wall-full .hrw-selected-note { border-left: 0; border-top: 1px solid rgba(255,255,255,.5); grid-column: 1 / -1; padding: 12px 0 0; }
       #hyatt-rating-wall-full .hrw-row { grid-template-columns: 70px minmax(0, 1fr); }
+      #hyatt-rating-wall-full .hrw-post { grid-template-columns: 70px minmax(0, 1fr); }
       #hyatt-rating-wall-full .hrw-hotels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #hyatt-rating-wall-full .hrw-foot { align-items: start; flex-direction: column; }
       #hyatt-rating-wall-full .hrw-foot span:last-child { text-align: left; }
@@ -1034,7 +1172,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
 
   <header class="hrw-head">
     <div class="hrw-title">My Hyatt<br>tier wall</div>
-        <div class="hrw-count">73 PROPERTIES<br>73 RATED</div>
+        <div class="hrw-count" id="hrw-count">73 PROPERTIES<br>73 RATED</div>
   </header>
 
   <section class="hrw-selected" aria-live="polite" aria-label="Selected hotel">
@@ -1047,6 +1185,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
 
   <footer class="hrw-foot">
     <span>S 5.0 · A 4.0–4.5 · B 3.5 · C 3.0 · D ≤2.5</span>
+    <span>◥ FOLDED CORNER: PHOTOS · CLICK FOR THE TINY POST</span>
   </footer>
 
   <script>
@@ -1055,6 +1194,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
       const selectedScore = root.querySelector('#hrw-selected-score');
       const selectedName = root.querySelector('#hrw-selected-name');
       const selectedNote = root.querySelector('#hrw-selected-note');
+      const countEl = root.querySelector('#hrw-count');
       const wall = root.querySelector('#hrw-wall');
 
       const hotels = [
@@ -1142,6 +1282,40 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
         {name:'tommie Hollywood', group:'1.0', score:'1.0', note:'A hotel built on top of a nightclub. The music kept me awake until 1 a.m.; one star was inevitable.'}
       ];
 
+      // Tiny posts. Each entry groups one city's hotels under one post: `hotels` lists
+      // the exact names from the array above, and every one of them gets a dog-ear and
+      // opens this post. Photos come from either `photos` (1 to 5 entries, each a URL
+      // string or {src, alt}, the CDN being the preferred home for them) or
+      // `photoCount` (local files in this widget's photos/ folder, named <id>-1.jpg
+      // upward). A post carries no prose of its own: the score and note shown at the
+      // top of the panel are the owner's existing words for that hotel, reused as
+      // written. Never author copy here.
+      //
+      //   {id: 'hangzhou', title: 'Hangzhou', city: 'Hangzhou, China',
+      //    hotels: ['Grand Hyatt Hangzhou', 'Park Hyatt Hangzhou', 'Mumian Hangzhou'],
+      //    photos: ['<full CDN image url>', '<and so on, 1 to 5 of them>']},
+      const posts = [
+        {id:'big-sur', title:'Big Sur', city:'Big Sur, California',
+         hotels:['Alila Ventana Big Sur'],
+         photos:[
+           {src:'https://cdn.theneverless.com/2026/07/big-sur-cabin-canopy.webp', alt:'Looking down through the oaks at the cabin roofs'},
+           {src:'https://cdn.theneverless.com/2026/07/big-sur-desk-window.webp', alt:'The desk and a leather chair in the window light'},
+           {src:'https://cdn.theneverless.com/2026/07/big-sur-shutter-light.webp', alt:'Sunlight breaking into narrow bars through the window shutters'},
+           {src:'https://cdn.theneverless.com/2026/07/big-sur-balcony-valley.webp', alt:'The last warm light across the valley'},
+           {src:'https://cdn.theneverless.com/2026/07/big-sur-morning-fog.webp', alt:'Morning fog over the ocean, an empty lawn'}
+         ]},
+        {id:'amsterdam', title:'Amsterdam', city:'Amsterdam, Netherlands',
+         hotels:['Hyatt Regency Amsterdam'],
+         photos:[
+           {src:'https://cdn.theneverless.com/2026/07/amsterdam-hotel-window-room.webp', alt:"The hotel room's double window over Amsterdam's rooftops"},
+           {src:'https://cdn.theneverless.com/2026/07/amsterdam-montelbaanstoren.webp', alt:'The Montelbaanstoren between the window frame and reflections'}
+         ]}
+      ];
+      posts.forEach((post) => {
+        if (post.photos) return;
+        post.photos = Array.from({length: post.photoCount}, (unused, index) => `photos/${post.id}-${index + 1}.jpg`);
+      });
+
       const groups = [
         {key:'S', scores:['5.0'], band:'elite', sub:'5.0 · exceptional'},
         {key:'A', scores:['4.5','4.0'], band:'great', sub:'4.0–4.5 · excellent'},
@@ -1150,12 +1324,137 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
         {key:'D', scores:['2.5','2.0','1.0'], band:'avoid', sub:'≤2.5 · avoid'}
       ];
 
+      const hotelByName = new Map(hotels.map((hotel) => [hotel.name, hotel]));
+      const postByHotel = new Map();
+      posts.forEach((post) => post.hotels.forEach((name) => postByHotel.set(name, post)));
+      const rowByHotel = new Map();
+
+      const tierColors = {
+        '5.0':'var(--hrw-yellow)',
+        '4.5':'var(--hrw-mint)', '4.0':'var(--hrw-mint)',
+        '3.5–4.0':'var(--hrw-bg)', '3.5':'var(--hrw-bg)',
+        '3.0–3.5':'var(--hrw-orange)', '3.0':'var(--hrw-orange)'
+      };
+      const tierColor = (group) => tierColors[group] || 'var(--hrw-red)';
+
+      const printPattern = (index) => ({
+        rotation: [-2, 1.5, -1, 2, -1.5][index % 5],
+        width: [300, 240, 270, 230, 260][index % 5],
+        ratio: ['4 / 3', '1 / 1', '3 / 2', '4 / 3', '1 / 1'][index % 5]
+      });
+
+      let selected = hotels[0];
+      let openPostId = null;
+      let anchorHotel = null;
+      let panelEl = null;
+
+      const renderBanner = () => {
+        selectedScore.textContent = selected.score;
+        selectedName.textContent = selected.name;
+        selectedNote.textContent = selected.note;
+      };
+
+      const buildPanel = (post) => {
+        const panel = document.createElement('div');
+        panel.className = 'hrw-post';
+
+        const rail = document.createElement('div');
+        rail.className = 'hrw-post-rail';
+        const chip = document.createElement('span');
+        chip.className = 'hrw-post-chip';
+        chip.textContent = 'Tiny post';
+        const city = document.createElement('span');
+        city.textContent = post.city;
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'hrw-post-close';
+        close.textContent = '✕ Close';
+        close.addEventListener('click', closePanel);
+        rail.append(chip, city, close);
+
+        const content = document.createElement('div');
+        content.className = 'hrw-post-content';
+        const prints = document.createElement('div');
+        prints.className = 'hrw-post-prints';
+        post.photos.forEach((photo, index) => {
+          const pattern = printPattern(index);
+          const print = document.createElement('div');
+          print.className = 'hrw-print';
+          print.style.width = `${pattern.width}px`;
+          print.style.transform = `rotate(${pattern.rotation}deg)`;
+          const frame = document.createElement('div');
+          frame.className = 'hrw-print-frame';
+          frame.style.aspectRatio = pattern.ratio;
+          const img = document.createElement('img');
+          img.src = typeof photo === 'string' ? photo : photo.src;
+          img.alt = typeof photo === 'string' ? `${post.title}, photo ${index + 1}` : photo.alt;
+          img.loading = 'lazy';
+          // A post can list more photos than are on disk yet; drop the print rather
+          // than leave a broken frame on the wall.
+          img.addEventListener('error', () => print.remove());
+          frame.appendChild(img);
+          print.appendChild(frame);
+          prints.appendChild(print);
+        });
+        const verdicts = document.createElement('div');
+        verdicts.className = 'hrw-post-verdicts';
+        post.hotels.forEach((name) => {
+          const hotel = hotelByName.get(name);
+          if (!hotel) return;
+          const line = document.createElement('div');
+          line.className = 'hrw-verdict';
+          const score = document.createElement('span');
+          score.className = 'hrw-verdict-score';
+          score.textContent = hotel.score;
+          score.style.background = tierColor(hotel.group);
+          const body = document.createElement('div');
+          const nameEl = document.createElement('div');
+          nameEl.className = 'hrw-verdict-name';
+          nameEl.textContent = hotel.name;
+          const note = document.createElement('div');
+          note.className = 'hrw-verdict-note';
+          note.textContent = hotel.note;
+          body.append(nameEl, note);
+          line.append(score, body);
+          verdicts.appendChild(line);
+        });
+        content.append(verdicts, prints);
+
+        panel.append(rail, content);
+        return panel;
+      };
+
+      function closePanel() {
+        panelEl?.remove();
+        panelEl = null;
+        openPostId = null;
+        anchorHotel = null;
+        renderBanner();
+      }
+
+      const openPanel = (post, anchorName) => {
+        panelEl?.remove();
+        openPostId = post.id;
+        anchorHotel = anchorName;
+        panelEl = buildPanel(post);
+        rowByHotel.get(anchorName).after(panelEl);
+        renderBanner();
+      };
+
       const selectHotel = (hotel, button) => {
         root.querySelectorAll('.hrw-hotel').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-        selectedScore.textContent = hotel.score;
-        selectedName.textContent = hotel.name;
-        selectedNote.textContent = hotel.note;
+        selected = hotel;
+        const post = postByHotel.get(hotel.name);
+        if (post) {
+          const isOpen = openPostId === post.id && anchorHotel === hotel.name;
+          if (isOpen) { closePanel(); return; }
+          openPanel(post, hotel.name);
+          return;
+        }
+        renderBanner();
       };
+
+      countEl.innerHTML = `${hotels.length} PROPERTIES<br>${hotels.length} RATED<br>${posts.length} TINY POSTS`;
 
       groups.forEach((group) => {
         const row = document.createElement('section');
@@ -1173,12 +1472,21 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
           button.textContent = hotel.name;
           button.setAttribute('aria-pressed', String(hotel.name === 'Alila Shanghai'));
           button.setAttribute('aria-label', `${hotel.name}, ${hotel.score}`);
+          if (postByHotel.has(hotel.name)) {
+            const dogear = document.createElement('span');
+            dogear.className = 'hrw-dogear';
+            dogear.setAttribute('aria-hidden', 'true');
+            button.appendChild(dogear);
+          }
           button.addEventListener('click', () => selectHotel(hotel, button));
+          rowByHotel.set(hotel.name, row);
           list.appendChild(button);
         });
         row.append(label, list);
         wall.appendChild(row);
       });
+
+      renderBanner();
     })();
   </script>
 </div>
