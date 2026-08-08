@@ -1008,7 +1008,6 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
       color: #fff;
     }
 
-    #hyatt-rating-wall-full .hrw-hotel[data-provisional="true"] { text-decoration: underline dotted; text-underline-offset: 4px; }
 
     #hyatt-rating-wall-full .hrw-foot {
       display: flex;
@@ -1035,7 +1034,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
 
   <header class="hrw-head">
     <div class="hrw-title">My Hyatt<br>tier wall</div>
-    <div class="hrw-count">73 PROPERTIES<br>73 RATED<br>PERSONAL / 5.0</div>
+        <div class="hrw-count">73 PROPERTIES<br>73 RATED</div>
   </header>
 
   <section class="hrw-selected" aria-live="polite" aria-label="Selected hotel">
@@ -1048,7 +1047,6 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
 
   <footer class="hrw-foot">
     <span>S 5.0 · A 4.0–4.5 · B 3.5 · C 3.0 · D ≤2.5</span>
-    <span>DOTTED NAME = PROVISIONAL · CLICK FOR EXACT SCORE</span>
   </footer>
 
   <script>
@@ -1060,88 +1058,88 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
       const wall = root.querySelector('#hrw-wall');
 
       const hotels = [
-        {name:'Alila Shanghai', group:'5.0', score:'5.0', note:'Top-notch service and location, with exceptional value for the quality of the room.'},
-        {name:'Alila Ventana Big Sur', group:'5.0', score:'5.0', note:'An exceptional destination stay and one of the strongest Alila experiences.'},
-        {name:'Mission Pacific Beach Resort', group:'5.0', score:'5.0', note:'Fantastic views and an exceptionally relaxing atmosphere in Oceanside.'},
+        {name:'Alila Shanghai', group:'5.0', score:'5.0', note:'Top-notch service, top-notch location, and almost absurd value. The price makes an already excellent room feel even better.'},
+        {name:'Alila Ventana Big Sur', group:'5.0', score:'5.0', note:'This is the rare hotel I would revisit for the hotel itself. Big Sur outside, and a stay that actually lives up to it.'},
+        {name:'Mission Pacific Beach Resort', group:'5.0', score:'5.0', note:'Ocean views, a genuinely relaxed mood, and Oceanside right outside. This is what a five-star escape feels like to me.'},
 
-        {name:'Grand Hyatt Beijing', group:'4.5', score:'4.5', note:'Excellent location and service, strong value, and very generous upgrades.'},
-        {name:'Grand Hyatt Hangzhou', group:'4.5', score:'4.5', note:'Dated, but elevated by exceptionally personal service and generous Grand Club upgrades.'},
-        {name:'Grand Hyatt Kauai Resort & Spa', group:'4.5', score:'4.5', note:'Spectacular views and plenty to do, with good maintenance despite its age.'},
-        {name:'Hyatt Regency Sanya Tianli Bay', group:'4.5', score:'4.5', note:'Very new and inexpensive, with excellent views in a quieter part of Sanya.'},
-        {name:'Maison Métier', group:'4.5', score:'4.5', note:'A classic property with a good location and a strong overall experience.'},
-        {name:'Manchester Grand Hyatt San Diego', group:'4.5', score:'4.5', note:'Excellent location and service, with generous upgrades despite the hotel’s age.'},
-        {name:'Mumian Hangzhou', group:'4.5', score:'4.5', note:'Upscale, inexpensive, and genuinely enjoyable—a particularly strong value.'},
-        {name:'Thompson Shanghai Expo', group:'4.5', score:'4.5', note:'Very new, with excellent service, low pricing, and generous upgrades.'},
+        {name:'Grand Hyatt Beijing', group:'4.5', score:'4.5', note:'Cheap for what it is, perfectly located, warmly run, and generous with upgrades. I had almost nothing to complain about.'},
+        {name:'Grand Hyatt Hangzhou', group:'4.5', score:'4.5', note:'The building shows its age and there are never suites, but the staff remembered me and kept finding meaningful upgrades. Service carried it.'},
+        {name:'Grand Hyatt Kauai Resort & Spa', group:'4.5', score:'4.5', note:'One of my favorite Grand Hyatts. It is old and expensive, but well kept, full of things to do, and sitting in front of an unbeatable view.'},
+        {name:'Hyatt Regency Sanya Tianli Bay', group:'4.5', score:'4.5', note:'New, cheap, and facing a beautiful stretch of Sanya that stays quieter than Yalong Bay. An easy 4.5.'},
+        {name:'Maison Métier', group:'4.5', score:'4.5', note:'Classic, well located, and immediately likable. It does not need a gimmick to make the stay work.'},
+        {name:'Manchester Grand Hyatt San Diego', group:'4.5', score:'4.5', note:'Popular for a reason: excellent location, good service, and generous upgrades. Age is the only obvious compromise.'},
+        {name:'Mumian Hangzhou', group:'4.5', score:'4.5', note:'The pleasant surprise of the list: inexpensive, genuinely upscale, and much better than the price suggests.'},
+        {name:'Thompson Shanghai Expo', group:'4.5', score:'4.5', note:'The location is not ideal, but almost everything else is: new rooms, attentive service, low prices, and generous upgrades.'},
 
-        {name:'Andaz Singapore', group:'4.0', score:'4.0', note:'A solid hotel; Singapore itself felt a little too mild for the stay to be more memorable.'},
-        {name:'Hyatt Regency Houston Downtown', group:'4.0', score:'4.0', note:'Excellent breakfast; the hotel itself is otherwise unremarkable.'},
-        {name:'Hyatt Regency La Jolla at Aventine', group:'4.0', score:'4.0', note:'A perfectly ordinary but dependable Hyatt Regency.'},
-        {name:'Hyatt Regency Lake Tahoe Resort, Spa and Casino', group:'4.0', score:'4.0', note:'Very old, but the service is exceptionally good by U.S. standards.'},
-        {name:'Hyatt Regency Long Beach', group:'4.0', score:'4.0', note:'A standard Regency with little personality, helped by a suite upgrade.'},
-        {name:'Hyatt Regency Sacramento', group:'4.0', score:'4.0', note:'A small downtown hotel with very good service.'},
-        {name:'Hyatt Regency Savannah', group:'4.0', score:'4.0', note:'Good hotel with generous upgrades and an excellent location.'},
-        {name:'Hyatt Regency Shenzhen Airport', group:'4.0', score:'4.0', note:'Generous upgrades, excellent breakfast, direct airport access, and solid facilities.'},
-        {name:'Hyatt Regency Westlake', group:'4.0', score:'4.0', note:'A genuinely solid and dependable property.'},
-        {name:'IL Tornabuoni Hotel', group:'4.0', score:'4.0', note:'Excellent location and service with generous upgrades; breakfast is merely adequate.'},
-        {name:'Park Hyatt Chicago', group:'4.0', score:'4.0', note:'Good location; older rooms that remain well maintained.'},
-        {name:'Park Hyatt Hangzhou', group:'4.0', score:'4.0', note:'A solid luxury hotel with frustrating suite availability and a busy lobby scene.'},
-        {name:'The Standard, Brussels', group:'4.0', score:'4.0', note:'Affordable and beautifully designed for Brussels, though the location is less convenient.'},
+        {name:'Andaz Singapore', group:'4.0', score:'4.0', note:'The hotel is perfectly good. My problem is that Singapore can feel so mild that even a good stay becomes a little muted.'},
+        {name:'Hyatt Regency Houston Downtown', group:'4.0', score:'4.0', note:'I remember the breakfast much more clearly than the room. The breakfast was excellent; the rest was simply fine.'},
+        {name:'Hyatt Regency La Jolla at Aventine', group:'4.0', score:'4.0', note:'The purest possible Hyatt Regency: competent, comfortable, and almost impossible to describe the next day.'},
+        {name:'Hyatt Regency Lake Tahoe Resort, Spa and Casino', group:'4.0', score:'4.0', note:'It feels three or four decades old, yet the service was unusually good for an American hotel. The people rescued the building.'},
+        {name:'Hyatt Regency Long Beach', group:'4.0', score:'4.0', note:'I got a suite and still came away with almost nothing to say. That may be the most Hyatt Regency review possible.'},
+        {name:'Hyatt Regency Sacramento', group:'4.0', score:'4.0', note:'Small, downtown, and staffed by people who actually seemed to care. Service made this one memorable.'},
+        {name:'Hyatt Regency Savannah', group:'4.0', score:'4.0', note:'A good location and a generous upgrade made the stay easy. Savannah is small enough that the hotel never needed to overcomplicate things.'},
+        {name:'Hyatt Regency Shenzhen Airport', group:'4.0', score:'4.0', note:'Connected directly to the terminal, excellent breakfast, strong hardware, and a very generous upgrade. Airport hotels should all be this painless.'},
+        {name:'Hyatt Regency Westlake', group:'4.0', score:'4.0', note:'Nothing dramatic, just a Regency that worked well enough for me to remember it fondly.'},
+        {name:'IL Tornabuoni Hotel', group:'4.0', score:'4.0', note:'Florence location, very good service, and a generous upgrade did the heavy lifting. Breakfast was the one merely average part.'},
+        {name:'Park Hyatt Chicago', group:'4.0', score:'4.0', note:'Older rooms, carefully maintained, in exactly the location I wanted. Age never turned into neglect.'},
+        {name:'Park Hyatt Hangzhou', group:'4.0', score:'4.0', note:'On my visits, suites were effectively unavailable, many were tied up by postpartum recovery stays, while the lobby doubled as an influencer photo studio. The hotel itself was still solid.'},
+        {name:'The Standard, Brussels', group:'4.0', score:'4.0', note:'Very cheap, very well designed, and somehow exactly right for Brussels. I only wished it were better located.'},
 
-        {name:'Alila Napa Valley', group:'3.5–4.0', score:'3.5–4.0', provisional:true, note:'Pleasant and competent, with nothing notably right or wrong.'},
-        {name:'Hotel Kansas City', group:'3.5–4.0', score:'3.5–4.0', provisional:true, note:'A motel-like experience with little that felt particularly impressive.'},
-        {name:'Thompson Central Park New York', group:'3.5–4.0', score:'3.5–4.0', provisional:true, note:'Dated but well maintained, with a very good location by Manhattan standards.'},
+        {name:'Alila Napa Valley', group:'3.5–4.0', score:'3.5–4.0', note:'Nothing was wrong, and nothing made me fall in love. Pleasant competence, stranded between 3.5 and 4.'},
+        {name:'Hotel Kansas City', group:'3.5–4.0', score:'3.5–4.0', note:'The name promises a hotel; my memory says motel. Nothing bad enough to hate, nothing good enough to recommend enthusiastically.'},
+        {name:'Thompson Central Park New York', group:'3.5–4.0', score:'3.5–4.0', note:'Old but maintained, and the location does a lot of work. By Manhattan standards, that is almost enough for four stars.'},
 
-        {name:'Alila Marea Beach Resort Encinitas', group:'3.5', score:'3.5', note:'Frequently full, with limited suites and cramped public spaces; the restaurant is adequate.'},
-        {name:'Caption by Hyatt Zhongshan Park Shanghai', group:'3.5', score:'3.5', note:'Nothing particularly good or bad.'},
-        {name:'Hyatt Centric Mountain View', group:'3.5', score:'3.5', note:'A decent property with no major strengths or weaknesses.'},
-        {name:'Hyatt House Sacramento / Midtown', group:'3.5', score:'3.5', note:'A surprisingly pleasant historic hotel with an unusual Hyatt House identity.'},
-        {name:'Hyatt Place Hangzhou International Airport', group:'3.5', score:'3.5', note:'A surprisingly good Hyatt Place experience.'},
-        {name:'Hyatt Place Moab', group:'3.5', score:'3.5', note:'Very popular and surprisingly good for the brand.'},
-        {name:'Hyatt Place Omaha/Downtown-Old Market', group:'3.5', score:'3.5', note:'Better than the typical Hyatt Place.'},
-        {name:'Hyatt Regency Amsterdam', group:'3.5', score:'3.5', note:'Straightforward and unremarkable, with a decent location; worth staying again.'},
-        {name:'Hyatt Regency Chicago', group:'3.5', score:'3.5', note:'Enormous and well located; service was good during the stay but can be inconsistent.'},
-        {name:'Hyatt Regency Sonoma Wine Country', group:'3.5', score:'3.5', note:'Fairly new but ultimately feels like a large, generic hotel in Santa Rosa.'},
-        {name:'Hyatt Regency Xi’an Chanba', group:'3.5', score:'3.5', note:'New five-star hardware, undermined by a strong new-building odor during the stay.'},
-        {name:'Hyatt Vacation Club at Piñon Pointe', group:'3.5', score:'3.5', note:'A decent Sedona stay without a particularly strong impression.'},
-        {name:'The Beekman, A Thompson Hotel', group:'3.5', score:'3.5', note:'A decent hotel, but small, dated, and cramped by Manhattan standards.'},
-        {name:'UrCove Hangzhou Riverside CBD', group:'3.5', score:'3.5', note:'A very new and above-average UrCove property.'},
-        {name:'UrCove Hangzhou Xiaoshan Jiangnan Technology City', group:'3.5', score:'3.5', note:'A new and above-average UrCove property.'},
+        {name:'Alila Marea Beach Resort Encinitas', group:'3.5', score:'3.5', note:'Always full, almost impossible for suites, and cramped in the public areas. The restaurant being only okay does not help.'},
+        {name:'Caption by Hyatt Zhongshan Park Shanghai', group:'3.5', score:'3.5', note:'Nothing went wrong. Nothing stayed with me either. Three and a half stars for pure neutrality.'},
+        {name:'Hyatt Centric Mountain View', group:'3.5', score:'3.5', note:'Perfectly decent, which is both the compliment and the entire review.'},
+        {name:'Hyatt House Sacramento / Midtown', group:'3.5', score:'3.5', note:'A genuinely charming historic hotel wearing the strangely modest Hyatt House badge. Better than the brand name suggests.'},
+        {name:'Hyatt Place Hangzhou International Airport', group:'3.5', score:'3.5', note:'One of the rare Hyatt Places that surprised me in a good way. I still cannot quite justify four stars, but it came close.'},
+        {name:'Hyatt Place Moab', group:'3.5', score:'3.5', note:'Hard to book because everyone wants it, yet it was actually better than the hype made me expect. A rare Hyatt Place with some personality.'},
+        {name:'Hyatt Place Omaha/Downtown-Old Market', group:'3.5', score:'3.5', note:'Better than the Hyatt Place baseline. That sounds like faint praise, but for this brand it is a real distinction.'},
+        {name:'Hyatt Regency Amsterdam', group:'3.5', score:'3.5', note:'Ordinary in almost every way, but the location worked and I would stay again. Sometimes that is enough.'},
+        {name:'Hyatt Regency Chicago', group:'3.5', score:'3.5', note:'Absolutely enormous, well located, and good to me during my stay. Reports of inconsistent service keep it from going higher.'},
+        {name:'Hyatt Regency Sonoma Wine Country', group:'3.5', score:'3.5', note:'Newer than many Regencies, but still a big generic hotel in Santa Rosa. The hardware never became a personality.'},
+        {name:'Hyatt Regency Xi’an Chanba', group:'3.5', score:'3.5', note:'The hardware clearly aims at five stars, but the new-building smell was so strong I could not enjoy the room. I might retry once it has aired out.'},
+        {name:'Hyatt Vacation Club at Piñon Pointe', group:'3.5', score:'3.5', note:'Sedona left the impression; the hotel mostly supplied the bed. Decent, but not a stay I think about.'},
+        {name:'The Beekman, A Thompson Hotel', group:'3.5', score:'3.5', note:'A decent hotel squeezed through the Manhattan filter: smaller, older, and more cramped than the reputation suggests.'},
+        {name:'UrCove Hangzhou Riverside CBD', group:'3.5', score:'3.5', note:'Very new and clearly above the UrCove baseline, but not distinctive enough to cross into four stars.'},
+        {name:'UrCove Hangzhou Xiaoshan Jiangnan Technology City', group:'3.5', score:'3.5', note:'Better than average, yet I remember the district and the newness more than any particular hotel moment.'},
 
-        {name:'Hyatt Regency New Orleans', group:'3.0–3.5', score:'3.0–3.5', provisional:true, note:'A standard business hotel with a decent breakfast.'},
+        {name:'Hyatt Regency New Orleans', group:'3.0–3.5', score:'3.0–3.5', note:'A plain business hotel with a breakfast good enough to be the only specific thing I remember.'},
 
-        {name:'Cambria Beach Lodge', group:'3.0', score:'3.0', note:'Fundamentally a motel; serviceable but unremarkable.'},
-        {name:'Grand Hyatt Denver', group:'3.0', score:'3.0', note:'Dated, business-oriented, and fundamentally unremarkable.'},
-        {name:'Hyatt Centric Midtown 5th Avenue New York', group:'3.0', score:'3.0', note:'Tiny, damp, dated, and expensive rooms.'},
-        {name:'Hyatt House Charleston / Mount Pleasant', group:'3.0', score:'3.0', note:'A standard, functional Hyatt House experience.'},
-        {name:'Hyatt House Herndon/Reston', group:'3.0', score:'3.0', note:'A standard, functional Hyatt House experience.'},
-        {name:'Hyatt House San Jose Airport', group:'3.0', score:'3.0', note:'A standard, functional Hyatt House experience.'},
-        {name:'Hyatt Place Albuquerque Airport', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Austin Airport', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Bakersfield', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Birmingham/Hoover', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place DFW', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Flagstaff', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Fresno', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Huntsville / Research Park / Redstone', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Indianapolis / Carmel', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Nashville Airport', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Tucson-Central', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Place Washington DC/National Mall', group:'3.0', score:'3.0', note:'A standard, unremarkable Hyatt Place.'},
-        {name:'Hyatt Regency Boston / Cambridge', group:'3.0', score:'3.0', note:'Very dated, with small rooms.'},
-        {name:'Hyatt Regency Phoenix', group:'3.0', score:'3.0', note:'An unremarkable downtown Regency.'},
-        {name:'Park Hyatt Beijing', group:'3.0', score:'3.0', note:'Very dated, with no suites, but an unbeatable location.'},
-        {name:'UrCove Hangzhou North Grand Canal', group:'3.0', score:'3.0', note:'New, but otherwise ordinary.'},
+        {name:'Cambria Beach Lodge', group:'3.0', score:'3.0', note:'It is a motel, full stop. A perfectly serviceable one, but still a three-star motel.'},
+        {name:'Grand Hyatt Denver', group:'3.0', score:'3.0', note:'An aging business hotel in a downtown I did not particularly enjoy. Three stars, and I forgot it almost immediately.'},
+        {name:'Hyatt Centric Midtown 5th Avenue New York', group:'3.0', score:'3.0', note:'Tiny, damp, old, and expensive. It manages to collect four Manhattan problems in one room.'},
+        {name:'Hyatt House Charleston / Mount Pleasant', group:'3.0', score:'3.0', note:'I have almost no memory of this stay. Three stars is more honest than inventing a compliment.'},
+        {name:'Hyatt House Herndon/Reston', group:'3.0', score:'3.0', note:'Another Hyatt House that vanished from memory as soon as I checked out. Functional, apparently, and nothing more.'},
+        {name:'Hyatt House San Jose Airport', group:'3.0', score:'3.0', note:'I remember needing the hotel, not the hotel itself. That is a three-star stay.'},
+        {name:'Hyatt Place Albuquerque Airport', group:'3.0', score:'3.0', note:'The airport is more vivid in my memory than the room. It did the job and disappeared.'},
+        {name:'Hyatt Place Austin Airport', group:'3.0', score:'3.0', note:'An airport bed that behaved exactly as expected, then left no story behind.'},
+        {name:'Hyatt Place Bakersfield', group:'3.0', score:'3.0', note:'A place to sleep in Bakersfield, not a stay I carried home.'},
+        {name:'Hyatt Place Birmingham/Hoover', group:'3.0', score:'3.0', note:'Nothing went wrong, but even the full hotel name is more memorable than the hotel.'},
+        {name:'Hyatt Place DFW', group:'3.0', score:'3.0', note:'Useful when I needed a bed near DFW. Beyond that, my memory is blank.'},
+        {name:'Hyatt Place Flagstaff', group:'3.0', score:'3.0', note:'I remember Flagstaff. I do not remember the Hyatt Place, which is probably the review.'},
+        {name:'Hyatt Place Fresno', group:'3.0', score:'3.0', note:'A three-star stay that disappeared from memory almost immediately.'},
+        {name:'Hyatt Place Huntsville / Research Park / Redstone', group:'3.0', score:'3.0', note:'Functional, forgettable, and nearly impossible to distinguish from every other Hyatt Place.'},
+        {name:'Hyatt Place Indianapolis / Carmel', group:'3.0', score:'3.0', note:'Nothing went wrong, and nothing followed me home. Exactly three stars.'},
+        {name:'Hyatt Place Nashville Airport', group:'3.0', score:'3.0', note:'Another airport Hyatt Place that completed its assignment without becoming a memory.'},
+        {name:'Hyatt Place Tucson-Central', group:'3.0', score:'3.0', note:'Tucson stayed with me. This hotel did not.'},
+        {name:'Hyatt Place Washington DC/National Mall', group:'3.0', score:'3.0', note:'A practical Hyatt Place and no lasting hotel memory. I can recommend the function, not the experience.'},
+        {name:'Hyatt Regency Boston / Cambridge', group:'3.0', score:'3.0', note:'Very old, very small rooms, and no charm strong enough to compensate.'},
+        {name:'Hyatt Regency Phoenix', group:'3.0', score:'3.0', note:'Downtown, ordinary, and instantly forgettable. The definition of a three-star Regency.'},
+        {name:'Park Hyatt Beijing', group:'3.0', score:'3.0', note:'The location is doing heroic work for a hotel that feels trapped in the Beijing Olympics era: old, never meaningfully renovated, and still without suites.'},
+        {name:'UrCove Hangzhou North Grand Canal', group:'3.0', score:'3.0', note:'New enough to look fresh, ordinary enough to forget. Three stars.'},
 
-        {name:'Hyatt Place Las Vegas', group:'2.5', score:'2.5', note:'A below-average Hyatt Place experience.'},
-        {name:'UrCove Hangzhou Westlake', group:'2.5', score:'2.5', note:'A below-average UrCove experience.'},
+        {name:'Hyatt Place Las Vegas', group:'2.5', score:'2.5', note:'Even by Hyatt Place standards, this slipped below the baseline. Two and a half stars is all I retained.'},
+        {name:'UrCove Hangzhou Westlake', group:'2.5', score:'2.5', note:'A below-average UrCove with no redeeming detail strong enough to pull it back to three.'},
 
-        {name:'Andaz Xintiandi, Shanghai', group:'2.0', score:'2.0', note:'Aging and quirky, with an uncomfortable nighttime lobby atmosphere.'},
-        {name:'Hyatt Centric French Quarter New Orleans', group:'2.0', score:'2.0', note:'Far too noisy, with an unresponsive front desk.'},
-        {name:'Hyatt Place Shanghai New Hongqiao', group:'2.0', score:'2.0', note:'A distinctly below-average Hyatt Place.'},
-        {name:'Rio Hotel & Casino', group:'2.0', score:'2.0', note:'A poor overall hotel experience.'},
+        {name:'Andaz Xintiandi, Shanghai', group:'2.0', score:'2.0', note:'Old, awkwardly quirky, and burdened by a late-night lobby atmosphere that made me want to leave rather than linger.'},
+        {name:'Hyatt Centric French Quarter New Orleans', group:'2.0', score:'2.0', note:'Too loud to sleep, and the front desk chose not to help. Two stars feels generous.'},
+        {name:'Hyatt Place Shanghai New Hongqiao', group:'2.0', score:'2.0', note:'A two-star Hyatt Place in a category where three stars should be easy. Enough said.'},
+        {name:'Rio Hotel & Casino', group:'2.0', score:'2.0', note:'Two stars. I have no defense for it and no reason to return.'},
 
-        {name:'Wild Palms Hotel', group:'1.0', score:'1.0', note:'A stay that left an extremely poor impression.'},
-        {name:'tommie Hollywood', group:'1.0', score:'1.0', note:'Nightclub noise made sleep nearly impossible until around 1 a.m.'}
+        {name:'Wild Palms Hotel', group:'1.0', score:'1.0', note:'One star, with almost no useful memory beyond knowing I would not repeat it.'},
+        {name:'tommie Hollywood', group:'1.0', score:'1.0', note:'A hotel built on top of a nightclub. The music kept me awake until 1 a.m.; one star was inevitable.'}
       ];
 
       const groups = [
@@ -1174,8 +1172,7 @@ html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:no
           button.className = 'hrw-hotel';
           button.textContent = hotel.name;
           button.setAttribute('aria-pressed', String(hotel.name === 'Alila Shanghai'));
-          button.setAttribute('aria-label', `${hotel.name}, ${hotel.score}${hotel.provisional ? ', provisional' : ''}`);
-          if (hotel.provisional) button.dataset.provisional = 'true';
+          button.setAttribute('aria-label', `${hotel.name}, ${hotel.score}`);
           button.addEventListener('click', () => selectHotel(hotel, button));
           list.appendChild(button);
         });
