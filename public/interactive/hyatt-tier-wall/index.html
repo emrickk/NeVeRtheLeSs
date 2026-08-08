@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Hyatt Rating Wall</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed="true"],
+    [aria-selected="true"],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html>body{padding:0}html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style>
+</head>
+<body>
+<div id="hyatt-rating-wall-full">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500&family=DM+Mono:wght@400;500&display=swap');
+
+    #hyatt-rating-wall-full {
+      --hrw-bg: #efefe8;
+      --hrw-ink: #0e0e0d;
+      --hrw-blue: #275e9f;
+      --hrw-yellow: #f0cf22;
+      --hrw-mint: #9cc4ad;
+      --hrw-orange: #e29a63;
+      --hrw-red: #d34836;
+      --hrw-gray: #c8c8c0;
+      background: var(--hrw-bg);
+      color: var(--hrw-ink);
+      font-family: "Archivo Narrow", sans-serif;
+      padding: clamp(16px, 3vw, 30px);
+      width: 100%;
+    }
+
+    #hyatt-rating-wall-full * { box-sizing: border-box; }
+    #hyatt-rating-wall-full button { font: inherit; }
+
+    #hyatt-rating-wall-full .hrw-head {
+      align-items: end;
+      border-bottom: 6px solid var(--hrw-ink);
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      padding-bottom: 12px;
+    }
+
+    #hyatt-rating-wall-full .hrw-title {
+      font-size: clamp(54px, 10vw, 104px);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .72;
+      text-transform: uppercase;
+    }
+
+    #hyatt-rating-wall-full .hrw-count {
+      font-family: "DM Mono", monospace;
+      line-height: 1.65;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    #hyatt-rating-wall-full .hrw-selected {
+      align-items: center;
+      background: var(--hrw-blue);
+      color: #fff;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 120px minmax(160px, .65fr) minmax(220px, 1.35fr);
+      min-height: 112px;
+      padding: 18px;
+    }
+
+    #hyatt-rating-wall-full .hrw-selected-score {
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    #hyatt-rating-wall-full .hrw-selected-name {
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    #hyatt-rating-wall-full .hrw-selected-note {
+      border-left: 1px solid rgba(255,255,255,.5);
+      line-height: 1.35;
+      padding-left: 18px;
+    }
+
+    #hyatt-rating-wall-full .hrw-wall {
+      border-bottom: 4px solid var(--hrw-ink);
+    }
+
+    #hyatt-rating-wall-full .hrw-row {
+      border-top: 1px solid var(--hrw-ink);
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+    }
+
+    #hyatt-rating-wall-full .hrw-label {
+      align-items: center;
+      border-right: 1px solid var(--hrw-ink);
+      display: flex;
+      flex-direction: column;
+      font-family: "DM Mono", monospace;
+      justify-content: center;
+      min-height: 62px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    #hyatt-rating-wall-full .hrw-label strong { font-size: 18px; font-weight: 500; }
+    #hyatt-rating-wall-full .hrw-label span { font-size: 11px; margin-top: 3px; text-transform: uppercase; }
+    #hyatt-rating-wall-full .hrw-row[data-band="elite"] .hrw-label { background: var(--hrw-yellow); }
+    #hyatt-rating-wall-full .hrw-row[data-band="great"] .hrw-label { background: var(--hrw-mint); }
+    #hyatt-rating-wall-full .hrw-row[data-band="middle"] .hrw-label { background: var(--hrw-orange); }
+    #hyatt-rating-wall-full .hrw-row[data-band="avoid"] .hrw-label { background: var(--hrw-red); }
+    #hyatt-rating-wall-full .hrw-row[data-band="pending"] .hrw-label { background: var(--hrw-gray); }
+    #hyatt-rating-wall-full .hrw-hotels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    }
+
+    #hyatt-rating-wall-full .hrw-hotel {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--hrw-ink);
+      border-right: 1px solid var(--hrw-ink);
+      color: var(--hrw-ink);
+      cursor: pointer;
+      min-height: 58px;
+      padding: 10px 12px;
+      text-align: left;
+      transition: background-color .12s ease, color .12s ease;
+    }
+
+    #hyatt-rating-wall-full .hrw-hotel:hover,
+    #hyatt-rating-wall-full .hrw-hotel[aria-pressed="true"] {
+      background: var(--hrw-blue);
+      color: #fff;
+    }
+
+
+    #hyatt-rating-wall-full .hrw-foot {
+      display: flex;
+      font-family: "DM Mono", monospace;
+      gap: 16px;
+      justify-content: space-between;
+      padding-top: 12px;
+    }
+
+    #hyatt-rating-wall-full .hrw-foot span:last-child { text-align: right; }
+
+    @media (max-width: 660px) {
+      #hyatt-rating-wall-full .hrw-head { align-items: start; flex-direction: column; }
+      #hyatt-rating-wall-full .hrw-count { text-align: left; }
+      #hyatt-rating-wall-full .hrw-selected { grid-template-columns: 92px minmax(0, 1fr); }
+      #hyatt-rating-wall-full .hrw-selected-score { font-size: 22px; }
+      #hyatt-rating-wall-full .hrw-selected-note { border-left: 0; border-top: 1px solid rgba(255,255,255,.5); grid-column: 1 / -1; padding: 12px 0 0; }
+      #hyatt-rating-wall-full .hrw-row { grid-template-columns: 70px minmax(0, 1fr); }
+      #hyatt-rating-wall-full .hrw-hotels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #hyatt-rating-wall-full .hrw-foot { align-items: start; flex-direction: column; }
+      #hyatt-rating-wall-full .hrw-foot span:last-child { text-align: left; }
+    }
+  </style>
+
+  <header class="hrw-head">
+    <div class="hrw-title">My Hyatt<br>tier wall</div>
+        <div class="hrw-count">73 PROPERTIES<br>73 RATED</div>
+  </header>
+
+  <section class="hrw-selected" aria-live="polite" aria-label="Selected hotel">
+    <div class="hrw-selected-score" id="hrw-selected-score">5.0</div>
+    <div class="hrw-selected-name" id="hrw-selected-name">Alila Shanghai</div>
+    <div class="hrw-selected-note" id="hrw-selected-note">Top-notch service and location, with exceptional value for the quality of the room.</div>
+  </section>
+
+  <div class="hrw-wall" id="hrw-wall" aria-label="Hotels grouped by personal rating"></div>
+
+  <footer class="hrw-foot">
+    <span>S 5.0 · A 4.0–4.5 · B 3.5 · C 3.0 · D ≤2.5</span>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.getElementById('hyatt-rating-wall-full');
+      const selectedScore = root.querySelector('#hrw-selected-score');
+      const selectedName = root.querySelector('#hrw-selected-name');
+      const selectedNote = root.querySelector('#hrw-selected-note');
+      const wall = root.querySelector('#hrw-wall');
+
+      const hotels = [
+        {name:'Alila Shanghai', group:'5.0', score:'5.0', note:'Top-notch service, top-notch location, and almost absurd value. The price makes an already excellent room feel even better.'},
+        {name:'Alila Ventana Big Sur', group:'5.0', score:'5.0', note:'This is the rare hotel I would revisit for the hotel itself. Big Sur outside, and a stay that actually lives up to it.'},
+        {name:'Mission Pacific Beach Resort', group:'5.0', score:'5.0', note:'Ocean views, a genuinely relaxed mood, and Oceanside right outside. This is what a five-star escape feels like to me.'},
+
+        {name:'Grand Hyatt Beijing', group:'4.5', score:'4.5', note:'Cheap for what it is, perfectly located, warmly run, and generous with upgrades. I had almost nothing to complain about.'},
+        {name:'Grand Hyatt Hangzhou', group:'4.5', score:'4.5', note:'The building shows its age and there are never suites, but the staff remembered me and kept finding meaningful upgrades. Service carried it.'},
+        {name:'Grand Hyatt Kauai Resort & Spa', group:'4.5', score:'4.5', note:'One of my favorite Grand Hyatts. It is old and expensive, but well kept, full of things to do, and sitting in front of an unbeatable view.'},
+        {name:'Hyatt Regency Sanya Tianli Bay', group:'4.5', score:'4.5', note:'New, cheap, and facing a beautiful stretch of Sanya that stays quieter than Yalong Bay. An easy 4.5.'},
+        {name:'Maison Métier', group:'4.5', score:'4.5', note:'Classic, well located, and immediately likable. It does not need a gimmick to make the stay work.'},
+        {name:'Manchester Grand Hyatt San Diego', group:'4.5', score:'4.5', note:'Popular for a reason: excellent location, good service, and generous upgrades. Age is the only obvious compromise.'},
+        {name:'Mumian Hangzhou', group:'4.5', score:'4.5', note:'The pleasant surprise of the list: inexpensive, genuinely upscale, and much better than the price suggests.'},
+        {name:'Thompson Shanghai Expo', group:'4.5', score:'4.5', note:'The location is not ideal, but almost everything else is: new rooms, attentive service, low prices, and generous upgrades.'},
+
+        {name:'Andaz Singapore', group:'4.0', score:'4.0', note:'The hotel is perfectly good. My problem is that Singapore can feel so mild that even a good stay becomes a little muted.'},
+        {name:'Hyatt Regency Houston Downtown', group:'4.0', score:'4.0', note:'I remember the breakfast much more clearly than the room. The breakfast was excellent; the rest was simply fine.'},
+        {name:'Hyatt Regency La Jolla at Aventine', group:'4.0', score:'4.0', note:'The purest possible Hyatt Regency: competent, comfortable, and almost impossible to describe the next day.'},
+        {name:'Hyatt Regency Lake Tahoe Resort, Spa and Casino', group:'4.0', score:'4.0', note:'It feels three or four decades old, yet the service was unusually good for an American hotel. The people rescued the building.'},
+        {name:'Hyatt Regency Long Beach', group:'4.0', score:'4.0', note:'I got a suite and still came away with almost nothing to say. That may be the most Hyatt Regency review possible.'},
+        {name:'Hyatt Regency Sacramento', group:'4.0', score:'4.0', note:'Small, downtown, and staffed by people who actually seemed to care. Service made this one memorable.'},
+        {name:'Hyatt Regency Savannah', group:'4.0', score:'4.0', note:'A good location and a generous upgrade made the stay easy. Savannah is small enough that the hotel never needed to overcomplicate things.'},
+        {name:'Hyatt Regency Shenzhen Airport', group:'4.0', score:'4.0', note:'Connected directly to the terminal, excellent breakfast, strong hardware, and a very generous upgrade. Airport hotels should all be this painless.'},
+        {name:'Hyatt Regency Westlake', group:'4.0', score:'4.0', note:'Nothing dramatic, just a Regency that worked well enough for me to remember it fondly.'},
+        {name:'IL Tornabuoni Hotel', group:'4.0', score:'4.0', note:'Florence location, very good service, and a generous upgrade did the heavy lifting. Breakfast was the one merely average part.'},
+        {name:'Park Hyatt Chicago', group:'4.0', score:'4.0', note:'Older rooms, carefully maintained, in exactly the location I wanted. Age never turned into neglect.'},
+        {name:'Park Hyatt Hangzhou', group:'4.0', score:'4.0', note:'On my visits, suites were effectively unavailable, many were tied up by postpartum recovery stays, while the lobby doubled as an influencer photo studio. The hotel itself was still solid.'},
+        {name:'The Standard, Brussels', group:'4.0', score:'4.0', note:'Very cheap, very well designed, and somehow exactly right for Brussels. I only wished it were better located.'},
+
+        {name:'Alila Napa Valley', group:'3.5–4.0', score:'3.5–4.0', note:'Nothing was wrong, and nothing made me fall in love. Pleasant competence, stranded between 3.5 and 4.'},
+        {name:'Hotel Kansas City', group:'3.5–4.0', score:'3.5–4.0', note:'The name promises a hotel; my memory says motel. Nothing bad enough to hate, nothing good enough to recommend enthusiastically.'},
+        {name:'Thompson Central Park New York', group:'3.5–4.0', score:'3.5–4.0', note:'Old but maintained, and the location does a lot of work. By Manhattan standards, that is almost enough for four stars.'},
+
+        {name:'Alila Marea Beach Resort Encinitas', group:'3.5', score:'3.5', note:'Always full, almost impossible for suites, and cramped in the public areas. The restaurant being only okay does not help.'},
+        {name:'Caption by Hyatt Zhongshan Park Shanghai', group:'3.5', score:'3.5', note:'Nothing went wrong. Nothing stayed with me either. Three and a half stars for pure neutrality.'},
+        {name:'Hyatt Centric Mountain View', group:'3.5', score:'3.5', note:'Perfectly decent, which is both the compliment and the entire review.'},
+        {name:'Hyatt House Sacramento / Midtown', group:'3.5', score:'3.5', note:'A genuinely charming historic hotel wearing the strangely modest Hyatt House badge. Better than the brand name suggests.'},
+        {name:'Hyatt Place Hangzhou International Airport', group:'3.5', score:'3.5', note:'One of the rare Hyatt Places that surprised me in a good way. I still cannot quite justify four stars, but it came close.'},
+        {name:'Hyatt Place Moab', group:'3.5', score:'3.5', note:'Hard to book because everyone wants it, yet it was actually better than the hype made me expect. A rare Hyatt Place with some personality.'},
+        {name:'Hyatt Place Omaha/Downtown-Old Market', group:'3.5', score:'3.5', note:'Better than the Hyatt Place baseline. That sounds like faint praise, but for this brand it is a real distinction.'},
+        {name:'Hyatt Regency Amsterdam', group:'3.5', score:'3.5', note:'Ordinary in almost every way, but the location worked and I would stay again. Sometimes that is enough.'},
+        {name:'Hyatt Regency Chicago', group:'3.5', score:'3.5', note:'Absolutely enormous, well located, and good to me during my stay. Reports of inconsistent service keep it from going higher.'},
+        {name:'Hyatt Regency Sonoma Wine Country', group:'3.5', score:'3.5', note:'Newer than many Regencies, but still a big generic hotel in Santa Rosa. The hardware never became a personality.'},
+        {name:'Hyatt Regency Xi’an Chanba', group:'3.5', score:'3.5', note:'The hardware clearly aims at five stars, but the new-building smell was so strong I could not enjoy the room. I might retry once it has aired out.'},
+        {name:'Hyatt Vacation Club at Piñon Pointe', group:'3.5', score:'3.5', note:'Sedona left the impression; the hotel mostly supplied the bed. Decent, but not a stay I think about.'},
+        {name:'The Beekman, A Thompson Hotel', group:'3.5', score:'3.5', note:'A decent hotel squeezed through the Manhattan filter: smaller, older, and more cramped than the reputation suggests.'},
+        {name:'UrCove Hangzhou Riverside CBD', group:'3.5', score:'3.5', note:'Very new and clearly above the UrCove baseline, but not distinctive enough to cross into four stars.'},
+        {name:'UrCove Hangzhou Xiaoshan Jiangnan Technology City', group:'3.5', score:'3.5', note:'Better than average, yet I remember the district and the newness more than any particular hotel moment.'},
+
+        {name:'Hyatt Regency New Orleans', group:'3.0–3.5', score:'3.0–3.5', note:'A plain business hotel with a breakfast good enough to be the only specific thing I remember.'},
+
+        {name:'Cambria Beach Lodge', group:'3.0', score:'3.0', note:'It is a motel, full stop. A perfectly serviceable one, but still a three-star motel.'},
+        {name:'Grand Hyatt Denver', group:'3.0', score:'3.0', note:'An aging business hotel in a downtown I did not particularly enjoy. Three stars, and I forgot it almost immediately.'},
+        {name:'Hyatt Centric Midtown 5th Avenue New York', group:'3.0', score:'3.0', note:'Tiny, damp, old, and expensive. It manages to collect four Manhattan problems in one room.'},
+        {name:'Hyatt House Charleston / Mount Pleasant', group:'3.0', score:'3.0', note:'I have almost no memory of this stay. Three stars is more honest than inventing a compliment.'},
+        {name:'Hyatt House Herndon/Reston', group:'3.0', score:'3.0', note:'Another Hyatt House that vanished from memory as soon as I checked out. Functional, apparently, and nothing more.'},
+        {name:'Hyatt House San Jose Airport', group:'3.0', score:'3.0', note:'I remember needing the hotel, not the hotel itself. That is a three-star stay.'},
+        {name:'Hyatt Place Albuquerque Airport', group:'3.0', score:'3.0', note:'The airport is more vivid in my memory than the room. It did the job and disappeared.'},
+        {name:'Hyatt Place Austin Airport', group:'3.0', score:'3.0', note:'An airport bed that behaved exactly as expected, then left no story behind.'},
+        {name:'Hyatt Place Bakersfield', group:'3.0', score:'3.0', note:'A place to sleep in Bakersfield, not a stay I carried home.'},
+        {name:'Hyatt Place Birmingham/Hoover', group:'3.0', score:'3.0', note:'Nothing went wrong, but even the full hotel name is more memorable than the hotel.'},
+        {name:'Hyatt Place DFW', group:'3.0', score:'3.0', note:'Useful when I needed a bed near DFW. Beyond that, my memory is blank.'},
+        {name:'Hyatt Place Flagstaff', group:'3.0', score:'3.0', note:'I remember Flagstaff. I do not remember the Hyatt Place, which is probably the review.'},
+        {name:'Hyatt Place Fresno', group:'3.0', score:'3.0', note:'A three-star stay that disappeared from memory almost immediately.'},
+        {name:'Hyatt Place Huntsville / Research Park / Redstone', group:'3.0', score:'3.0', note:'Functional, forgettable, and nearly impossible to distinguish from every other Hyatt Place.'},
+        {name:'Hyatt Place Indianapolis / Carmel', group:'3.0', score:'3.0', note:'Nothing went wrong, and nothing followed me home. Exactly three stars.'},
+        {name:'Hyatt Place Nashville Airport', group:'3.0', score:'3.0', note:'Another airport Hyatt Place that completed its assignment without becoming a memory.'},
+        {name:'Hyatt Place Tucson-Central', group:'3.0', score:'3.0', note:'Tucson stayed with me. This hotel did not.'},
+        {name:'Hyatt Place Washington DC/National Mall', group:'3.0', score:'3.0', note:'A practical Hyatt Place and no lasting hotel memory. I can recommend the function, not the experience.'},
+        {name:'Hyatt Regency Boston / Cambridge', group:'3.0', score:'3.0', note:'Very old, very small rooms, and no charm strong enough to compensate.'},
+        {name:'Hyatt Regency Phoenix', group:'3.0', score:'3.0', note:'Downtown, ordinary, and instantly forgettable. The definition of a three-star Regency.'},
+        {name:'Park Hyatt Beijing', group:'3.0', score:'3.0', note:'The location is doing heroic work for a hotel that feels trapped in the Beijing Olympics era: old, never meaningfully renovated, and still without suites.'},
+        {name:'UrCove Hangzhou North Grand Canal', group:'3.0', score:'3.0', note:'New enough to look fresh, ordinary enough to forget. Three stars.'},
+
+        {name:'Hyatt Place Las Vegas', group:'2.5', score:'2.5', note:'Even by Hyatt Place standards, this slipped below the baseline. Two and a half stars is all I retained.'},
+        {name:'UrCove Hangzhou Westlake', group:'2.5', score:'2.5', note:'A below-average UrCove with no redeeming detail strong enough to pull it back to three.'},
+
+        {name:'Andaz Xintiandi, Shanghai', group:'2.0', score:'2.0', note:'Old, awkwardly quirky, and burdened by a late-night lobby atmosphere that made me want to leave rather than linger.'},
+        {name:'Hyatt Centric French Quarter New Orleans', group:'2.0', score:'2.0', note:'Too loud to sleep, and the front desk chose not to help. Two stars feels generous.'},
+        {name:'Hyatt Place Shanghai New Hongqiao', group:'2.0', score:'2.0', note:'A two-star Hyatt Place in a category where three stars should be easy. Enough said.'},
+        {name:'Rio Hotel & Casino', group:'2.0', score:'2.0', note:'Two stars. I have no defense for it and no reason to return.'},
+
+        {name:'Wild Palms Hotel', group:'1.0', score:'1.0', note:'One star, with almost no useful memory beyond knowing I would not repeat it.'},
+        {name:'tommie Hollywood', group:'1.0', score:'1.0', note:'A hotel built on top of a nightclub. The music kept me awake until 1 a.m.; one star was inevitable.'}
+      ];
+
+      const groups = [
+        {key:'S', scores:['5.0'], band:'elite', sub:'5.0 · exceptional'},
+        {key:'A', scores:['4.5','4.0'], band:'great', sub:'4.0–4.5 · excellent'},
+        {key:'B', scores:['3.5–4.0','3.5'], band:'neutral', sub:'3.5 · good'},
+        {key:'C', scores:['3.0–3.5','3.0'], band:'middle', sub:'3.0 · functional'},
+        {key:'D', scores:['2.5','2.0','1.0'], band:'avoid', sub:'≤2.5 · avoid'}
+      ];
+
+      const selectHotel = (hotel, button) => {
+        root.querySelectorAll('.hrw-hotel').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        selectedScore.textContent = hotel.score;
+        selectedName.textContent = hotel.name;
+        selectedNote.textContent = hotel.note;
+      };
+
+      groups.forEach((group) => {
+        const row = document.createElement('section');
+        row.className = 'hrw-row';
+        row.dataset.band = group.band;
+        const label = document.createElement('div');
+        label.className = 'hrw-label';
+        label.innerHTML = `<strong>${group.key}</strong><span>${group.sub}</span>`;
+        const list = document.createElement('div');
+        list.className = 'hrw-hotels';
+        hotels.filter((hotel) => group.scores.includes(hotel.group)).forEach((hotel) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'hrw-hotel';
+          button.textContent = hotel.name;
+          button.setAttribute('aria-pressed', String(hotel.name === 'Alila Shanghai'));
+          button.setAttribute('aria-label', `${hotel.name}, ${hotel.score}`);
+          button.addEventListener('click', () => selectHotel(hotel, button));
+          list.appendChild(button);
+        });
+        row.append(label, list);
+        wall.appendChild(row);
+      });
+    })();
+  </script>
+</div>
+
+<script src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
+<script src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
+<script>
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =>
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest("[data-tooltip]")
+      : null;
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    document.removeEventListener("pointerover", handlePointerOpen);
+    document.removeEventListener("pointerout", handleLeave);
+    document.removeEventListener("focusin", handleFocusIn);
+    document.removeEventListener("focusout", handleLeave);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("contextmenu", handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener("pointerover", handlePointerOpen);
+  document.addEventListener("pointerout", handleLeave);
+  document.addEventListener("focusin", handleFocusIn);
+  document.addEventListener("focusout", handleLeave);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("contextmenu", handleContextMenu);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
+<script>
+(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+<script>
+(() => {
+  const reportHeight = () => {
+    const height = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+    );
+
+    window.parent.postMessage(
+      { type: 'hyatt-tier-wall:resize', height },
+      window.location.origin,
+    );
+  };
+
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  window.addEventListener('message', (event) => {
+    if (
+      event.origin === window.location.origin &&
+      event.data?.type === 'hyatt-tier-wall:request-size'
+    ) {
+      reportHeight();
+    }
+  });
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(reportHeight).observe(document.body);
+  }
+
+  document.fonts?.ready.then(reportHeight);
+  requestAnimationFrame(reportHeight);
+})();
+</script>
+
+</body>
+</html>
