@@ -2,6 +2,8 @@
   "comment": "Secret-scan false-positive allowlist. Each entry is a regex tested against 'file:matchedText'. Patterns only, never paste an actual matched secret in here (this repo is public).",
   "allow": [
     "^public/favicon\\.svg:9j/4",
-    "^src/content/posts/[^:]+\\.md:com/20\\d{2}/\\d{2}/"
+    "^src/content/posts/[^:]+\\.md:com/20\\d{2}/\\d{2}/",
+    "^src\\/content\\/posts\\/300sl\\-and\\-two\\-934s(?:\\.en)?\\.md:com\\/marsClassic\\/en\\/instance\\/ko\\/Types\\-300\\-SL\\-Coup\\-and\\-300\\-SL\\-Roadster\\-W\\-198\\-1954\\-\\-\\-1963$",
+    "^src\\/content\\/posts\\/300sl\\-and\\-two\\-934s(?:\\.en)?\\.md:com\\/product\\/1\\-18\\/racing\\-legends\\/1976\\-79\\-exoto\\-porsche\\-934\\-rsr\\/rlg19095\\-gt\\-winner\\-1977\\-silverstone\\-6\\-hours\\-vittorio\\-brambilla\\-gianpiero\\-moretti$"
   ]
 }
