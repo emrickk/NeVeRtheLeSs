@@ -19,4 +19,4 @@ category: 'Journal'
 
 喜欢的东西摆在身边，有些毛茸茸，有些小小的，书架上已经放得挺满。拍下来的都是家里很普通的地方，我自己看着很满意。
 
-![窗边的小马和圆桌](https://cdn.theneverless.com/sunny-day-at-home/B0014190.webp)
+![窗边书架上的书和摆件](https://cdn.theneverless.com/sunny-day-at-home/B0014202.webp)

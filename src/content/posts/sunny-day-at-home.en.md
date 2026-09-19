@@ -16,4 +16,4 @@ On a day this beautiful, it feels good to be home. The trees are close to the wi
 
 The things I like are all around me, some fuzzy, some tiny. The bookshelf is getting quite full. These are ordinary corners of home. I like looking at them.
 
-![A little horse beside a round table](https://cdn.theneverless.com/sunny-day-at-home/B0014190.webp)
+![Books and ornaments on a shelf by the window](https://cdn.theneverless.com/sunny-day-at-home/B0014202.webp)
