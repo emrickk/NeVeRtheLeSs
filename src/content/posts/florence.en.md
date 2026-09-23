@@ -33,8 +33,6 @@ Farther up, the stairs finally ended and the sky opened all at once. Florence sp
 
 Back on the ground, Palazzo Vecchio was next door, once home to the Medici. Frescoes climbed the courtyard walls and carried on across the vaulted ceilings. The rooms upstairs were dark, every window bright as a painting. One Gothic window faced the dome dead on, fitting it perfectly into the frame. The picture had been hanging there unchanged for five hundred years.
 
-![The frescoed courtyard of Palazzo Vecchio](https://cdn.theneverless.com/2026/07/florence-palazzo-vecchio-courtyard.webp)
-
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/florence-palazzo-vecchio-window-light.webp" alt="Sunlight through a tall window in a dark room at Palazzo Vecchio">
 <img src="https://cdn.theneverless.com/2026/07/florence-duomo-gothic-window.webp" alt="The cathedral dome framed by a Gothic window in Palazzo Vecchio">
@@ -105,8 +103,9 @@ On the way down, the path cut through the rose garden. The grass was still full 
 
 The morning we left, I got up early. At that hour Florence still belonged to the locals: the light lay low across the flagstones, and a mother cycled past with her child on the way to school. Just another day.
 
-![A mother taking her child to school by bicycle in Florence](https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp" alt="A mother taking her child to school by bicycle in Florence" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp" alt="Florence rooftops and the cathedral dome seen from a terrace" loading="lazy" style="height: auto;" />
+</div>
 
 Before leaving, I climbed to the terrace for one last look at the dome. When work began six hundred years ago, no one knew how it would be built. By now, everyone is used to it. The Medici ruled the city for three centuries. Their rule ended almost three centuries ago. Florentines are used to a sunset that leaves a long afterglow. They are used to the Medici's afterglow too. Everything the family left behind is still here, and people still go about their lives in that light.
-
-![Florence rooftops and the cathedral dome seen from a terrace](https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp)

@@ -32,11 +32,12 @@ description: '我们逛的是罗马帝国，还是意大利的首都？我更喜
 
 往回走，蒙蒂的小教堂刚晒上太阳，一只鸟正从十字架上方飞过。
 
-![蒙蒂圣母堂的山墙刚晒上太阳，一只鸟从十字架上方飞过](https://cdn.theneverless.com/2026/07/rome-monti-church.webp)
-
 再拐进圣母大殿：八点五十，后殿的金色马赛克已经亮了。
 
-![早晨的圣母大殿，后殿的金色马赛克和祭坛](https://cdn.theneverless.com/2026/07/rome-morning-altar.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-monti-church.webp" alt="蒙蒂圣母堂的山墙刚晒上太阳，一只鸟从十字架上方飞过" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-morning-altar.webp" alt="早晨的圣母大殿，后殿的金色马赛克和祭坛" loading="lazy" style="height: auto;" />
+</div>
 
 ## 最有名的那些石头
 
@@ -48,8 +49,6 @@ description: '我们逛的是罗马帝国，还是意大利的首都？我更喜
 </div>
 
 古罗马广场上，维斯塔贞女的雕像还立在自家院子里；她们身后的神庙，中世纪起住进了一座教堂，巴洛克的门脸从罗马柱中间长出来。神庙和住在里面的教堂都还站着。
-
-![维斯塔贞女之家的雕像，身后是长出教堂的神庙](https://cdn.theneverless.com/2026/07/rome-forum-vestals.webp)
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/rome-forum-panorama.webp" alt="从高处看古罗马广场全景" loading="lazy" />
@@ -81,9 +80,10 @@ description: '我们逛的是罗马帝国，还是意大利的首都？我更喜
 
 傍晚快闭馆时，拐进阿尔滕普斯宫，国立罗马博物馆最小的一处。四百年前，红衣主教们把挖出来的古罗马雕像收进自家房间；雕像从此没再搬过家，一间屋一尊，窗户是唯一的灯。除了工作人员，几乎只剩我们。
 
-![阿尔滕普斯宫的门洞，尽头的房间里立着一尊雕像](https://cdn.theneverless.com/2026/07/rome-altemps-doorway.webp)
-
-![暮色里窗边的雕像](https://cdn.theneverless.com/2026/07/rome-altemps-dusk.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-altemps-doorway.webp" alt="阿尔滕普斯宫的门洞，尽头的房间里立着一尊雕像" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-altemps-dusk.webp" alt="暮色里窗边的雕像" loading="lazy" style="height: auto;" />
+</div>
 
 ## 最后一天
 
@@ -100,10 +100,11 @@ description: '我们逛的是罗马帝国，还是意大利的首都？我更喜
 
 最后是万神殿。
 
-![万神殿的门廊和广场上的人群](https://cdn.theneverless.com/2026/07/rome-pantheon-facade.webp)
-
 殿里的光全从穹顶正中的圆洞直接下来。光落在柱子上，每几分钟挪一点。
 
-![穹顶的光斜搭在万神殿的柱子上](https://cdn.theneverless.com/2026/07/rome-pantheon-light.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-pantheon-facade.webp" alt="万神殿的门廊和广场上的人群" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-pantheon-light.webp" alt="穹顶的光斜搭在万神殿的柱子上" loading="lazy" style="height: auto;" />
+</div>
 
 出门的时候我看了一眼相机。好了，这次时间是对的。

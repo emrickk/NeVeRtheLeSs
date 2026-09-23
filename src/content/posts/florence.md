@@ -36,8 +36,6 @@ translationKey: florence
 
 从穹顶下来，隔壁就是美第奇家族住过的旧宫。院子里的壁画从墙面一路爬上拱顶。楼上的房间很暗，每扇窗都亮得像一幅画。其中一扇哥特式的窗正对着穹顶，嵌得刚刚好：这幅画挂了五百年，一直没换过。
 
-![旧宫画满壁画的庭院](https://cdn.theneverless.com/2026/07/florence-palazzo-vecchio-courtyard.webp)
-
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/florence-palazzo-vecchio-window-light.webp" alt="旧宫暗室里一扇高窗透进的光">
 <img src="https://cdn.theneverless.com/2026/07/florence-duomo-gothic-window.webp" alt="旧宫哥特式窗框里的大教堂穹顶">
@@ -108,8 +106,9 @@ translationKey: florence
 
 离开那天我起得很早。清晨的佛罗伦萨还是属于本地人：石板路上的光压得很低，一位妈妈骑着自行车送孩子上学，又是照常的一天。
 
-![清晨骑车送孩子上学的妈妈](https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp" alt="清晨骑车送孩子上学的妈妈" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp" alt="从露台看佛罗伦萨的屋顶和穹顶" loading="lazy" style="height: auto;" />
+</div>
 
 出门前我又爬上露台，最后看了一眼穹顶。六百年前没人相信这东西盖得起来，如今大家看惯了。美第奇家统治了这座城三百年，结束到今天也快三百年了。佛罗伦萨人习惯了日落之后还有好久的余晖，也习惯了美第奇家的余晖：他们留下的东西都还在，大家还在这片光里过日子。不过至于统治过这座城的是谁，已经没那么重要了。
-
-![从露台看佛罗伦萨的屋顶和穹顶](https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp)
