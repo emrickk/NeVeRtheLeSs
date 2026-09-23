@@ -106,9 +106,8 @@ translationKey: florence
 
 离开那天我起得很早。清晨的佛罗伦萨还是属于本地人：石板路上的光压得很低，一位妈妈骑着自行车送孩子上学，又是照常的一天。
 
-<div class="img-grid">
-  <img src="https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp" alt="清晨骑车送孩子上学的妈妈" loading="lazy" style="height: auto;" />
-  <img src="https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp" alt="从露台看佛罗伦萨的屋顶和穹顶" loading="lazy" style="height: auto;" />
-</div>
+![清晨骑车送孩子上学的妈妈](https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp)
 
 出门前我又爬上露台，最后看了一眼穹顶。六百年前没人相信这东西盖得起来，如今大家看惯了。美第奇家统治了这座城三百年，结束到今天也快三百年了。佛罗伦萨人习惯了日落之后还有好久的余晖，也习惯了美第奇家的余晖：他们留下的东西都还在，大家还在这片光里过日子。不过至于统治过这座城的是谁，已经没那么重要了。
+
+![从露台看佛罗伦萨的屋顶和穹顶](https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp)
