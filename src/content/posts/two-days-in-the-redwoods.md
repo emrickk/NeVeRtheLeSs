@@ -57,10 +57,7 @@ Then again, the fog is not here to block the road. It barely rains here in summe
 
 We kept heading back. Not far inland, the fog finally gave up. We got out, and the trail threaded between fallen redwood trunks.
 
-<div class="img-grid">
-  <img src="https://cdn.theneverless.com/2026/07/redwood-fern-hillside.webp" alt="A hillside of ferns with hikers far below" loading="lazy" />
-  <img src="https://cdn.theneverless.com/2026/07/redwood-trail-logs.webp" alt="Walking the trail past fallen redwood logs" loading="lazy" />
-</div>
+![A hillside of ferns with hikers far below](https://cdn.theneverless.com/2026/07/redwood-fern-hillside.webp)
 
 ![Sun flooding back into the grove, fallen logs beside the trail](https://cdn.theneverless.com/2026/07/redwood-sunlit-grove.webp)
 

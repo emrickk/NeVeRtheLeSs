@@ -54,10 +54,7 @@ translationKey: two-days-in-the-redwoods
 
 我们继续往回开。往内陆走了没多远，雾终于认输了。下车，小径从倒下的巨木之间穿过。
 
-<div class="img-grid">
-  <img src="https://cdn.theneverless.com/2026/07/redwood-fern-hillside.webp" alt="长满蕨类的山坡，远处有徒步的人" loading="lazy" />
-  <img src="https://cdn.theneverless.com/2026/07/redwood-trail-logs.webp" alt="沿小径走过倒下的红杉巨木" loading="lazy" />
-</div>
+![长满蕨类的山坡，远处有徒步的人](https://cdn.theneverless.com/2026/07/redwood-fern-hillside.webp)
 
 ![阳光重新照进林子，小径边是倒下的巨木](https://cdn.theneverless.com/2026/07/redwood-sunlit-grove.webp)
 
