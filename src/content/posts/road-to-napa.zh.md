@@ -19,8 +19,9 @@ translationKey: road-to-napa
 
 街角的餐厅把两把椅子先搬了出来，摆在消防栓旁边，桌布也铺好了，客人还不知道在哪儿。Napa 的中午和晚上应该很热闹，我们没有体验：两天一夜，一口酒也没喝，看到的都是它开门之前的样子。
 
-![石柱下的街角，消防栓旁边摆着两把咖啡椅，桌布已经铺好](https://cdn.theneverless.com/2026/07/napa-street-corner.webp)
-
 不过谷里和我们一样早的是花，才四月份，樱花已经开过了黑色的屋顶。
 
-![开过黑色屋顶的樱花](https://cdn.theneverless.com/2026/07/napa-cherry-blossoms.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/napa-street-corner.webp" alt="石柱下的街角，消防栓旁边摆着两把咖啡椅，桌布已经铺好" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/napa-cherry-blossoms.webp" alt="开过黑色屋顶的樱花" loading="lazy" style="height: auto;" />
+</div>

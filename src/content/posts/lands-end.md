@@ -22,9 +22,10 @@ The first stop is a window nobody gets seated at anymore. Louis', the diner abov
 
 Down the stairs, the concrete outlines in the cove are what is left of Sutro Baths: seven pools under a glass roof in 1896, burned down in 1966. The ocean has been taking the site back ever since.
 
-![A person leaning on the curved concrete parapet above the sea](https://cdn.theneverless.com/2026/07/lands-end-parapet.webp)
-
-![The white Cliff House building on the cliff edge above the surf](https://cdn.theneverless.com/2026/07/lands-end-cliff-house.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/lands-end-parapet.webp" alt="A person leaning on the curved concrete parapet above the sea" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/lands-end-cliff-house.webp" alt="The white Cliff House building on the cliff edge above the surf" loading="lazy" style="height: auto;" />
+</div>
 
 ## The trail
 

@@ -18,11 +18,12 @@ We stayed at a small inn on the headland at Albion; below the lawn outside the r
 
 The bridge is wartime carpentry. In 1944 the steel clearly had somewhere more important to be, so the bridge had to make do with wood. Luckily, good wood is one thing California has never been short of. We had crossed it ourselves on the way in.
 
-![The wooden trestle bridge over the Albion River mouth](https://cdn.theneverless.com/2026/07/albion-river-bridge.webp)
-
 The lawn runs out at a split-rail fence, and the fence is the whole show: the swell working the sea stack, the pampas grass catching the light and letting it go. I know these pictures look surprisingly alike. Come watch the sea with me anyway 🐶
 
-![The cove at Albion over a split-rail fence](https://cdn.theneverless.com/2026/07/albion-cove-fence.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/albion-river-bridge.webp" alt="The wooden trestle bridge over the Albion River mouth" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/albion-cove-fence.webp" alt="The cove at Albion over a split-rail fence" loading="lazy" style="height: auto;" />
+</div>
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/albion-pampas-bridge.webp" alt="Pampas grass with the bridge beyond" loading="lazy" />

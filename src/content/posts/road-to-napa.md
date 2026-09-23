@@ -22,8 +22,9 @@ The next morning we retreated. We passed through town for bread, and few doors w
 
 On the corner a restaurant had carried two chairs out ahead of time and set them by the fire hydrant, tablecloth already on, the customers not yet anywhere. Napa at noon and Napa at night are probably lively; we experienced none of it: two days, one night, not a single glass of wine, and everything we saw was the place before it opened.
 
-![A street corner with stone columns, two café chairs and a tablecloth beside a fire hydrant](https://cdn.theneverless.com/2026/07/napa-street-corner.webp)
-
 But the flowers in the valley were up as early as we were: only April, and the cherry blossoms were already past the dark shingle roof.
 
-![Cherry blossoms over a dark shingle roof](https://cdn.theneverless.com/2026/07/napa-cherry-blossoms.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/napa-street-corner.webp" alt="A street corner with stone columns, two café chairs and a tablecloth beside a fire hydrant" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/napa-cherry-blossoms.webp" alt="Cherry blossoms over a dark shingle roof" loading="lazy" style="height: auto;" />
+</div>

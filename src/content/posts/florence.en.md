@@ -103,8 +103,9 @@ On the way down, the path cut through the rose garden. The grass was still full 
 
 The morning we left, I got up early. At that hour Florence still belonged to the locals: the light lay low across the flagstones, and a mother cycled past with her child on the way to school. Just another day.
 
-![A mother taking her child to school by bicycle in Florence](https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/florence-street-cargo-bike.webp" alt="A mother taking her child to school by bicycle in Florence" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp" alt="Florence rooftops and the cathedral dome seen from a terrace" loading="lazy" style="height: auto;" />
+</div>
 
 Before leaving, I climbed to the terrace for one last look at the dome. When work began six hundred years ago, no one knew how it would be built. By now, everyone is used to it. The Medici ruled the city for three centuries. Their rule ended almost three centuries ago. Florentines are used to a sunset that leaves a long afterglow. They are used to the Medici's afterglow too. Everything the family left behind is still here, and people still go about their lives in that light.
-
-![Florence rooftops and the cathedral dome seen from a terrace](https://cdn.theneverless.com/2026/07/florence-rooftops-duomo.webp)

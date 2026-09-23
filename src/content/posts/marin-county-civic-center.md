@@ -23,9 +23,10 @@ The building has almost no interior in the usual sense. The hallways are balconi
   <img src="https://cdn.theneverless.com/2026/07/civic-center-skylight-louvers.webp" alt="The skylight cutting a diagonal above ribbed walls" loading="lazy" />
 </div>
 
-![The curved balcony corridor on the fourth floor, salmon walls glowing under the skylight](https://cdn.theneverless.com/2026/07/civic-center-curved-corridor.webp)
-
-![Looking down the atrium, balconies converging toward the library sign, planters on the floor below](https://cdn.theneverless.com/2026/07/civic-center-atrium-canyon.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/civic-center-curved-corridor.webp" alt="The curved balcony corridor on the fourth floor, salmon walls glowing under the skylight" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/civic-center-atrium-canyon.webp" alt="Looking down the atrium, balconies converging toward the library sign, planters on the floor below" loading="lazy" style="height: auto;" />
+</div>
 
 ## The garden inside
 

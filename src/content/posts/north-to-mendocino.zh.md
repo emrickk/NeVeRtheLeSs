@@ -15,11 +15,12 @@ Mendocino之旅是晚饭后拖Google Maps拖出来的：一个在北边三小时
 
 桥是战时的木工活：1944年，钢材显然有更重要的去处，这座桥自然就只能屈就于木头了。好在加州也并不缺好木头。我们刚刚来酒店的路上就是从这座桥上过。
 
-![Albion河口的木制栈桥](https://cdn.theneverless.com/2026/07/albion-river-bridge.webp)
-
 而酒店房间的草坪则到一道木栅栏为止，栅栏就是全部的看台：涌浪加工着海蚀柱，蒲苇接住光，又把它放掉。我知道这几张照片出奇的相似，但是来和我一起看海吧🐶
 
-![木栅栏外的Albion海湾](https://cdn.theneverless.com/2026/07/albion-cove-fence.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/albion-river-bridge.webp" alt="Albion河口的木制栈桥" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/albion-cove-fence.webp" alt="木栅栏外的Albion海湾" loading="lazy" style="height: auto;" />
+</div>
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/albion-pampas-bridge.webp" alt="蒲苇丛后的木桥" loading="lazy" />

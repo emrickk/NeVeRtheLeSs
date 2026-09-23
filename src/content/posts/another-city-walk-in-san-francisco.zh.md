@@ -127,8 +127,9 @@ Hearst大厦守着第三街和市场街的路口，《考察家报》当年就�
 
 家里的阳台对着另一个市中心：San Jose原来并不是个小城市，只是工作日安静得多。
 
-![黄昏时从阳台望出去的圣何塞市中心](https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp" alt="黄昏时从阳台望出去的圣何塞市中心" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sj-balcony.webp" alt="阳台上的两把椅子，玻璃上映着客厅和楼下的城市" loading="lazy" style="height: auto;" />
+</div>
 
 阳台上的两把椅子，占着这一天最好的一个位子。下次下去走走。
-
-![阳台上的两把椅子，玻璃上映着客厅和楼下的城市](https://cdn.theneverless.com/2026/07/sj-balcony.webp)

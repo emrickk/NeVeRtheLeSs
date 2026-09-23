@@ -14,9 +14,10 @@ In early November we flew into Phoenix, picked up a car, and drove north into th
 
 Sedona sits under a wall of red sandstone, and the town's real event is scheduled every evening: the buttes go from rust to ember to ash, in that order, and when the light leaves a rock face it leaves for good.
 
-![A Sedona butte at dusk, framed by juniper](https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp)
-
-![Watching the last sun on the red rocks from the slickrock](https://cdn.theneverless.com/2026/07/sedona-sunset-watcher.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp" alt="A Sedona butte at dusk, framed by juniper" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sedona-sunset-watcher.webp" alt="Watching the last sun on the red rocks from the slickrock" loading="lazy" style="height: auto;" />
+</div>
 
 ## A hole in the ground
 
@@ -54,9 +55,10 @@ The walls are the desert stood upright. Wright and his apprentices gathered quar
 
 Wright kept the place deliberately half tent. The light still arrives through the roof the way it arrives through a paper lantern: no bulbs at noon, just a ceiling that glows. He liked to squeeze a passage down until your shoulders notice, then release you into a room that opens sideways into the valley. He called the view from up here a look over the rim of the world.
 
-![The drafting studio at Taliesin West, drawings out on the long tables](https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp)
-
-![The Garden Room at Taliesin West, red banquettes under the canvas roof](https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp" alt="The drafting studio at Taliesin West, drawings out on the long tables" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp" alt="The Garden Room at Taliesin West, red banquettes under the canvas roof" loading="lazy" style="height: auto;" />
+</div>
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/taliesin-west-bougainvillea.webp" alt="Bougainvillea through the clerestory, a blueprint rug on the floor" loading="lazy" />

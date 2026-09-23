@@ -121,8 +121,9 @@ Afterwards, with the whole day somehow still ahead of us, we drove back past the
 
 Our ride for all of this was a rental car roughly the size of a kitchen appliance, and driving it was one of the trip's quiet pleasures: doors like a biscuit tin, a horn like an apology, forty minutes coast to coast with the windows down.
 
-![The tiny white rental car parked by the sea](https://cdn.theneverless.com/2026/07/tiny-rental-car.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/tiny-rental-car.webp" alt="The tiny white rental car parked by the sea" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/island-in-the-mirror.webp" alt="The island road receding in the rearview mirror" loading="lazy" style="height: auto;" />
+</div>
 
 Most places you leave. Rapa Nui you lose sight of, one green corner at a time, until the window is all Pacific again for five straight hours.
-
-![The island road receding in the rearview mirror](https://cdn.theneverless.com/2026/07/island-in-the-mirror.webp)

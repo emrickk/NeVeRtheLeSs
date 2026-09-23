@@ -19,9 +19,10 @@ description: '我们又来旧金山的天涯海角了'
 
 顺台阶下去，海湾里那些混凝土的轮廓，是苏特罗浴场剩下的部分：1896年开业，玻璃屋顶下七个泳池；1966年一场大火烧了个干净，之后海就一直在一点点把这块地方收回去。
 
-![一个人倚着弧形的混凝土矮墙看海](https://cdn.theneverless.com/2026/07/lands-end-parapet.webp)
-
-![崖边的白色Cliff House建筑，下方是拍岸的浪](https://cdn.theneverless.com/2026/07/lands-end-cliff-house.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/lands-end-parapet.webp" alt="一个人倚着弧形的混凝土矮墙看海" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/lands-end-cliff-house.webp" alt="崖边的白色Cliff House建筑，下方是拍岸的浪" loading="lazy" style="height: auto;" />
+</div>
 
 ## 小径
 

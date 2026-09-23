@@ -21,9 +21,10 @@ A boat only shows you so much. We got off and started wandering. Chicago thinks 
   <img src="https://cdn.theneverless.com/2026/07/chicago-street-canyon-dusk.webp" alt="A street canyon at dusk, taillights down the block" loading="lazy" />
 </div>
 
-![An empty downtown street behind barricades, a traffic cone in the foreground, an El train crossing above](https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp)
-
-![A packed tour boat on the river with a lone kayaker alongside, seen from above](https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp" alt="An empty downtown street behind barricades, a traffic cone in the foreground, an El train crossing above" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp" alt="A packed tour boat on the river with a lone kayaker alongside, seen from above" loading="lazy" style="height: auto;" />
+</div>
 
 In the afternoon we barged into an interior at random. The Driehaus Museum was a banker's house first, finished in 1883. The house has its own rules about light: curtains drawn, rooms held at dusk, and the dinner table laid with silver, for guests now a hundred and forty years late.
 

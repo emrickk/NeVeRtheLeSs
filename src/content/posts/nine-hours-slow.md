@@ -35,11 +35,12 @@ Out at seven the next day. Nobody in the streets, nobody at the Colosseum, the s
 
 Walking back, the little church in Monti had just caught the sun, and a bird passed over its cross.
 
-![The pediment of the Monti church catching the morning sun, a bird above the cross](https://cdn.theneverless.com/2026/07/rome-monti-church.webp)
-
 We went into Santa Maria Maggiore again: ten to nine, and the gold of the apse mosaic was already lit.
 
-![Morning in Santa Maria Maggiore, the golden apse mosaic above the altar](https://cdn.theneverless.com/2026/07/rome-morning-altar.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-monti-church.webp" alt="The pediment of the Monti church catching the morning sun, a bird above the cross" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-morning-altar.webp" alt="Morning in Santa Maria Maggiore, the golden apse mosaic above the altar" loading="lazy" style="height: auto;" />
+</div>
 
 ## The famous stones
 
@@ -82,9 +83,10 @@ We walked out along the Tiber to the Sant'Angelo bridge. The angels up there hav
 
 Toward closing time we turned into Palazzo Altemps, the smallest branch of the National Roman Museum. Four hundred years ago, cardinals brought excavated Roman statues into the rooms of this house; the statues never moved again, one to a room, the windows their only light. Apart from the attendants, we nearly had it to ourselves.
 
-![A doorway in Palazzo Altemps, a statue standing in the far room](https://cdn.theneverless.com/2026/07/rome-altemps-doorway.webp)
-
-![Statues by the window at dusk](https://cdn.theneverless.com/2026/07/rome-altemps-dusk.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-altemps-doorway.webp" alt="A doorway in Palazzo Altemps, a statue standing in the far room" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-altemps-dusk.webp" alt="Statues by the window at dusk" loading="lazy" style="height: auto;" />
+</div>
 
 ## The last day
 
@@ -101,10 +103,11 @@ At noon we stopped back at the hotel. The Romeo is a sixteenth-century palazzo r
 
 The Pantheon came last.
 
-![The porch of the Pantheon and the crowd in the square](https://cdn.theneverless.com/2026/07/rome-pantheon-facade.webp)
-
 The only light inside falls through the round opening at the top of the dome, with no glass in the opening. It lands on the columns and moves a little every few minutes.
 
-![The light from the oculus resting on the columns of the Pantheon](https://cdn.theneverless.com/2026/07/rome-pantheon-light.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/rome-pantheon-facade.webp" alt="The porch of the Pantheon and the crowd in the square" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/rome-pantheon-light.webp" alt="The light from the oculus resting on the columns of the Pantheon" loading="lazy" style="height: auto;" />
+</div>
 
 On the way out I checked the camera. This time it was right.

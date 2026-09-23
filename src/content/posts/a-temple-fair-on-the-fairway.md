@@ -77,11 +77,12 @@ So a very slow queue formed along the fairway. The grandstand and the slope sat 
 
 The lady of the Miura rested her arms on the window frame, in no hurry at all; on the tail of the Land Rover ahead of her, the ribbon was already tied.
 
-![A lady resting her arms on the sill of an orange Miura, the packed grandstand behind](https://cdn.theneverless.com/2026/07/miura-in-the-queue.webp)
-
 An orange-and-grey two-tone coupe inched forward steaming from its rear wheel, a marshal in a headset waving it on, while the French bulldog in the back window stuck its tongue all the way out and delivered the crowd's review for it.
 
-![The orange-and-grey classic steaming from its rear wheel in the queue, straw hats in the foreground](https://cdn.theneverless.com/2026/07/smoking-wheel-and-straw-hats.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/miura-in-the-queue.webp" alt="A lady resting her arms on the sill of an orange Miura, the packed grandstand behind" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/smoking-wheel-and-straw-hats.webp" alt="The orange-and-grey classic steaming from its rear wheel in the queue, straw hats in the foreground" loading="lazy" style="height: auto;" />
+</div>
 
 ![Two red vintage racers heading for the grandstand, DRIVER CARROLL SHELBY on the second](https://cdn.theneverless.com/2026/07/maserati-parade.webp)
 
@@ -91,11 +92,12 @@ An orange-and-grey two-tone coupe inched forward steaming from its rear wheel, a
 
 With the prizes handed out, the crowd drifted toward the exits and the field went quiet again. The chrome bird on the black classic's radiator cap held its takeoff pose; its audience had already gone.
 
-![The chrome bird mascot and grille of a black prewar car, the sea beyond the white fence](https://cdn.theneverless.com/2026/07/hispano-stork-fence.webp)
-
 Maserati number 500 was down to its last two spectators, sitting on a box behind the car, saying nothing, looking at the sea. The two gentlemen in hats by the EB110s weren't finished: backs to the cars, and most likely not talking about them either.
 
-![The red number-500 Maserati on the turf, two men sitting on a box behind it](https://cdn.theneverless.com/2026/07/maserati-500-by-the-sea.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/hispano-stork-fence.webp" alt="The chrome bird mascot and grille of a black prewar car, the sea beyond the white fence" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/maserati-500-by-the-sea.webp" alt="The red number-500 Maserati on the turf, two men sitting on a box behind it" loading="lazy" style="height: auto;" />
+</div>
 
 ![A silver and a blue Bugatti EB110 with two men in hats chatting beside them](https://cdn.theneverless.com/2026/07/eb110-pair.webp)
 

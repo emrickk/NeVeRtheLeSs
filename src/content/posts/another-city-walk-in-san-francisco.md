@@ -130,8 +130,9 @@ Six o'clock; we headed home.
 
 The balcony at home faces another downtown: San Jose, it turns out, is not a small city, just far quieter on weekdays.
 
-![Downtown San Jose at dusk](https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sj-downtown-dusk.webp" alt="Downtown San Jose at dusk" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sj-balcony.webp" alt="Two chairs on the balcony, the living room reflected in the glass over the city" loading="lazy" style="height: auto;" />
+</div>
 
 The two chairs on the balcony hold the best seat of the day. Next time, a walk down there.
-
-![Two chairs on the balcony, the living room reflected in the glass over the city](https://cdn.theneverless.com/2026/07/sj-balcony.webp)

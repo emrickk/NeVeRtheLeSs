@@ -11,9 +11,10 @@ description: '一个陨石坑，一座灵力小城，和一个营地的故事'
 
 Sedona坐在一整面红色砂岩的山墙下面，这座小镇真正的节目每天傍晚准时开演：岩壁从铁锈色烧成炭火色，再一路暗成灰烬色，光从哪一面石头上退场，就再也不回来。
 
-![黄昏时分，杜松枝影里的Sedona红岩](https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp)
-
-![坐在红石坡上看最后一道光落在山头](https://cdn.theneverless.com/2026/07/sedona-sunset-watcher.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sedona-dusk-juniper.webp" alt="黄昏时分，杜松枝影里的Sedona红岩" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sedona-sunset-watcher.webp" alt="坐在红石坡上看最后一道光落在山头" loading="lazy" style="height: auto;" />
+</div>
 
 ## 地上的一个洞
 
@@ -51,9 +52,10 @@ Sedona坐在一整面红色砂岩的山墙下面，这座小镇真正的节目�
 
 Wright有意让这里保持一半帐篷的状态。光仍然是从屋顶上下来的，像透过一盏纸灯笼：正午不用开灯，天花板自己会发亮。他喜欢先把过道压到让你的肩膀都察觉出来的高度，再把你放进一间朝着山谷横向敞开的屋子。他说站在这里，是"越过世界边沿望出去的一眼"。
 
-![Taliesin West的绘图室，长桌上还摊着图纸](https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp)
-
-![Taliesin West的花园厅，帆布屋顶下的红色长椅](https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-drafting-studio.webp" alt="Taliesin West的绘图室，长桌上还摊着图纸" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/taliesin-west-garden-room.webp" alt="Taliesin West的花园厅，帆布屋顶下的红色长椅" loading="lazy" style="height: auto;" />
+</div>
 
 <div class="img-grid">
   <img src="https://cdn.theneverless.com/2026/07/taliesin-west-bougainvillea.webp" alt="高窗外的三角梅，地上铺着一块蓝图纹样的地毯" loading="lazy" />

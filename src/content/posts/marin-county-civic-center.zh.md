@@ -20,9 +20,10 @@ Wright 1957年开始设计这栋楼，那年他九十岁。1959年春天，还�
   <img src="https://cdn.theneverless.com/2026/07/civic-center-skylight-louvers.webp" alt="天窗在条纹墙面上方切出一道斜线" loading="lazy" />
 </div>
 
-![四层弧形的走廊，鲑鱼粉的墙在天窗下发光](https://cdn.theneverless.com/2026/07/civic-center-curved-corridor.webp)
-
-![俯瞰中庭，栏杆一层层收向图书馆的招牌，底层是种植槽里的植物](https://cdn.theneverless.com/2026/07/civic-center-atrium-canyon.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/civic-center-curved-corridor.webp" alt="四层弧形的走廊，鲑鱼粉的墙在天窗下发光" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/civic-center-atrium-canyon.webp" alt="俯瞰中庭，栏杆一层层收向图书馆的招牌，底层是种植槽里的植物" loading="lazy" style="height: auto;" />
+</div>
 
 ## 长在楼里的花园
 

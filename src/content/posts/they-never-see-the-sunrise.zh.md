@@ -118,8 +118,9 @@ description: '来这里感受石像，南太平洋的风，和一个突然停顿
 
 载着我们跑完这一切的，是一辆大号厨房电器尺寸的租来的小车，开它是这趟旅行里安静的乐趣之一：车门像饼干盒，喇叭像一声道歉，摇下车窗，四十分钟从一边海岸到另一边。
 
-![停在海边的白色迷你租车](https://cdn.theneverless.com/2026/07/tiny-rental-car.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/tiny-rental-car.webp" alt="停在海边的白色迷你租车" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/island-in-the-mirror.webp" alt="后视镜里远去的海岛公路" loading="lazy" style="height: auto;" />
+</div>
 
 飞机起飞后，绿色的海岸一点点从舷窗里消失。接下来的五个小时，窗外一直是海。
-
-![后视镜里远去的海岛公路](https://cdn.theneverless.com/2026/07/island-in-the-mirror.webp)

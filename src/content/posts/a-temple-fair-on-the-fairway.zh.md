@@ -74,11 +74,12 @@ description: '今天的 18 号球道不打球'
 
 Miura 的女主人把手臂搭在窗框上，不急不忙；她前面路虎的尾巴上，绸带已经系好了。
 
-![女士把手臂搭在橙红色 Miura 的窗框上等待，身后看台坐满了人](https://cdn.theneverless.com/2026/07/miura-in-the-queue.webp)
-
 一台橙灰双色的老轿跑一边往前挪一边从后轮冒白烟，戴耳机的场务招手放行，后窗里的法斗把舌头伸得老长，替全场发表了意见。
 
-![排队的橙灰双色老爷车后轮冒着白烟，前景是几顶草帽](https://cdn.theneverless.com/2026/07/smoking-wheel-and-straw-hats.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/miura-in-the-queue.webp" alt="女士把手臂搭在橙红色 Miura 的窗框上等待，身后看台坐满了人" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/smoking-wheel-and-straw-hats.webp" alt="排队的橙灰双色老爷车后轮冒着白烟，前景是几顶草帽" loading="lazy" style="height: auto;" />
+</div>
 
 ![两台红色老赛车开向看台，后面那台侧板上写着 DRIVER CARROLL SHELBY](https://cdn.theneverless.com/2026/07/maserati-parade.webp)
 
@@ -88,11 +89,12 @@ Miura 的女主人把手臂搭在窗框上，不急不忙；她前面路虎的�
 
 奖发完，人往出口挪，场子重新安静下来。黑色老爷车水箱盖上的镀铬飞鸟还保持着起飞的姿势，围观它的人已经走光了。
 
-![黑色老爷车的镀铬飞鸟车标和格栅，白栅栏外是海](https://cdn.theneverless.com/2026/07/hispano-stork-fence.webp)
-
 500号玛莎拉蒂剩下最后两位观众，坐在车后的箱子上，谁也不说话，看的是海。EB110 前面两位戴礼帽的先生倒还没聊完：背对着车，聊的多半也不是车。
 
-![红色的500号玛莎拉蒂停在草皮上，后面两个人坐在箱子上](https://cdn.theneverless.com/2026/07/maserati-500-by-the-sea.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/hispano-stork-fence.webp" alt="黑色老爷车的镀铬飞鸟车标和格栅，白栅栏外是海" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/maserati-500-by-the-sea.webp" alt="红色的500号玛莎拉蒂停在草皮上，后面两个人坐在箱子上" loading="lazy" style="height: auto;" />
+</div>
 
 ![银色和蓝色的布加迪 EB110，旁边两位戴礼帽的先生在聊天](https://cdn.theneverless.com/2026/07/eb110-pair.webp)
 

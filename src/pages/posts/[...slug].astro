@@ -19,7 +19,7 @@ export async function getStaticPaths() {
         newerPost: allPosts[index - 1],
         olderPost: allPosts[index + 1],
         relatedPosts: allPosts
-          .filter((p) => p.id !== post.id)
+          .filter((p) => p.id !== post.id && p.data.pubDate >= new Date('2023-01-01T00:00:00Z'))
           .sort((a, b) => {
             const sameCategoryA = a.data.category && a.data.category === post.data.category ? 1 : 0;
             const sameCategoryB = b.data.category && b.data.category === post.data.category ? 1 : 0;

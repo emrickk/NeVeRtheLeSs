@@ -18,9 +18,10 @@ translationKey: summer-in-chicago
   <img src="https://cdn.theneverless.com/2026/07/chicago-street-canyon-dusk.webp" alt="黄昏的街道峡谷，一排尾灯亮着" loading="lazy" />
 </div>
 
-![路障后面一条空荡荡的市中心街道，前景一只锥桶，高架列车从上面开过](https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp)
-
-![从岸上往下看，坐满人的游船旁边划过一条皮划艇](https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/chicago-closed-street-el-train.webp" alt="路障后面一条空荡荡的市中心街道，前景一只锥桶，高架列车从上面开过" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/chicago-river-tour-boat-kayak.webp" alt="从岸上往下看，坐满人的游船旁边划过一条皮划艇" loading="lazy" style="height: auto;" />
+</div>
 
 下午我们随机闯进一个室内。Driehaus 博物馆原先是个银行家的宅子，1883 年盖成。这座房子对光有自己的规矩：窗帘拉着，房间停在黄昏里，餐桌上银器摆得整整齐齐，等的那桌客人已经迟到了一百四十年。
 

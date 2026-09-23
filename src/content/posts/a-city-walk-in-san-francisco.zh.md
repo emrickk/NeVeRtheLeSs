@@ -106,8 +106,9 @@ Powell街从这里开始爬坡。到了诺布山顶上，市中心那些塔楼�
 
 这一天最后一个机构在克莱街上：华人女青年会，1932年按Julia Morgan的图纸建成。它身后的坡下，又是金字塔。
 
-![克莱街上华人女青年会的招牌，远处是泛美金字塔](https://cdn.theneverless.com/2026/07/sf-ywca-pyramid.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sf-ywca-pyramid.webp" alt="克莱街上华人女青年会的招牌，远处是泛美金字塔" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sf-red-door-949.webp" alt="克莱街949号的红门" loading="lazy" style="height: auto;" />
+</div>
 
 再往前几个门牌，949号是一扇红门，门上一道投信口，门廊铺着马赛克。没有值得一提的建筑师，没有烧掉又回来的经历，没有故事。那天的日落是它接住的。
-
-![克莱街949号的红门](https://cdn.theneverless.com/2026/07/sf-red-door-949.webp)

@@ -109,8 +109,9 @@ Powell climbs from there. From the top of Nob Hill the downtown towers stand cle
 
 The last institution of the day was on Clay Street: the Chinese YWCA, built in 1932 to Julia Morgan's design. Downhill behind it, the pyramid again.
 
-![The Chinese YWCA sign on Clay Street, the Transamerica Pyramid beyond](https://cdn.theneverless.com/2026/07/sf-ywca-pyramid.webp)
+<div class="img-grid">
+  <img src="https://cdn.theneverless.com/2026/07/sf-ywca-pyramid.webp" alt="The Chinese YWCA sign on Clay Street, the Transamerica Pyramid beyond" loading="lazy" style="height: auto;" />
+  <img src="https://cdn.theneverless.com/2026/07/sf-red-door-949.webp" alt="A red door numbered 949 on Clay Street" loading="lazy" style="height: auto;" />
+</div>
 
 A few doors along, 949 is a red door with a mail slot and a mosaic threshold. No architect worth naming, nothing that burned and came back, no story at all. It was the door holding that day's sunset.
-
-![A red door numbered 949 on Clay Street](https://cdn.theneverless.com/2026/07/sf-red-door-949.webp)
