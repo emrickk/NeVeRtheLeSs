@@ -7,9 +7,9 @@ description: 'Whatever else you say about it, Venice really is that romantic.'
 
 <img src="https://cdn.theneverless.com/2026/08/venice-header-strip-v2.webp" alt="A minimal zine strip of the Redentore and a line of kayakers crossing the water" style="width: 100%; aspect-ratio: 9 / 1; object-fit: cover;" />
 
-The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, and then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I had come prepared to be disappointed, but hmm, maybe, just maybe, this wasn't a wasted trip after all.
+The train from Florence spends its last few minutes running on the sea: water on both sides of the causeway, then straight into Santa Lucia station. Down the front steps, and there is the Grand Canal. Venice gives you no time to ease in; the moment you step out, you get all of it at once. I’d come prepared to be disappointed, but, well, maybe I hadn’t come all this way for nothing.
 
-In Venice, the city bus is a boat. Running a boat is obviously more trouble than driving a bus, but here it is still just the way people get to work and back home. The boat docks, people file on and off, locals and tourists packed onto the same deck, each going about their own business.
+In Venice, the city bus is a boat. Running a boat is obviously more trouble than driving a bus, but here it is just the commute. The boat docks, people get on and off, locals and tourists packed together, each going about their own business.
 
 ![Passengers sitting by the window of a vaporetto](https://cdn.theneverless.com/2026/07/venice-vaporetto-riders.webp)
 
@@ -17,16 +17,16 @@ In the morning we rode south to Giudecca. The old flour mill at the western end 
 
 ![A wooden boat passing the shore of Giudecca](https://cdn.theneverless.com/2026/07/venice-giudecca-canal.webp)
 
-On the island we missed our boat. No tragedy: we found a little shop and sat down, and the coffee was good and the bread was better.
+We missed a boat on the island. No tragedy. We found a little shop and sat down. The coffee was good; the bread was better.
 
-One turn into a side lane and suddenly there was nobody at all: orange walls, tree shade covering the paving stones. In Venice, quiet and crowded are always one corner apart.
+One turn into a side lane and suddenly there was nobody at all: orange walls, tree shade covering the paving stones. In Venice, quiet and crowded are one corner apart.
 
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/giudecca-tree-street.webp" alt="A tree-shaded street on Giudecca">
 <img src="https://cdn.theneverless.com/2026/07/venice-empty-lane.webp" alt="An empty lane on Giudecca">
 </div>
 
-By noon we reached the Accademia Bridge. Looking out from the middle, this is probably the most photographed view in Venice: the dome of the Salute closing off the far end of the Grand Canal. There was an event that day, and a line of rowers passed underneath.
+By noon we reached the Accademia Bridge. From the middle, you get what must be Venice’s most photographed view: the dome of the Salute closing off the far end of the Grand Canal. There was an event that day, and a line of rowers passed underneath.
 
 ![The Grand Canal and the Salute seen from the Accademia Bridge](https://cdn.theneverless.com/2026/07/venice-grand-canal-from-accademia.webp)
 
@@ -54,7 +54,7 @@ We walked back along the Zattere. The lamps came on one by one, the dome of the 
 
 ![The Redentore at dusk with kayakers on the water](https://cdn.theneverless.com/2026/07/venice-redentore-dusk.webp)
 
-Later we found a corner with hardly any tourists, sat for a while, stood for a while, and watched the sunset light the church wall inch by inch and burn both sides of the canal gold.
+That day we also found a corner with hardly any tourists, sat for a while, stood for a while, and watched the sunset light the church wall inch by inch and burn both sides of the canal gold.
 
 ![Sunset lighting a church and houses beside a canal](https://cdn.theneverless.com/2026/07/venice-golden-corner.webp)
 
@@ -67,15 +67,15 @@ The next morning we took a gondola. The gondolier rowed us into waterways with r
 <img src="https://cdn.theneverless.com/2026/07/venice-gondola-grand-canal.webp" alt="A gondola emerging from a narrow waterway into the Grand Canal">
 </div>
 
-The midday vaporetto ran out to Murano. At the Colonna stop, through the boat window and the glass wall of the stop, I happened to catch the eye of someone on the platform.
+At noon we took the vaporetto to Murano. At the Colonna stop, through the boat window and the glass of the shelter, I caught the eye of someone waiting to board.
 
 ![Passengers at the Colonna stop seen through a vaporetto window](https://cdn.theneverless.com/2026/07/murano-colonna-vaporetto.webp)
 
-The island of glass was quieter than its reputation. Beyond the brick arches lay an empty courtyard and a whole tree's worth of green. There seemed to be more afternoon than we could use.
+The island of glass was quieter than its reputation suggested. Beyond the brick arches lay an empty courtyard and a tree full of green. There seemed to be more afternoon than we could use.
 
 ![An empty courtyard behind brick arches on Murano](https://cdn.theneverless.com/2026/07/murano-quiet-corner.webp)
 
-Burano is the island of color. The moment the afternoon boat docked, it was obvious why: this little island does not hold back on paint. Every house gets a color of its own, and even the laundry on the lines looks coordinated. A blue window is set into a yellow wall, with flowers blooming beneath the sill.
+Burano is the island of color. As soon as the afternoon boat docked, we saw why. The island does not hold back on paint: every house gets its own color, and even the laundry looks coordinated. A blue window sits in a yellow wall, with flowers beneath the sill.
 
 <div class="img-grid">
 <img src="https://cdn.theneverless.com/2026/07/burano-lane.webp" alt="A lane between colorful houses on Burano">
@@ -93,4 +93,4 @@ By evening we were back on the main island, just in time for another sunset. A g
 <img src="https://cdn.theneverless.com/2026/07/venice-last-canal.webp" alt="A small blue boat in the shadows of a narrow canal">
 </div>
 
-They say Venice is slowly sinking, a few millimeters every year. Everything else I had heard before the trip was true too: the crowds, the packed boats, the tourists everywhere. But nobody said that missing one boat could buy you half an empty city. Nobody said that a city could be sinking and still hold everything so steadily: bridges, boats, and two people with aching feet who still did not want to go back.
+What I’d heard before the trip was true: crowds, packed boats, tourists everywhere. I just hadn’t expected missing a boat to work out so well. Our feet ached, and neither of us wanted to go back.
