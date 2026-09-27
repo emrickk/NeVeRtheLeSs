@@ -1,14 +1,31 @@
 ---
-import rides from '../data/cedar-point.json';
+import englishRides from '../data/cedar-point.json';
+import chineseRides from '../data/cedar-point.zh.json';
+interface Props {
+  lang?: 'en' | 'zh';
+}
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
+const rides = zh ? chineseRides : englishRides;
+const anchor = (id: string) => (zh ? `${id}-zh` : id);
 const ratingBand = (score: string) =>
   parseFloat(score) >= 7.5 ? 'high' : parseFloat(score) >= 6 ? 'middle' : 'low';
 ---
 
 <div class="cedar-point-log">
-  <nav class="ride-overview" id="ride-index" aria-label="Jump to a ride">
-    <div class="index-controls" role="group" aria-label="Sort ride index">
-      <button type="button" data-sort="order" aria-pressed="true">Riding order</button>
-      <button type="button" data-sort="score" aria-pressed="false">Highest score</button>
+  <nav
+    class="ride-overview"
+    id={anchor('ride-index')}
+    data-lang={lang}
+    aria-label={zh ? '跳转到项目' : 'Jump to a ride'}
+  >
+    <div class="index-controls" role="group" aria-label={zh ? '目录排序' : 'Sort ride index'}>
+      <button type="button" data-sort="order" aria-pressed="true"
+        >{zh ? '乘坐顺序' : 'Riding order'}</button
+      >
+      <button type="button" data-sort="score" aria-pressed="false"
+        >{zh ? '评分从高到低' : 'Highest score'}</button
+      >
     </div>
     <span class="sort-status" aria-live="polite"></span>
     <ol>
@@ -19,7 +36,7 @@ const ratingBand = (score: string) =>
             data-score={parseFloat(ride.score)}
             data-rating={ratingBand(ride.score)}
           >
-            <a href={`#${ride.id}`}>
+            <a href={`#${anchor(ride.id)}`}>
               <>
                 <span class="index-number">{String(i + 1).padStart(2, '0')}</span>
                 <span set:html={ride.name} />
@@ -34,12 +51,20 @@ const ratingBand = (score: string) =>
 
   {
     rides.map((ride, i) => (
-      <section class="ride-review" aria-labelledby={ride.id} data-rating={ratingBand(ride.score)}>
+      <section
+        class="ride-review"
+        aria-labelledby={anchor(ride.id)}
+        data-rating={ratingBand(ride.score)}
+      >
         <header class="ride-heading">
-          <a class="ride-number" href="#ride-index" aria-label="Back to ride index">
-            {String(i + 1).padStart(2, '0')} / 12 <span>↑ Index</span>
+          <a
+            class="ride-number"
+            href={`#${anchor('ride-index')}`}
+            aria-label={zh ? '返回目录' : 'Back to ride index'}
+          >
+            {String(i + 1).padStart(2, '0')} / 12 <span>{zh ? '↑ 目录' : '↑ Index'}</span>
           </a>
-          <h2 id={ride.id} set:html={ride.name} />
+          <h2 id={anchor(ride.id)} set:html={ride.name} />
           <p class="ride-verdict" set:html={ride.verdict} />
         </header>
         <div class="ride-story">
@@ -59,7 +84,7 @@ const ratingBand = (score: string) =>
             ))}
           </div>
         </div>
-        <div class="ride-assessments" role="group" aria-label="My assessments">
+        <div class="ride-assessments" role="group" aria-label={zh ? '我的评价' : 'My assessments'}>
           <dl>
             {ride.metrics.map((metric, n) => (
               <div class:list={['assessment', { 'assessment-overall': n === 0 }]}>
@@ -76,36 +101,48 @@ const ratingBand = (score: string) =>
 
 <script>
   function setupRideSorting() {
-    const index = document.querySelector<HTMLElement>('.ride-overview');
-    if (!index || index.dataset.sortReady) return;
-    index.dataset.sortReady = 'true';
-    const list = index.querySelector('ol')!;
-    const entries = [...list.querySelectorAll<HTMLLIElement>('li')];
-    const buttons = [...index.querySelectorAll<HTMLButtonElement>('[data-sort]')];
-    buttons.forEach((button) =>
-      button.addEventListener('click', () => {
-        const byScore = button.dataset.sort === 'score';
-        entries.sort(
-          (a, b) =>
-            (byScore ? Number(b.dataset.score) - Number(a.dataset.score) : 0) ||
-            Number(a.dataset.order) - Number(b.dataset.order)
-        );
-        entries.forEach((entry, rank) => {
-          entry.querySelector('.index-number')!.textContent = String(rank + 1).padStart(2, '0');
-        });
-        list.append(...entries);
-        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-        index.querySelector('.sort-status')!.textContent = byScore
-          ? 'Rides sorted by score, highest first.'
-          : 'Rides restored to riding order.';
-      })
-    );
+    document.querySelectorAll<HTMLElement>('.ride-overview').forEach((index) => {
+      if (index.dataset.sortReady) return;
+      index.dataset.sortReady = 'true';
+      const list = index.querySelector('ol')!;
+      const entries = [...list.querySelectorAll<HTMLLIElement>('li')];
+      const buttons = [...index.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+      buttons.forEach((button) =>
+        button.addEventListener('click', () => {
+          const byScore = button.dataset.sort === 'score';
+          entries.sort(
+            (a, b) =>
+              (byScore ? Number(b.dataset.score) - Number(a.dataset.score) : 0) ||
+              Number(a.dataset.order) - Number(b.dataset.order)
+          );
+          entries.forEach((entry, rank) => {
+            entry.querySelector('.index-number')!.textContent = String(rank + 1).padStart(2, '0');
+          });
+          list.append(...entries);
+          buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          index.querySelector('.sort-status')!.textContent =
+            index.dataset.lang === 'zh'
+              ? byScore
+                ? '已按评分从高到低排序。'
+                : '已恢复乘坐顺序。'
+              : byScore
+                ? 'Rides sorted by score, highest first.'
+                : 'Rides restored to riding order.';
+        })
+      );
+    });
   }
   setupRideSorting();
   document.addEventListener('astro:page-load', setupRideSorting);
 </script>
 
 <style is:global>
+  @media (max-width: 1559px) {
+    body:has(.cedar-point-log) .toc-rail {
+      display: none;
+    }
+  }
+
   /* This long illustrated post uses the blog's typography and colors, with
      a wider reading area only for this page. Other posts are untouched. */
   .post-main:has(.cedar-point-log) {
