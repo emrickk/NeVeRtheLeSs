@@ -1,0 +1,417 @@
+---
+import rides from '../data/cedar-point.json';
+const ratingBand = (score: string) =>
+  parseFloat(score) >= 7.5 ? 'high' : parseFloat(score) >= 6 ? 'middle' : 'low';
+---
+
+<div class="cedar-point-log">
+  <nav class="ride-overview" id="ride-index" aria-label="Jump to a ride">
+    <div class="index-controls" role="group" aria-label="Sort ride index">
+      <button type="button" data-sort="order" aria-pressed="true">Riding order</button>
+      <button type="button" data-sort="score" aria-pressed="false">Highest score</button>
+    </div>
+    <span class="sort-status" aria-live="polite"></span>
+    <ol>
+      {
+        rides.map((ride, i) => (
+          <li
+            data-order={i}
+            data-score={parseFloat(ride.score)}
+            data-rating={ratingBand(ride.score)}
+          >
+            <a href={`#${ride.id}`}>
+              <>
+                <span class="index-number">{String(i + 1).padStart(2, '0')}</span>
+                <span set:html={ride.name} />
+                <span class="index-score">{ride.score.replace('/10', '')}</span>
+              </>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+
+  {
+    rides.map((ride, i) => (
+      <section class="ride-review" aria-labelledby={ride.id} data-rating={ratingBand(ride.score)}>
+        <header class="ride-heading">
+          <a class="ride-number" href="#ride-index" aria-label="Back to ride index">
+            {String(i + 1).padStart(2, '0')} / 12 <span>↑ Index</span>
+          </a>
+          <h2 id={ride.id} set:html={ride.name} />
+          <p class="ride-verdict" set:html={ride.verdict} />
+        </header>
+        <div class="ride-story">
+          <figure class="ride-illustration">
+            <img
+              src={ride.image}
+              alt={ride.alt}
+              width={ride.width}
+              height={ride.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="ride-prose">
+            {ride.paragraphs.map((paragraph) => (
+              <p set:html={paragraph} />
+            ))}
+          </div>
+        </div>
+        <div class="ride-assessments" role="group" aria-label="My assessments">
+          <dl>
+            {ride.metrics.map((metric, n) => (
+              <div class:list={['assessment', { 'assessment-overall': n === 0 }]}>
+                <dt set:html={metric.label} />
+                <dd set:html={metric.assessment} />
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<script>
+  function setupRideSorting() {
+    const index = document.querySelector<HTMLElement>('.ride-overview');
+    if (!index || index.dataset.sortReady) return;
+    index.dataset.sortReady = 'true';
+    const list = index.querySelector('ol')!;
+    const entries = [...list.querySelectorAll<HTMLLIElement>('li')];
+    const buttons = [...index.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const byScore = button.dataset.sort === 'score';
+        entries.sort(
+          (a, b) =>
+            (byScore ? Number(b.dataset.score) - Number(a.dataset.score) : 0) ||
+            Number(a.dataset.order) - Number(b.dataset.order)
+        );
+        entries.forEach((entry, rank) => {
+          entry.querySelector('.index-number')!.textContent = String(rank + 1).padStart(2, '0');
+        });
+        list.append(...entries);
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        index.querySelector('.sort-status')!.textContent = byScore
+          ? 'Rides sorted by score, highest first.'
+          : 'Rides restored to riding order.';
+      })
+    );
+  }
+  setupRideSorting();
+  document.addEventListener('astro:page-load', setupRideSorting);
+</script>
+
+<style is:global>
+  /* This long illustrated post uses the blog's typography and colors, with
+     a wider reading area only for this page. Other posts are untouched. */
+  .post-main:has(.cedar-point-log) {
+    max-width: 1120px;
+  }
+  .prose:has(.cedar-point-log) {
+    max-width: none;
+  }
+  .cedar-point-log [data-rating='high'] {
+    --ride-color: #087e8b;
+  }
+  .cedar-point-log [data-rating='middle'] {
+    --ride-color: #4b65ac;
+  }
+  .cedar-point-log [data-rating='low'] {
+    --ride-color: #80608f;
+  }
+  [data-theme='dark'] .cedar-point-log [data-rating='high'] {
+    --ride-color: #66d3ce;
+  }
+  [data-theme='dark'] .cedar-point-log [data-rating='middle'] {
+    --ride-color: #9db8ff;
+  }
+  [data-theme='dark'] .cedar-point-log [data-rating='low'] {
+    --ride-color: #c3a6d7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .cedar-point-log [data-rating='high'] {
+      --ride-color: #66d3ce;
+    }
+    :root:not([data-theme='light']) .cedar-point-log [data-rating='middle'] {
+      --ride-color: #9db8ff;
+    }
+    :root:not([data-theme='light']) .cedar-point-log [data-rating='low'] {
+      --ride-color: #c3a6d7;
+    }
+  }
+  .cedar-point-log .ride-overview {
+    margin: 0 0 64px;
+    scroll-margin-top: 90px;
+  }
+  .cedar-point-log .index-controls {
+    display: flex;
+    gap: 24px;
+    margin: 28px 0 8px;
+    border-bottom: 1px solid var(--separator);
+  }
+  .cedar-point-log .index-controls button {
+    font: inherit;
+    font-size: 13px;
+    color: var(--label-tertiary);
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 10px 0;
+    margin-bottom: -1px;
+    cursor: pointer;
+  }
+  .cedar-point-log .index-controls button[aria-pressed='true'] {
+    color: var(--label-primary);
+    background: none;
+    border-bottom-color: var(--label-primary);
+    font-weight: 650;
+  }
+  .cedar-point-log .index-controls button:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+  }
+  .cedar-point-log .sort-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .cedar-point-log .ride-overview ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    column-gap: 26px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cedar-point-log .ride-overview li {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid var(--separator);
+  }
+  .cedar-point-log .ride-overview a {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 8px;
+    align-items: baseline;
+    padding: 13px 0;
+    color: var(--label-primary);
+    font-size: 14px;
+    line-height: 1.35;
+    text-decoration: none;
+    border: 0;
+  }
+  .cedar-point-log .ride-overview a:hover {
+    color: var(--color-blue);
+  }
+  .cedar-point-log .index-number {
+    font-size: 10px;
+    color: var(--label-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+  .cedar-point-log .index-score {
+    font-variant-numeric: tabular-nums;
+    color: var(--ride-color);
+    font-weight: 750;
+  }
+  .cedar-point-log .ride-review {
+    padding: 0 0 54px;
+    margin: 0 0 54px;
+    border-bottom: 1px solid var(--separator);
+  }
+  .cedar-point-log .ride-review:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  .cedar-point-log .ride-heading {
+    margin-bottom: 26px;
+    max-width: 760px;
+  }
+  .cedar-point-log .ride-number {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--label-tertiary);
+    text-decoration: none;
+    border: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .cedar-point-log .ride-number span {
+    color: var(--label-tertiary);
+  }
+  .cedar-point-log h2 {
+    margin: 10px 0 12px;
+    scroll-margin-top: 90px;
+  }
+  .cedar-point-log p.ride-verdict {
+    border-left: 3px solid var(--ride-color);
+    padding-left: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--label-secondary);
+    margin: 0;
+  }
+  .prose:has(.cedar-point-log) > p {
+    max-width: 760px;
+  }
+  .cedar-point-log .ride-story {
+    display: flow-root;
+  }
+  .cedar-point-log figure.ride-illustration {
+    float: left;
+    width: 41%;
+    margin: 0 34px 16px 0;
+  }
+
+  @keyframes cedar-image-drift {
+    from {
+      transform: translateY(-18px);
+    }
+    to {
+      transform: translateY(18px);
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (min-width: 681px) and (prefers-reduced-motion: no-preference) {
+      .cedar-point-log figure.ride-illustration {
+        animation: cedar-image-drift linear both;
+        animation-timeline: view();
+      }
+    }
+  }
+  .cedar-point-log .ride-illustration img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    background: #fff;
+    border: 0;
+    border-radius: 6px;
+  }
+  .cedar-point-log .ride-prose p {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .cedar-point-log .ride-prose p:last-child {
+    margin-bottom: 0;
+  }
+  .cedar-point-log .ride-assessments {
+    margin-top: 30px;
+  }
+  .cedar-point-log .ride-assessments dl {
+    display: grid;
+    grid-template-columns: 0.62fr 1.2fr 1.2fr 1.2fr;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--separator);
+  }
+  .cedar-point-log .assessment {
+    padding: 16px 20px 0;
+    border-left: 1px solid var(--separator);
+  }
+  .cedar-point-log .assessment:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .cedar-point-log .assessment:last-child {
+    padding-right: 0;
+  }
+  .cedar-point-log .assessment dt {
+    margin: 0 0 7px;
+    color: var(--label-tertiary);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .cedar-point-log .assessment dd {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .cedar-point-log .assessment-overall .score {
+    display: block;
+    color: var(--ride-color);
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 750;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 680px) {
+    .cedar-point-log .ride-overview ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(6, auto);
+      gap: 0 20px;
+    }
+
+    .cedar-point-log figure.ride-illustration {
+      float: none;
+      width: 100%;
+      margin: 0 0 24px;
+      max-width: 540px;
+    }
+    .cedar-point-log .ride-assessments dl {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 0;
+    }
+    .cedar-point-log .assessment {
+      padding-top: 14px;
+    }
+    .cedar-point-log .assessment:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .cedar-point-log p.ride-verdict {
+      border-left: 3px solid var(--ride-color);
+      padding-left: 16px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .cedar-point-log .ride-overview a {
+      font-size: 12px;
+      grid-template-columns: 15px 1fr auto;
+      gap: 5px;
+    }
+    .cedar-point-log .ride-overview ol {
+      column-gap: 14px;
+    }
+    .cedar-point-log .ride-review {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+    }
+    .cedar-point-log .assessment {
+      padding-inline: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cedar-point-log figure.ride-illustration {
+      animation: none;
+      transform: none;
+    }
+  }
+
+  @media print {
+    .cedar-point-log figure.ride-illustration {
+      animation: none;
+      transform: none;
+    }
+    .cedar-point-log .ride-assessments {
+      break-inside: avoid;
+    }
+    .cedar-point-log .ride-number span {
+      display: none;
+    }
+  }
+</style>

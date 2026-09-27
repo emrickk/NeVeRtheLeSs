@@ -65,7 +65,8 @@ if (sibling && post.data.protected !== sibling.data.protected) {
   );
 }
 
-const readingTime = Math.max(1, Math.round(readingTimeLib(post.body ?? '').minutes));
+const readingTime =
+  post.data.readingTime ?? Math.max(1, Math.round(readingTimeLib(post.body ?? '').minutes));
 ---
 
 <PostLayout

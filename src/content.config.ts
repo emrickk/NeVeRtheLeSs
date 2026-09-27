@@ -30,6 +30,12 @@ const posts = defineCollection({
         .describe(
           'Publication date shown on the post; also orders posts on the home page, feed, and RSS.',
         ),
+      readingTime: z
+        .number()
+        .int()
+        .positive()
+        .optional()
+        .describe('Optional reading time in minutes for posts whose text is rendered by a component.'),
       // The glob loader uses data.slug as the entry id when present, so this
       // overrides the URL that otherwise comes from the filename.
       slug: z
