@@ -9,6 +9,9 @@ readingTime: 7
 ---
 
 import RideLog from '../../components/CedarPointRideLog.astro';
+import RelatedRideLog from '../../components/RelatedRideLog.astro';
 import rides from '../../data/magic-mountain.json';
+
+<RelatedRideLog href="/posts/cedar-point/" title="Cedar Point: 12 roller coaster reviews" />
 
 <RideLog rides={rides} orderLabel="Reading order" />

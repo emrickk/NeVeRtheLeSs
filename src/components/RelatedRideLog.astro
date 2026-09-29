@@ -1,0 +1,53 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  label?: string;
+}
+const { href, title, label = 'Another riding log' } = Astro.props;
+---
+
+<aside class="related-ride-log" aria-label={label}>
+  <span>{label}</span>
+  <a href={href}>{title}<span class="arrow" aria-hidden="true">↗</span></a>
+</aside>
+
+<style>
+  .related-ride-log {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin: 1.5rem 0 2rem;
+    padding-left: 0.875rem;
+    border-left: 1px solid color-mix(in srgb, currentcolor 22%, transparent);
+    line-height: 1.5;
+  }
+
+  .related-ride-log > span {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .related-ride-log a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .related-ride-log a:hover {
+    color: var(--accent);
+  }
+
+  .arrow {
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+</style>
