@@ -80,6 +80,7 @@ const slot1Sizes = (img: ImageMetadata) => {
                 src={post.data.heroImage}
                 alt={post.data.title}
                 class="featured-post-card-img"
+                style={post.id === 'magic-mountain' ? 'object-position: right center;' : undefined}
                 widths={
                   index > 0
                     ? [320, 480, 700, 960, 1280, 1600]
