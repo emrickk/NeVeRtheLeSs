@@ -1,0 +1,22 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import RideLog from '../../components/CedarPointRideLog.astro';
+import rides from '../../data/magic-mountain.json';
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { slug: 'magic-mountain' } }] : [];
+}
+---
+
+<PostLayout
+  title="Magic Mountain: my roller coaster riding log"
+  description="Some rides left me looking at the sky. Others left me wondering what the seat designers had against thighs."
+  pubDate={new Date('2025-10-27T12:00:00Z')}
+  lang="en"
+  draft={true}
+  showHero={false}
+  homeFeatured={false}
+  protected={false}
+  readingTime={7}
+>
+  <RideLog rides={rides} orderLabel="Reading order" />
+</PostLayout>

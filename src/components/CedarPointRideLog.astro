@@ -3,16 +3,21 @@ import englishRides from '../data/cedar-point.json';
 import chineseRides from '../data/cedar-point.zh.json';
 interface Props {
   lang?: 'en' | 'zh';
+  rides?: typeof englishRides;
+  orderLabel?: string;
 }
-const { lang = 'en' } = Astro.props;
+const { lang = 'en', rides: suppliedRides, orderLabel } = Astro.props;
 const zh = lang === 'zh';
-const rides = zh ? chineseRides : englishRides;
+const rides = suppliedRides ?? (zh ? chineseRides : englishRides);
 const anchor = (id: string) => (zh ? `${id}-zh` : id);
 const ratingBand = (score: string) =>
   parseFloat(score) >= 7.5 ? 'high' : parseFloat(score) >= 6 ? 'middle' : 'low';
 ---
 
-<div class="cedar-point-log">
+<div
+  class="cedar-point-log"
+  style={`--index-rows: ${Math.ceil(rides.length / 3)}; --index-mobile-rows: ${Math.ceil(rides.length / 2)}`}
+>
   <nav
     class="ride-overview"
     id={anchor('ride-index')}
@@ -21,7 +26,7 @@ const ratingBand = (score: string) =>
   >
     <div class="index-controls" role="group" aria-label={zh ? '目录排序' : 'Sort ride index'}>
       <button type="button" data-sort="order" aria-pressed="true"
-        >{zh ? '乘坐顺序' : 'Riding order'}</button
+        >{orderLabel ?? (zh ? '乘坐顺序' : 'Riding order')}</button
       >
       <button type="button" data-sort="score" aria-pressed="false"
         >{zh ? '评分从高到低' : 'Highest score'}</button
@@ -62,7 +67,8 @@ const ratingBand = (score: string) =>
             href={`#${anchor('ride-index')}`}
             aria-label={zh ? '返回目录' : 'Back to ride index'}
           >
-            {String(i + 1).padStart(2, '0')} / 12 <span>{zh ? '↑ 目录' : '↑ Index'}</span>
+            {String(i + 1).padStart(2, '0')} / {rides.length}{' '}
+            <span>{zh ? '↑ 目录' : '↑ Index'}</span>
           </a>
           <h2 id={anchor(ride.id)} set:html={ride.name} />
           <p class="ride-verdict" set:html={ride.verdict} />
@@ -223,7 +229,7 @@ const ratingBand = (score: string) =>
   .cedar-point-log .ride-overview ol {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(var(--index-rows, 4), auto);
     grid-auto-flow: column;
     column-gap: 26px;
     margin: 0;
@@ -386,7 +392,7 @@ const ratingBand = (score: string) =>
   @media (max-width: 680px) {
     .cedar-point-log .ride-overview ol {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(6, auto);
+      grid-template-rows: repeat(var(--index-mobile-rows, 6), auto);
       gap: 0 20px;
     }
 

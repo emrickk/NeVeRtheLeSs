@@ -1,0 +1,405 @@
+[
+  {
+    "id": "full-throttle",
+    "name": "Full Throttle",
+    "verdict": "A fast launch, a few seconds of nothing but blue sky, and the feeling of flying.",
+    "paragraphs": [
+      "Full Throttle gets going immediately. The launch sends the train into its huge loop, and for a few seconds almost everything in front of me is sky. That feeling of flying was the best part."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/full-throttle-repaired.webp",
+    "alt": "Watercolor illustration of Full Throttle",
+    "width": 1672,
+    "height": 941,
+    "score": "9/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">9/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Fast.</strong> No slow build-up before the speed."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> A strong launch without much rattling."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Memorable.</strong> The view becomes part of the ride."
+      }
+    ]
+  },
+  {
+    "id": "x2",
+    "name": "X2",
+    "verdict": "The whole park slowly unfolds below, then the seat starts turning every which way.",
+    "paragraphs": [
+      "The climb is already part of the pleasure: the park gradually opens out in front of me. Then the seats rotate as the train moves through the course, so the changing orientation becomes the ride itself. I really liked it."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/x2.webp",
+    "alt": "Watercolor illustration of X2",
+    "width": 1672,
+    "height": 941,
+    "score": "9/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">9/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Tumbling.</strong> Being turned around is part of the fun here."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Uneven.</strong> Some sections can shake noticeably."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Inventive.</strong> The rotating seats keep changing the perspective."
+      }
+    ]
+  },
+  {
+    "id": "west-coast-racers",
+    "name": "West Coast Racers",
+    "verdict": "Smooth, fast, and two rounds of racing in one ride.",
+    "paragraphs": [
+      "I like the two-team racing idea, especially getting to go around twice. The West Coast Customs pit stop gives the race a setting, too. A coaster with some background to it, for once. It is a good ride, though not one of the most memorable here."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/west-coast-racers-v2.webp",
+    "alt": "Watercolor illustration of West Coast Racers",
+    "width": 1672,
+    "height": 941,
+    "score": "8/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">8/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Lively.</strong> Enough speed to make the race fun."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> The motion feels fluid even at speed."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Playful.</strong> The second lap makes the racing concept more satisfying."
+      }
+    ]
+  },
+  {
+    "id": "twisted-colossus",
+    "name": "Twisted Colossus",
+    "verdict": "A wooden-looking hybrid with enough in it to leave me thoroughly satisfied.",
+    "paragraphs": [
+      "Twisted Colossus really has that hybrid character: the big wooden framework, with steel track threaded through it. The combination feels comfortable and smooth. Two passes in one ride were enough to get my fill. My favorite in the park."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/twisted-colossus-repaired.webp",
+    "alt": "Watercolor illustration of Twisted Colossus",
+    "width": 1536,
+    "height": 1024,
+    "score": "9.5/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">9.5/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Satisfying.</strong> A generous ride, with a second pass to enjoy."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> Both passes flow well."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Characterful.</strong> The wooden structure and steel track work well together."
+      }
+    ]
+  },
+  {
+    "id": "apocalypse",
+    "name": "Apocalypse",
+    "verdict": "With enough force, even a brick can fly. Apparently, so can this much wood.",
+    "paragraphs": [
+      "The end-of-the-world theme works for this one. It has that old wooden-coaster feeling, then charges ahead as if it wants to find out just how much wood can take. “力大砖飞” was the phrase that came to mind: enough brute force to make a brick fly. I liked it."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/apocalypse.webp",
+    "alt": "Watercolor illustration of Apocalypse",
+    "width": 1672,
+    "height": 941,
+    "score": "8/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">8/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Forceful.</strong> It really commits to that charge forward."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Rattly.</strong> Noticeable vibration rather than a polished glide."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Fitting.</strong> The raw wooden character suits the apocalypse theme."
+      }
+    ]
+  },
+  {
+    "id": "goliath",
+    "name": "Goliath",
+    "verdict": "Very tall, with a first drop that feels properly good.",
+    "paragraphs": [
+      "Goliath climbs high, then makes good use of the height. That first plunge is the part I remember most. It feels older, but still reasonably well looked after."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/goliath-v2.webp",
+    "alt": "Watercolor illustration of Goliath",
+    "width": 1672,
+    "height": 940,
+    "score": "7.5/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">7.5/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Exhilarating.</strong> The first drop is the highlight."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> Little rattling despite its age."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Direct.</strong> The height delivers what it promises."
+      }
+    ]
+  },
+  {
+    "id": "viper",
+    "name": "Viper",
+    "verdict": "An ordinary roller coaster. No strong praise, no strong complaint.",
+    "paragraphs": [
+      "Viper was fine. Nothing particularly stood out, and there is not much more to say about it."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/viper-repaired.webp",
+    "alt": "Watercolor illustration of Viper",
+    "width": 1672,
+    "height": 941,
+    "score": "5.5/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">5.5/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Ordinary.</strong> No strong reaction either way."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Mixed.</strong> Some transitions can feel abrupt."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Conventional.</strong> Nothing that particularly stayed with me."
+      }
+    ]
+  },
+  {
+    "id": "revolution",
+    "name": "The New Revolution",
+    "verdict": "Fine, without leaving much of an impression.",
+    "paragraphs": [
+      "Nothing really to praise or complain about. It felt like a normal roller coaster."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/revolution-v3.webp",
+    "alt": "Watercolor illustration of The New Revolution",
+    "width": 1672,
+    "height": 941,
+    "score": "6/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">6/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Ordinary.</strong> Neither especially good nor bad."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> A fairly fluid ride through the curves."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Unremarkable.</strong> No particular feature stayed with me."
+      }
+    ]
+  },
+  {
+    "id": "tatsu",
+    "name": "Tatsu",
+    "verdict": "A flying position that felt much milder than it looked.",
+    "paragraphs": [
+      "Being suspended like this reminded me of The Flying Dinosaur. The feeling was quite nice, but it barely felt intense, almost like a children’s ride. Overall, fairly ordinary."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/tatsu-repaired.webp",
+    "alt": "Watercolor illustration of Tatsu",
+    "width": 1672,
+    "height": 940,
+    "score": "6/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">6/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Mild.</strong> Not particularly thrilling on this ride."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Smooth.</strong> A generally fluid flying motion."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Familiar.</strong> The suspended position recalls The Flying Dinosaur."
+      }
+    ]
+  },
+  {
+    "id": "scream",
+    "name": "Scream",
+    "verdict": "Round and round and round, and still dizzy after getting off.",
+    "paragraphs": [
+      "Scream was not fun. The motion felt very rough, and it kept turning and turning and turning until I was dizzy. I was still dizzy after getting off."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/scream-v2.webp",
+    "alt": "Watercolor illustration of Scream",
+    "width": 1672,
+    "height": 941,
+    "score": "4/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">4/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Dizzying.</strong> The repeated rotations became unpleasant."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Rough.</strong> Very little of it felt fluid."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Repetitive.</strong> A lot of motion without much enjoyment."
+      }
+    ]
+  },
+  {
+    "id": "riddlers-revenge",
+    "name": "The Riddler’s Revenge",
+    "verdict": "Half-crouching while my head knocks against the restraints. What the hell is this?",
+    "paragraphs": [
+      "The standing position left me feeling half-crouched and already uncomfortable. Then the side-to-side motion kept knocking my head against the pads. One of the worst of the day, down there with Scream."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/riddlers-revenge-repaired.webp",
+    "alt": "Watercolor illustration of The Riddler’s Revenge",
+    "width": 1672,
+    "height": 941,
+    "score": "4/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">4/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Uncomfortable.</strong> The posture and head movement dominate the ride."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Jarring.</strong> Repeated side-to-side jolts."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Awkward.</strong> Standing up added more discomfort than enjoyment."
+      }
+    ]
+  },
+  {
+    "id": "wonder-woman-flight-of-courage",
+    "name": "WONDER WOMAN Flight of Courage",
+    "verdict": "An unusual seat, and my thighs had every reason to object.",
+    "paragraphs": [
+      "The position felt wrong from the start: legs spread wide, with the restraint pressing separately against the top of each thigh. It felt as if all the load was concentrated there, and my thighs were still uncomfortable afterward. The ride itself was not especially smooth either. No, not this one."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/wonder-woman-flight-of-courage.webp",
+    "alt": "Watercolor illustration of WONDER WOMAN Flight of Courage",
+    "width": 1672,
+    "height": 941,
+    "score": "4/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">4/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Uncomfortable.</strong> The pressure on the upper thighs is what stayed with me."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Uneven.</strong> Not particularly smooth."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Awkward.</strong> The seating position did not work for me."
+      }
+    ]
+  },
+  {
+    "id": "gold-rusher",
+    "name": "Gold Rusher",
+    "verdict": "An old mine train with a warm, welcoming feel. Intimate, and easy to like.",
+    "paragraphs": [
+      "Gold Rusher has the old-fashioned character I like in Magnum XL-200, at a much gentler pace. The mine-cart train follows the hills through a series of turns, keeping the surroundings close before ending in a descending spiral. That small-scale feel is a big part of its charm. I liked this one a lot."
+    ],
+    "image": "https://cdn.theneverless.com/2026/09/gold-rusher.webp",
+    "alt": "Watercolor illustration of Gold Rusher",
+    "width": 1672,
+    "height": 941,
+    "score": "8/10",
+    "metrics": [
+      {
+        "label": "Overall",
+        "assessment": "<span class=\"score\">8/10</span>"
+      },
+      {
+        "label": "Ride feel",
+        "assessment": "<strong>Welcoming.</strong> The slower pace makes it easy to settle into the ride."
+      },
+      {
+        "label": "Smoothness",
+        "assessment": "<strong>Uneven.</strong> Rider reports describe some jolts through the turns."
+      },
+      {
+        "label": "Design &amp; novelty",
+        "assessment": "<strong>Intimate.</strong> Following the hillside keeps the ride close to its surroundings."
+      }
+    ]
+  }
+]
