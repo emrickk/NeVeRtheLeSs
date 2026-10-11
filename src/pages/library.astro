@@ -341,7 +341,13 @@ const gameRows = games as Row[];
                   return (
                     <article class="model-car" data-car-id={car.id} data-car-scale={car.scale}>
                       <ImageTag
-                        class:list={['car-image', { 'image-pending': !car.displayImage }]}
+                        class:list={[
+                          'car-image',
+                          {
+                            'image-pending': !car.displayImage,
+                          },
+                        ]}
+                        style={`--car-photo-background: ${car.imageFrameColor || '#fff'}`}
                         href={car.ownershipPost ? withBase(car.ownershipPost) : undefined}
                       >
                         <span class="car-image-fallback">
