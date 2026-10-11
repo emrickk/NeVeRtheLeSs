@@ -2,8 +2,47 @@
 import '../styles/pages/library.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LangText from '../components/LangText.astro';
-import movies from '../data/library/movies.json';
+import importedMovies from '../data/library/movies.json';
+import localMovies from '../data/library/movies-local.json';
 import games from '../data/library/games.json';
+import books from '../data/library/books.json';
+import modelCars from '../data/library/model-cars.json';
+import { withBase } from '../utils/paths';
+
+// Owner-written entries stay separate from the regenerated media snapshot.
+const localMovieIds = new Set(localMovies.map((movie) => movie.id));
+const movies = [...localMovies, ...importedMovies.filter((movie) => !localMovieIds.has(movie.id))];
+
+// Inventory membership does not depend on whether a photograph is available.
+const carIds = new Set<string>();
+for (const car of modelCars) {
+  if (!car.id || !car.title || !car.brand || carIds.has(car.id)) {
+    throw new Error(`Invalid or duplicate model-car record: ${car.id}`);
+  }
+  carIds.add(car.id);
+  const sourceIsVerified =
+    car.imageSourceType === 'owner-provided'
+      ? /^IMG_\d+\.jpeg$/.test(car.sourceFilename || '')
+      : (car.displaySourceImage || car.officialImage)?.startsWith('https://') &&
+        (car.displaySourceUrl || car.officialUrl)?.startsWith('https://');
+  if (
+    car.displayImage &&
+    (!car.imageCredit ||
+      !car.verifiedOn ||
+      !sourceIsVerified ||
+      !car.displayImage.startsWith('https://cdn.theneverless.com/library/model-cars/'))
+  ) {
+    throw new Error(`Incomplete model-car image source: ${car.id}`);
+  }
+}
+const carScales = ['1:18', '1:64', '1:43', '1:32'];
+const sections = [
+  { id: 'movies', zh: '影视', en: 'Films', count: movies.length },
+  { id: 'books', zh: '书籍', en: 'Books', count: books.length },
+  { id: 'games', zh: '游戏', en: 'Games', count: games.length },
+  { id: 'cars', zh: '车模', en: 'Model cars', count: modelCars.length },
+  { id: 'hotels', zh: '酒店', en: 'Hotels', count: null },
+];
 
 // Cover thumbnails live on R2; scripts/library/build-snapshot.mjs uploads them.
 const CDN = 'https://cdn.theneverless.com/library';
@@ -19,6 +58,7 @@ type Row = {
   s?: string;
   h?: number;
   r?: number;
+  seasonRatings?: { s: string; r: number }[];
   c?: string;
   m?: string;
   w?: boolean;
@@ -30,179 +70,395 @@ const movieRows = movies as Row[];
 const gameRows = games as Row[];
 ---
 
-<BaseLayout title="Library" description="What I've binged influences me, kinda.">
-  <main id="main-content" class="library-main">
+<BaseLayout
+  title="Off Duty"
+  description="Films watched, books read, games played, model cars collected, and places stayed."
+>
+  <main id="main-content" class="library-main" data-section="overview">
     <header class="library-header">
       <h1 class="library-title"><LangText text={{ zh: '没干正事', en: 'Off Duty' }} /></h1>
       <p class="library-desc">
         <LangText
           text={{
-            zh: '可能被这些电影和游戏影响了一点点。',
-            en: "What I've binged influences me, kinda.",
+            zh: '看过的电影，读过的书，玩过的游戏，收藏的小车，还有住过的酒店。',
+            en: 'Films, books, games, little cars, and places along the way.',
           }}
         />
       </p>
     </header>
 
-    <div class="library-tabs" role="group" aria-label="Library sections">
-      <button class="library-tab" data-tab="movies" aria-pressed="true">
-        <LangText text={{ zh: '影视', en: 'Films' }} /><b>{movieRows.length}</b>
-      </button>
-      <span class="library-tab-sep" aria-hidden="true">·</span>
-      <button class="library-tab" data-tab="games" aria-pressed="false">
-        <LangText text={{ zh: '游戏', en: 'Games' }} /><b>{gameRows.length}</b>
-      </button>
-      <span class="library-sortnote" data-note="movies">
-        <LangText text={{ zh: '按标记时间排序', en: 'by date watched' }} />
-      </span>
-      <span class="library-sortnote" data-note="games" hidden>
-        <LangText text={{ zh: '按游戏时长排序', en: 'by hours played' }} />
-      </span>
-    </div>
-
-    <div class="library-grid" data-grid="movies">
+    <nav class="library-tabs" aria-label="Collection sections">
+      <a class="library-tab" href="#overview" data-tab="overview" aria-current="page"
+        ><LangText text={{ zh: '全部', en: 'Overview' }} /></a
+      >
       {
-        movieRows.map((d) => (
-          <article class={`lib-card${d.c ? ' has-note' : ''}`}>
-            <div class="lib-poster">
-              {d.nc ? (
-                <div class="lib-spine">{d.t}</div>
-              ) : (
-                <img
-                  src={`${CDN}/movies/${d.cv}`}
-                  alt={d.t}
-                  loading="lazy"
-                  decoding="async"
-                  width="400"
-                  height="600"
-                />
-              )}
-              {d.w && (
-                <span class="lib-chip">
-                  <LangText text={{ zh: '在看', en: 'Watching' }} />
-                </span>
-              )}
-            </div>
-            {d.c && (
-              <aside class="lib-note">
-                <p class="c">{d.c}</p>
-                <div class="m">
-                  {d.r ? (
-                    <span class="stars" aria-hidden="true">
-                      {stars(d.r)}
-                    </span>
-                  ) : null}
-                  <span class="d">{d.m}</span>
-                </div>
-              </aside>
-            )}
-            <div class="lib-title">{d.t}</div>
-            <div class="lib-meta">
-              <span>
-                {d.y}
-                {d.tv && d.s ? ` · S${d.s}` : ''}
-              </span>
-              {d.r ? (
-                <span class="stars" aria-label={`${d.r} / 5`}>
-                  {stars(d.r)}
-                </span>
-              ) : null}
-            </div>
-          </article>
+        sections.map((section) => (
+          <a class="library-tab" href={`#${section.id}`} data-tab={section.id}>
+            <LangText text={{ zh: section.zh, en: section.en }} />
+            {section.count !== null && <b>{section.count}</b>}
+          </a>
         ))
       }
-    </div>
+    </nav>
 
-    <div class="library-grid" data-grid="games" hidden>
-      {
-        gameRows.map((d) => (
-          <article class={`lib-card${d.c ? ' has-note' : ''}`}>
-            <div class="lib-poster">
-              {d.nc ? (
-                <div class="lib-spine">{d.t}</div>
-              ) : (
-                <img
-                  src={`${CDN}/games/${d.cv}`}
-                  alt={d.t}
-                  loading="lazy"
-                  decoding="async"
-                  width="400"
-                  height="600"
-                />
+    <section
+      id="movies"
+      class="collection-section"
+      data-panel="movies"
+      aria-labelledby="movies-heading"
+    >
+      <div class="collection-heading">
+        <h2 id="movies-heading">
+          <LangText text={{ zh: '看过的影视', en: 'On screen' }} />
+          <span class="collection-count">{movieRows.length}</span>
+        </h2>
+        <a class="collection-expand" href="#movies"
+          ><LangText text={{ zh: '展开全部', en: 'View all films' }} /> ↗</a
+        >
+      </div>
+      <div class="library-grid" data-grid="movies">
+        {
+          movieRows.map((d) => (
+            <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+              <div class="lib-poster">
+                {d.nc ? (
+                  <div class="lib-spine">{d.t}</div>
+                ) : (
+                  <img
+                    src={`${CDN}/movies/${d.cv}`}
+                    alt={d.t}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="600"
+                  />
+                )}
+                {d.w && (
+                  <span class="lib-chip">
+                    <LangText text={{ zh: '在看', en: 'Watching' }} />
+                  </span>
+                )}
+              </div>
+              {d.c && (
+                <aside class="lib-note">
+                  <p class="c">{d.c}</p>
+                  <div class="m">
+                    {d.r ? (
+                      <span class="stars" aria-hidden="true">
+                        {stars(d.r)}
+                      </span>
+                    ) : null}
+                    <span class="d">{d.m}</span>
+                  </div>
+                </aside>
               )}
-            </div>
-            {d.c && (
-              <aside class="lib-note">
-                <p class="c">{d.c}</p>
-                <div class="m">
-                  {d.r ? (
-                    <span class="stars" aria-hidden="true">
-                      {stars(d.r)}
-                    </span>
-                  ) : null}
-                  <span class="d">{d.m}</span>
-                </div>
-              </aside>
-            )}
-            <div class="lib-title">{d.t}</div>
-            <div class="lib-meta">
-              {d.h ? <span class="hrs">{d.h} h</span> : <span>{d.y}</span>}
-              {d.r ? (
-                <span class="stars" aria-label={`${d.r} / 5`}>
-                  {stars(d.r)}
+              <div class="lib-title">{d.t}</div>
+              <div class="lib-meta">
+                <span>
+                  {d.y}
+                  {d.tv && d.s ? `${d.y ? ' · ' : ''}S${d.s}` : ''}
                 </span>
-              ) : null}
+                {d.r ? (
+                  <span class="stars" aria-label={`${d.r} / 5`}>
+                    {stars(d.r)}
+                  </span>
+                ) : null}
+              </div>
+              {d.seasonRatings?.map((rating) => (
+                <div class="lib-meta">
+                  <span>S{rating.s}</span>
+                  <span class="stars" aria-label={`${rating.r} / 5`}>
+                    {stars(rating.r)}
+                  </span>
+                </div>
+              ))}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      id="books"
+      class="collection-section"
+      data-panel="books"
+      aria-labelledby="books-heading"
+    >
+      <div class="collection-heading">
+        <h2 id="books-heading">
+          <LangText text={{ zh: '读过的书', en: 'Between the pages' }} />
+          <span class="collection-count">{books.length}</span>
+        </h2>
+        <a class="collection-expand" href="#books"
+          ><LangText text={{ zh: '展开全部', en: 'View all books' }} /> ↗</a
+        >
+      </div>
+      <div class="library-grid" data-grid="books">
+        {
+          books.map((book) => (
+            <article class="lib-card" lang={book.lang}>
+              <a
+                href={book.coverSource || book.url}
+                class="book-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="lib-poster">
+                  <div
+                    class:list={[
+                      'lib-spine',
+                      { 'book-text-cover': book.coverKind === 'typographic' },
+                    ]}
+                  >
+                    {book.coverKind === 'typographic' ? (
+                      <>
+                        <span>{book.author}</span>
+                        <strong>{book.t}</strong>
+                        <small>Fiction · Poetry · Essays</small>
+                      </>
+                    ) : (
+                      book.t
+                    )}
+                  </div>
+                  {book.image && (
+                    <img
+                      src={book.image}
+                      alt={book.t}
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="600"
+                    />
+                  )}
+                </div>
+                <div class="lib-title">{book.t}</div>
+              </a>
+              <div class="lib-meta">
+                <span>{book.author}</span>
+                {book.r && (
+                  <span class="stars" aria-label={`${book.r} / 5`}>
+                    {stars(book.r)}
+                  </span>
+                )}
+              </div>
+              <p class="book-description">{book.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      id="games"
+      class="collection-section"
+      data-panel="games"
+      aria-labelledby="games-heading"
+    >
+      <div class="collection-heading">
+        <h2 id="games-heading">
+          <LangText text={{ zh: '玩过的游戏', en: 'Press play' }} />
+          <span class="collection-count">{gameRows.length}</span>
+        </h2>
+        <a class="collection-expand" href="#games"
+          ><LangText text={{ zh: '展开全部', en: 'View all games' }} /> ↗</a
+        >
+      </div>
+      <p class="collection-caption">
+        <LangText text={{ zh: '按游戏时长排序', en: 'By hours played' }} />
+      </p>
+      <div class="library-grid" data-grid="games">
+        {
+          gameRows.map((d) => (
+            <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+              <div class="lib-poster">
+                {d.nc ? (
+                  <div class="lib-spine">{d.t}</div>
+                ) : (
+                  <img
+                    src={`${CDN}/games/${d.cv}`}
+                    alt={d.t}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="600"
+                  />
+                )}
+              </div>
+              {d.c && (
+                <aside class="lib-note">
+                  <p class="c">{d.c}</p>
+                  <div class="m">
+                    {d.r ? (
+                      <span class="stars" aria-hidden="true">
+                        {stars(d.r)}
+                      </span>
+                    ) : null}
+                    <span class="d">{d.m}</span>
+                  </div>
+                </aside>
+              )}
+              <div class="lib-title">{d.t}</div>
+              <div class="lib-meta">
+                {d.h ? <span class="hrs">{d.h} h</span> : <span>{d.y}</span>}
+                {d.r ? (
+                  <span class="stars" aria-label={`${d.r} / 5`}>
+                    {stars(d.r)}
+                  </span>
+                ) : null}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="cars" class="collection-section" data-panel="cars" aria-label="Model cars">
+      <a class="collection-expand car-expand" href="#cars"
+        ><LangText text={{ zh: '展开全部', en: 'View all' }} /> ↗</a
+      >
+      {
+        carScales.map((scale) => (
+          <section class="car-scale-section" aria-label={`${scale} model cars`}>
+            <header class="car-shelf-heading">
+              <h3>{scale}</h3>
+              {['1:18', '1:64'].includes(scale) && (
+                <span class="car-shelf-label">
+                  <LangText
+                    text={
+                      scale === '1:18'
+                        ? { zh: '大比例陈列', en: 'The display cabinet' }
+                        : { zh: '掌心里的车库', en: 'The pocket garage' }
+                    }
+                  />
+                </span>
+              )}
+            </header>
+            <div class="model-car-grid">
+              {modelCars
+                .filter((car) => car.scale === scale)
+                .map((car) => {
+                  const ImageTag = car.ownershipPost ? 'a' : 'div';
+                  return (
+                    <article class="model-car" data-car-id={car.id} data-car-scale={car.scale}>
+                      <ImageTag
+                        class:list={['car-image', { 'image-pending': !car.displayImage }]}
+                        href={car.ownershipPost ? withBase(car.ownershipPost) : undefined}
+                      >
+                        <span class="car-image-fallback">
+                          <LangText
+                            text={
+                              car.displayImage
+                                ? { zh: '图片暂不可用', en: 'Image unavailable' }
+                                : { zh: '照片待补', en: 'Photo pending' }
+                            }
+                          />
+                        </span>
+                        {car.displayImage && (
+                          <img
+                            src={car.displayImage}
+                            alt={`${car.brand} ${car.title}, ${car.scale}, product image`}
+                            loading="lazy"
+                            decoding="async"
+                            width="1200"
+                            height="800"
+                          />
+                        )}
+                      </ImageTag>
+                      <div class="car-meta">
+                        <span>{car.brand}</span>
+                        <b>{car.scale}</b>
+                      </div>
+                      <h4>{car.title}</h4>
+                    </article>
+                  );
+                })}
             </div>
-          </article>
+          </section>
         ))
       }
-    </div>
+    </section>
+
+    <section id="hotels" class="collection-section" data-panel="hotels" aria-label="Hotels">
+      <div class="collection-heading">
+        <a
+          href={withBase('/interactive/hyatt-tier-wall/index.html')}
+          target="_blank"
+          rel="noopener noreferrer"
+          ><LangText text={{ zh: '全屏打开', en: 'Open full screen' }} /> ↗</a
+        >
+      </div>
+      <iframe
+        class="hotel-wall"
+        title="Hyatt hotel rating wall"
+        src={withBase('/interactive/hyatt-tier-wall/index.html')}
+        loading="lazy"></iframe>
+    </section>
   </main>
 </BaseLayout>
 
-<script is:inline>
-  (function () {
-    const tabs = document.querySelectorAll('.library-tab');
-    const grids = document.querySelectorAll('[data-grid]');
+<script>
+  const main = document.querySelector<HTMLElement>('.library-main');
+  const tabs = document.querySelectorAll<HTMLAnchorElement>('[data-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+  const grids = document.querySelectorAll<HTMLElement>('[data-grid]');
+  const validSections = new Set([
+    'overview',
+    ...Array.from(panels, (panel) => panel.dataset.panel),
+  ]);
 
-    // The floating note (wide viewports) opens to the right; cards whose
-    // note would cross the grid's right edge open to the left instead.
-    // 260 = 14px gap + 240px note width + slack.
-    function placeNotes(grid) {
-      if (grid.hidden) return;
-      const gridRight = grid.getBoundingClientRect().right;
-      grid.querySelectorAll('.lib-card.has-note').forEach((card) => {
-        const flip = card.getBoundingClientRect().right + 260 > gridRight;
-        card.classList.toggle('note-flip', flip);
-      });
-    }
-
-    grids.forEach(placeNotes);
-    let raf = 0;
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => grids.forEach(placeNotes));
-    });
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const key = tab.dataset.tab;
-        tabs.forEach((t) => t.setAttribute('aria-pressed', String(t === tab)));
-        grids.forEach((g) => {
-          g.hidden = g.dataset.grid !== key;
-        });
-        document.querySelectorAll('[data-note]').forEach((n) => {
-          n.hidden = n.dataset.note !== key;
-        });
-        grids.forEach(placeNotes);
-      });
-    });
-    // Touch: tap a commented cover to toggle its note.
+  function placeNotes() {
     grids.forEach((grid) => {
-      grid.addEventListener('click', (e) => {
-        const card = e.target.closest('.lib-card.has-note');
-        if (card) card.classList.toggle('open');
+      if (!grid.getClientRects().length) return;
+      const right = grid.getBoundingClientRect().right;
+      grid.querySelectorAll<HTMLElement>('.lib-card.has-note').forEach((card) => {
+        card.classList.toggle('note-flip', card.getBoundingClientRect().right + 260 > right);
       });
     });
-  })();
+  }
+
+  function selectSection() {
+    const hash = location.hash.slice(1);
+    const section = validSections.has(hash) ? hash : 'overview';
+    if (main) main.dataset.section = section;
+    tabs.forEach((tab) => {
+      if (tab.dataset.tab === section) tab.setAttribute('aria-current', 'page');
+      else tab.removeAttribute('aria-current');
+    });
+    panels.forEach((panel) => {
+      panel.hidden = section !== 'overview' && panel.dataset.panel !== section;
+    });
+    placeNotes();
+  }
+
+  document
+    .querySelectorAll<HTMLAnchorElement>('.library-tabs a, .collection-expand')
+    .forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        history.pushState(null, '', link.hash);
+        selectSection();
+        main?.scrollIntoView({ block: 'start' });
+      });
+    });
+  window.addEventListener('hashchange', selectSection);
+  window.addEventListener('popstate', selectSection);
+  window.addEventListener('resize', placeNotes);
+  selectSection();
+
+  grids.forEach((grid) =>
+    grid.addEventListener('click', (event) => {
+      if (event.target instanceof Element)
+        event.target.closest('.lib-card.has-note')?.classList.toggle('open');
+    })
+  );
+  // Keep the source link and a useful fallback if a remote image is unavailable.
+  document.querySelectorAll<HTMLImageElement>('.book-link img, .car-image img').forEach((img) => {
+    const showFallback = () => {
+      img.hidden = true;
+      img.closest('.car-image')?.classList.add('image-unavailable');
+    };
+    img.addEventListener('error', showFallback);
+    if (img.complete && img.naturalWidth === 0) showFallback();
+  });
 </script>

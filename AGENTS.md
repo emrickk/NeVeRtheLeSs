@@ -50,6 +50,12 @@ Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astr
 
 ## Rules
 
+### Library book covers
+
+Owner preference, 2026-10-10: Every book should use a high-resolution cover from a newer, verified edition. For English-language entries, use a recent English edition from the publisher or an authorized bookseller. Prefer current publisher artwork and cohesive current designs for series; do not select an arbitrary old scan just because it is large. Verify the title, author, language, volume, publisher, edition date, and actual pixel dimensions. Aim for native artwork at least 1000 px wide, with 600 px as the minimum; never upscale a thumbnail to satisfy the requirement. Record the source and edition evidence in the book data. If a suitable recent high-resolution cover cannot be verified, retain the best verified image and explicitly track the exception rather than claiming completion.
+
+Display all book covers in uniform 2:3 frames. Fill the frame with a centered crop when source proportions differ, rather than leaving blank margins. Preserve the original image proportions without stretching.
+
 1. Stage explicit paths only. Never `git add -A` or `git add .`.
 2. No em-dashes in user-facing copy: posts, docs, console messages, commit messages. Use commas, colons, or parentheses.
 3. Never commit: `.env.local`, `image-staging/`, `originals/`, `scripts/images/.manifest.json` (all git-ignored; keep them that way).

@@ -270,9 +270,17 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
               <LangText text={{ zh: '没干正事', en: 'Off Duty' }} />
             </span>
             <a href={withBase('/library')} class="view-all">
-              Library →
+              <LangText text={{ zh: '进入收藏', en: 'Explore the collection' }} /> →
             </a>
           </div>
+          <p class="home-collection-desc">
+            <LangText
+              text={{
+                zh: '电影、书籍、游戏、车模与酒店，收在一起。',
+                en: 'Films, books, games, model cars, and hotels, all in one place.',
+              }}
+            />
+          </p>
           <div class="home-library-shelf">
             {libraryShelf.map((item) => (
               <a href={withBase('/library')} class="home-library-item" aria-label={item.t}>

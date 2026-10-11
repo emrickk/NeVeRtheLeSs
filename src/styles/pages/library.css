@@ -5,6 +5,7 @@
    beside the poster as a tilted serif margin note. */
 
 .library-main {
+  scroll-margin-top: 5rem;
   max-width: 1080px;
   margin: 0 auto;
   padding: var(--space-16) var(--space-6) var(--space-24);
@@ -58,20 +59,26 @@
 .library-tabs {
   display: flex;
   align-items: baseline;
-  gap: var(--space-3);
-  margin: var(--space-10) 0 var(--space-8);
-  padding-bottom: var(--space-3);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: var(--space-6) 0;
   border-bottom: 1px solid var(--separator);
 }
 
 .library-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--space-8);
+  text-decoration: none;
   border: none;
   background: none;
-  padding: 0;
+  padding: 0 0 var(--space-3);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: var(--text-headline);
-  color: var(--label-quaternary);
+  font-size: var(--text-footnote);
+  font-weight: 450;
+  color: var(--label-tertiary);
   transition: color var(--duration-fast) var(--ease-out);
 }
 
@@ -79,33 +86,16 @@
   color: var(--label-secondary);
 }
 
-.library-tab[aria-pressed='true'] {
-  color: var(--label-primary);
-  font-weight: var(--weight-semibold);
+.car-meta b {
+  color: var(--color-accent);
+  font-weight: 500;
 }
 
 .library-tab b {
   font-family: var(--font-mono);
   font-weight: var(--weight-regular);
   font-size: var(--text-caption-2);
-  color: var(--label-quaternary);
-  margin-left: 5px;
-}
-
-.library-tab[aria-pressed='true'] b {
-  color: var(--color-accent);
-}
-
-.library-tab-sep {
-  color: var(--label-quaternary);
-  font-size: var(--text-subheadline);
-}
-
-.library-sortnote {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: var(--text-caption-2);
-  color: var(--label-quaternary);
+  color: var(--label-tertiary);
 }
 
 /* ── Grid and cards ─────────────────────────────────────── */
@@ -366,8 +356,249 @@
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
     gap: var(--space-6) var(--space-3);
   }
+}
 
-  .library-sortnote {
-    display: none;
+/* Collection entrance: preview shelves expand into the complete collection. */
+.library-tab[aria-current='page'] {
+  color: var(--label-primary);
+  font-weight: var(--weight-semibold);
+}
+.library-tab[aria-current='page'] b {
+  color: var(--color-accent);
+}
+.collection-section {
+  margin-top: 3.5rem;
+  scroll-margin-top: 6rem;
+}
+.collection-section[hidden],
+.model-car[hidden],
+.collection-empty[hidden],
+.car-image img[hidden],
+.book-link img[hidden] {
+  display: none;
+}
+.collection-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.collection-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+}
+.collection-heading h2 > .collection-count {
+  margin-left: 0.5rem;
+  font: 0.75rem var(--font-mono);
+  color: var(--label-tertiary);
+}
+.collection-heading a {
+  color: var(--label-secondary);
+  font-size: 0.8rem;
+  text-underline-offset: 0.25em;
+}
+.collection-caption {
+  color: var(--label-tertiary);
+  font-size: 0.85rem;
+  margin: -0.5rem 0 1.5rem;
+}
+.library-main[data-section='overview'] .library-grid > :nth-child(n + 7) {
+  display: none;
+}
+
+.library-main:not([data-section='overview']) .collection-expand {
+  display: none;
+}
+.book-link {
+  color: inherit;
+  text-decoration: none;
+}
+.book-link .lib-title {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.book-text-cover {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  color: #eadcc4;
+  background: #25382f;
+  border: 8px solid #344b3e;
+  padding: 1rem;
+}
+.book-text-cover span {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.book-text-cover strong {
+  font-family: Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.05;
+}
+.book-text-cover small {
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+}
+.book-description {
+  margin: 0.5rem 0 0;
+  color: var(--label-secondary);
+  font-size: var(--text-caption-1);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.car-image img {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 86%;
+  height: auto;
+  max-height: 78%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 3px 4px rgb(0 0 0 / 8%));
+}
+
+.book-link .lib-poster img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  background: var(--bg-primary);
+}
+.book-link + .lib-meta {
+  justify-content: space-between;
+}
+.book-link + .lib-meta > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.book-link + .lib-meta .stars {
+  flex-shrink: 0;
+}
+.car-scale-section + .car-scale-section {
+  margin-top: 3rem;
+}
+.car-shelf-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.car-shelf-heading h3 {
+  font: 700 1.7rem var(--font-mono);
+  margin: 0;
+  letter-spacing: -0.05em;
+}
+.car-shelf-label {
+  font-size: 0.8rem;
+  color: var(--label-tertiary);
+}
+.car-expand {
+  font-size: 0.75rem;
+  color: var(--label-secondary);
+}
+
+.library-main :is(a, button):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+}
+.model-car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem 1.25rem;
+}
+.car-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 2;
+  background: #e3e3e3;
+  overflow: hidden;
+  border-radius: 14px;
+  isolation: isolate;
+}
+.car-image-fallback {
+  display: none;
+  padding: 1rem;
+  color: var(--label-secondary);
+  font-size: 0.85rem;
+}
+.car-image.image-unavailable .car-image-fallback,
+.car-image.image-pending .car-image-fallback {
+  display: block;
+}
+
+.car-image.image-pending {
+  background: var(--fill-tertiary);
+}
+
+.car-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: var(--label-tertiary);
+  font: 0.7rem var(--font-mono);
+}
+.model-car h4 {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 550;
+}
+.collection-empty {
+  padding: 3rem 1rem;
+  background: var(--fill-tertiary);
+  color: var(--label-secondary);
+  text-align: center;
+}
+.hotel-wall {
+  width: 100%;
+  height: 740px;
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 600px) {
+  .library-tabs {
+    gap: 0.5rem 1rem;
   }
+  .collection-section {
+    margin-top: 2.5rem;
+  }
+  .collection-heading h2 {
+    font-size: 1.2rem;
+  }
+  .collection-heading {
+    gap: 0.75rem;
+  }
+  .collection-heading a {
+    font-size: 0.7rem;
+  }
+  .model-car-grid {
+    grid-template-columns: 1fr;
+  }
+  .hotel-wall {
+    height: 650px;
+  }
+}
+
+@media (max-width: 900px) {
+  .model-car-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .model-car-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.library-main[data-section='overview'] #cars .car-scale-section .model-car:nth-child(n + 5) {
+  display: none;
 }

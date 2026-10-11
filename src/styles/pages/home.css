@@ -475,3 +475,9 @@
     --hero-measure: 100%;
   }
 }
+
+.home-collection-desc {
+  color: var(--label-tertiary);
+  font-size: var(--text-footnote);
+  margin: 0 0 var(--space-6);
+}

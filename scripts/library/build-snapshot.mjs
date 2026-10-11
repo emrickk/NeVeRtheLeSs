@@ -28,7 +28,8 @@
  * up as a fallback for both categories.
  *
  * Privacy: this is the only place deciding what library data becomes public.
- * Books are excluded entirely. Wish lists and backlogs are excluded. Entries
+ * Books are maintained separately in src/data/library/books.json; this command
+ * only refreshes films and games. Wish lists and backlogs are excluded. Entries
  * in HOLD_ENTRIES are excluded completely (owner decisions).
  */
 
