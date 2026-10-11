@@ -411,6 +411,8 @@ const gameRows = games as Row[];
       if (!grid.getClientRects().length) return;
       const right = grid.getBoundingClientRect().right;
       grid.querySelectorAll<HTMLElement>('.lib-card.has-note').forEach((card) => {
+        const poster = card.querySelector<HTMLElement>('.lib-poster');
+        if (poster) card.style.setProperty('--lib-poster-height', `${poster.offsetHeight}px`);
         card.classList.toggle('note-flip', card.getBoundingClientRect().right + 260 > right);
       });
     });
