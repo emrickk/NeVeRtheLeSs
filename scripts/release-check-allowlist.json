@@ -158,6 +158,7 @@
     "^src\\/data\\/library\\/model(?:)-cars\\.json:de\\/PORSCHE-(?:)911-GT3-RS-YAMAGISHI-D(?:)E-FOURNOUX-KONOPKA-TEA(?:)M-T2M-MOTORSPORT-24H-L(?:)E-MANS-2006\\/400066991$",
     "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/library(?:)\\/model-cars\\/autoart-80(?:)643-refined-photo-df18(?:)b6a4427b$",
     "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/modella(?:)utobilder\\/1zu18_Mazda_(?:)MX-5_Roadster_NR-A_Maz(?:)daspeed_galaxy-grau-me(?:)t_Nr_01_RHD__AUTOart_8(?:)0643_21849_02$",
-    "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/artikel(?:)\\/1zu18-Mazda-MX-5-Road(?:)ster-NR-A-Mazdaspeed-g(?:)alaxy-grau-met-Nr01-RH(?:)D-AUTOart-80643-21849$"
+    "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/artikel(?:)\\/1zu18-Mazda-MX-5-Road(?:)ster-NR-A-Mazdaspeed-g(?:)alaxy-grau-met-Nr01-RH(?:)D-AUTOart-80643-21849$",
+    "^src\\/data\\/library(?:)\\/model-cars\\.json(?:):com\\/library\\/mod(?:)el-cars\\/mgt01310-(?:)ai-redraw-27bb64a9(?:)183f$"
   ]
 }

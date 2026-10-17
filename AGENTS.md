@@ -11,6 +11,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 - This file is the canonical repository entry point. `CLAUDE.md` refers here; maintained skills live in `.agents/skills/`, with `.claude/skills/` aliases. Edit the canonical files, not separate copies.
 - Read [completion criteria](docs/completion-criteria.md) for page, collection, image, and publishing work. Match the current accepted result and all applicable criteria together before calling a revision ready.
 - For writing, critique, dictated edits, or translation, read [.agents/skills/writing-posts/SKILL.md](.agents/skills/writing-posts/SKILL.md). For image-pipeline mechanics, read [docs/images.md](docs/images.md).
+- For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
 - The owner's latest explicit direction takes precedence. A correction changes its stated scope; carry forward other accepted choices. A treatment approved for one image is not a general treatment policy.
 - The website workspace's `../Drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
 
