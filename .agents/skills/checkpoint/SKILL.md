@@ -24,4 +24,4 @@ Snapshots of the entire working tree (tracked and untracked files, `.gitignore` 
 1. Save a checkpoint (with a descriptive label) before: mass rewrites of posts, merges, dependency upgrades, or running any script that edits many files.
 2. A full restore deletes files created after the snapshot. Restore always saves a `pre-restore` checkpoint first, so a mistaken restore is itself undoable: `node scripts/checkpoint.mjs restore <pre-restore-id> --yes`.
 3. Restores are refused mid-merge/rebase. Finish or abort that operation first.
-4. Auto-checkpoints happen at session start (hook) and at the start of every release check. Do not rely on them for labeled save points.
+4. Every release check saves a checkpoint. `.claude/settings.json` also defines a Claude SessionStart hook; do not assume another agent host ran it. Check or save an explicit checkpoint when needed. Do not rely on automatic snapshots for labeled save points.

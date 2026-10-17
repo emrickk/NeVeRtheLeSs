@@ -5,7 +5,7 @@ description: Run the pre-push release checklist and deliver a go/no-go verdict b
 
 # Release checklist
 
-Pushing to `main` deploys to https://theneverless.com within minutes. This checklist is the gate: it ends in a GO or NO-GO verdict. **Never push, merge, or tag as part of this workflow.** The owner pushes; your job ends at the verdict.
+Pushing to `main` deploys to https://theneverless.com. This checklist reports GO or NO-GO for the conditions it checks; invoking it alone does not authorize publication. If the owner already authorized publishing the reviewed scope, complete the scoped commit, push, and deployment verification after the required checks pass. Do not ask for the same permission again. A GO verdict does not establish visual quality; apply [completion criteria](../../../docs/completion-criteria.md) before presenting work as ready.
 
 ## Quick mode (default)
 
@@ -24,11 +24,11 @@ If check 12 fails, preview-relevant files changed without an owner-approved prev
    - the language toggle switches title and body
    - the giscus comment iframe is present on a post
    - dark mode renders correctly
-3. Capture a screenshot as proof and include it in the report.
+3. Also inspect the actual affected pages and interactions, including `/library/#cars` for car changes. Capture relevant evidence. Show the finished page when that is the requested deliverable; keep the check log and comparison evidence available rather than requiring a separate report on every revision.
 
 ## Report format
 
-A table of every check with PASS / FAIL / SKIP and a one-line detail, the screenshot in full mode, then exactly one of:
+Retain every check's PASS / FAIL / SKIP result and one-line detail in the release evidence. Summarize relevant outcomes in the requested deliverable, with one technical verdict:
 
 - `VERDICT: GO, safe to push` (all checks passed)
 - `VERDICT: NO-GO` with the blocking items listed first

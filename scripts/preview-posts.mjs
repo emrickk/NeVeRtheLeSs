@@ -25,6 +25,22 @@ const NOTE_RE = /^src\/content\/notes\/[^/]+\.(?:md|mdx)$/
 const SITE_RE =
   /^(?:src|public)\/|^scripts\/rehype\/|^(?:astro\.config\.mjs|astro-theme-config\.ts|package\.json|package-lock\.json)$/
 
+const LIBRARY_SECTIONS = ['movies', 'books', 'games', 'cars', 'hotels']
+const LIBRARY_DATA_SECTIONS = {
+  'src/data/library/model-cars.json': 'cars',
+  'src/data/library/books.json': 'books',
+  'src/data/library/games.json': 'games',
+}
+
+function libraryReviewSections(path) {
+  if (path === 'src/pages/library.astro' || path === 'src/styles/pages/library.css')
+    return LIBRARY_SECTIONS
+  if (path === 'public/interactive/hyatt-tier-wall/index.html') return ['hotels']
+  if (/^src\/data\/library\/movies[^/]*\.json$/.test(path)) return ['movies']
+  const section = LIBRARY_DATA_SECTIONS[path]
+  return section ? [section] : []
+}
+
 // 'post' renders at /posts/<slug>/; 'note' renders on the /notes/ timeline;
 // 'site' can change any page; null never affects the deployed site. Content
 // files must win over the generic src/ prefix rule.
@@ -221,7 +237,8 @@ export function computeChangeSet(root, { baseRef = resolveBaseRef(root) } = {}) 
 // sibling still renders on the surviving primary page. Notes have no per-note
 // page, so any note change, including a deletion, reviews the /notes/
 // timeline. Site-wide changes get the homepage plus one image-heavy exemplar.
-// Sorted and deduplicated, '/' first.
+// Library changes also need the affected collection views, which those generic
+// targets cannot show. Sorted and deduplicated, '/' first.
 // Route slug for a post file: the frontmatter `slug` when the primary
 // declares one (the glob loader uses data.slug as the entry id), otherwise
 // the filename shorthand. Deleted files fall back to the filename.
@@ -250,6 +267,11 @@ export function reviewTargets(root, changeSet) {
     } else {
       targets.add('/')
       targets.add(`/posts/${REPRESENTATIVE_POST}/`)
+      const sections = libraryReviewSections(path)
+      if (sections.length) {
+        targets.add('/library/')
+        for (const section of sections) targets.add(`/library/#${section}`)
+      }
     }
   }
   return [...targets].sort()

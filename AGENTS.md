@@ -4,7 +4,15 @@ Guidance for AI agents and new contributors working in this repository.
 
 ## What this is
 
-Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astro 6 + the astro-tone theme. Deploys to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main`; served at https://theneverless.com (DNS on Cloudflare, registration at GoDaddy; anping.us 301-redirects here but will be allowed to expire, so nothing may reference it; images are on https://cdn.theneverless.com).
+Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the astro-tone theme. Deploys to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main`; served at https://theneverless.com (DNS on Cloudflare, registration at GoDaddy; anping.us 301-redirects here but will be allowed to expire, so nothing may reference it; images are on https://cdn.theneverless.com).
+
+## Start with the relevant guidance
+
+- This file is the canonical repository entry point. `CLAUDE.md` refers here; maintained skills live in `.agents/skills/`, with `.claude/skills/` aliases. Edit the canonical files, not separate copies.
+- Read [completion criteria](docs/completion-criteria.md) for page, collection, image, and publishing work. Match the current accepted result and all applicable criteria together before calling a revision ready.
+- For writing, critique, dictated edits, or translation, read [.agents/skills/writing-posts/SKILL.md](.agents/skills/writing-posts/SKILL.md). For image-pipeline mechanics, read [docs/images.md](docs/images.md).
+- The owner's latest explicit direction takes precedence. A correction changes its stated scope; carry forward other accepted choices. A treatment approved for one image is not a general treatment policy.
+- The website workspace's `../Drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
 
 ## Commands
 
@@ -25,7 +33,9 @@ Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astr
 
 ## Architecture
 
-- **Posts** live in `src/content/posts/*.md`.
+- **Posts** live in `src/content/posts/*.md`, with language siblings resolved by `src/utils/translations.ts`. Keep each language's body, title, and description aligned with that language's file; shared metadata belongs to the primary post. Inspect the current resolver before bulk metadata changes.
+- **Category keys are stable identifiers.** Change reader-facing names in `categoryLabels` in `astro-theme-config.ts`; do not mass-rename raw frontmatter keys or store display labels as keys.
+- **Off Duty library**: `/library/` contains films/TV, books, games, model cars, and hotels. Data lives in `src/data/library/`; local movie entries override imported rows by ID. Import scripts are explicit operations, not permission to regenerate every collection. Private recordkeeping and destination publication are separate decisions; an internal field does not authorize a new public label.
 - **Images are NOT in this repo.** They are served from Cloudflare R2 at `https://cdn.theneverless.com` (bucket `anping-blog-images`). Full-resolution originals are archived outside the repo (NAS or a local git-ignored `originals/` folder). The pipeline lives in `scripts/images/`; the complete runbook, including the daily authoring flow and Cloudflare setup, is [docs/images.md](docs/images.md).
 - Exception: hero images in `src/assets/hero/` are Astro-optimized at build time and are deliberately outside the R2 pipeline. New covers must meet the minimum size spec in [docs/images.md](docs/images.md) (roughly 2400x1260 wide or 1600x1600 square, lightly compressed) or they render blurry in the home cards.
 - Pipeline credentials go in `.env.local` (git-ignored); the variable names are documented in `.env.example`. Without credentials, dry-run modes and all but one test still work.
@@ -35,26 +45,24 @@ Personal blog "NeVeRtheLeSs" (2005 to present, 343 posts, bilingual zh/en). Astr
 
 ## Safety
 
-- **Checkpoints** (`npm run checkpoint`, skill: `.Codex/skills/checkpoint/`): file-level snapshots of the working tree in hidden local refs. Auto-saved at session start (hook in `.Codex/settings.json`) and by every release check. Restore before push mistakes become deploy mistakes.
-- **Release checklist** (`npm run release-check`, skill: `.Codex/skills/release-check/`): required before manual or agent-driven pushes to `main`. Ends in GO / NO-GO; pushing remains a human decision (rule 5). The Nevertheless Editor scoped fast lane is the explicit exception described below.
-- **Post preview gate** (`npm run preview-posts`, skill: `.Codex/skills/preview-posts/`): the owner reviews every changed post in the browser against the production build; approval is hash-keyed in git-ignored `.preview/` and release-check check 12 is NO-GO when preview-relevant files changed without it.
-- **Ship** (`npm run ship`, skill: `.Codex/skills/ship-posts/`): one-command publish for changed posts plus changed local hero covers directly referenced by those posts. It chains checkpoint, preview review, approval, release-check, explicit-path commit, and push with the approval digest-bound to the reviewed bytes. Unrelated assets and every other path still require the full manual flow.
+- **Checkpoints** (`npm run checkpoint`, skill: [.agents/skills/checkpoint/SKILL.md](.agents/skills/checkpoint/SKILL.md)): file-level snapshots in hidden local refs. Release checks save one. `.claude/settings.json` also defines a Claude SessionStart hook; do not assume a Codex session ran that hook. Save a labeled checkpoint before the risky operations listed in the skill.
+- **Release checklist** (`npm run release-check`, skill: [.agents/skills/release-check/SKILL.md](.agents/skills/release-check/SKILL.md)): required before manual or agent-driven pushes to `main`. GO describes checked technical conditions, not visual acceptance or publication authorization. With the owner's authorization for the reviewed scope, finish the commit, push, and deployment verification without asking for the same permission again. The Nevertheless Editor scoped fast lane is the explicit exception below.
+- **Preview gate** (`npm run preview-posts`, skill: [.agents/skills/preview-posts/SKILL.md](.agents/skills/preview-posts/SKILL.md)): finish and inspect the changed result before showing its actual production-preview page. Approval is hash-keyed in git-ignored `.preview/`; release-check check 12 is NO-GO when preview-relevant files changed without it. A generic homepage or sample post does not establish review of the car gallery.
+- **Ship** (`npm run ship`, skill: [.agents/skills/ship-posts/SKILL.md](.agents/skills/ship-posts/SKILL.md)): publishes changed posts and directly referenced changed local hero covers with approval bound to the reviewed bytes. Other changes use the normal scoped commit and release flow.
 - **Nevertheless Editor fast lane** (`npm run ship -- --fast --only ...`): scoped to the open post, its existing translation sibling, and only their directly referenced changed hero cover. It requires local `main` to equal `origin/main`, binds every selected byte into the digest, runs focused post and image checks, commits explicit paths, and treats the GitHub Actions build as the final deploy gate. It intentionally does not create a production-preview approval or run the whole-tree release checklist.
 - **Post-deploy rollback**: `git revert` the bad commit(s) on `main` and push; the Pages workflow redeploys the previous good state.
 
-## Project status (last updated 2026-07-14)
+## Established workflows
 
-- **Image storage on R2: complete.** All post images (217 objects) are on R2, every post references `cdn.theneverless.com`, and `public/uploads/` has been removed from the repo.
-- **Bilingual toggle: complete and live.** Every post has zh/en titles and sibling bodies. The long-lived `bilingual-toggle` branch was merged and deleted on 2026-07-14; do not recreate it.
+- **Image storage:** use the R2 pipeline and CDN for post images. `public/uploads/` is retired. Historical migration counts are not current inventory totals.
+- **Bilingual toggle:** the `bilingual-toggle` branch was merged and deleted on 2026-07-14; do not recreate it. Verify changed posts and their siblings rather than assuming all archived entries have complete translations.
 - **Single-branch workflow.** All day-to-day work happens on `main` in this checkout. A long-running independent track gets its own branch in its own worktree (`git worktree add`), like `tweets-notes`; it never shares this checkout.
 
 ## Rules
 
-### Library book covers
+### Completion and owner review
 
-Owner preference, 2026-10-10: Every book should use a high-resolution cover from a newer, verified edition. For English-language entries, use a recent English edition from the publisher or an authorized bookseller. Prefer current publisher artwork and cohesive current designs for series; do not select an arbitrary old scan just because it is large. Verify the title, author, language, volume, publisher, edition date, and actual pixel dimensions. Aim for native artwork at least 1000 px wide, with 600 px as the minimum; never upscale a thumbnail to satisfy the requirement. Record the source and edition evidence in the book data. If a suitable recent high-resolution cover cannot be verified, retain the best verified image and explicitly track the exception rather than claiming completion.
-
-Display all book covers in uniform 2:3 frames. Fill the frame with a centered crop when source proportions differ, rather than leaving blank margins. Preserve the original image proportions without stretching.
+Follow [docs/completion-criteria.md](docs/completion-criteria.md), including the accepted collection, source, image, and book-cover decisions. A known unmet requirement stays unfinished unless the owner accepts that specific exception. For car-page changes, show the finished page first; keep source and comparison evidence available without making the owner work through another report. Requested audits still use HTML reports with relevant actual imagery.
 
 1. Stage explicit paths only. Never `git add -A` or `git add .`.
 2. No em-dashes in user-facing copy: posts, docs, console messages, commit messages. Use commas, colons, or parentheses.

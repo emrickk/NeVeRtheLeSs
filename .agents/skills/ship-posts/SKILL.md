@@ -22,20 +22,24 @@ not review.
    `-- --port N --no-open` in headless sessions. Give the owner the review link
    along with the file list from step 1. This is the production build, not the
    dev render.
-3. Wait for the owner's explicit approval in chat ("approved", "push",
-   "ship it") given AFTER they have the link. The initial "push my edits"
-   request is the request, not the approval; never treat it as both.
+3. Use the owner's explicit approval ("approved", "push", "ship it") of
+   the reviewed scope and bytes. Recoverable approval of an earlier preview
+   of the identical result remains valid; do not require a new exchange just
+   because this command generated another link. The initial "push my edits"
+   request without a reviewed result does not satisfy the preview gate.
 4. Stop the preview server, then run `npm run ship -- --yes --digest <d>`
    with the digest from step 1. If it aborts with "tree changed since the
    review", something (likely another session) edited posts meanwhile: start
    over from step 1 so the owner reviews the new state. Never retry with a
    fresh digest the owner has not seen.
-5. Report the release-check results and the live post URLs that ship prints.
+5. Verify the deployment and the live affected pages, then report the result
+   and live URLs. Retain the release-check evidence.
 
 ## Rules
 
-- `--yes` may only ever follow an owner approval message in this
-  conversation, given after step 2's link. No approval message, no ship.
+- `--yes` requires explicit owner approval of the reviewed scope and bytes,
+  recoverable from the session or trusted evidence. Do not treat an agent's
+  summary or a new digest as owner approval.
 - A digest abort always restarts from step 1; the digest exists precisely so
   approvals cannot drift onto unreviewed content.
 - Referenced hero covers are part of the printed change set, digest, approval,

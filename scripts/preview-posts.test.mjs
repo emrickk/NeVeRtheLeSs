@@ -353,6 +353,80 @@ test('reviewTargets: site-wide changes add homepage and the representative post'
   ])
 })
 
+test('car data changes put the actual car view in the generated review links', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const path = 'src/data/library/model-cars.json'
+  write(root, path, '[]\n')
+  run(root, ['add', path])
+  run(root, ['commit', '-q', '-m', 'initial collection'])
+  write(root, path, '[{"id":"new-car"}]\n')
+
+  const targets = reviewTargets(root, computeChangeSet(root, { baseRef: 'HEAD' }))
+  assert.deepEqual(targets, ['/', '/library/', '/library/#cars', `/posts/${REPRESENTATIVE_POST}/`])
+  const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
+  assert.ok(html.includes('href="http://localhost:4322/library/#cars"'))
+})
+
+test('reviewTargets: collection data links its own section and the library overview', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  for (const [path, section] of [
+    ['src/data/library/books.json', 'books'],
+    ['src/data/library/games.json', 'games'],
+    ['src/data/library/movies.json', 'movies'],
+    ['src/data/library/movies-local.json', 'movies'],
+  ]) {
+    assert.deepEqual(reviewTargets(root, [path]), [
+      '/',
+      '/library/',
+      `/library/#${section}`,
+      `/posts/${REPRESENTATIVE_POST}/`,
+    ])
+  }
+})
+
+test('hotel iframe content changes include the library hotels view for review', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, 'public/interactive/hyatt-tier-wall/index.html', '<h1>Hotel ratings</h1>\n')
+
+  const targets = reviewTargets(root, computeChangeSet(root, { baseRef: 'HEAD' }))
+  assert.deepEqual(targets, [
+    '/',
+    '/library/',
+    '/library/#hotels',
+    `/posts/${REPRESENTATIVE_POST}/`,
+  ])
+  const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
+  assert.ok(html.includes('href="http://localhost:4322/library/#hotels"'))
+})
+
+test('reviewTargets: shared library layout and styles include every tab once', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const expected = [
+    '/',
+    '/library/',
+    '/library/#books',
+    '/library/#cars',
+    '/library/#games',
+    '/library/#hotels',
+    '/library/#movies',
+    `/posts/${REPRESENTATIVE_POST}/`,
+  ]
+  const paths = ['src/pages/library.astro', 'src/styles/pages/library.css']
+  for (const path of paths) assert.deepEqual(reviewTargets(root, [path]), expected)
+  assert.deepEqual(
+    reviewTargets(root, [
+      ...paths,
+      'src/data/library/model-cars.json',
+      'src/data/library/books.json',
+    ]),
+    expected
+  )
+})
+
 test('reviewTargets: note changes map to the notes timeline', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))

@@ -1,0 +1,1 @@
+../../../../.agents/skills/writing-posts/references/voice-and-translation.md
