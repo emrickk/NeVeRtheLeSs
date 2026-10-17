@@ -20,11 +20,12 @@ for (const car of modelCars) {
     throw new Error(`Invalid or duplicate model-car record: ${car.id}`);
   }
   carIds.add(car.id);
+  // Manufacturer provenance may use HTTP; displayed images must still use the HTTPS CDN.
   const sourceIsVerified =
     car.imageSourceType === 'owner-provided'
       ? /^IMG_\d+\.jpeg$/.test(car.sourceFilename || '')
-      : (car.displaySourceImage || car.officialImage)?.startsWith('https://') &&
-        (car.displaySourceUrl || car.officialUrl)?.startsWith('https://');
+      : /^https?:\/\//.test(car.displaySourceImage || car.officialImage || '') &&
+        /^https?:\/\//.test(car.displaySourceUrl || car.officialUrl || '');
   if (
     car.displayImage &&
     (!car.imageCredit ||
@@ -362,7 +363,7 @@ const gameRows = games as Row[];
                         {car.displayImage && (
                           <img
                             src={car.displayImage}
-                            alt={`${car.brand} ${car.title}, ${car.scale}, product image`}
+                            alt={`${car.brand} ${car.title}, ${car.scale}, ${car.imageSourceType === 'ai-generated' ? 'AI-generated model illustration' : 'product image'}`}
                             loading="lazy"
                             decoding="async"
                             width="1200"
