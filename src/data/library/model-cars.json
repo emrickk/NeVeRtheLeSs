@@ -610,25 +610,36 @@
     "ownershipPost": null,
     "officialImage": null,
     "officialUrl": null,
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-refined-photo-b64eca980081.webp",
-    "imageCredit": "Super Mini Wheels (non-manufacturer source)",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-ai-redraw-c095de7ec5be.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://superminiwheels.com/cdn/shop/files/57_b80bdf72-1cb1-47bc-9980-3d6bf92363d1.jpg",
     "displaySourceUrl": "https://superminiwheels.com/products/demon-king-1-64-pagani-huayra-bc-purple-imxpo-exclusive",
-    "imageTreatment": "Replaced the promotional screenshot with a clean retailer photograph of the same purple/carbon IMXpo edition, doors and panels open. The full car, base and original shadow are retained in a 3:2 crop.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw: single model car in a front three-quarter view on a white studio background with a soft contact shadow. Display base and external captions removed. Raised gullwing doors, purple/carbon body and silver wheels retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "nonofficial",
-    "imageSourceAudit": "Purple/carbon Demon King Auto Huayra BC, IMXpo edition. Retailer gallery shows DKA-006 packaging and matching purple paint, carbon hood, silver center stripes and wheels. Manufacturer-hosted photo remains unverified. Replaced the promotional screenshot with a clean retailer photograph of the same purple/carbon IMXpo edition, doors and panels open. The full car, base and original shadow are retained in a 3:2 crop.",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing this car on 2026-10-16. Original reference photograph retained in provenance. Main color, model variant, panel configuration and visible styling reviewed; generated geometry, fine logos and small lettering are interpretations and not verified documentary details.",
     "imageSourceReferences": [
       {
         "label": "Exact IMXpo edition, retailer reference",
         "url": "https://www.carbromc.com/products/coming-soon-demon-king-auto-1-64-pagani-huayra-bc-purple-imxpo-2025-exclusive"
       }
-    ]
+    ],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-10-16",
+      "referenceImage": "https://superminiwheels.com/cdn/shop/files/57_b80bdf72-1cb1-47bc-9980-3d6bf92363d1.jpg",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "rm-gtv6-agip",
@@ -1093,29 +1104,34 @@
     "officialImage": "http://www.lcdmodel.com/Data/lcdmodel/upload/image/1-43%20%E5%B8%95%E5%8A%A0%E5%B0%BC%E8%8A%B1%E9%9B%85R/%E5%B0%81%E9%9D%A2%E5%9B%BE%201.jpg",
     "officialUrl": "http://www.lcdmodel.com/1-43-Pagani-Huayra-R-White.html",
     "ownershipPost": null,
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/lcd-official-238a36244982.webp",
-    "imageCredit": "LCD Models (manufacturer)",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/local-lcd-huayra-r-matte-white-1-43-ai-redraw-0c8414a6638e.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "http://www.lcdmodel.com/Data/lcdmodel/upload/image/1-43%20%E5%B8%95%E5%8A%A0%E5%B0%BC%E8%8A%B1%E9%9B%85R/%E5%B0%81%E9%9D%A2%E5%9B%BE%201.jpg",
     "displaySourceUrl": "http://www.lcdmodel.com/1-43-Pagani-Huayra-R-White.html",
-    "imageTreatment": "Conservative rectangular crop from the manufacturer original, 1500 x 1500 to 1500 x 1000. Lossless WebP; crop pixels match decoded source exactly. Entire car, visible base, reflection and manufacturer logo retained. No upscaling, redraw, masking, color changes or background extension.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw: single model car in a front three-quarter view on a white studio background with a soft contact shadow. Display base and external captions removed. Closed white body, black wheels, red/bronze accents and side-skirt tricolor retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
-    "imageFrameColor": "#efefef",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "official",
-    "imageSourceAudit": "Owner supplied the exact official LCD product page. Retrieved its linked original front three-quarter image and inspected the complete 13-image manufacturer gallery. Page confirms Pagani Huayra R, white, diecast, 1:43. The original source base already extends beyond left/right edges; the crop retains the full source width and introduces no additional base clipping. Earlier claims that no official image was available are superseded by this verified retrieval. Owner matte-white wording retained; manufacturer page says White color.",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing this car on 2026-10-16. Original reference photograph retained in provenance. Main color, model variant, panel configuration and visible styling reviewed; generated geometry, fine logos and small lettering are interpretations and not verified documentary details.",
     "imageSourceDimensions": {
       "width": 1500,
       "height": 1500
     },
     "imageSourceReferences": [],
-    "imageCrop": {
-      "left": 0,
-      "top": 200,
-      "width": 1500,
-      "height": 1000
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-10-16",
+      "referenceImage": "http://www.lcdmodel.com/Data/lcdmodel/upload/image/1-43%20%E5%B8%95%E5%8A%A0%E5%B0%BC%E8%8A%B1%E9%9B%85R/%E5%B0%81%E9%9D%A2%E5%9B%BE%201.jpg",
+      "date": "2026-10-16"
     }
   },
   {
