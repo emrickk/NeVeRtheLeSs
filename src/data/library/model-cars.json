@@ -807,20 +807,31 @@
     "ownershipPost": null,
     "officialImage": "https://takaratomyasia.com/media/aobpdvo2/866947-image-001.webp",
     "officialUrl": "https://takaratomyasia.com/en/toys/tomica/dream-tomica/dream-tomica-no157-gudetama/",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-original-photo-0c53f2a65664.webp",
-    "imageCredit": "Takara Tomy",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-ai-redraw-787011ec4f47.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://takaratomyasia.com/media/aobpdvo2/866947-image-001.webp",
     "displaySourceUrl": "https://takaratomyasia.com/en/toys/tomica/dream-tomica/dream-tomica-no157-gudetama/",
-    "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing, front three-quarter view, white studio background and soft contact shadow. Yellow Gudetama character, steering wheel, white broken-eggshell body and pale toy wheels retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "official",
-    "imageSourceAudit": "Exact Dream Tomica 157 Gudetama, verified on Takara Tomy Asia. Original manufacturer image retained without masking.",
-    "imageSourceReferences": []
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing all five Takara Tomy cards on 2026-10-16. Original reference and source identity retained in provenance. Toy variant, colors and selected accessory/open-panel configuration reviewed. Fine lettering, materials and geometry are generated interpretations rather than verified documentary details.",
+    "imageSourceReferences": [],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request to redraw all Takara Tomy cards, 2026-10-16",
+      "referenceImage": "https://takaratomyasia.com/media/aobpdvo2/866947-image-001.webp",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "TOMICA-PREMIUM-12",
@@ -831,20 +842,31 @@
     "ownershipPost": null,
     "officialImage": "https://www.takaratomyasia.com/media/zcxoa4s1/887195-image-001.webp",
     "officialUrl": "https://www.takaratomyasia.com/en/toys/tomica/tomica-premium/tomica-premium-12-porsche-911-carrera-rs-27",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-original-photo-6938c497e90d.webp",
-    "imageCredit": "Takara Tomy / Tomica Premium",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-ai-redraw-f4ec7bed42cf.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://www.takaratomyasia.com/media/zcxoa4s1/887195-image-001.webp",
     "displaySourceUrl": "https://www.takaratomyasia.com/en/toys/tomica/tomica-premium/tomica-premium-12-porsche-911-carrera-rs-27",
-    "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing, front three-quarter view, white studio background and soft contact shadow. White Carrera RS 2.7 body, red Carrera graphics and wheels, and ducktail spoiler retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "official",
-    "imageSourceAudit": "Exact Tomica Premium 12 Porsche 911 Carrera RS 2.7, white with red Carrera graphics. Takara Tomy Asia product photo, no masking.",
-    "imageSourceReferences": []
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing all five Takara Tomy cards on 2026-10-16. Original reference and source identity retained in provenance. Toy variant, colors and selected accessory/open-panel configuration reviewed. Fine lettering, materials and geometry are generated interpretations rather than verified documentary details.",
+    "imageSourceReferences": [],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request to redraw all Takara Tomy cards, 2026-10-16",
+      "referenceImage": "https://www.takaratomyasia.com/media/zcxoa4s1/887195-image-001.webp",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "TOMICA-DM04",
@@ -855,25 +877,36 @@
     "ownershipPost": null,
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/disney/disneymotors/2016/",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-original-photo-0ff8555c566d.webp",
-    "imageCredit": "HobbyLink Japan (non-manufacturer source)",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-ai-redraw-61041f6ffade.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://www.hlj.com/productimages/tkt/tkt84040_0.jpg",
     "displaySourceUrl": "https://www.hlj.com/productimages/tkt/tkt84040_0.jpg",
-    "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing, front three-quarter view, white studio background and soft contact shadow. Burger roof, red/black cab, yellow wheels and selected open serving counter retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "nonofficial",
-    "imageSourceAudit": "Exact 2016 DM-04 Doobie Burger Shop. Manufacturer archive photos show the closed hatch; the displayed HLJ original retains the selected open-hatch pose. A direct official photo is provided for comparison.",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing all five Takara Tomy cards on 2026-10-16. Original reference and source identity retained in provenance. Toy variant, colors and selected accessory/open-panel configuration reviewed. Fine lettering, materials and geometry are generated interpretations rather than verified documentary details.",
     "imageSourceReferences": [
       {
         "label": "Official closed-hatch photo",
         "url": "https://www.takaratomy.co.jp/products/disney/disneymotors/2016/img/200_01.jpg"
       }
-    ]
+    ],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request to redraw all Takara Tomy cards, 2026-10-16",
+      "referenceImage": "https://www.hlj.com/productimages/tkt/tkt84040_0.jpg",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "TOMICA-SC06",
@@ -884,21 +917,32 @@
     "ownershipPost": null,
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/disney/top/pdf/toybook2015_2_boys.pdf#page=4",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-original-photo-d537ed4d0399.webp",
-    "imageCredit": "HobbyLink Japan (non-manufacturer source)",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-ai-redraw-a59009a43396.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://www.hlj.com/productimages/tkt/tkt84191_0.jpg",
     "displaySourceUrl": "https://www.hlj.com/productimages/tkt/tkt84191_0.jpg",
-    "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing, front three-quarter view, white studio background and soft contact shadow. Exact 2015 retro Kylo Ren casting, black body, red trim and helmet-shaped grille retained. Generated illustration, not an original product photograph.",
     "variantConfirmation": "Owner confirmed 2015 retro version on 2026-10-10",
-    "imageSourceType": "web-product-photo",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "nonofficial",
-    "imageSourceAudit": "Exact 2015 SC-06 Kylo Ren retro car, black with red trim, visually confirmed on PDF page 4 of Takara Tomy’s 2015 catalog. That catalog image is too small for this card. The displayed full-size original remains from HLJ.",
-    "imageSourceReferences": []
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing all five Takara Tomy cards on 2026-10-16. Original reference and source identity retained in provenance. Toy variant, colors and selected accessory/open-panel configuration reviewed. Fine lettering, materials and geometry are generated interpretations rather than verified documentary details.",
+    "imageSourceReferences": [],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request to redraw all Takara Tomy cards, 2026-10-16",
+      "referenceImage": "https://www.hlj.com/productimages/tkt/tkt84191_0.jpg",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "TOMICA-LUPIN",
@@ -909,25 +953,36 @@
     "ownershipPost": null,
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/tomica/dream/sp/products/177/index.html",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-original-photo-7b1383bdf157.webp",
-    "imageCredit": "PremiumToy (non-manufacturer source)",
-    "verifiedOn": "2026-10-10",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-ai-redraw-bb9bb531fa69.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://www.premiumtoy.my/detailimage/interactive/86/2.jpg",
     "displaySourceUrl": "https://www.premiumtoy.my/detailimage/interactive/86/2.jpg",
-    "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing, front three-quarter view, white studio background and soft contact shadow. Yellow Fiat body, R-33 plate, green roof luggage and selected open rear engine cover retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
     "imageFrameColor": "#ffffff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "nonofficial",
-    "imageSourceAudit": "Official archive shows the yellow Lupin Fiat with roof luggage and R-33 plate. The archive does not confirm #146. The displayed PremiumToy photograph retains the selected open rear engine cover; a direct official alternative is linked.",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner explicitly requested redrawing all five Takara Tomy cards on 2026-10-16. Original reference and source identity retained in provenance. Toy variant, colors and selected accessory/open-panel configuration reviewed. Fine lettering, materials and geometry are generated interpretations rather than verified documentary details.",
     "imageSourceReferences": [
       {
         "label": "Official archive photo",
         "url": "https://www.takaratomy.co.jp/products/tomica/dream/sp/products/177/images/view02.jpg"
       }
-    ]
+    ],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request to redraw all Takara Tomy cards, 2026-10-16",
+      "referenceImage": "https://www.premiumtoy.my/detailimage/interactive/86/2.jpg",
+      "date": "2026-10-16"
+    }
   },
   {
     "id": "MINICHAMPS-911-91",
