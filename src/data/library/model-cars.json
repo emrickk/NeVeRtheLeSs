@@ -1199,23 +1199,34 @@
     "officialImage": "https://www.inno-models.com/wp-content/uploads/2026/04/DSC_0798.jpg",
     "officialUrl": "https://www.inno-models.com/product/rwb-930-89-apple-livery/",
     "ownershipPost": null,
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/inno-original-photo-0900af5588d6.webp",
-    "imageCredit": "INNO Models",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/inno-89-ai-redraw-7b344371eaa6.png",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
     "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2026/04/DSC_0798.jpg",
     "displaySourceUrl": "https://www.inno-models.com/product/rwb-930-89-apple-livery/",
-    "imageTreatment": "Entire original photograph, lossless WebP encoding. Original pixels, background, shadows, logos and proportions retained. Uniform 3:2 frame uses contain without clipping.",
-    "imageSourceType": "web-product-photo",
+    "imageTreatment": "Owner-requested AI redraw with tighter framing so the model fills the card. Single front three-quarter view on a white studio background with soft contact shadow. White RWB 930 widebody, #89 rainbow Apple livery, gold wheels, yellow windshield banner and tall rear wing retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
     "sourceFilename": null,
-    "imageFrameColor": "#fff",
-    "imagePresentation": "original-photograph",
-    "imageSourceStatus": "official",
-    "imageSourceAudit": "Exact INNO 1:64 RWB 930 #89 Apple livery, matching manufacturer SKU IN64-RWB930-APPLE and photograph. Manufacturer page labels its images as prototype samples; final production details may vary.",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner requested the same redraw treatment and a larger subject on 2026-10-16. Exact original INNO reference retained in provenance. Main variant, livery, wing and framing reviewed; fine logos, lettering and geometry are generated interpretations rather than verified documentary details.",
     "imageSourceDimensions": {
       "width": 2026,
       "height": 1154
     },
-    "imageSourceReferences": []
+    "imageSourceReferences": [],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-10-16",
+      "referenceImage": "https://www.inno-models.com/wp-content/uploads/2026/04/DSC_0798.jpg",
+      "date": "2026-10-16"
+    }
   }
 ]
