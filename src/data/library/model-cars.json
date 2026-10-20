@@ -1477,5 +1477,91 @@
       "referenceSha256": "25bf2202f925680189db6795e2348d31079da8779c63c1143371345e8135c79e",
       "outputSha256": "5d5b06e2f5a781d3ace6067d172a022e2d0580020b28059cfee57d29828c1030"
     }
+  },
+  {
+    "id": "CMC-M-263",
+    "title": "Ferrari 250 LM · #21 Le Mans Winner, 1965",
+    "brand": "CMC",
+    "scale": "1:18",
+    "listingUrl": "https://www.ebay.com/itm/860051084417",
+    "officialImage": "https://www.cmc-modelcars.de/wp-content/uploads/2025/08/M-263-Ferrari250LM-21-4649.jpg",
+    "officialUrl": "https://www.cmc-modelcars.de/en/produkt/cmc-ferrari-250-lm-winner-24h-france-1965-21-chassis-5893-rindt-gregory-rhd/",
+    "displaySourceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2025/08/M-263-Ferrari250LM-21-4649.jpg",
+    "displaySourceUrl": "https://www.cmc-modelcars.de/en/produkt/cmc-ferrari-250-lm-winner-24h-france-1965-21-chassis-5893-rindt-gregory-rhd/",
+    "imageSourceType": "ai-generated",
+    "imageStatus": "available",
+    "verifiedOn": "2026-10-19",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-263-ai-redraw-f75b89d6bab5.png",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited exact product reference",
+    "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with a soft contact shadow. Complete car and selected panel configuration preserved. Generated illustration, not an original photograph.",
+    "sourceFilename": null,
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Exact product reference: manufacturer-official. Main variant, livery, panel state and framing reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 1500,
+      "height": 760
+    },
+    "imageSourceReferences": [
+      "https://www.ebay.com/itm/860051084417"
+    ],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-10-19",
+      "date": "2026-10-19",
+      "referenceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2025/08/M-263-Ferrari250LM-21-4649.jpg",
+      "referenceSha256": "f212c7da0fac2cb548a234488c370c6bd1b680f210fb419726b921fd01f4c95a",
+      "outputSha256": "f75b89d6bab5f69966e814de6e5297a2ec96a9279cf49d2ce9e17887e63eb6dd"
+    }
+  },
+  {
+    "id": "CMC-M-080",
+    "title": "Ferrari 250 Testa Rossa · Lucybelle #22, 1958",
+    "brand": "CMC",
+    "scale": "1:18",
+    "listingUrl": "https://www.ebay.com/itm/800802625817",
+    "officialImage": null,
+    "officialUrl": null,
+    "displaySourceImage": "https://www.cmc-modelcarshop.de/media/images/org/cmcm-080-2.jpg",
+    "displaySourceUrl": "https://www.cmc-modelcarshop.de/en/CMC-Rarities/CMC-Ferrari-250-Testa-Rossa-white-22-1958-Limited-Edition-3000.html",
+    "imageSourceType": "ai-generated",
+    "imageStatus": "available",
+    "verifiedOn": "2026-10-19",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f.png",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited exact product reference",
+    "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with a soft contact shadow. Complete car and selected panel configuration preserved. Generated illustration, not an original photograph.",
+    "sourceFilename": null,
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Exact product reference: specialist-retailer product gallery. Main variant, livery, panel state and framing reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 1200,
+      "height": 619
+    },
+    "imageSourceReferences": [
+      "https://www.ebay.com/itm/800802625817"
+    ],
+    "imageCrop": null,
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-10-19",
+      "date": "2026-10-19",
+      "referenceImage": "https://www.cmc-modelcarshop.de/media/images/org/cmcm-080-2.jpg",
+      "referenceSha256": "5889347ac117ee3376d577d3a112c2f418d2146822db7dbb5869de30fb8cbc8e",
+      "outputSha256": "0e4e6008960ff95e1ad3c3d0539d934eab0b64e73236890f32b960a6d6abcc5f"
+    }
   }
 ]

@@ -161,6 +161,8 @@
     "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/artikel(?:)\\/1zu18-Mazda-MX-5-Road(?:)ster-NR-A-Mazdaspeed-g(?:)alaxy-grau-met-Nr01-RH(?:)D-AUTOart-80643-21849$",
     "^src\\/data\\/library(?:)\\/model-cars\\.json(?:):com\\/library\\/mod(?:)el-cars\\/mgt01310-(?:)ai-redraw-27bb64a9(?:)183f$",
     "^src\\/data\\/library\\/model(?:)-cars\\.json:cn\\/large\\/008pcCqTg(?:)y1ii7r0666nmj315o0(?:)rswo4$",
-    "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/cdn\\/shop\\/files(?:)\\/57_f9820405\\-bd1b\\-(?:)41bf\\-81d1\\-a473338b(?:)a5d2$"
+    "^src\\/data\\/library\\/model(?:)-cars\\.json:com\\/cdn\\/shop\\/files(?:)\\/57_f9820405\\-bd1b\\-(?:)41bf\\-81d1\\-a473338b(?:)a5d2$",
+    "^src\\/data\\/library\\/m(?:)odel\\-cars\\.json:de\\/(?:)wp\\-content\\/uploads(?:)\\/2025\\/08\\/M\\-263\\-Fer(?:)rari250LM\\-21\\-4649$",
+    "^src\\/data\\/library\\/m(?:)odel\\-cars\\.json:de\\/(?:)en\\/produkt\\/cmc\\-fer(?:)rari\\-250\\-lm\\-winner(?:)\\-24h\\-france\\-1965\\-2(?:)1\\-chassis\\-5893\\-rin(?:)dt\\-gregory\\-rhd$"
   ]
 }
