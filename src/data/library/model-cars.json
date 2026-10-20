@@ -1563,5 +1563,210 @@
       "referenceSha256": "5889347ac117ee3376d577d3a112c2f418d2146822db7dbb5869de30fb8cbc8e",
       "outputSha256": "0e4e6008960ff95e1ad3c3d0539d934eab0b64e73236890f32b960a6d6abcc5f"
     }
+  },
+  {
+    "id": "S70-01",
+    "title": "BMW E30 Pandem · Silver / Blue",
+    "brand": "POP RACE × Xcartoys",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialUrl": null,
+    "officialImage": null,
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/s70-01-ai-redraw-ceddfb607f6e.png",
+    "displaySourceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/84/04/1_000000000484.jpg?1782188919",
+    "displaySourceUrl": "https://www.poprace.jp/view/item/000000000484",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "POP RACE Hong Kong and all191 Xcartoys S-series catalog sheets checked; S70-01 is absent. All5 POP RACE Japan PR640536 photos inspected and visually matched to the owner S70-01 reference. Cross-market SKU equivalence is inferred, not an official alias. Generated details are interpretations.",
+    "imageSourceDimensions": {
+      "width": 640,
+      "height": 640
+    },
+    "imageSourceReferences": [
+      "https://www.poprace.jp/view/item/000000000484"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/84/04/1_000000000484.jpg?1782188919",
+      "referenceSha256": "28623edf47aad7877f1d6899459ffd4cb3bf04358e2d47ab8d0efffd36087463",
+      "outputSha256": "ceddfb607f6e9b99d1cd49031cfc1f1eb2e36465b27078a0c095059849974f39"
+    }
+  },
+  {
+    "id": "local-fuelme-pandem-gr-yaris-monster-87-1-64",
+    "title": "Toyota GR Yaris Pandem · Monster / Sunoco #87",
+    "brand": "FuelMe",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialUrl": "https://www.fuelme.com.cn/#/product/details?id=380",
+    "officialImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-ai-redraw-da3cb517fb1b.png",
+    "displaySourceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
+    "displaySourceUrl": "https://www.fuelme.com.cn/#/product/details?id=380",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 700,
+      "height": 467
+    },
+    "imageSourceReferences": [
+      "https://www.fuelme.com.cn/#/product/details?id=380"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
+      "referenceSha256": "310531b0ee2983497abbcb5d86b1721f0a8aeaeb1fad524161b587fcee9f33df",
+      "outputSha256": "da3cb517fb1b08b11f6e06afafe20d63cc022fb96ff75646f7fd7c8053540c0c"
+    }
+  },
+  {
+    "id": "IG3992",
+    "title": "Porsche RWB 993 · Matte Pink",
+    "brand": "Ignition Model",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialUrl": "https://ig-model.com/lineup/3992/",
+    "officialImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/ig3992-ai-redraw-6daa8d6b1242.png",
+    "displaySourceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
+    "displaySourceUrl": "https://ig-model.com/lineup/3992/",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 1200,
+      "height": 800
+    },
+    "imageSourceReferences": [
+      "https://ig-model.com/lineup/3992/"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
+      "referenceSha256": "6dc3dffc92ef03756711311178c235e02385b8d85d00bd5984b4244b591e5aa8",
+      "outputSha256": "6daa8d6b12425d351f20e9a44ed82a89fca372518c261ed53e646a82398d98fa"
+    }
+  },
+  {
+    "id": "MH-M60113",
+    "title": "Mazda 787B · #18 Blue / White",
+    "brand": "MotorHelix",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialUrl": "https://motorhelix.co/product/mazda-787b-18/",
+    "officialImage": "https://motorhelix.co/wp-content/uploads/2026/07/DSC07682-拷贝.webp",
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/mh-m60113-ai-redraw-c4780d96af8a.png",
+    "displaySourceImage": "https://motorhelix.co/wp-content/uploads/2026/07/DSC07682-拷贝.webp",
+    "displaySourceUrl": "https://motorhelix.co/product/mazda-787b-18/",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 2560,
+      "height": 1707
+    },
+    "imageSourceReferences": [
+      "https://motorhelix.co/product/mazda-787b-18/"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://motorhelix.co/wp-content/uploads/2026/07/DSC07682-拷贝.webp",
+      "referenceSha256": "bd6009d1b5c3b32798503dcbce3c8dcb943d86e6b6aced0b5c4bea3e5d7f55e8",
+      "outputSha256": "c4780d96af8a7a50ef17c23cd4c0e4207db9e32aaf4ca4ed9835b040588d5e71"
+    }
+  },
+  {
+    "id": "610301001",
+    "title": "Land Rover Defender 110 · Adventure Edition, 2015",
+    "brand": "ARbox / Almost Real",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialUrl": "https://armodel.com.cn/product/detail.html?id=742",
+    "officialImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/610301001-ai-redraw-e1bf4e394dac.png",
+    "displaySourceImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
+    "displaySourceUrl": "https://armodel.com.cn/product/detail.html?id=742",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 900,
+      "height": 900
+    },
+    "imageSourceReferences": [
+      "https://armodel.com.cn/product/detail.html?id=742"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
+      "referenceSha256": "1fe2115fe2f05dcf877193d289556c6aa5d44d0cbf7b5d297544eb8f97a0c4e1",
+      "outputSha256": "e1bf4e394dac098f5d99dc54719f9b93ac091892e4a05399e20914c01033b306"
+    }
   }
 ]
