@@ -4,6 +4,8 @@ Use this workflow only for models the owner explicitly selects for AI redraw. Th
 
 ## Reference and generation
 
+**Mandatory source gate:** Before choosing a generation reference, complete and retain the [official-website and full-gallery check](completion-criteria.md#identity-and-source). Inspect the actual official photographs for the exact model and edition. Record why the selected view is suitable; if using a distributor, retailer or collector reference, record why the official material is insufficient. Do not start generation while this check is unresolved. A convenient supplied reference, previous successful generation, or blocked first request does not waive the requirement.
+
 1. Select exact stable IDs from `src/data/library/model-cars.json`. Save the complete starting payload, selected records and exact reference images outside this public repo under `../Drafts/`.
 2. Inspect every reference image. Record the manufacturer, SKU, scale, color, race number, wheels, included accessories and selected open-panel configuration. Similar models from different manufacturers remain separate. Preserve the owner's chosen view and parts.
 3. Use the built-in OpenAI `image_gen` tool with one exact reference and one model-specific prompt per output. Save prompts, outputs and reference provenance in the draft folder. Keep the original generated output when copying it into that folder.
