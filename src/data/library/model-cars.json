@@ -1768,5 +1768,87 @@
       "referenceSha256": "1fe2115fe2f05dcf877193d289556c6aa5d44d0cbf7b5d297544eb8f97a0c4e1",
       "outputSha256": "e1bf4e394dac098f5d99dc54719f9b93ac091892e4a05399e20914c01033b306"
     }
+  },
+  {
+    "id": "TH-241083-E",
+    "title": "Lamborghini Huracán GT3 EVO2 · DTM 2025 #19",
+    "brand": "Trends Hobby",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialImage": null,
+    "officialUrl": null,
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/th-241083-e-ai-redraw-9caa5b186ef2.png",
+    "displaySourceImage": "https://www.herpa.de/media/ec/ce/ab/1782125787/864TH000011.jpg?ts=1782126051",
+    "displaySourceUrl": "https://www.herpa.de/en/index.php/detail/42e5854ea65f2e06dfecda9a20518a05",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadow. All body panels closed. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Herpa exact-edition gallery inspected. Manufacturer site inaccessible due to certificate-name error and listed Hong Kong domain DNS failure. Owner explicitly accepted Herpa front three-quarter reference with engine cover fitted on 2026-10-20. Manufacturer check remains incomplete; distributor provenance retained. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 1920,
+      "height": 1344
+    },
+    "imageSourceReferences": [
+      "https://www.herpa.de/en/index.php/detail/42e5854ea65f2e06dfecda9a20518a05"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://www.herpa.de/media/ec/ce/ab/1782125787/864TH000011.jpg?ts=1782126051",
+      "referenceSha256": "0c26d8fe819199c7d1f786d5818bb7d2dfd2d1c1c339234ea9859979dc14727c",
+      "outputSha256": "9caa5b186ef2a0a6dc7e991a5f86de95d8505e5a37ea04949cff6e811a2e6abc"
+    }
+  },
+  {
+    "id": "MGT01135",
+    "title": "Lamborghini LB-Silhouette WORKS Murciélago GT EVO · Yellow",
+    "brand": "MINI GT",
+    "scale": "1:64",
+    "imageStatus": "available",
+    "officialImage": "https://minigt.tsm-models.com/upload/picfile/2026/01/20260114054603982.JPG",
+    "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1972",
+    "verifiedOn": "2026-10-20",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01135-ai-redraw-15c90f51813f.png",
+    "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2026/01/20260114054603982.JPG",
+    "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1972",
+    "ownershipPost": null,
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageFrameColor": "#ffffff",
+    "imageSourceType": "ai-generated",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadow. All body panels closed. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Exact manufacturer product page and all five gallery photographs inspected. Released-product photograph selected over earlier prototype images. Owner image does not establish a steering-side SKU suffix; stable MGT01135 retained. Fine lettering and geometry are generated interpretations.",
+    "imageSourceDimensions": {
+      "width": 1500,
+      "height": 1000
+    },
+    "imageSourceReferences": [
+      "https://minigt.tsm-models.com/index.php?action=product-detail&id=1972"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "date": "2026-10-20",
+      "referenceImage": "https://minigt.tsm-models.com/upload/picfile/2026/01/20260114054603982.JPG",
+      "referenceSha256": "2b53d8cc2aab96cda685ae927b963b2e2fcc782fc03face10229bd3df6df1ffb",
+      "outputSha256": "15c90f51813f1cbeae11eb63bc367f859cfe90b3b4558c88863cace3d7ea91b7"
+    }
   }
 ]
