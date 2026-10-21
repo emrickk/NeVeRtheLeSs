@@ -1851,5 +1851,43 @@
       "referenceSha256": "2b53d8cc2aab96cda685ae927b963b2e2fcc782fc03face10229bd3df6df1ffb",
       "outputSha256": "15c90f51813f1cbeae11eb63bc367f859cfe90b3b4558c88863cace3d7ea91b7"
     }
+  },
+  {
+    "id": "TOMICA-PREMIUM-31",
+    "title": "Ferrari F40 · Red · #31",
+    "brand": "Takara Tomy / Tomica Premium",
+    "scale": "1:62",
+    "officialUrl": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/",
+    "verifiedOn": "2026-10-20",
+    "officialImage": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/img/img-01.jpg",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited Takara Tomy manufacturer photograph",
+    "displaySourceImage": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/img/img-01.jpg",
+    "displaySourceUrl": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/",
+    "imageSourceType": "ai-generated",
+    "imageTreatment": "Faithful miniature illustration on seamless white with soft contact shadow, matching the established gallery treatment. All panels and engine cover closed. Generated illustration, not an original photograph.",
+    "imageSourceDimensions": {
+      "width": 1000,
+      "height": 570
+    },
+    "ownershipPost": null,
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-premium-31-ai-redraw-610146bed18a.png",
+    "imageStatus": "available",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageCrop": null,
+    "imageSourceAudit": "Exact official manufacturer page and all four product photographs inspected before generation. Closed-cover front-left three-quarter photograph selected. Toy wheel design and miniature proportions preserved; fine details remain generated interpretations.",
+    "imageSourceReferences": [
+      "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/",
+      "https://takaratomymall.jp/shop/g/g4904810131847/"
+    ],
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "date": "2026-10-20",
+      "authorization": "Owner corrected the black-background preview; restore established white studio treatment.",
+      "referenceImage": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/img/img-01.jpg",
+      "referenceSha256": "11e6c8a57295acfcc1e1d48d81ffa210f4830eedee15761ece8e0e199aa2b995",
+      "outputSha256": "610146bed18a84e88d482d4aa55fe4493871d80e7d856348c2629ed20f0335dc"
+    }
   }
 ]
