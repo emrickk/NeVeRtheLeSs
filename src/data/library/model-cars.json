@@ -1737,24 +1737,25 @@
     "officialUrl": "https://armodel.com.cn/product/detail.html?id=742",
     "officialImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
     "verifiedOn": "2026-10-20",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/610301001-ai-redraw-e1bf4e394dac.png",
-    "displaySourceImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
-    "displaySourceUrl": "https://armodel.com.cn/product/detail.html?id=742",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/610301001-no-base-ai-redraw-f0c850bc184a.png",
+    "displaySourceImage": "https://wx4.sinaimg.cn/large/e4d3f80cly1ifd9chdyf1j20zw14k0vl.jpg",
+    "displaySourceUrl": "https://www.sina.cn/news/detail/5323645867001578.html",
     "ownershipPost": null,
-    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited ARbox product sheet hosted by ICHEMO",
     "imageFrameColor": "#ffffff",
     "imageSourceType": "ai-generated",
     "imagePresentation": "generated-illustration",
     "imageSourceStatus": "generated",
     "imageCrop": null,
-    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
-    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageTreatment": "Single front three-quarter miniature illustration on seamless white with soft tire contact shadow. All body panels closed. No display base. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Manufacturer product page and all eight photographs inspected; they show the display base. Owner selected the exact base-free SKU610301001 promotional sheet published by ICHEMO on Sina. Use the upper front three-quarter view only. Third-party hosting is retained as provenance; ARbox branding alone does not independently establish manufacturer authorship. Fine details are generated interpretations.",
     "imageSourceDimensions": {
-      "width": 900,
-      "height": 900
+      "width": 1292,
+      "height": 1460
     },
     "imageSourceReferences": [
-      "https://armodel.com.cn/product/detail.html?id=742"
+      "https://armodel.com.cn/product/detail.html?id=742",
+      "https://www.sina.cn/news/detail/5323645867001578.html"
     ],
     "imageGeneratedDimensions": {
       "width": 1536,
@@ -1762,11 +1763,11 @@
     },
     "imageGeneration": {
       "tool": "OpenAI image_gen",
-      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+      "authorization": "Owner requested replacement using the reviewed base-free reference, 2026-10-20",
       "date": "2026-10-20",
-      "referenceImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
-      "referenceSha256": "1fe2115fe2f05dcf877193d289556c6aa5d44d0cbf7b5d297544eb8f97a0c4e1",
-      "outputSha256": "e1bf4e394dac098f5d99dc54719f9b93ac091892e4a05399e20914c01033b306"
+      "referenceImage": "https://wx4.sinaimg.cn/large/e4d3f80cly1ifd9chdyf1j20zw14k0vl.jpg",
+      "referenceSha256": "f121a7bf2430f510d430663040e6179fbb97d1513fa1ca6f3fc2c75302086247",
+      "outputSha256": "f0c850bc184a785256e300cd451c9d2ea061eacbb98b59cca3329fa248bd6049"
     }
   },
   {
