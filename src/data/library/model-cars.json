@@ -1613,19 +1613,19 @@
     "imageStatus": "available",
     "officialUrl": "https://www.fuelme.com.cn/#/product/details?id=380",
     "officialImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
-    "verifiedOn": "2026-10-20",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-ai-redraw-da3cb517fb1b.png",
+    "verifiedOn": "2026-10-25",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-base-free-723de7060003.png",
     "displaySourceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
     "displaySourceUrl": "https://www.fuelme.com.cn/#/product/details?id=380",
     "ownershipPost": null,
-    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageCredit": "AI illustration edited with OpenAI image_gen from the previous generated model illustration",
     "imageFrameColor": "#ffffff",
     "imageSourceType": "ai-generated",
     "imagePresentation": "generated-illustration",
     "imageSourceStatus": "generated",
     "imageCrop": null,
-    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
-    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageTreatment": "Targeted AI edit removing the presentation base and plaque from the existing generated illustration. Complete miniature on a white seamless floor with soft contact shadow; closed panels retained. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations. Base-free version is an approved targeted edit of the existing generated output; original manufacturer reference retained. It is not a newly found base-free photograph.",
     "imageSourceDimensions": {
       "width": 700,
       "height": 467
@@ -1639,11 +1639,25 @@
     },
     "imageGeneration": {
       "tool": "OpenAI image_gen",
-      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
-      "date": "2026-10-20",
-      "referenceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
-      "referenceSha256": "310531b0ee2983497abbcb5d86b1721f0a8aeaeb1fad524161b587fcee9f33df",
-      "outputSha256": "da3cb517fb1b08b11f6e06afafe20d63cc022fb96ff75646f7fd7c8053540c0c"
+      "date": "2026-10-25",
+      "authorization": "Owner approved the two base-free images and requested publication, 2026-10-25.",
+      "operation": "Targeted removal of display base and plaque from existing generated illustration",
+      "referenceImage": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-ai-redraw-da3cb517fb1b.png",
+      "referenceSha256": "da3cb517fb1b08b11f6e06afafe20d63cc022fb96ff75646f7fd7c8053540c0c",
+      "referenceType": "previously-generated-illustration",
+      "referenceDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputSha256": "723de706000302d24576ab7f4c70d6d8171fff3804218432f2664e28daf9c7cc",
+      "previousGeneration": {
+        "tool": "OpenAI image_gen",
+        "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+        "date": "2026-10-20",
+        "referenceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
+        "referenceSha256": "310531b0ee2983497abbcb5d86b1721f0a8aeaeb1fad524161b587fcee9f33df",
+        "outputSha256": "da3cb517fb1b08b11f6e06afafe20d63cc022fb96ff75646f7fd7c8053540c0c"
+      }
     }
   },
   {
@@ -1654,19 +1668,19 @@
     "imageStatus": "available",
     "officialUrl": "https://ig-model.com/lineup/3992/",
     "officialImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
-    "verifiedOn": "2026-10-20",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/ig3992-ai-redraw-6daa8d6b1242.png",
+    "verifiedOn": "2026-10-25",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/ig3992-base-free-dd85679fda6c.png",
     "displaySourceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
     "displaySourceUrl": "https://ig-model.com/lineup/3992/",
     "ownershipPost": null,
-    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
+    "imageCredit": "AI illustration edited with OpenAI image_gen from the previous generated model illustration",
     "imageFrameColor": "#ffffff",
     "imageSourceType": "ai-generated",
     "imagePresentation": "generated-illustration",
     "imageSourceStatus": "generated",
     "imageCrop": null,
-    "imageTreatment": "Single three-quarter miniature illustration on seamless white with soft contact shadows. Complete selected car, parts and base preserved. Generated illustration, not an original photograph.",
-    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations.",
+    "imageTreatment": "Targeted AI edit removing the presentation base and plaque from the existing generated illustration. Complete miniature on a white seamless floor with soft contact shadow; closed panels retained. Generated illustration, not an original photograph.",
+    "imageSourceAudit": "Official website and complete product gallery inspected before reference selection. Exact miniature variant and selected panel configuration reviewed. Fine lettering and geometry are generated interpretations. Base-free version is an approved targeted edit of the existing generated output; original manufacturer reference retained. It is not a newly found base-free photograph.",
     "imageSourceDimensions": {
       "width": 1200,
       "height": 800
@@ -1680,11 +1694,25 @@
     },
     "imageGeneration": {
       "tool": "OpenAI image_gen",
-      "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
-      "date": "2026-10-20",
-      "referenceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
-      "referenceSha256": "6dc3dffc92ef03756711311178c235e02385b8d85d00bd5984b4244b591e5aa8",
-      "outputSha256": "6daa8d6b12425d351f20e9a44ed82a89fca372518c261ed53e646a82398d98fa"
+      "date": "2026-10-25",
+      "authorization": "Owner approved the two base-free images and requested publication, 2026-10-25.",
+      "operation": "Targeted removal of display base and plaque from existing generated illustration",
+      "referenceImage": "https://cdn.theneverless.com/library/model-cars/ig3992-ai-redraw-6daa8d6b1242.png",
+      "referenceSha256": "6daa8d6b12425d351f20e9a44ed82a89fca372518c261ed53e646a82398d98fa",
+      "referenceType": "previously-generated-illustration",
+      "referenceDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputSha256": "dd85679fda6c2d8ccbdd6385853c8def0c9b3b059ad603e315df1e903f735ff1",
+      "previousGeneration": {
+        "tool": "OpenAI image_gen",
+        "authorization": "Owner-selected additions in the continuing redraw workflow, 2026-10-20",
+        "date": "2026-10-20",
+        "referenceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
+        "referenceSha256": "6dc3dffc92ef03756711311178c235e02385b8d85d00bd5984b4244b591e5aa8",
+        "outputSha256": "6daa8d6b12425d351f20e9a44ed82a89fca372518c261ed53e646a82398d98fa"
+      }
     }
   },
   {
@@ -1888,6 +1916,96 @@
       "referenceImage": "https://www.takaratomy.co.jp/products/tomica/tomicabrand/premium/premium-31/img/img-01.jpg",
       "referenceSha256": "11e6c8a57295acfcc1e1d48d81ffa210f4830eedee15761ece8e0e199aa2b995",
       "outputSha256": "610146bed18a84e88d482d4aa55fe4493871d80e7d856348c2629ed20f0335dc"
+    }
+  },
+  {
+    "id": "CMC-M-247",
+    "title": "Ferrari 250 GTO · Goodwood 1962 #15, Green",
+    "brand": "CMC",
+    "scale": "1:18",
+    "listingUrl": null,
+    "ownershipPost": null,
+    "officialUrl": "https://www.cmc-modelcars.de/produkt/cmc-ferrari-250-gto-goodwood-1962-15-stirling-moss-team-ireland/",
+    "officialImage": "https://www.cmc-modelcars.de/wp-content/uploads/2023/11/M-247-Hero.jpg",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-247-ai-redraw-2fe945dd29b2.png",
+    "displaySourceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2023/11/M-247-Hero.jpg",
+    "displaySourceUrl": "https://www.cmc-modelcars.de/produkt/cmc-ferrari-250-gto-goodwood-1962-15-stirling-moss-team-ireland/",
+    "imageStatus": "available",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the exact manufacturer reference",
+    "verifiedOn": "2026-10-25",
+    "imageCrop": null,
+    "sourceFilename": null,
+    "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with soft contact shadow. All doors, hood and trunk closed; pale green #15, right-hand drive, silver wire wheels. Generated illustration, not an original photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceDimensions": {
+      "width": 1500,
+      "height": 760
+    },
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageSourceReferences": [
+      "https://www.cmc-modelcars.de/produkt/cmc-ferrari-250-gto-goodwood-1962-15-stirling-moss-team-ireland/"
+    ],
+    "imageSourceAudit": "Exact manufacturer product page and complete gallery inspected. Manufacturer sample/illustration caveats retained in source evidence. Fine lettering and geometry are generated interpretations.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "date": "2026-10-25",
+      "authorization": "Owner requested blog additions using the established model-car image workflow.",
+      "referenceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2023/11/M-247-Hero.jpg",
+      "referenceSha256": "94df1d1709b2a65b345baec96bac5dec72b2ab38bf4e12f0eaf9ee1894b02158",
+      "outputSha256": "2fe945dd29b20515f70cb5db858bfcb119c08a5b31013c86a0a0e363ebd016b4",
+      "framingEdit": "White margins expanded using the first generated output as the edit target.",
+      "intermediateOutputSha256": "df547424c7e09f0e6843c1ba6794e9addcbabd5e6b6fd819eda87ef58d459fda"
+    }
+  },
+  {
+    "id": "IN64-R89C-89LM23",
+    "title": "Nissan R89C · Le Mans 1989 #23",
+    "brand": "INNO64",
+    "scale": "1:64",
+    "listingUrl": null,
+    "ownershipPost": null,
+    "officialUrl": "https://www.inno-models.com/product/r89c-le-mans-1989-no23-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki/",
+    "officialImage": "https://www.inno-models.com/wp-content/uploads/2025/07/IN64-R89C-CAL23-1.jpg",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/in64-r89c-89lm23-ai-redraw-e0a8482bf786.png",
+    "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2025/07/IN64-R89C-CAL23-1.jpg",
+    "displaySourceUrl": "https://www.inno-models.com/product/r89c-le-mans-1989-no23-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki/",
+    "imageStatus": "available",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the exact manufacturer reference",
+    "verifiedOn": "2026-10-25",
+    "imageCrop": null,
+    "sourceFilename": null,
+    "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with soft contact shadow. Rear engine cover detached and displayed beside the model; rear wing fitted, doors and nose closed; exact #23. Generated illustration, not an original photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceDimensions": {
+      "width": 1920,
+      "height": 1200
+    },
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageSourceReferences": [
+      "https://www.inno-models.com/product/r89c-le-mans-1989-no23-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki/"
+    ],
+    "imageSourceAudit": "Exact manufacturer product page and complete gallery inspected. Manufacturer sample/illustration caveats retained in source evidence. Fine lettering and geometry are generated interpretations.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "date": "2026-10-25",
+      "authorization": "Owner requested blog additions using the established model-car image workflow.",
+      "referenceImage": "https://www.inno-models.com/wp-content/uploads/2025/07/IN64-R89C-CAL23-1.jpg",
+      "referenceSha256": "685b00896a15414ff860386c72c8b45ffc2e77658406c9d89a419a02c0ae9658",
+      "outputSha256": "e0a8482bf78650c68520be318d3d685000953966aa5362fdde95c667b1206d68",
+      "framingEdit": "White margins expanded using the first generated output as the edit target.",
+      "intermediateOutputSha256": "e3a08e0d8267b9983828a02435bf760470a727e0d67c24068d3caa0e37acafe9"
     }
   }
 ]
