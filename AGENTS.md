@@ -20,24 +20,25 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 7 + the a
 
 ## Commands
 
-| Command                                          | Action                                                                                                                                                    |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit; under an agent, Astro 7 `dev` detaches unless given `--ignore-lock` (stop with `npx astro dev stop`)|
-| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                                              |
-| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                                   |
-| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                                         |
-| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                                               |
-| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test runs only with `R2_LIVE=1` (it writes to the production bucket), which release-check never sets |
-| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                                        |
-| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                                  |
-| `npm run test:library`                           | Library script test suite (car variants)                                                                                                                  |
-| `npm run library:car-variants`                   | 480/800 px WebP car variants on R2; required for every new or replaced car image (`-- --verify` checks the CDN)                                           |
-| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                                 |
-| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                                 |
-| `npm run check:content`                          | Content checks on changed posts: translation pairs, alt text, em dashes (release-check check 13)                                                          |
-| `npm run check:links`                            | Internal links in the built site (`dist/`)                                                                                                                |
-| `npm run ship`                                   | One-command publish for changed posts and library data: review, approve, release checks, commit, push (see Safety)                                        |
-| `npm run test:safety`                            | Test suite for checkpoint, release-check, preview-posts, ship, and content-check                                                                          |
+| Command                                          | Action                                                                                                                                                                                                            |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit; under an agent, Astro 7 `dev` detaches unless given `--ignore-lock` (stop with `npx astro dev stop`) |
+| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                                                                                                      |
+| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                                                                                           |
+| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                                                                                                 |
+| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                                                                                                       |
+| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test runs only with `R2_LIVE=1` (it writes to the production bucket), which release-check never sets                                                         |
+| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                                                                                                |
+| `npm run test:drafts`                            | Draft rendering test: production builds have no draft page, review builds render it marked Draft and noindex (real Astro builds, about a minute)                                                                  |
+| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                                                                                          |
+| `npm run test:library`                           | Library script test suite (car variants)                                                                                                                                                                          |
+| `npm run library:car-variants`                   | 480/800 px WebP car variants on R2; required for every new or replaced car image (`-- --verify` checks the CDN)                                                                                                   |
+| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                                                                                         |
+| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                                                                                         |
+| `npm run check:content`                          | Content checks on changed posts: translation pairs, alt text, em dashes (release-check check 13)                                                                                                                  |
+| `npm run check:links`                            | Internal links in the built site (`dist/`)                                                                                                                                                                        |
+| `npm run ship`                                   | One-command publish for changed posts and library data: review, approve, release checks, commit, push (see Safety)                                                                                                |
+| `npm run test:safety`                            | Test suite for checkpoint, release-check, preview-posts, ship, and content-check                                                                                                                                  |
 
 ## Architecture
 
@@ -49,6 +50,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 7 + the a
 - Pipeline credentials go in `.env.local` (git-ignored); the variable names are documented in `.env.example`. Without credentials, dry-run modes and all tests still work.
 - `scripts/migrate/` is finished WordPress-migration tooling (Python). Design history lives in `docs/`, including `docs/superpowers/specs/` and `docs/superpowers/plans/`.
 - **Local post editor**: `/_edit` on the dev server (dev-only Astro integration in `scripts/post-editor/`, zero build footprint). Runbook: [docs/post-editor.md](docs/post-editor.md).
+- **Drafts**: `draft: true` posts render at their own `/posts/<slug>/` URL in `astro dev` and in the review builds (`preview-posts`, `ship --review`, which set `SHOW_DRAFTS=1`; CI refuses it and production builds strip it), marked Draft and noindex and kept out of lists, feeds and search. They never reach production. The old `src/pages/draft-preview` route is gone.
 - **Protected posts**: `protected: true` in frontmatter (primary AND sibling translation) encrypts the post body at build time; the password comes from `POST_PASSWORD` (`.env.local` locally, GitHub Actions secret in deploys). Title, description, and hero stay public, and the markdown source is readable in this public repo. Runbook: [docs/protected-posts.md](docs/protected-posts.md).
 
 ## Safety
@@ -63,7 +65,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 7 + the a
 ## Established workflows
 
 - **Image storage:** use the R2 pipeline and CDN for post images. `public/uploads/` is retired. Historical migration counts are not current inventory totals.
-- **Bilingual toggle:** the `bilingual-toggle` branch was merged and deleted on 2026-07-14; do not recreate it. Verify changed posts and their siblings rather than assuming all archived entries have complete translations.
+- **Bilingual toggle:** the `bilingual-toggle` branch was merged and deleted on 2026-07-14; do not recreate it. Verify changed posts and their siblings rather than assuming all archived entries have complete translations. Feeds: `/rss.xml` (Chinese where available) and `/rss.en.xml` (English); `?lang=en` or `?lang=zh` opens a page in that language.
 - **Single-branch workflow.** All day-to-day work happens on `main` in this checkout. A long-running independent track gets its own branch in its own worktree (`git worktree add`), like `tweets-notes`; it never shares this checkout.
 
 ## Rules
