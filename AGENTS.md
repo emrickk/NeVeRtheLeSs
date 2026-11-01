@@ -14,7 +14,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 - For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
 - **Official-source checks are mandatory for every new or replaced model-car image, including AI generation inputs.** Read the exact manufacturer's official website and full product gallery, inspect the actual photographs, and retain the check before selecting a reference. A convenient retailer image, a search result, or a failed request does not satisfy this gate. See the source requirements in [completion criteria](docs/completion-criteria.md).
 - The owner's latest explicit direction takes precedence. A correction changes its stated scope; carry forward other accepted choices. A treatment approved for one image is not a general treatment policy.
-- The website workspace's `../Drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
+- The website workspace's `../drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
 
 ## Commands
 
