@@ -4,6 +4,10 @@ Give any post a password gate: the body is encrypted at build time and readers
 must enter the password in the browser before the content decrypts. The site
 stays fully static; nothing changes about hosting or deploys.
 
+This is soft gating, not privacy. The markdown source of a protected post and
+the CDN URLs of its images are public in this repository and its history; only
+the rendered site is gated. Truly private posts must stay out of the repo.
+
 ## How to protect a post
 
 1. Add the flag to the post's frontmatter:
@@ -43,7 +47,7 @@ reloading or returning to the post in the same tab does not re-prompt.
 
 Protected:
 
-- The full post body, including images URLs, headings, and galleries. The
+- The full post body, including image URLs, headings, and galleries. The
   built HTML contains only an AES-256-GCM ciphertext (key derived with
   PBKDF2-SHA256, 600k iterations). Pagefind search, the reading rail, and
   page source see ciphertext only.
@@ -54,6 +58,8 @@ Not protected (choose them accordingly):
   stay visible on the post page, home page, archive, RSS, search, and social
   previews. Do not put anything private in them.
 - Giscus comments on the post, if any.
+- The images themselves. CDN image URLs are public and unauthenticated, and
+  they appear in the markdown source.
 - **The markdown source itself.** This repository is public, so the body of a
   protected post is readable in the repo and its git history by anyone who
   looks. The password gates the rendered site (casual readers, search
