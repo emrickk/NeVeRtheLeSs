@@ -10,13 +10,13 @@
     {
       "name": "blog-dev",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["astro", "dev", "--port", "4341"],
+      "runtimeArgs": ["astro", "dev", "--port", "4341", "--ignore-lock"],
       "port": 4341
     },
     {
       "name": "blog-dev-4353",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["astro", "dev", "--port", "4353"],
+      "runtimeArgs": ["astro", "dev", "--port", "4353", "--ignore-lock"],
       "port": 4353
     },
     {
