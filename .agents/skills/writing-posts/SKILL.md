@@ -36,6 +36,8 @@ Concision removes redundancy and framing; it keeps useful information and flavor
 
 Avoid invented atmosphere, forced symmetry, repeated cinematic metaphors, generic praise, and lesson-shaped endings. Judge warm or declarative lines in context. When the owner ends on an image, preserve that ending. Follow the repository's no-em-dash rule.
 
+For this blog, the repository rules win where they conflict with general writing skills: colons (including `：`) are allowed, and em dashes stay banned.
+
 Read [voice and translation examples](references/voice-and-translation.md) when choosing a register, resolving a title/subtitle, or weighing a borderline change. Current material and newer owner choices outrank examples.
 
 ## Apply the owner's edits
@@ -50,7 +52,7 @@ Read [voice and translation examples](references/voice-and-translation.md) when 
 For the established travel-post workflow, Chinese is the ground truth and receives substantive review before English. Follow an explicitly chosen English-led draft when that is the task, then synchronize Chinese. The source is the owner's accepted version.
 
 - Preserve facts, scenes, jokes, image order, and temperature while writing idiomatically. Meaning changes need sibling sync; language-specific mechanics need not force artificial edits to the other body.
-- Align primary frontmatter `title`, `titleZh`, `titleEn`, `description`, `descriptionZh`, and `descriptionEn` with the bodies; keep the sibling's `title` in its language. Shared metadata comes from the primary file. Inspect the current translation resolver before bulk changes.
+- Each language file carries its own `title` and `description` in its own language: the primary file for its `lang`, the sibling translation for the other. Align each with its own body. `src/utils/translations.ts` resolves the pair; `titleZh`, `titleEn`, `descriptionZh`, and `descriptionEn` are no longer read, so do not add them. Shared metadata comes from the primary file. Inspect the current translation resolver before bulk changes.
 - When the owner supplies a title or subtitle, understand his line and render it natively. Do not replace it with a new line mined from the body. Preserve the joke's target; drop untranslatable wordplay rather than turn it into a different meaning. The subtitle should not merely restate the title.
 
 ## Finish before handoff
