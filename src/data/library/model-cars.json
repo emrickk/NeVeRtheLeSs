@@ -11,6 +11,25 @@
     "ownershipPost": "/posts/300sl-and-two-934s/",
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/rlg19091-original-photo-c6313fb1a25d.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/rlg19091-original-photo-c6313fb1a25d.webp",
+      "sourceWidth": 2400,
+      "sourceHeight": 1600,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 15558,
+          "url": "https://cdn.theneverless.com/library/model-cars/rlg19091-original-photo-c6313fb1a25d-480w-a84365813f28.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 33320,
+          "url": "https://cdn.theneverless.com/library/model-cars/rlg19091-original-photo-c6313fb1a25d-800w-44a7221cf91d.webp"
+        }
+      ]
+    },
     "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
     "displaySourceImage": "https://exoto.com/wp-content/uploads/2025/02/rlg19091-exoto-porsche-934-rsr-class-winner-1979-le-mans-24-hours-marco-vanoli-herbert-muller-angelo-pallavicini-3375-2400x1600-1.jpg",
     "displaySourceUrl": "https://exoto.com/product/1-18/racing-legends/1976-79-exoto-porsche-934-rsr/rlg19091-class-winner-1979-le-mans-24-hours-marco-vanoli-herbert-muller-angelo-pallavicini/",
@@ -35,6 +54,25 @@
     "ownershipPost": "/posts/300sl-and-two-934s/",
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/rlg19095-original-photo-f85fdae048ca.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/rlg19095-original-photo-f85fdae048ca.webp",
+      "sourceWidth": 2400,
+      "sourceHeight": 1600,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16296,
+          "url": "https://cdn.theneverless.com/library/model-cars/rlg19095-original-photo-f85fdae048ca-480w-894e66c6e05e.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 34054,
+          "url": "https://cdn.theneverless.com/library/model-cars/rlg19095-original-photo-f85fdae048ca-800w-8107335e2045.webp"
+        }
+      ]
+    },
     "imageTreatment": "Rectangular crop of the original photograph only. Original background, shadows, lighting and color retained. Lossless WebP preserves every decoded source pixel within the crop; no masking or generated pixels. Uniform 3:2 frame uses contain to avoid clipping.",
     "displaySourceImage": "https://exoto.com/wp-content/uploads/2025/02/rlg19095-exoto-porsche-934-rsr-gt-winner-1977-silverstone-6-hours-vittorio-brambilla-gianpiero-moretti-3387-2400x1600-1.jpg",
     "displaySourceUrl": "https://exoto.com/product/1-18/racing-legends/1976-79-exoto-porsche-934-rsr/rlg19095-gt-winner-1977-silverstone-6-hours-vittorio-brambilla-gianpiero-moretti/",
@@ -60,6 +98,25 @@
     "verifiedOn": "2026-10-10",
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-109-refined-photo-d97797c5963e.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-109-refined-photo-d97797c5963e.webp",
+      "sourceWidth": 1500,
+      "sourceHeight": 1000,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16344,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-109-refined-photo-d97797c5963e-480w-2b946d540a3f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 37076,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-109-refined-photo-d97797c5963e-800w-3ad9c2b95c14.webp"
+        }
+      ]
+    },
     "imageTreatment": "Extended the original edge colors above and below the complete original photo to fill 3:2 without a mismatched black band. Chassis, wooden base and lighting unchanged.",
     "displaySourceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2020/03/m-109_0017.jpg",
     "displaySourceUrl": "https://www.cmc-modelcars.de/produkt/cmc-maserati-300s-rolling-chassis-1956/",
@@ -85,6 +142,25 @@
     "verifiedOn": "2026-10-10",
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-284-refined-photo-9e97d8a71738.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-284-refined-photo-9e97d8a71738.webp",
+      "sourceWidth": 1500,
+      "sourceHeight": 1000,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 11354,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-284-refined-photo-9e97d8a71738-480w-ebc0926b77fb.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 24158,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-284-refined-photo-9e97d8a71738-800w-b4f63eeaab28.webp"
+        }
+      ]
+    },
     "imageTreatment": "Extended the original edge colors above and below the complete original photo to fill 3:2 without visible fill seams. Car, original shadow and prototype label unchanged.",
     "displaySourceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2026/02/Prototype_M284.jpg",
     "displaySourceUrl": "https://www.cmc-modelcars.de/en/produkt/cmc-mercedes-benz-300-sl-w198-hardtop-white-exterior-db-050-red-interior-roof-white/",
@@ -109,6 +185,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01207-ai-redraw-a62a0dad9169.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01207-ai-redraw-a62a0dad9169.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 13980,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01207-ai-redraw-a62a0dad9169-480w-efa258694618.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 31600,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01207-ai-redraw-a62a0dad9169-800w-b67ba0673b69.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/75678c8b09c493cc7c4d8e7406bf1bd120260211203428894.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2127",
@@ -144,6 +239,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01197-ai-redraw-9b1fc1f32c7f.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01197-ai-redraw-9b1fc1f32c7f.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 26284,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01197-ai-redraw-9b1fc1f32c7f-480w-e28e558b3b7f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 56934,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01197-ai-redraw-9b1fc1f32c7f-800w-3bfb24247cae.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/bbb441bd9b7cd588b3dac2a1f6e3090120260211200020833.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2123",
@@ -179,6 +293,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/khmg223-ai-redraw-66ea21929070.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/khmg223-ai-redraw-66ea21929070.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 29462,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg223-ai-redraw-66ea21929070-480w-69891a263f54.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 65666,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg223-ai-redraw-66ea21929070-800w-4f2f2edb65a7.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/47ea4c6339991b1d86b64b4726bad6b020251225045837101.jpg",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2077",
@@ -214,6 +347,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/khmg190-ai-redraw-9384eb5a98a8.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/khmg190-ai-redraw-9384eb5a98a8.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 27310,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg190-ai-redraw-9384eb5a98a8-480w-a3044d6fab6f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 67736,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg190-ai-redraw-9384eb5a98a8-800w-630f7b88dfbc.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2025/05/20250511045536014.jpg",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1772",
@@ -249,6 +401,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgts0019-ai-redraw-9bb1b5a71882.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgts0019-ai-redraw-9bb1b5a71882.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 14116,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgts0019-ai-redraw-9bb1b5a71882-480w-93f12762cb7e.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 31490,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgts0019-ai-redraw-9bb1b5a71882-800w-b5dce0e68952.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw on a white studio background, front three-quarter view with soft contact shadows. External promotional captions and corner logos removed. Complete ID. Buzz, connected twin-axle trailer and Porsche 911 Dakar set retained with navy/white 718 Roughroads liveries. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/006cb59110b4fad685be5ca60a897cfd20250826064227701.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1925",
@@ -284,6 +455,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01216-ai-redraw-5c30a0b34a98.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01216-ai-redraw-5c30a0b34a98.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 26726,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01216-ai-redraw-5c30a0b34a98-480w-989a4a895da0.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 63982,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01216-ai-redraw-5c30a0b34a98-800w-dfde7b04169d.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/f0845e131b0cd873fd645a55d580650820260416180857972.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2195",
@@ -319,6 +509,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/pr640353-ai-redraw-76287e1719a2.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/pr640353-ai-redraw-76287e1719a2.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16956,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640353-ai-redraw-76287e1719a2-480w-2a1f3fd0c2fa.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 42818,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640353-ai-redraw-76287e1719a2-800w-527556ded440.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/56/03/1_000000000356.jpg?1753692068",
     "displaySourceUrl": "https://www.poprace.jp/view/item/000000000356",
@@ -354,6 +563,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/630301001-ai-redraw-1375bd972c94.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/630301001-ai-redraw-1375bd972c94.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 14722,
+          "url": "https://cdn.theneverless.com/library/model-cars/630301001-ai-redraw-1375bd972c94-480w-f9974d6dd75f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 30458,
+          "url": "https://cdn.theneverless.com/library/model-cars/630301001-ai-redraw-1375bd972c94-800w-388c2d27f921.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://uc.armodel.com.cn/web/uploads/mall1/20260522/92eb767c308b10871ed28d2eb0bc3246.jpg",
     "displaySourceUrl": "https://www.armodel.com.cn/product/detail.html?id=665",
@@ -389,6 +617,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/in64-lbwkf40-collet-ai-redraw-ba2202ab86d1.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/in64-lbwkf40-collet-ai-redraw-ba2202ab86d1.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19700,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-lbwkf40-collet-ai-redraw-ba2202ab86d1-480w-7be150f2c01a.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 40936,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-lbwkf40-collet-ai-redraw-ba2202ab86d1-800w-9629fffacb5d.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2026/03/F40-LB-White-02-3.jpg",
     "displaySourceUrl": "https://www.inno-models.com/product/lb-works-f40-white/",
@@ -424,6 +671,25 @@
     "ownershipPost": null,
     "status": "collected",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/in64-cityii-whimv-ai-redraw-a2e55fbd63a3.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/in64-cityii-whimv-ai-redraw-a2e55fbd63a3.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 18560,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-cityii-whimv-ai-redraw-a2e55fbd63a3-480w-3ddd1c8155ec.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 38722,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-cityii-whimv-ai-redraw-a2e55fbd63a3-800w-6c0924302999.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2025/05/CITYII-WHIMV-1.png",
     "displaySourceUrl": "https://www.inno-models.com/product/honda-city-turbo-ii-white-mod-version/",
@@ -459,6 +725,25 @@
     "ownershipPost": null,
     "status": "ordered",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01364-ai-redraw-cae4b5a29160.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01364-ai-redraw-cae4b5a29160.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 27524,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01364-ai-redraw-cae4b5a29160-480w-5a965b6ea4d5.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 62542,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01364-ai-redraw-cae4b5a29160-800w-e7a3b93ee93e.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2026/08/20260804204530439.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2300",
@@ -494,6 +779,25 @@
     "ownershipPost": null,
     "status": "ordered",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01325-ai-redraw-6aecc428b33d.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01325-ai-redraw-6aecc428b33d.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 21634,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01325-ai-redraw-6aecc428b33d-480w-f8b25f87dd1f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 44872,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01325-ai-redraw-6aecc428b33d-800w-0d5c008c7c9e.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2026/06/20260630041115923.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2264",
@@ -529,6 +833,25 @@
     "ownershipPost": null,
     "status": "ordered",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/pr640298-ai-redraw-036805029cf5.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/pr640298-ai-redraw-036805029cf5.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 14840,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640298-ai-redraw-036805029cf5-480w-bca8dd312a8d.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 34830,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640298-ai-redraw-036805029cf5-800w-4891d765c7c0.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/31/04/2_000000000431.jpg?1772511914",
     "displaySourceUrl": "https://www.poprace.jp/view/item/000000000431",
@@ -564,6 +887,25 @@
     "ownershipPost": null,
     "status": "ordered",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/pr640501-ai-redraw-68af287b5552.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/pr640501-ai-redraw-68af287b5552.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 27668,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640501-ai-redraw-68af287b5552-480w-255f368978a0.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 64420,
+          "url": "https://cdn.theneverless.com/library/model-cars/pr640501-ai-redraw-68af287b5552-800w-4cd96d21c21b.webp"
+        }
+      ]
+    },
     "imageTreatment": "Owner-requested AI redraw with tighter framing, a single three-quarter view, white studio background and soft contact shadow. Selected livery, accessory and open-panel configuration retained. Generated illustration, not an original product photograph.",
     "displaySourceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/64/04/3_000000000464.jpg?1778486398",
     "displaySourceUrl": "https://www.poprace.jp/view/item/000000000464",
@@ -597,6 +939,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-ai-redraw-c095de7ec5be.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-ai-redraw-c095de7ec5be.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 18928,
+          "url": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-ai-redraw-c095de7ec5be-480w-3bf5cadb6452.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 43262,
+          "url": "https://cdn.theneverless.com/library/model-cars/huayra-bc-event-ai-redraw-c095de7ec5be-800w-466172cfc00c.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -637,6 +998,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/rm-gtv6-agip-ai-redraw-f13fa09546b4.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/rm-gtv6-agip-ai-redraw-f13fa09546b4.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 22340,
+          "url": "https://cdn.theneverless.com/library/model-cars/rm-gtv6-agip-ai-redraw-f13fa09546b4-480w-24e5d3d65c27.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 48440,
+          "url": "https://cdn.theneverless.com/library/model-cars/rm-gtv6-agip-ai-redraw-f13fa09546b4-800w-f16cfe31d446.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -677,6 +1057,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/fg-gt40-black-ai-redraw-b2f83200c4f6.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/fg-gt40-black-ai-redraw-b2f83200c4f6.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 23238,
+          "url": "https://cdn.theneverless.com/library/model-cars/fg-gt40-black-ai-redraw-b2f83200c4f6-480w-1dbf323eca7b.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 50830,
+          "url": "https://cdn.theneverless.com/library/model-cars/fg-gt40-black-ai-redraw-b2f83200c4f6-800w-36c8db13784b.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -717,6 +1116,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/fg-rwb930-pink-ai-redraw-7a953ffc24ba.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/fg-rwb930-pink-ai-redraw-7a953ffc24ba.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 23894,
+          "url": "https://cdn.theneverless.com/library/model-cars/fg-rwb930-pink-ai-redraw-7a953ffc24ba-480w-9d89a50fb961.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 49960,
+          "url": "https://cdn.theneverless.com/library/model-cars/fg-rwb930-pink-ai-redraw-7a953ffc24ba-800w-e6b349c4789b.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -757,6 +1175,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cm64-e30-03-ai-redraw-e486309452df.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cm64-e30-03-ai-redraw-e486309452df.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 18304,
+          "url": "https://cdn.theneverless.com/library/model-cars/cm64-e30-03-ai-redraw-e486309452df-480w-7839dffc779d.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 42934,
+          "url": "https://cdn.theneverless.com/library/model-cars/cm64-e30-03-ai-redraw-e486309452df-800w-4e2a3ac76dee.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -792,6 +1229,25 @@
     "officialImage": "https://takaratomyasia.com/media/aobpdvo2/866947-image-001.webp",
     "officialUrl": "https://takaratomyasia.com/en/toys/tomica/dream-tomica/dream-tomica-no157-gudetama/",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-ai-redraw-787011ec4f47.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-ai-redraw-787011ec4f47.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 7124,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-ai-redraw-787011ec4f47-480w-5604bd9b9b15.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 13218,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-dream-157-ai-redraw-787011ec4f47-800w-82dbe9d3ae1a.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -827,6 +1283,25 @@
     "officialImage": "https://www.takaratomyasia.com/media/zcxoa4s1/887195-image-001.webp",
     "officialUrl": "https://www.takaratomyasia.com/en/toys/tomica/tomica-premium/tomica-premium-12-porsche-911-carrera-rs-27",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-ai-redraw-f4ec7bed42cf.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-ai-redraw-f4ec7bed42cf.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16064,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-ai-redraw-f4ec7bed42cf-480w-4a5d66a0e338.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 33864,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-premium-12-ai-redraw-f4ec7bed42cf-800w-2c596a0a6809.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -862,6 +1337,25 @@
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/disney/disneymotors/2016/",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-ai-redraw-61041f6ffade.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-ai-redraw-61041f6ffade.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19526,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-ai-redraw-61041f6ffade-480w-ba541e1c63aa.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 38972,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-dm04-ai-redraw-61041f6ffade-800w-d7800ec45957.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -902,6 +1396,25 @@
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/disney/top/pdf/toybook2015_2_boys.pdf#page=4",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-ai-redraw-a59009a43396.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-ai-redraw-a59009a43396.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 17112,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-ai-redraw-a59009a43396-480w-5593f03a78ad.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 40038,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-sc06-ai-redraw-a59009a43396-800w-6aeee3e5cffa.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -938,6 +1451,25 @@
     "officialImage": null,
     "officialUrl": "https://www.takaratomy.co.jp/products/tomica/dream/sp/products/177/index.html",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-ai-redraw-bb9bb531fa69.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-ai-redraw-bb9bb531fa69.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16898,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-ai-redraw-bb9bb531fa69-480w-4b5ab06475da.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 33698,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-lupin-ai-redraw-bb9bb531fa69-800w-282f697c3f56.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -978,6 +1510,25 @@
     "officialImage": "https://www.minichamps.de/media/e7/4f/64/1790192185/00_400066991_01a0cfc4.jpg?ts=1790192185",
     "officialUrl": "https://www.minichamps.de/PORSCHE-911-GT3-RS-YAMAGISHI-DE-FOURNOUX-KONOPKA-TEAM-T2M-MOTORSPORT-24H-LE-MANS-2006/400066991",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/minichamps-911-91-original-photo-243a96acde38.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/minichamps-911-91-original-photo-243a96acde38.webp",
+      "sourceWidth": 1772,
+      "sourceHeight": 886,
+      "images": [
+        {
+          "width": 480,
+          "height": 240,
+          "bytes": 19332,
+          "url": "https://cdn.theneverless.com/library/model-cars/minichamps-911-91-original-photo-243a96acde38-480w-182ee2a1fb95.webp"
+        },
+        {
+          "width": 800,
+          "height": 400,
+          "bytes": 43204,
+          "url": "https://cdn.theneverless.com/library/model-cars/minichamps-911-91-original-photo-243a96acde38-800w-b024a54f18bb.webp"
+        }
+      ]
+    },
     "imageCredit": "Minichamps",
     "verifiedOn": "2026-10-10",
     "imageStatus": "available",
@@ -1002,6 +1553,25 @@
     "officialImage": null,
     "officialUrl": "https://www.minichamps.de/PORSCHE-911-CUP-MIKA-HAEKKINEN-WINNER-PORSCHE-MONACO-SUPERCUP-1993/430936033",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/minichamps-911-33-ai-redraw-dd9ebe331b6b.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/minichamps-911-33-ai-redraw-dd9ebe331b6b.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19974,
+          "url": "https://cdn.theneverless.com/library/model-cars/minichamps-911-33-ai-redraw-dd9ebe331b6b-480w-abc46b490d89.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 42080,
+          "url": "https://cdn.theneverless.com/library/model-cars/minichamps-911-33-ai-redraw-dd9ebe331b6b-800w-3ed3fc521e23.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1036,6 +1606,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/autoart-80643-refined-photo-df18b6a4427b.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/autoart-80643-refined-photo-df18b6a4427b.webp",
+      "sourceWidth": 1128,
+      "sourceHeight": 752,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 13850,
+          "url": "https://cdn.theneverless.com/library/model-cars/autoart-80643-refined-photo-df18b6a4427b-480w-a00500553379.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 28524,
+          "url": "https://cdn.theneverless.com/library/model-cars/autoart-80643-refined-photo-df18b6a4427b-800w-ffa9a30db35d.webp"
+        }
+      ]
+    },
     "imageCredit": "1zu87 (non-manufacturer source)",
     "verifiedOn": "2026-10-10",
     "imageStatus": "available",
@@ -1065,6 +1654,25 @@
     "officialImage": null,
     "officialUrl": "https://web.archive.org/web/20050105124525id_/http://www.autoartmodels.com:80/images/photo/query/big/88646.jpg",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/autoart-88646-original-photo-6a26559a8cd4.webp",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/autoart-88646-original-photo-6a26559a8cd4.webp",
+      "sourceWidth": 1200,
+      "sourceHeight": 800,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 13452,
+          "url": "https://cdn.theneverless.com/library/model-cars/autoart-88646-original-photo-6a26559a8cd4-480w-8585eb9d582f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 27362,
+          "url": "https://cdn.theneverless.com/library/model-cars/autoart-88646-original-photo-6a26559a8cd4-800w-b8e348fcf788.webp"
+        }
+      ]
+    },
     "imageCredit": "EZToys (non-manufacturer source)",
     "verifiedOn": "2026-10-10",
     "imageStatus": "available",
@@ -1098,6 +1706,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/bburago-focus-2008-ai-redraw-9d30ba0143b7.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/bburago-focus-2008-ai-redraw-9d30ba0143b7.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 29738,
+          "url": "https://cdn.theneverless.com/library/model-cars/bburago-focus-2008-ai-redraw-9d30ba0143b7-480w-49cfe7c778d8.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 66658,
+          "url": "https://cdn.theneverless.com/library/model-cars/bburago-focus-2008-ai-redraw-9d30ba0143b7-800w-2652499b786e.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1132,6 +1759,25 @@
     "officialImage": null,
     "officialUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/bburago-c4-2009-ai-redraw-7a475fae712a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/bburago-c4-2009-ai-redraw-7a475fae712a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 29502,
+          "url": "https://cdn.theneverless.com/library/model-cars/bburago-c4-2009-ai-redraw-7a475fae712a-480w-32ad2cbb09b4.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 64486,
+          "url": "https://cdn.theneverless.com/library/model-cars/bburago-c4-2009-ai-redraw-7a475fae712a-800w-0f83dc4e407e.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1166,6 +1812,25 @@
     "officialUrl": "http://www.lcdmodel.com/1-43-Pagani-Huayra-R-White.html",
     "ownershipPost": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/local-lcd-huayra-r-matte-white-1-43-ai-redraw-0c8414a6638e.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/local-lcd-huayra-r-matte-white-1-43-ai-redraw-0c8414a6638e.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 17832,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-lcd-huayra-r-matte-white-1-43-ai-redraw-0c8414a6638e-480w-dbd7775de45b.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 38342,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-lcd-huayra-r-matte-white-1-43-ai-redraw-0c8414a6638e-800w-645e0d58f6da.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1205,6 +1870,25 @@
     "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1815",
     "ownershipPost": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/local-kaido-ae86-white-black-180-1-64-ai-redraw-d3b9bc82e51b.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/local-kaido-ae86-white-black-180-1-64-ai-redraw-d3b9bc82e51b.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19628,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-kaido-ae86-white-black-180-1-64-ai-redraw-d3b9bc82e51b-480w-cf3b54c12665.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 42632,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-kaido-ae86-white-black-180-1-64-ai-redraw-d3b9bc82e51b-800w-4942acfcad39.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1244,6 +1928,25 @@
     "officialUrl": "https://www.inno-models.com/product/rwb-930-89-apple-livery/",
     "ownershipPost": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/inno-89-ai-redraw-7b344371eaa6.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/inno-89-ai-redraw-7b344371eaa6.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 26968,
+          "url": "https://cdn.theneverless.com/library/model-cars/inno-89-ai-redraw-7b344371eaa6-480w-84ebc1ba7be3.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 58666,
+          "url": "https://cdn.theneverless.com/library/model-cars/inno-89-ai-redraw-7b344371eaa6-800w-862694170f4d.webp"
+        }
+      ]
+    },
     "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
     "verifiedOn": "2026-10-16",
     "imageStatus": "available",
@@ -1284,6 +1987,25 @@
     "officialUrl": "https://m.weibo.cn/2/detail/5355772049359205",
     "listingUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01429-ch-ai-redraw-e1e61eda839b.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01429-ch-ai-redraw-e1e61eda839b.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 20548,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01429-ch-ai-redraw-e1e61eda839b-480w-1380a9881226.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 44630,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01429-ch-ai-redraw-e1e61eda839b-800w-20b8cee4cb33.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://wx2.sinaimg.cn/large/008pcCqTgy1ii7r0666nmj315o0rswo4.jpg",
     "displaySourceUrl": "https://m.weibo.cn/2/detail/5355772049359205",
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
@@ -1325,6 +2047,25 @@
     "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2310",
     "listingUrl": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/khmg293-ai-redraw-bf64110c99af.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/khmg293-ai-redraw-bf64110c99af.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 18856,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg293-ai-redraw-bf64110c99af-480w-21c48ddc858d.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 39282,
+          "url": "https://cdn.theneverless.com/library/model-cars/khmg293-ai-redraw-bf64110c99af-800w-885a3c2a3914.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2026/08/20260810170836961.jpg",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2310",
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
@@ -1366,6 +2107,25 @@
     "officialUrl": null,
     "listingUrl": "https://www.mobilegaragehk.com/products/trends-hobby-th-1-64-porsche-911-gt3-r-ema-motorsport-2024-le-mans-24h-lmgt3-winner-91",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/th-241084-k-ai-redraw-047194488eff.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/th-241084-k-ai-redraw-047194488eff.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 23636,
+          "url": "https://cdn.theneverless.com/library/model-cars/th-241084-k-ai-redraw-047194488eff-480w-732db91803b6.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 53432,
+          "url": "https://cdn.theneverless.com/library/model-cars/th-241084-k-ai-redraw-047194488eff-800w-256fcd435743.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://cdn.shopify.com/s/files/1/0322/4564/5449/files/WhatsApp_Image_2026-04-16_at_16.10.26.jpg?v=1776781332",
     "displaySourceUrl": "https://www.mobilegaragehk.com/products/trends-hobby-th-1-64-porsche-911-gt3-r-ema-motorsport-2024-le-mans-24h-lmgt3-winner-91",
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
@@ -1407,6 +2167,25 @@
     "officialUrl": null,
     "listingUrl": "https://superminiwheels.com/products/bbr-models-1-64-maserati-mc12-competizione-15-jmb-racing-2008-fia-24hr-of-spa",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/bbrdie6424-ai-redraw-ef4d9472c76a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/bbrdie6424-ai-redraw-ef4d9472c76a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 25510,
+          "url": "https://cdn.theneverless.com/library/model-cars/bbrdie6424-ai-redraw-ef4d9472c76a-480w-a7741d69a1eb.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 57782,
+          "url": "https://cdn.theneverless.com/library/model-cars/bbrdie6424-ai-redraw-ef4d9472c76a-800w-2ed881c3c1e6.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://superminiwheels.com/cdn/shop/files/57_f9820405-bd1b-41bf-81d1-a473338ba5d2.jpg?v=1725424953",
     "displaySourceUrl": "https://superminiwheels.com/products/bbr-models-1-64-maserati-mc12-competizione-15-jmb-racing-2008-fia-24hr-of-spa",
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
@@ -1448,6 +2227,25 @@
     "officialUrl": null,
     "listingUrl": "https://www.ebay.com/itm/366592001842",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/local-liberty64-piaggio-ape-red-bull-1-64-ai-redraw-5d5b06e2f5a7.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/local-liberty64-piaggio-ape-red-bull-1-64-ai-redraw-5d5b06e2f5a7.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 21396,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-liberty64-piaggio-ape-red-bull-1-64-ai-redraw-5d5b06e2f5a7-480w-25567c72e573.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 44562,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-liberty64-piaggio-ape-red-bull-1-64-ai-redraw-5d5b06e2f5a7-800w-8e9ac735c493.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://i.ebayimg.com/images/g/srQAAeSwMCBqdbRB/s-l1600.jpg",
     "displaySourceUrl": "https://www.ebay.com/itm/366592001842",
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited product reference",
@@ -1492,6 +2290,25 @@
     "imageStatus": "available",
     "verifiedOn": "2026-10-19",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-263-ai-redraw-f75b89d6bab5.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-263-ai-redraw-f75b89d6bab5.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 15842,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-263-ai-redraw-f75b89d6bab5-480w-57c45d5ca492.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 33000,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-263-ai-redraw-f75b89d6bab5-800w-d55daa9ad868.webp"
+        }
+      ]
+    },
     "ownershipPost": null,
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited exact product reference",
     "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with a soft contact shadow. Complete car and selected panel configuration preserved. Generated illustration, not an original photograph.",
@@ -1535,6 +2352,25 @@
     "imageStatus": "available",
     "verifiedOn": "2026-10-19",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 14580,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f-480w-aad6540ee516.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 31260,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f-800w-4d3f46a8d4c8.webp"
+        }
+      ]
+    },
     "ownershipPost": null,
     "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited exact product reference",
     "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with a soft contact shadow. Complete car and selected panel configuration preserved. Generated illustration, not an original photograph.",
@@ -1574,6 +2410,25 @@
     "officialImage": null,
     "verifiedOn": "2026-10-20",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/s70-01-ai-redraw-ceddfb607f6e.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/s70-01-ai-redraw-ceddfb607f6e.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19056,
+          "url": "https://cdn.theneverless.com/library/model-cars/s70-01-ai-redraw-ceddfb607f6e-480w-e297db201cce.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 44610,
+          "url": "https://cdn.theneverless.com/library/model-cars/s70-01-ai-redraw-ceddfb607f6e-800w-845352019638.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://makeshop-multi-images.akamaized.net/poprace/shopimages/84/04/1_000000000484.jpg?1782188919",
     "displaySourceUrl": "https://www.poprace.jp/view/item/000000000484",
     "ownershipPost": null,
@@ -1615,6 +2470,25 @@
     "officialImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
     "verifiedOn": "2026-10-25",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-base-free-723de7060003.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-base-free-723de7060003.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 21410,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-base-free-723de7060003-480w-5a0d49bf894d.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 46816,
+          "url": "https://cdn.theneverless.com/library/model-cars/local-fuelme-pandem-gr-yaris-monster-87-1-64-base-free-723de7060003-800w-fcd1ad6de56b.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://fumeihongda.oss-cn-beijing.aliyuncs.com/1210/1210_2023040822361487189.jpg",
     "displaySourceUrl": "https://www.fuelme.com.cn/#/product/details?id=380",
     "ownershipPost": null,
@@ -1670,6 +2544,25 @@
     "officialImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
     "verifiedOn": "2026-10-25",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/ig3992-base-free-dd85679fda6c.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/ig3992-base-free-dd85679fda6c.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 17438,
+          "url": "https://cdn.theneverless.com/library/model-cars/ig3992-base-free-dd85679fda6c-480w-3fc7d11ef1aa.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 36588,
+          "url": "https://cdn.theneverless.com/library/model-cars/ig3992-base-free-dd85679fda6c-800w-d7cbaca4f622.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://ig-model.com/lineup/3992/img/photo1L.jpg",
     "displaySourceUrl": "https://ig-model.com/lineup/3992/",
     "ownershipPost": null,
@@ -1725,6 +2618,25 @@
     "officialImage": "https://motorhelix.co/wp-content/uploads/2026/07/DSC07682-拷贝.webp",
     "verifiedOn": "2026-10-20",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mh-m60113-ai-redraw-c4780d96af8a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mh-m60113-ai-redraw-c4780d96af8a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19712,
+          "url": "https://cdn.theneverless.com/library/model-cars/mh-m60113-ai-redraw-c4780d96af8a-480w-4287e784def9.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 42252,
+          "url": "https://cdn.theneverless.com/library/model-cars/mh-m60113-ai-redraw-c4780d96af8a-800w-09635f9f9adb.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://motorhelix.co/wp-content/uploads/2026/07/DSC07682-拷贝.webp",
     "displaySourceUrl": "https://motorhelix.co/product/mazda-787b-18/",
     "ownershipPost": null,
@@ -1766,6 +2678,25 @@
     "officialImage": "https://uc.armodel.com.cn/uploads/attach/2026/08/20260809/579c034b8c2d695b561a4c954e84c2c5.jpg",
     "verifiedOn": "2026-10-20",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/610301001-no-base-ai-redraw-f0c850bc184a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/610301001-no-base-ai-redraw-f0c850bc184a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 26776,
+          "url": "https://cdn.theneverless.com/library/model-cars/610301001-no-base-ai-redraw-f0c850bc184a-480w-642dbdcd60d8.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 61810,
+          "url": "https://cdn.theneverless.com/library/model-cars/610301001-no-base-ai-redraw-f0c850bc184a-800w-a1ec1a98c41b.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://wx4.sinaimg.cn/large/e4d3f80cly1ifd9chdyf1j20zw14k0vl.jpg",
     "displaySourceUrl": "https://www.sina.cn/news/detail/5323645867001578.html",
     "ownershipPost": null,
@@ -1808,6 +2739,25 @@
     "officialUrl": null,
     "verifiedOn": "2026-10-20",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/th-241083-e-ai-redraw-9caa5b186ef2.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/th-241083-e-ai-redraw-9caa5b186ef2.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19848,
+          "url": "https://cdn.theneverless.com/library/model-cars/th-241083-e-ai-redraw-9caa5b186ef2-480w-d7424c586f95.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 43578,
+          "url": "https://cdn.theneverless.com/library/model-cars/th-241083-e-ai-redraw-9caa5b186ef2-800w-d1c63e529451.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://www.herpa.de/media/ec/ce/ab/1782125787/864TH000011.jpg?ts=1782126051",
     "displaySourceUrl": "https://www.herpa.de/en/index.php/detail/42e5854ea65f2e06dfecda9a20518a05",
     "ownershipPost": null,
@@ -1849,6 +2799,25 @@
     "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1972",
     "verifiedOn": "2026-10-20",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01135-ai-redraw-15c90f51813f.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01135-ai-redraw-15c90f51813f.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 19990,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01135-ai-redraw-15c90f51813f-480w-85006c2b22d5.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 41570,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01135-ai-redraw-15c90f51813f-800w-803f04da7c04.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2026/01/20260114054603982.JPG",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1972",
     "ownershipPost": null,
@@ -1899,6 +2868,25 @@
     },
     "ownershipPost": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/tomica-premium-31-ai-redraw-610146bed18a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/tomica-premium-31-ai-redraw-610146bed18a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16676,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-premium-31-ai-redraw-610146bed18a-480w-aebb9fb66d43.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 34826,
+          "url": "https://cdn.theneverless.com/library/model-cars/tomica-premium-31-ai-redraw-610146bed18a-800w-1b8e8c199a46.webp"
+        }
+      ]
+    },
     "imageStatus": "available",
     "imageFrameColor": "#ffffff",
     "imagePresentation": "generated-illustration",
@@ -1928,6 +2916,25 @@
     "officialUrl": "https://www.cmc-modelcars.de/produkt/cmc-ferrari-250-gto-goodwood-1962-15-stirling-moss-team-ireland/",
     "officialImage": "https://www.cmc-modelcars.de/wp-content/uploads/2023/11/M-247-Hero.jpg",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-247-ai-redraw-2fe945dd29b2.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-247-ai-redraw-2fe945dd29b2.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 11480,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-247-ai-redraw-2fe945dd29b2-480w-117455fbced3.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 23438,
+          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-247-ai-redraw-2fe945dd29b2-800w-33089aaff373.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://www.cmc-modelcars.de/wp-content/uploads/2023/11/M-247-Hero.jpg",
     "displaySourceUrl": "https://www.cmc-modelcars.de/produkt/cmc-ferrari-250-gto-goodwood-1962-15-stirling-moss-team-ireland/",
     "imageStatus": "available",
@@ -1973,6 +2980,25 @@
     "officialUrl": "https://www.inno-models.com/product/r89c-le-mans-1989-no23-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki/",
     "officialImage": "https://www.inno-models.com/wp-content/uploads/2025/07/IN64-R89C-CAL23-1.jpg",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/in64-r89c-89lm23-ai-redraw-e0a8482bf786.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/in64-r89c-89lm23-ai-redraw-e0a8482bf786.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 17956,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-r89c-89lm23-ai-redraw-e0a8482bf786-480w-97219bece522.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 38764,
+          "url": "https://cdn.theneverless.com/library/model-cars/in64-r89c-89lm23-ai-redraw-e0a8482bf786-800w-8b33b4830d44.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2025/07/IN64-R89C-CAL23-1.jpg",
     "displaySourceUrl": "https://www.inno-models.com/product/r89c-le-mans-1989-no23-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki/",
     "imageStatus": "available",
@@ -2018,6 +3044,25 @@
     "officialUrl": null,
     "officialImage": null,
     "displayImage": "https://cdn.theneverless.com/library/model-cars/m64x-f40-pilot-40-ai-redraw-db28cea373fb.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/m64x-f40-pilot-40-ai-redraw-db28cea373fb.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16880,
+          "url": "https://cdn.theneverless.com/library/model-cars/m64x-f40-pilot-40-ai-redraw-db28cea373fb-480w-c14f0b700ebe.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 37278,
+          "url": "https://cdn.theneverless.com/library/model-cars/m64x-f40-pilot-40-ai-redraw-db28cea373fb-800w-a39a985b37c4.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://i.ebayimg.com/images/g/hG0AAeSwTyVpsj3W/s-l1600.webp",
     "displaySourceUrl": "https://www.ebay.com/itm/137120231596",
     "imageStatus": "available",
@@ -2062,6 +3107,25 @@
     "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1782",
     "officialImage": "https://minigt.tsm-models.com/upload/picfile/2025/08/20250823032841236.jpg",
     "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01051-ai-redraw-3111fa4de9f3.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mgt01051-ai-redraw-3111fa4de9f3.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 12572,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01051-ai-redraw-3111fa4de9f3-480w-400195f8d306.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 25802,
+          "url": "https://cdn.theneverless.com/library/model-cars/mgt01051-ai-redraw-3111fa4de9f3-800w-66082c6a9911.webp"
+        }
+      ]
+    },
     "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2025/08/20250823032841236.jpg",
     "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1782",
     "imageStatus": "available",
