@@ -10,7 +10,7 @@
 - `emrickk.github.io` → 301 to the new domain (GitHub automatic).
 - `cdn.anping.us` unchanged — image CDN is independent of the site domain.
 
-**Accounts involved:** Cloudflare (Nanakuvara@gmail.com, already hosts anping.us zone), GoDaddy (registrar for both domains), GitHub (emrickk).
+**Accounts involved:** Cloudflare (already hosts anping.us zone), GoDaddy (registrar for both domains), GitHub (emrickk).
 
 ---
 
