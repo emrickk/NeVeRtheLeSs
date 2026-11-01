@@ -66,6 +66,7 @@
 }
 
 .lang-opt {
+  position: relative;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -75,6 +76,23 @@
   font-family: inherit;
   font-weight: var(--weight-medium, 500);
   transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Invisible 44px-tall hit area; the visible labels do not move. Each side
+   stops short of the separator's midpoint, and the last option reaches
+   further right (toward the theme toggle) to stay at least 24px wide. */
+.lang-opt::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  left: -4px;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
+.lang-opt:last-of-type::after {
+  right: -8px;
 }
 
 .lang-opt:hover {

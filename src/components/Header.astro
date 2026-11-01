@@ -136,6 +136,7 @@ const navItems = config.nav;
 }
 
 .nav-logo {
+  position: relative;
   font-size: var(--text-headline);
   font-weight: var(--weight-semibold);
   color: var(--label-primary);
@@ -144,6 +145,17 @@ const navItems = config.nav;
   transition:
     color var(--duration-fast) var(--ease-out),
     opacity var(--duration-fast) var(--ease-out);
+}
+
+/* Invisible 44px-tall hit area; the visible layout stays the same. */
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 44px;
+  transform: translateY(-50%);
 }
 
 .nav-logo:hover {
@@ -180,6 +192,76 @@ const navItems = config.nav;
 
   .nav-links {
     gap: var(--space-3);
+  }
+}
+
+/* Narrow phones: tighten spacing so the logo and nav keep a clear gap. */
+@media (max-width: 400px) {
+  .nav-right,
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-right :global(.theme-toggle) {
+    width: 24px;
+  }
+
+  .nav-right :global(.lang-opt) {
+    padding-right: 0.05rem;
+    padding-left: 0.05rem;
+  }
+}
+
+@media (max-width: 374px) {
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .nav-right,
+  .nav-links {
+    gap: 8px;
+  }
+}
+
+/* Too narrow for one row: logo and toggles on top, nav links below. */
+@media (max-width: 354px) {
+  :global(:root) {
+    --nav-height: 88px;
+  }
+
+  .nav-inner {
+    display: grid;
+    grid-template-rows: 46px 42px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  .nav-right {
+    display: contents;
+  }
+
+  .nav-logo {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+    font-size: var(--text-headline);
+  }
+
+  .nav-links {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    gap: var(--space-4);
+  }
+
+  .nav-right :global(.lang-toggle) {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .nav-right :global(.theme-toggle) {
+    grid-row: 1;
+    grid-column: 3;
   }
 }
 
