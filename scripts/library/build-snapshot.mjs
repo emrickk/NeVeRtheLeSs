@@ -5,10 +5,16 @@
  * upload cover art to R2 under library/.
  *
  * Usage:
- *   node scripts/library/build-snapshot.mjs                   # data only
- *   node scripts/library/build-snapshot.mjs --covers          # data + R2 covers
- *   node scripts/library/build-snapshot.mjs --source <dir>    # non-default export dir
- *   node scripts/library/build-snapshot.mjs --resolved <file> # non-default overlay
+ *   node scripts/library/build-snapshot.mjs --source <dir>               # data only
+ *   node scripts/library/build-snapshot.mjs --source <dir> --covers      # data + R2 covers
+ *   node scripts/library/build-snapshot.mjs --resolved <file>            # explicit overlay file
+ *   node scripts/library/build-snapshot.mjs --resolved-dir <dir>         # newest overlay in dir
+ *
+ * Local paths are never stored in this public repo. Pass them as arguments or
+ * set them in the environment (.env.local is read when present):
+ *   LIBRARY_EXPORT_DIR    the Emrick-clean export folder (same as --source)
+ *   LIBRARY_RESOLVED_DIR  folder holding library-resolved-YYYYMMDD.json
+ *                         exports (same as --resolved-dir)
  *
  * Two sources, read once, manually, when the owner asks for a refresh (the
  * site build itself never touches either; iCloud paths are unreliable):
@@ -46,10 +52,6 @@ const HERE = dirname(fileURLToPath(import.meta.url))
 const REPO = join(HERE, '..', '..')
 const OUT_DIR = join(REPO, 'src', 'data', 'library')
 
-const DEFAULT_SOURCE =
-  '/Users/anping.wang/Documents/Stuff/AI Space/douban-export/Emrick-clean'
-const DEFAULT_RESOLVED_DIR =
-  '/Users/anping.wang/Documents/Stuff/AI Space/media-hub/exports'
 const EXTRA_COVERS = join(HERE, 'covers-extra')
 
 /** Entries the owner decided must not appear at all (id: reason). */
@@ -76,7 +78,22 @@ const opt = (name, fallback) => {
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback
 }
 
-const SOURCE = opt('--source', DEFAULT_SOURCE)
+// Read .env.local before resolving paths so LIBRARY_* values can live there.
+loadEnvFile(join(REPO, '.env.local'))
+
+/** A required local path from a CLI flag or an environment variable. Exits
+ *  with a message naming both ways to supply it when neither is set. */
+function requiredPath(flagName, envName, what) {
+  const value = opt(flagName, null) || process.env[envName]?.trim()
+  if (!value) {
+    console.error(`Missing ${what}: pass ${flagName} <path> or set ${envName} (in the environment or .env.local).`)
+    process.exit(1)
+  }
+  return value
+}
+
+/** Emrick-clean export folder, resolved in main(). */
+let SOURCE = ''
 const DO_COVERS = flag('--covers')
 
 const GENERIC_SEASON = /^season\s*\d+$/i
@@ -137,19 +154,28 @@ function writeJson(file, rows) {
  *  would silently revert the owner's refreshed ratings and comments. */
 function loadResolved() {
   let file = opt('--resolved', null)
+  if (file && !existsSync(file)) {
+    console.error(`Resolved overlay file not found: ${file}`)
+    process.exit(1)
+  }
   if (!file) {
-    const names = existsSync(DEFAULT_RESOLVED_DIR)
-      ? readdirSync(DEFAULT_RESOLVED_DIR)
-          .filter((n) => /^library-resolved-\d{8}\.json$/.test(n))
-          .sort()
-      : []
-    if (names.length === 0) {
-      console.error(
-        `No library-resolved-*.json found in ${DEFAULT_RESOLVED_DIR}; pass --resolved <file>`
-      )
+    const resolvedDir = requiredPath(
+      '--resolved-dir',
+      'LIBRARY_RESOLVED_DIR',
+      'media.db resolved export folder (or pass --resolved <file>)'
+    )
+    if (!existsSync(resolvedDir)) {
+      console.error(`Resolved export folder not found: ${resolvedDir}`)
       process.exit(1)
     }
-    file = join(DEFAULT_RESOLVED_DIR, names[names.length - 1])
+    const names = readdirSync(resolvedDir)
+      .filter((n) => /^library-resolved-\d{8}\.json$/.test(n))
+      .sort()
+    if (names.length === 0) {
+      console.error(`No library-resolved-*.json found in ${resolvedDir}; pass --resolved <file>`)
+      process.exit(1)
+    }
+    file = join(resolvedDir, names[names.length - 1])
   }
   const doc = JSON.parse(readFileSync(file, 'utf8'))
   const manual = new Map()
@@ -308,7 +334,6 @@ function buildGames(coverMisses, manual, consumed) {
 // ---------------------------------------------------------------- covers
 
 async function uploadCovers(rows, keyPrefix) {
-  loadEnvFile(join(REPO, '.env.local'))
   const config = loadConfig()
   const client = makeClient(config)
   let uploaded = 0
@@ -347,6 +372,7 @@ async function uploadCovers(rows, keyPrefix) {
 // ---------------------------------------------------------------- main
 
 async function main() {
+  SOURCE = requiredPath('--source', 'LIBRARY_EXPORT_DIR', 'Emrick-clean export folder')
   if (!existsSync(SOURCE)) {
     console.error(`Source directory not found: ${SOURCE}`)
     process.exit(1)
