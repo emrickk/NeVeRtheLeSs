@@ -1,7 +1,8 @@
 // Test fixtures for the safety tooling suites. Creates throwaway git repos
 // and dist trees under the OS tmpdir; never touches the real repo.
 import { execFileSync } from 'node:child_process'
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { chmodSync, mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { createServer } from 'node:net'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 
@@ -49,4 +50,65 @@ export function makeFixtureDist(root, { omit = [], extraHtml = {} } = {}) {
     write(root, join('dist', rel), content)
   }
   return dist
+}
+
+// Stand-ins for node_modules/.bin/astro and pagefind, so CLI tests can drive
+// the build and preview steps without a real Astro project. `astro build`
+// writes one page into --outDir and records its argv; `astro preview` serves
+// --outDir on --port; pagefind records its argv.
+const FAKE_ASTRO = `#!/usr/bin/env node
+const fs = require('node:fs')
+const path = require('node:path')
+const http = require('node:http')
+const [cmd, ...rest] = process.argv.slice(2)
+const arg = (k) => rest[rest.indexOf(k) + 1]
+fs.appendFileSync(path.join(__dirname, 'calls.log'), 'astro ' + process.argv.slice(2).join(' ') + '\\n')
+if (cmd === 'build') {
+  fs.mkdirSync(arg('--outDir'), { recursive: true })
+  fs.writeFileSync(path.join(arg('--outDir'), 'index.html'), '<html>fake</html>')
+} else if (cmd === 'preview') {
+  http.createServer((req, res) => res.end('fake preview')).listen(Number(arg('--port')))
+}
+`
+const FAKE_PAGEFIND = `#!/usr/bin/env node
+const fs = require('node:fs')
+const path = require('node:path')
+fs.appendFileSync(path.join(__dirname, 'calls.log'), 'pagefind ' + process.argv.slice(2).join(' ') + '\\n')
+`
+
+export function installFakeAstro(root) {
+  write(root, 'node_modules/.bin/astro', FAKE_ASTRO)
+  write(root, 'node_modules/.bin/pagefind', FAKE_PAGEFIND)
+  chmodSync(join(root, 'node_modules/.bin/astro'), 0o755)
+  chmodSync(join(root, 'node_modules/.bin/pagefind'), 0o755)
+  return join(root, 'node_modules/.bin/calls.log')
+}
+
+export async function freePort() {
+  const server = createServer()
+  await new Promise((resolve) => server.listen(0, resolve))
+  const { port } = server.address()
+  await new Promise((resolve) => server.close(resolve))
+  return port
+}
+
+// Resolves once `pattern` appears in the child's stdout; returns everything
+// read so far.
+export function waitForOutput(child, pattern, timeoutMs = 20000) {
+  return new Promise((resolve, reject) => {
+    let out = ''
+    let err = ''
+    const timer = setTimeout(
+      () => reject(new Error(`timed out waiting for ${pattern}:\n${out}\n${err}`)),
+      timeoutMs
+    )
+    child.stderr?.on('data', (d) => (err += d))
+    child.stdout.on('data', (d) => {
+      out += d
+      if (pattern.test(out)) {
+        clearTimeout(timer)
+        resolve(out)
+      }
+    })
+  })
 }

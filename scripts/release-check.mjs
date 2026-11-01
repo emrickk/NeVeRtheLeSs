@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 // Release checklist: deterministic pre-push checks with a go/no-go verdict.
-// Quick mode: checks 1-9 and 12. Full mode (--full): adds CDN and internal link checks.
+// Quick mode: checks 1-9, 12, and 13. Full mode (--full): adds CDN and
+// internal link checks. Each run builds into its own temporary directory
+// (never the shared dist/) and removes it afterwards.
 // This script never pushes, merges, or tags.
 import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, resolve, sep } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { buildSite, makeRunDir, removeRunDir } from './build-output.mjs'
+import { runContentCheck } from './content-check.mjs'
 import { checkPostPreview } from './preview-posts.mjs'
 
 export const FORBIDDEN_PATHS = [
@@ -140,7 +144,8 @@ function checkSecrets(root) {
   return { status: 'PASS', detail: 'no credential patterns in new or untracked content' }
 }
 
-function checkCheckpoint(root) {
+function checkCheckpoint(root, ctx = {}) {
+  if (ctx.skipCheckpoint) return { status: 'SKIP', detail: ctx.skipCheckpoint }
   const cli = fileURLToPath(new URL('./checkpoint.mjs', import.meta.url))
   const out = execFileSync('node', [cli, 'save', 'release-check', '--auto', 'release-check'], {
     cwd: root, encoding: 'utf8',
@@ -157,10 +162,10 @@ function checkHygiene(root) {
   return { status: 'PASS', detail: `branch ${branch}, ${state}` }
 }
 
-function npmRun(root, script) {
+function npmRun(root, script, { env = process.env } = {}) {
   try {
     execFileSync('npm', ['run', script], {
-      cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 64 * 1024 * 1024,
+      cwd: root, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 64 * 1024 * 1024,
     })
     return { status: 'PASS', detail: `npm run ${script}` }
   } catch (err) {
@@ -189,7 +194,7 @@ export function walkFiles(dir, exts) {
 
 export function checkDistDir(dist, { minPages = 300 } = {}) {
   const failures = []
-  if (!existsSync(dist)) return { failures: ['dist/ missing (build first)'], htmlCount: 0 }
+  if (!dist || !existsSync(dist)) return { failures: ['build output missing (check 6 failed or did not run)'], htmlCount: 0 }
   const htmlFiles = walkFiles(dist, ['.html'])
   if (htmlFiles.length < minPages) {
     failures.push(`only ${htmlFiles.length} HTML pages, expected at least ${minPages}`)
@@ -210,8 +215,26 @@ export function checkDistDir(dist, { minPages = 300 } = {}) {
   return { failures, htmlCount: htmlFiles.length }
 }
 
-function checkBuiltOutput(root) {
-  const { failures, htmlCount } = checkDistDir(join(root, 'dist'))
+// Check 6: astro build + pagefind into this run's private output directory,
+// so concurrent sessions never read or overwrite each other's build.
+function checkBuild(root, ctx) {
+  const res = buildSite(root, ctx.outDir)
+  if (res.ok) return { status: 'PASS', detail: 'astro build + pagefind into a private run directory' }
+  const tail = res.output.trim().split('\n').slice(-15).join('\n')
+  return { status: 'FAIL', detail: `build failed:\n${tail}` }
+}
+
+// The R2 live test writes to the production bucket, so it only runs with an
+// explicit R2_LIVE=1. The checklist never passes that through, even when the
+// calling shell has it set.
+export function imageTestEnv(env = process.env) {
+  const rest = { ...env }
+  delete rest.R2_LIVE
+  return rest
+}
+
+function checkBuiltOutput(root, ctx) {
+  const { failures, htmlCount } = checkDistDir(ctx.outDir)
   if (failures.length) {
     return { status: 'FAIL', detail: failures.slice(0, 20).join('\n') + (failures.length > 20 ? `\n... and ${failures.length - 20} more` : '') }
   }
@@ -275,9 +298,9 @@ export function resolveInternalRef(ref, dist) {
   return existsSync(abs + '.html')
 }
 
-async function checkCdnImages(root) {
-  const dist = join(root, 'dist')
-  if (!existsSync(dist)) return { status: 'FAIL', detail: 'dist/ missing (build first)' }
+async function checkCdnImages(root, ctx) {
+  const dist = ctx.outDir
+  if (!dist || !existsSync(dist)) return { status: 'FAIL', detail: 'build output missing (check 6 failed)' }
   const urls = new Set()
   for (const p of walkFiles(dist, ['.html', '.xml'])) {
     for (const u of extractCdnUrls(readFileSync(p, 'utf8'))) urls.add(u)
@@ -289,9 +312,9 @@ async function checkCdnImages(root) {
   return { status: 'PASS', detail: `${urls.size} CDN URLs all return 200` }
 }
 
-function checkInternalLinks(root) {
-  const dist = join(root, 'dist')
-  if (!existsSync(dist)) return { status: 'FAIL', detail: 'dist/ missing (build first)' }
+function checkInternalLinks(root, ctx) {
+  const dist = ctx.outDir
+  if (!dist || !existsSync(dist)) return { status: 'FAIL', detail: 'build output missing (check 6 failed)' }
   const broken = []
   for (const p of walkFiles(dist, ['.html'])) {
     const rel = p.slice(dist.length + 1)
@@ -311,8 +334,8 @@ export const CHECKS = [
   { num: 3, name: 'secret scan', run: checkSecrets },
   { num: 4, name: 'types (astro check)', run: (root) => npmRun(root, 'check') },
   { num: 5, name: 'lint', run: checkLint },
-  { num: 6, name: 'build', run: (root) => npmRun(root, 'build') },
-  { num: 7, name: 'image tests', run: (root) => npmRun(root, 'test:images') },
+  { num: 6, name: 'build', run: checkBuild },
+  { num: 7, name: 'image tests', run: (root) => npmRun(root, 'test:images', { env: imageTestEnv() }) },
   { num: 8, name: 'rehype tests', run: (root) => npmRun(root, 'test:rehype') },
   { num: 9, name: 'built output', run: checkBuiltOutput },
   { num: 10, name: 'CDN images', full: true, run: checkCdnImages },
@@ -321,31 +344,64 @@ export const CHECKS = [
     num: 12,
     name: 'post preview',
     run: (root, opts = {}) =>
-      checkPostPreview(root, { changeSet: opts.previewChangeSet ?? undefined }),
+      checkPostPreview(root, {
+        changeSet: opts.previewChangeSet ?? undefined,
+        stateRoot: opts.previewStateRoot ?? root,
+      }),
   },
+  { num: 13, name: 'post content', run: (root) => runContentCheck(root) },
 ]
+
+// Run directories of in-flight checklists, so a signal handler (this CLI's
+// or ship's) can remove them; a signal skips the finally in runChecks.
+const activeRunDirs = new Set()
+
+export function removeActiveRunDirs() {
+  for (const dir of activeRunDirs) removeRunDir(dir)
+  activeRunDirs.clear()
+}
 
 // `previewChangeSet` scopes check 12 to an explicit change set: ship passes
 // the exact files it will commit, so other posts still pending in the tree
 // do not block a scoped publish. The standalone CLI never sets it, so manual
-// pushes keep checking the whole tree.
-export async function runChecks(root, { full = false, previewChangeSet = null } = {}) {
+// pushes keep checking the whole tree. `previewStateRoot` is where
+// .preview/manifest.json lives when `root` is ship's temporary worktree.
+// `skipCheckpoint` (a reason string) skips check 1 for that temporary tree;
+// ship checkpoints the shared checkout itself.
+export async function runChecks(
+  root,
+  { full = false, previewChangeSet = null, previewStateRoot = null, skipCheckpoint = null } = {}
+) {
   const results = []
-  for (const check of CHECKS) {
-    if (check.full && !full) continue
-    const started = Date.now()
-    let result
-    try {
-      result = await check.run(root, { full, previewChangeSet })
-    } catch (err) {
-      result = { status: 'FAIL', detail: err.message }
+  const runDir = makeRunDir('release-check')
+  activeRunDirs.add(runDir)
+  const ctx = {
+    full,
+    previewChangeSet,
+    previewStateRoot,
+    skipCheckpoint,
+    outDir: join(runDir, 'dist'),
+  }
+  try {
+    for (const check of CHECKS) {
+      if (check.full && !full) continue
+      const started = Date.now()
+      let result
+      try {
+        result = await check.run(root, ctx)
+      } catch (err) {
+        result = { status: 'FAIL', detail: err.message }
+      }
+      result.num = check.num
+      result.name = check.name
+      result.seconds = ((Date.now() - started) / 1000).toFixed(1)
+      console.log(`[${check.num}] ${check.name}: ${result.status} (${result.seconds}s)`)
+      if (result.detail) console.log(`    ${String(result.detail).split('\n').join('\n    ')}`)
+      results.push(result)
     }
-    result.num = check.num
-    result.name = check.name
-    result.seconds = ((Date.now() - started) / 1000).toFixed(1)
-    console.log(`[${check.num}] ${check.name}: ${result.status} (${result.seconds}s)`)
-    if (result.detail) console.log(`    ${String(result.detail).split('\n').join('\n    ')}`)
-    results.push(result)
+  } finally {
+    removeRunDir(runDir)
+    activeRunDirs.delete(runDir)
   }
   return results
 }
@@ -364,6 +420,12 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if (!existsSync(join(root, 'astro.config.mjs'))) {
     console.error('run from the blog repo root')
     process.exit(1)
+  }
+  for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
+    process.once(signal, () => {
+      removeActiveRunDirs()
+      process.exit(130)
+    })
   }
   runChecks(root, { full }).then((results) => {
     console.log('\n' + verdict(results))

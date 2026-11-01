@@ -684,3 +684,141 @@ test('routeSlugForPostFile prefers the frontmatter slug and falls back to filena
     rmSync(root, { recursive: true, force: true })
   }
 })
+
+test('writeManifest merges with other approvals instead of replacing them', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  writeManifest(root, { 'src/content/posts/a.md': 'h1' }, { baseRef: 'HEAD' })
+  writeManifest(root, { 'src/content/posts/b.md': 'h2' }, { baseRef: 'HEAD' })
+  writeManifest(root, { 'src/content/posts/a.md': 'h3' }, { baseRef: 'HEAD' })
+  assert.deepEqual(readManifest(root).files, {
+    'src/content/posts/a.md': 'h3',
+    'src/content/posts/b.md': 'h2',
+  })
+})
+
+test('writeManifest prunes approvals older than the TTL and leaves no temp files', async (t) => {
+  const { readdirSync } = await import('node:fs')
+  const { APPROVAL_TTL_DAYS } = await import('./preview-posts.mjs')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const old = new Date(Date.now() - (APPROVAL_TTL_DAYS + 1) * 24 * 60 * 60 * 1000)
+  writeManifest(root, { 'src/content/posts/old.md': 'h1' }, { baseRef: 'HEAD', now: old })
+  writeManifest(root, { 'src/content/posts/new.md': 'h2' }, { baseRef: 'HEAD' })
+  assert.deepEqual(Object.keys(readManifest(root).files), ['src/content/posts/new.md'])
+  assert.deepEqual(readdirSync(join(root, '.preview')).sort(), ['manifest.json'])
+})
+
+test('writeManifest reclaims a lock left by a dead process', async (t) => {
+  const { utimesSync } = await import('node:fs')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, '.preview/manifest.lock', '999999999\n')
+  const past = new Date(Date.now() - 60000)
+  utimesSync(join(root, '.preview/manifest.lock'), past, past)
+  writeManifest(root, { 'src/content/posts/a.md': 'h1' }, { baseRef: 'HEAD' })
+  assert.equal(readManifest(root).files['src/content/posts/a.md'], 'h1')
+})
+
+test('writeManifest times out on a live lock instead of writing unlocked', async (t) => {
+  const { withManifestLock } = await import('./preview-posts.mjs')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, '.preview/manifest.lock', `${process.pid}\n`)
+  assert.throws(() => withManifestLock(root, () => {}, { timeoutMs: 100 }), /manifest\.lock is held/)
+})
+
+test('concurrent manifest writers never lose entries', async (t) => {
+  const { spawn } = await import('node:child_process')
+  const { pathToFileURL } = await import('node:url')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const moduleUrl = pathToFileURL(new URL('./preview-posts.mjs', import.meta.url).pathname).href
+  const writers = 12
+  const perWriter = 5
+  const script = `
+    const { writeManifest } = await import(${JSON.stringify(moduleUrl)})
+    const [root, id, n] = process.argv.slice(1)
+    for (let i = 0; i < Number(n); i++) {
+      writeManifest(root, { ['src/content/posts/w' + id + '-' + i + '.md']: 'h' + id + i }, { baseRef: 'HEAD' })
+    }
+  `
+  await Promise.all(
+    Array.from({ length: writers }, (_, id) =>
+      new Promise((resolve, reject) => {
+        const child = spawn(process.execPath, ['--input-type=module', '-e', script, root, String(id), String(perWriter)], {
+          stdio: ['ignore', 'ignore', 'pipe'],
+        })
+        let stderr = ''
+        child.stderr.on('data', (d) => (stderr += d))
+        child.on('exit', (code) => (code === 0 ? resolve() : reject(new Error(stderr))))
+      })
+    )
+  )
+  const files = readManifest(root).files
+  assert.equal(Object.keys(files).length, writers * perWriter)
+  for (let id = 0; id < writers; id++) {
+    for (let i = 0; i < perWriter; i++) {
+      assert.equal(files[`src/content/posts/w${id}-${i}.md`], `h${id}${i}`)
+    }
+  }
+})
+
+test('checkPostPreview reads approvals from stateRoot when the files live elsewhere', (t) => {
+  const shared = makeFixtureRepo()
+  const tree = makeFixtureRepo()
+  t.after(() => {
+    cleanup(shared)
+    cleanup(tree)
+  })
+  write(tree, 'src/content/posts/alpha.md', FM + 'v1\n')
+  const changeSet = ['src/content/posts/alpha.md']
+  writeManifest(shared, hashChangeSet(tree, changeSet), { baseRef: 'HEAD' })
+  assert.equal(checkPostPreview(tree, { baseRef: 'HEAD', changeSet }).status, 'FAIL')
+  assert.equal(
+    checkPostPreview(tree, { baseRef: 'HEAD', changeSet, stateRoot: shared }).status,
+    'PASS'
+  )
+})
+
+test('cli: preview-posts builds into its own run directory and removes it on Ctrl+C', async (t) => {
+  const { spawn } = await import('node:child_process')
+  const { existsSync, readFileSync } = await import('node:fs')
+  const { dirname } = await import('node:path')
+  const { fileURLToPath } = await import('node:url')
+  const { freePort, installFakeAstro, waitForOutput } = await import('./test-helpers.mjs')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const calls = installFakeAstro(root)
+  write(root, 'src/content/posts/alpha.md', FM + 'v1\n')
+  const port = await freePort()
+  const cli = fileURLToPath(new URL('./preview-posts.mjs', import.meta.url))
+  const child = spawn('node', [cli, '--no-open', '--port', String(port)], {
+    cwd: root,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  })
+  const exited = new Promise((resolve) => child.on('exit', (code) => resolve(code)))
+  const out = await waitForOutput(child, /review page: .+review\.html/)
+  const reviewFile = out.match(/review page: (.+)/)[1].trim()
+  const runDir = dirname(reviewFile)
+  const outDir = join(runDir, 'dist')
+  assert.ok(existsSync(join(outDir, 'index.html')))
+  assert.match(readFileSync(reviewFile, 'utf8'), /\/posts\/alpha\//)
+  for (let i = 0; i < 50; i++) {
+    try {
+      await fetch(`http://localhost:${port}/`)
+      break
+    } catch {
+      await new Promise((r) => setTimeout(r, 100))
+    }
+  }
+  const log = readFileSync(calls, 'utf8')
+  assert.match(log, new RegExp(`astro build --outDir ${outDir}`))
+  assert.match(log, new RegExp(`pagefind --site ${outDir}`))
+  assert.match(log, new RegExp(`astro preview --outDir ${outDir} --port ${port}`))
+  assert.equal(existsSync(join(root, 'dist')), false)
+  assert.equal(existsSync(join(root, '.preview', 'review.html')), false)
+  child.kill('SIGINT')
+  assert.equal(await exited, 130)
+  assert.equal(existsSync(runDir), false)
+})

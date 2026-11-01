@@ -44,7 +44,8 @@
     "checkpoint": "node scripts/checkpoint.mjs",
     "release-check": "node scripts/release-check.mjs",
     "ship": "node scripts/ship.mjs",
-    "test:safety": "node --test scripts/checkpoint.test.mjs scripts/release-check.test.mjs scripts/preview-posts.test.mjs scripts/ship.test.mjs scripts/fast-checks.test.mjs"
+    "check:content": "node scripts/content-check.mjs",
+    "test:safety": "node --test scripts/checkpoint.test.mjs scripts/release-check.test.mjs scripts/preview-posts.test.mjs scripts/ship.test.mjs scripts/content-check.test.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
