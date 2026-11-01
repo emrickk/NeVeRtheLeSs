@@ -18,20 +18,20 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 
 ## Commands
 
-| Command                                          | Action                                                                                                                                    |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit                               |
-| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                              |
-| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                   |
-| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                         |
-| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                               |
-| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials                                                  |
-| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                        |
-| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                  |
-| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                 |
-| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                 |
-| `npm run ship`                                   | One-command publish for post edits and directly referenced changed hero covers: review, approve, release-check, commit, push (see Safety) |
-| `npm run test:safety`                            | Test suite for the three safety CLIs                                                                                                      |
+| Command                                          | Action                                                                                                                                                                |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit                                                           |
+| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                                                          |
+| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                                               |
+| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                                                     |
+| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                                                           |
+| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials                                                                              |
+| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                                                    |
+| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                                              |
+| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                                             |
+| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                                             |
+| `npm run ship`                                   | One-command publish for post edits, directly referenced changed hero covers, and `src/data/library/*.json`: review, approve, release-check, commit, push (see Safety) |
+| `npm run test:safety`                            | Test suite for the three safety CLIs                                                                                                                                  |
 
 ## Architecture
 
@@ -48,10 +48,9 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 ## Safety
 
 - **Checkpoints** (`npm run checkpoint`, skill: [.agents/skills/checkpoint/SKILL.md](.agents/skills/checkpoint/SKILL.md)): file-level snapshots in hidden local refs. Release checks save one. `.claude/settings.json` also defines a Claude SessionStart hook; do not assume a Codex session ran that hook. Save a labeled checkpoint before the risky operations listed in the skill.
-- **Release checklist** (`npm run release-check`, skill: [.agents/skills/release-check/SKILL.md](.agents/skills/release-check/SKILL.md)): required before manual or agent-driven pushes to `main`. GO describes checked technical conditions, not visual acceptance or publication authorization. With the owner's authorization for the reviewed scope, finish the commit, push, and deployment verification without asking for the same permission again. The Nevertheless Editor scoped fast lane is the explicit exception below.
+- **Release checklist** (`npm run release-check`, skill: [.agents/skills/release-check/SKILL.md](.agents/skills/release-check/SKILL.md)): required before manual or agent-driven pushes to `main`. GO describes checked technical conditions, not visual acceptance or publication authorization. With the owner's authorization for the reviewed scope, finish the commit, push, and deployment verification without asking for the same permission again.
 - **Preview gate** (`npm run preview-posts`, skill: [.agents/skills/preview-posts/SKILL.md](.agents/skills/preview-posts/SKILL.md)): finish and inspect the changed result before showing its actual production-preview page. Approval is hash-keyed in git-ignored `.preview/`; release-check check 12 is NO-GO when preview-relevant files changed without it. A generic homepage or sample post does not establish review of the car gallery.
-- **Ship** (`npm run ship`, skill: [.agents/skills/ship-posts/SKILL.md](.agents/skills/ship-posts/SKILL.md)): publishes changed posts and directly referenced changed local hero covers with approval bound to the reviewed bytes. Other changes use the normal scoped commit and release flow.
-- **Nevertheless Editor fast lane** (`npm run ship -- --fast --only ...`): scoped to the open post, its existing translation sibling, and only their directly referenced changed hero cover. It requires local `main` to equal `origin/main`, binds every selected byte into the digest, runs focused post and image checks, commits explicit paths, and treats the GitHub Actions build as the final deploy gate. It intentionally does not create a production-preview approval or run the whole-tree release checklist.
+- **Ship** (`npm run ship`, skill: [.agents/skills/ship-posts/SKILL.md](.agents/skills/ship-posts/SKILL.md)): publishes changed posts, directly referenced changed local hero covers, and `src/data/library/*.json` with approval bound to the reviewed bytes, building and committing from a temporary worktree of `origin/main` plus only the selected files, so unrelated dirty files do not block it. Other changes use the normal scoped commit and release flow.
 - **Post-deploy rollback**: `git revert` the bad commit(s) on `main` and push; the Pages workflow redeploys the previous good state.
 
 ## Established workflows

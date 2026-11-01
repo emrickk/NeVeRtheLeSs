@@ -1,6 +1,6 @@
 # Completion criteria
 
-Use the criteria for the requested work together. The owner's latest explicit decisions and accepted result govern; historical experiments do not override them. Keep current task state and private review evidence in the website workspace's `Drafts/`, separate from these durable requirements.
+Use the criteria for the requested work together. The owner's latest explicit decisions and accepted result govern; historical experiments do not override them. Keep current task state and private review evidence in the website workspace's `drafts/`, separate from these durable requirements.
 
 ## Ready for owner review
 
@@ -61,11 +61,11 @@ Later that evening, the owner separately approved redraws for `local-lcd-huayra-
 
 ## Requested image exploration
 
-When the owner asks to try the installed photo styles, produce the requested distinct treatments independently. For banner exploration, compose the normal portrait or landscape artwork first, then evaluate its banner crop. Preserve generated options under `Drafts/` so an earlier choice can still be selected. Artistic-generation permission for these tasks does not change the car gallery's original-photograph default.
+When the owner asks to try the installed photo styles, produce the requested distinct treatments independently. For banner exploration, compose the normal portrait or landscape artwork first, then evaluate its banner crop. Preserve generated options under `drafts/` so an earlier choice can still be selected. Artistic-generation permission for these tasks does not change the car gallery's original-photograph default.
 
 ## Publication is a separate completion state
 
 - A local preview is ready only after the above checks; a published result additionally requires the authorized commit, push, successful deployment, and verification on the live affected page.
 - Reuse explicit approval of the same reviewed scope and bytes, including a recoverable earlier approval. A “push” after the owner reviewed the result authorizes completing the required gate chain; it is not a cue to ask for the same permission again. An initial publication request without a reviewed result does not satisfy the existing preview gate.
-- Follow the [preview](../.agents/skills/preview-posts/SKILL.md), [release](../.agents/skills/release-check/SKILL.md), and applicable [ship](../.agents/skills/ship-posts/SKILL.md) workflows. Keep approvals bound to the actual files and hashes. Changed, unreviewed bytes need review; unrelated work never inherits approval. Preserve the documented editor fast lane.
+- Follow the [preview](../.agents/skills/preview-posts/SKILL.md), [release](../.agents/skills/release-check/SKILL.md), and applicable [ship](../.agents/skills/ship-posts/SKILL.md) workflows. Keep approvals bound to the actual files and hashes. Changed, unreviewed bytes need review; unrelated work never inherits approval.
 - Report the actual state: unresolved, ready for review, approved, or deployed. “All checked” and “all resolved” are different claims. A technical GO does not prove that the design or content goal is complete.
