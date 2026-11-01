@@ -78,6 +78,7 @@ const canonicalHref = canonicalURL.toString();
 const siteHref = new URL(withBase('/'), Astro.site).toString();
 const searchHref = new URL(withBase('/search'), Astro.site).toString();
 const rssHref = new URL(withBase('/rss.xml'), Astro.site).toString();
+const rssEnHref = new URL(withBase('/rss.en.xml'), Astro.site).toString();
 const sitemapHref = new URL(withBase('/sitemap-index.xml'), Astro.site).toString();
 const pageHref = pageUrl ? new URL(pageUrl, Astro.site).toString() : Astro.url.toString();
 const ogImageHref = ogImage?.toString();
@@ -195,7 +196,13 @@ const websiteJsonLd =
 }
 <meta name="theme-color" content="#f7fbfd" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
-<link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} RSS`} href={rssHref} />
+<link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} RSS (中文)`} href={rssHref} />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${SITE_TITLE} RSS (English)`}
+  href={rssEnHref}
+/>
 <meta name="generator" content={Astro.generator} />
 <meta name="robots" content={robots} />
 
