@@ -17,6 +17,7 @@ export function loadManifest(path) {
     throw new Error(
       `manifest at ${path} exists but cannot be parsed (${err.message}); ` +
         'refusing to continue with empty dedupe state. Fix or delete the file, then re-run.',
+      { cause: err },
     )
   }
 }

@@ -1,7 +1,6 @@
 version: 2
 updates:
-  # One grouped PR per ecosystem per month. Major Astro upgrades are planned
-  # separately, so majors for astro and @astrojs/* are left out of the group.
+  # One grouped PR per ecosystem per month.
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -11,11 +10,6 @@ updates:
       npm:
         patterns:
           - '*'
-    ignore:
-      - dependency-name: astro
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@astrojs/*'
-        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:

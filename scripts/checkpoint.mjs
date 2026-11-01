@@ -33,7 +33,7 @@ export function git(args, { cwd, env, allowFail = false } = {}) {
   } catch (err) {
     if (allowFail) return null
     const stderr = err.stderr ? String(err.stderr).trim() : err.message
-    throw new Error(`git ${args.join(' ')} failed: ${stderr}`)
+    throw new Error(`git ${args.join(' ')} failed: ${stderr}`, { cause: err })
   }
 }
 
