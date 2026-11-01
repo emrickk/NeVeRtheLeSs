@@ -1,17 +1,53 @@
-// One-command publish for post edits: chains checkpoint, purity check,
+// One-command publish for post and library edits: checkpoint, selection,
 // production preview, owner approval, release checks, commit, push, and a
 // deploy watch. Two entry points share this file: the owner runs it
-// interactively, and the ship-posts skill drives it with --preflight then
-// --yes --digest after the owner approves in chat. Spec:
+// interactively, and the ship-posts skill drives it with --preflight, then
+// --review (serves the exact build that would ship), then --yes --digest
+// after the owner approves in chat.
+//
+// The shared checkout is usually dirty (several sessions work in it), so ship
+// never builds or checks it in place. It creates a temporary git worktree at
+// origin/main, copies in ONLY the selected files (verifying each copied byte
+// against the approval digest), and runs the preview build and the release
+// checklist there. Unselected edits and untracked files in the shared
+// checkout never reach the build, the checks, or the commit. The commit is
+// made in the shared checkout with explicit paths, only while local main
+// equals origin/main, and is verified blob by blob against the approved
+// bytes before anything is pushed. Original spec:
 // docs/superpowers/specs/2026-07-16-ship-command-design.md
 import { execFileSync, spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { mkdirSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import {
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
+import { basename, dirname, join, sep } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
+import { astroBin, buildSite, previewArgs } from './build-output.mjs'
 import { git, save } from './checkpoint.mjs'
+import { checkContentFiles, formatFinding } from './content-check.mjs'
+import {
+  hasCanonicalSegments,
+  isCanonicalFlatPostPath,
+  isHeroPath,
+  isLibraryDataPath,
+  isPostPath,
+  resolveHeroReference,
+  resolveHeroReferenceFromContent,
+  translationCounterparts,
+  validatePostPathLocation,
+  validateRepoFileLocation,
+} from './post-paths.mjs'
 import {
   computeChangeSet,
   hashChangeSet,
@@ -21,31 +57,42 @@ import {
   renderReviewPage,
   resolveBaseRef,
   reviewTargets,
-  routeSlugForPostFile,
   scalarIsTrue,
   slugForPostFile,
   writeManifest,
 } from './preview-posts.mjs'
-import { runChecks, verdict } from './release-check.mjs'
-import {
-  isCanonicalFlatPostPath,
-  isHeroPath,
-  isPostPath,
-  resolveHeroReference,
-  resolveHeroReferenceFromContent,
-  runFastChecks,
-  validatePostPathLocation,
-} from './fast-checks.mjs'
+import { FORBIDDEN_PATHS, removeActiveRunDirs, runChecks, verdict } from './release-check.mjs'
 
 const ACTIONS_URL = 'https://github.com/emrickk/NeVeRtheLeSs/actions'
-const USAGE =
-  'usage: npm run ship -- [--preflight] [--yes --digest <d>] [--only <path> ...] [--fast] [--message <msg>] [--port N] [--no-open]'
+const SITE_URL = 'https://theneverless.com'
+export const USAGE =
+  'usage: npm run ship -- [--preflight | --review | --yes --digest <d>] [--only <path> ...] ' +
+  '[--include <path> ...] [--dry-run] [--message <msg>] [--port N] [--no-open]'
 
-export function partitionPurity(paths) {
+// Paths --include refuses. Dependencies cannot be verified because the
+// temporary worktree reuses the shared node_modules; workflows and local
+// state need a regular session.
+const INCLUDE_BLOCKED = [
+  ...FORBIDDEN_PATHS.map(({ name, re }) => ({ re, why: `${name} must never be committed` })),
+  { re: /^scripts\/images\/\.manifest-notes\.json$/, why: 'local image notes must never be committed' },
+  {
+    re: /^package(?:-lock)?\.json$/,
+    why: 'dependency changes cannot be verified with the shared node_modules; use a regular session',
+  },
+  { re: /^\.github\//, why: 'workflow changes need a regular session' },
+  { re: /^(?:node_modules|dist|\.preview|\.astro)\//, why: 'generated or local state' },
+]
+
+export function partitionPaths(paths) {
+  const posts = paths.filter(isPostPath)
+  const heroes = paths.filter(isHeroPath)
+  const library = paths.filter(isLibraryDataPath)
+  const used = new Set([...posts, ...heroes, ...library])
   return {
-    posts: paths.filter(isPostPath).sort(),
-    heroes: paths.filter(isHeroPath).sort(),
-    other: paths.filter((p) => !isPostPath(p) && !isHeroPath(p)).sort(),
+    posts: posts.sort(),
+    heroes: heroes.sort(),
+    library: library.sort(),
+    other: paths.filter((p) => !used.has(p)).sort(),
   }
 }
 
@@ -99,8 +146,9 @@ export function sharedHeroOwners(root, heroPaths, selectedPostPaths) {
 }
 
 // Freshness token binding an approval to the exact reviewed content: 12 hex
-// chars of a sha256 over the sorted path:hash entries, newline-joined. Not a
-// security boundary.
+// chars of a sha256 over the sorted path:hash entries, newline-joined. Paths
+// are part of every entry, so the selection (including --include paths) is
+// bound as tightly as the bytes. Not a security boundary.
 export function changeSetDigest(files) {
   const entries = Object.keys(files)
     .sort()
@@ -108,15 +156,19 @@ export function changeSetDigest(files) {
   return createHash('sha256').update(entries.join('\n')).digest('hex').slice(0, 12)
 }
 
-export function commitMessageFor(changeSet) {
+export function commitMessageFor(changeSet, { includes = [] } = {}) {
   const slugs = [...new Set(postPathsFor(changeSet).map((p) => slugForPostFile(p)))]
-  return `post: update ${slugs.join(', ')}`
+  const library = changeSet.filter(isLibraryDataPath).map((p) => basename(p, '.json'))
+  const parts = []
+  if (slugs.length) parts.push(`post: update ${slugs.join(', ')}`)
+  if (library.length) parts.push(`library: update ${library.join(', ')}`)
+  const subject = parts.join('; ') || 'ship: update selected files'
+  return includes.length ? `${subject}\n\nAlso includes: ${includes.join(', ')}` : subject
 }
 
-// Everything a push would carry, unfiltered: worktree diff vs the base ref,
+// Everything a push could carry, unfiltered: worktree diff vs the base ref,
 // untracked files, and the committed-only view (which catches a commit whose
-// working-tree content was reverted without resetting the commit; the diff
-// shows nothing for it, the push still carries it).
+// working-tree content was reverted without resetting the commit).
 export function rawDiffPaths(root, baseRef) {
   const list = (args) => (git(args, { cwd: root }) || '').split('\0').filter(Boolean)
   return [
@@ -129,13 +181,13 @@ export function rawDiffPaths(root, baseRef) {
 }
 
 // ahead counts commits that exist only on origin/main; localAhead counts
-// commits that exist only on local main (committed but not pushed).
+// commits that exist only on the current branch (committed but not pushed).
 export function originStatus(root) {
   const hasOrigin = Boolean(
     git(['rev-parse', '--verify', '-q', 'origin/main'], { cwd: root, allowFail: true })
   )
   if (!hasOrigin) return { hasOrigin, ahead: 0, localAhead: 0 }
-  const counts = git(['rev-list', '--left-right', '--count', 'origin/main...main'], { cwd: root })
+  const counts = git(['rev-list', '--left-right', '--count', 'origin/main...HEAD'], { cwd: root })
   const parts = counts.split(/\s+/)
   return {
     hasOrigin,
@@ -144,20 +196,63 @@ export function originStatus(root) {
   }
 }
 
-// Spec step 1. Returns a plain result so every branch is testable:
-// status 'abort' (exit 1), 'empty' (exit 0), or 'ok' with changeSet and
-// digest. Fetch failures warn and fall back to the last-known origin/main.
-// `only` (repo-relative paths) scopes the shipped change set to the given
-// changed post files; purity still checks the whole tree, so unrelated paths
-// keep blocking, and unselected post edits simply stay pending. Referenced
-// changed hero covers are the sole allowed non-post additions.
-// `strictSync` (fast lane) additionally requires local main to be exactly
-// origin/main: `git push` pushes the whole branch, so any unpushed local
-// commit would ride along with the scoped publish otherwise.
-export function preflight(root, { fetch = true, only = null, strictSync = false } = {}) {
+function abort(detail) {
+  return { status: 'abort', detail }
+}
+
+function validateIncludes(root, include, rawChanged) {
+  const changed = new Set(rawChanged)
+  const errors = []
+  for (const p of include) {
+    if (!hasCanonicalSegments(p)) {
+      errors.push(`${p}: not a canonical repo-relative path`)
+      continue
+    }
+    if (isPostPath(p) || isLibraryDataPath(p)) {
+      errors.push(`${p}: select posts and library data with --only, not --include`)
+      continue
+    }
+    if (isHeroPath(p)) {
+      errors.push(`${p}: hero covers are selected automatically from the selected posts`)
+      continue
+    }
+    const blocked = INCLUDE_BLOCKED.find(({ re }) => re.test(p))
+    if (blocked) {
+      errors.push(`${p}: ${blocked.why}`)
+      continue
+    }
+    if (!changed.has(p)) {
+      errors.push(`${p}: not changed against origin/main`)
+      continue
+    }
+    const location = validateRepoFileLocation(root, p)
+    if (location.status === 'error') errors.push(location.detail)
+  }
+  return errors
+}
+
+// Selection and approval digest. Returns a plain result so every branch is
+// testable: status 'abort' (exit 1), 'empty' (exit 0), or 'ok'.
+//
+// Selected by default: every changed, non-draft post (with its translation
+// siblings), every changed src/data/library/*.json, and changed hero covers
+// referenced by the selected posts. `only` narrows that to the given post or
+// library paths (a selected post brings its changed translation siblings).
+// `include` adds explicit extra paths (for a post that needs a component or
+// style change); they are listed, digest-bound, and committed like the rest.
+// Everything else in the shared checkout is reported as ignored, not an
+// error: it never reaches the temporary worktree.
+//
+// Local HEAD must be main and equal origin/main: the commit is pushed as the
+// next commit after origin/main, so unpushed local commits would otherwise
+// ride along unreviewed. `dryRun` reports those conditions instead of
+// aborting, because a dry run never commits or pushes.
+export function preflight(root, { fetch = true, only = null, include = null, dryRun = false } = {}) {
+  const notes = []
   const branch = git(['rev-parse', '--abbrev-ref', 'HEAD'], { cwd: root })
   if (branch !== 'main') {
-    return { status: 'abort', detail: `on branch ${branch}; ship only runs on main` }
+    if (!dryRun) return abort(`on branch ${branch}; ship only runs on main`)
+    notes.push(`dry run on branch ${branch} (a real ship requires main)`)
   }
   if (fetch && originStatus(root).hasOrigin) {
     try {
@@ -168,51 +263,53 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
   }
   const { hasOrigin, ahead, localAhead } = originStatus(root)
   if (hasOrigin && ahead > 0) {
-    return {
-      status: 'abort',
-      detail:
-        `origin/main has ${ahead} commit(s) not in local main; ` +
-        'reconcile in a regular coding session (or git pull --rebase when comfortable) before shipping',
-    }
+    const detail =
+      `origin/main has ${ahead} commit(s) not in local main; ` +
+      'reconcile in a regular coding session (or git pull --rebase when comfortable) before shipping'
+    if (!dryRun) return abort(detail)
+    notes.push(detail)
   }
-  if (strictSync && hasOrigin && localAhead > 0) {
-    return {
-      status: 'abort',
-      detail:
-        `local main has ${localAhead} unpushed commit(s); a scoped publish pushes the whole ` +
-        'branch and would carry them along. Push or reconcile them in a regular coding session first',
-    }
+  if (hasOrigin && localAhead > 0) {
+    const detail =
+      `local main has ${localAhead} unpushed commit(s); ship pushes the next commit after ` +
+      'origin/main and would carry them along. Push or reconcile them in a regular coding session first'
+    if (!dryRun) return abort(detail)
+    notes.push(`${detail} (dry run: their committed changes are not in the temporary worktree)`)
   }
   const baseRef = resolveBaseRef(root)
-  const {
-    posts: changedPosts,
-    heroes: changedHeroes,
-    other,
-  } = partitionPurity(rawDiffPaths(root, baseRef))
-  if (other.length > 0) {
-    return {
-      status: 'abort',
-      detail:
-        'ship only publishes post edits and their referenced hero covers, but these changed too:\n  ' +
-        other.join('\n  ') +
-        '\nhandle this in a regular coding session instead',
-    }
-  }
+  const baseSha = git(['rev-parse', '--verify', `${baseRef}^{commit}`], { cwd: root })
+  const raw = rawDiffPaths(root, baseRef)
+  const { heroes: changedHeroes, library: changedLibrary } = partitionPaths(raw)
 
   let normalizedOnly = null
   if (only && only.length > 0) {
     normalizedOnly = [...new Set(only)].sort()
-    const invalid = normalizedOnly.filter((p) => !isCanonicalFlatPostPath(p))
+    const invalid = normalizedOnly.filter((p) => !isCanonicalFlatPostPath(p) && !isLibraryDataPath(p))
     if (invalid.length > 0) {
-      return {
-        status: 'abort',
-        detail: '--only accepts post paths, but received:\n  ' + invalid.join('\n  '),
-      }
+      return abort(
+        '--only accepts post paths and src/data/library/*.json, but received:\n  ' +
+          invalid.join('\n  ')
+      )
     }
+  }
+  const normalizedInclude = include && include.length > 0 ? [...new Set(include)].sort() : []
+  const includeErrors = validateIncludes(root, normalizedInclude, raw)
+  if (includeErrors.length > 0) {
+    return abort('--include refused:\n  ' + includeErrors.join('\n  '))
+  }
+
+  const onlyPosts = normalizedOnly ? normalizedOnly.filter(isPostPath) : null
+  const onlyLibrary = normalizedOnly ? new Set(normalizedOnly.filter(isLibraryDataPath)) : null
+
+  const changedPosts = postPathsFor(computeChangeSet(root, { baseRef }))
+  let postSet = changedPosts
+  if (onlyPosts) {
+    const wanted = new Set(onlyPosts.flatMap((p) => [p, ...translationCounterparts(p)]))
+    postSet = changedPosts.filter((p) => wanted.has(p))
   }
 
   const postPathsToValidate = new Set()
-  for (const postPath of [...changedPosts, ...(normalizedOnly || [])]) {
+  for (const postPath of [...postSet, ...(onlyPosts || [])]) {
     postPathsToValidate.add(postPath)
     postPathsToValidate.add(primaryPostPath(postPath))
   }
@@ -222,108 +319,265 @@ export function preflight(root, { fetch = true, only = null, strictSync = false 
     .filter((result) => result.status === 'error')
     .map((result) => result.detail)
   if (invalidPostLocations.length > 0) {
-    return {
-      status: 'abort',
-      detail: 'invalid post path:\n  ' + invalidPostLocations.join('\n  '),
-    }
+    return abort('invalid post path:\n  ' + invalidPostLocations.join('\n  '))
   }
 
-  let postSet = postPathsFor(computeChangeSet(root, { baseRef }))
-  let postChangeSet = postSet
-  if (normalizedOnly) {
-    const wanted = new Set(normalizedOnly)
-    postChangeSet = postChangeSet.filter((p) => wanted.has(p))
-    postSet = postChangeSet
+  const librarySet = onlyLibrary ? changedLibrary.filter((p) => onlyLibrary.has(p)) : changedLibrary
+  const libraryErrors = librarySet
+    .map((p) => validateRepoFileLocation(root, p, 'src/data/library'))
+    .filter((result) => result.status === 'error')
+    .map((result) => result.detail)
+  if (libraryErrors.length > 0) {
+    return abort('invalid library data path:\n  ' + libraryErrors.join('\n  '))
   }
 
   const referenced = referencedHeroesForPosts(root, postSet)
   if (referenced.errors.length > 0) {
-    return {
-      status: 'abort',
-      detail: 'invalid heroImage reference:\n  ' + referenced.errors.join('\n  '),
-    }
+    return abort('invalid heroImage reference:\n  ' + referenced.errors.join('\n  '))
   }
   const referencedSet = new Set(referenced.heroes)
-  const unreferencedHeroes = changedHeroes.filter((p) => !referencedSet.has(p))
-  if (unreferencedHeroes.length > 0) {
-    return {
-      status: 'abort',
-      detail:
-        'changed hero cover(s) are not referenced by the selected post set:\n  ' +
-        unreferencedHeroes.join('\n  '),
-    }
-  }
-  const heroChangeSet = changedHeroes.filter((p) => referencedSet.has(p))
-  if (heroChangeSet.length > 0) {
-    const shared = sharedHeroOwners(root, heroChangeSet, postSet)
+  const heroSet = changedHeroes.filter((p) => referencedSet.has(p))
+  if (heroSet.length > 0) {
+    const shared = sharedHeroOwners(root, heroSet, postSet)
     if (shared.length > 0) {
-      return {
-        status: 'abort',
-        detail:
-          'ship cannot change a hero cover also used by an unselected post:\n  ' +
-          shared.map(({ hero, post }) => `${hero} -> ${post}`).join('\n  '),
-      }
+      return abort(
+        'ship cannot change a hero cover also used by an unselected post:\n  ' +
+          shared.map(({ hero, post }) => `${hero} -> ${post}`).join('\n  ')
+      )
     }
   }
-  const changeSet = [...postChangeSet, ...heroChangeSet].sort()
+
+  const changeSet = [
+    ...new Set([...postSet, ...heroSet, ...librarySet, ...normalizedInclude]),
+  ].sort()
   if (changeSet.length === 0) {
     return {
       status: 'empty',
-      detail: only ? 'nothing to ship for the selected post(s)' : 'nothing to ship',
+      detail: only ? 'nothing to ship for the selection' : 'nothing to ship',
       baseRef,
+      notes,
     }
   }
+  const selected = new Set(changeSet)
+  const files = hashChangeSet(root, changeSet)
   return {
     status: 'ok',
     baseRef,
+    baseSha,
     postSet,
     changeSet,
-    digest: changeSetDigest(hashChangeSet(root, changeSet)),
+    includes: normalizedInclude,
+    ignored: raw.filter((p) => !selected.has(p)),
+    notes,
+    files,
+    digest: changeSetDigest(files),
   }
 }
 
-const TREE_CHANGED_DETAIL =
+export const TREE_CHANGED_DETAIL =
   'the tree changed since the review (another session?); nothing committed, start over'
 
 export function recheckApprovedChangeSet(
   root,
   approvedDigest,
-  { only = null, strictSync = false } = {}
+  { only = null, include = null, dryRun = false, baseSha = null } = {}
 ) {
-  const current = preflight(root, { fetch: false, only, strictSync })
-  if (current.status !== 'ok' || current.digest !== approvedDigest) {
+  const current = preflight(root, { fetch: false, only, include, dryRun })
+  if (
+    current.status !== 'ok' ||
+    current.digest !== approvedDigest ||
+    (baseSha && current.baseSha !== baseSha)
+  ) {
     return { status: 'abort', detail: TREE_CHANGED_DETAIL }
   }
   return current
 }
 
-// The only git mutations in ship: one explicit-path commit and one push.
+// ---------------------------------------------------------------------------
+// Temporary worktree
+
+// Workspaces still on disk, so a signal handler can remove them; a signal
+// skips the finally in main.
+const activeWorkspaces = new Set()
+
+// Cache directories Astro and Vite write inside node_modules stay private to
+// the temporary worktree; every package is a symlink to the shared install.
+const PRIVATE_NODE_MODULES = new Set(['.astro', '.vite', '.cache'])
+// Env files Vite's loadEnv reads for a production build (POST_PASSWORD for
+// protected posts). Symlinked, never copied, and git-ignored in the worktree.
+const ENV_FILES = ['.env', '.env.local', '.env.production', '.env.production.local']
+
+function sha256(buffer) {
+  return createHash('sha256').update(buffer).digest('hex')
+}
+
+function linkNodeModules(root, tree) {
+  const source = join(root, 'node_modules')
+  if (!existsSync(source)) {
+    throw new Error(`${source} is missing; run npm ci in the shared checkout first`)
+  }
+  const target = join(tree, 'node_modules')
+  mkdirSync(target, { recursive: true })
+  for (const entry of readdirSync(source)) {
+    if (PRIVATE_NODE_MODULES.has(entry)) continue
+    symlinkSync(join(source, entry), join(target, entry))
+  }
+}
+
+function linkEnvFiles(root, tree) {
+  for (const name of ENV_FILES) {
+    if (existsSync(join(root, name))) symlinkSync(join(root, name), join(tree, name))
+  }
+}
+
+// Copy the approved bytes of every selected path into the worktree. Each
+// file is read once, hashed, compared with the approval, and the same buffer
+// is written, so the worktree holds exactly the digest-bound content.
+export function copyApprovedFiles(root, tree, files) {
+  for (const [relPath, hash] of Object.entries(files)) {
+    const source = join(root, relPath)
+    const target = join(tree, relPath)
+    if (hash === 'deleted') {
+      if (existsSync(source)) throw new Error(`${relPath}: ${TREE_CHANGED_DETAIL}`)
+      rmSync(target, { force: true })
+      continue
+    }
+    if (!existsSync(source) || lstatSync(source).isSymbolicLink()) {
+      throw new Error(`${relPath}: ${TREE_CHANGED_DETAIL}`)
+    }
+    const buffer = readFileSync(source)
+    if (sha256(buffer) !== hash) throw new Error(`${relPath}: ${TREE_CHANGED_DETAIL}`)
+    mkdirSync(dirname(target), { recursive: true })
+    writeFileSync(target, buffer)
+  }
+}
+
+export function removeShipWorkspace(root, ws) {
+  if (!ws || ws.removed) return
+  git(['worktree', 'remove', '--force', '--force', ws.tree], { cwd: root, allowFail: true })
+  rmSync(ws.dir, { recursive: true, force: true })
+  // If `worktree remove` failed, drop only this worktree's own admin entry;
+  // `git worktree prune` could touch other sessions' worktrees.
+  if (ws.gitDir && ws.gitDir.includes(`${sep}worktrees${sep}`) && existsSync(ws.gitDir)) {
+    rmSync(ws.gitDir, { recursive: true, force: true })
+  }
+  ws.removed = true
+  activeWorkspaces.delete(ws)
+}
+
+export function removeActiveWorkspaces(root) {
+  for (const ws of [...activeWorkspaces]) removeShipWorkspace(root, ws)
+}
+
+// Detached worktree at the approved base commit plus the selected files.
+export function createShipWorkspace(root, pre, { linkDeps = true } = {}) {
+  const dir = mkdtempSync(join(tmpdir(), 'blog-ship-'))
+  const ws = { dir, tree: join(dir, 'site'), gitDir: null, removed: false }
+  activeWorkspaces.add(ws)
+  try {
+    git(['worktree', 'add', '--detach', '-q', ws.tree, pre.baseSha], { cwd: root })
+    ws.gitDir = git(['rev-parse', '--absolute-git-dir'], { cwd: ws.tree })
+    if (linkDeps) linkNodeModules(root, ws.tree)
+    linkEnvFiles(root, ws.tree)
+    copyApprovedFiles(root, ws.tree, pre.files)
+  } catch (err) {
+    removeShipWorkspace(root, ws)
+    throw err
+  }
+  return ws
+}
+
+// ---------------------------------------------------------------------------
+// Commit and push
+
+function gitBuffer(args, cwd) {
+  return execFileSync('git', args, { cwd, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 256 * 1024 * 1024 })
+}
+
+// Problems with commit `sha` against the approval: parent, exact path list,
+// and every blob's sha256. Empty array means the commit is exactly the
+// reviewed content.
+export function verifyCommit(root, sha, { baseSha, files }) {
+  const problems = []
+  const parent = git(['rev-parse', `${sha}^`], { cwd: root, allowFail: true })
+  if (parent !== baseSha) problems.push(`parent is ${parent}, expected origin/main ${baseSha}`)
+  const touched = (git(['diff-tree', '--no-commit-id', '--name-only', '-r', '-z', '--no-renames', sha], { cwd: root }) || '')
+    .split('\0')
+    .filter(Boolean)
+    .sort()
+  const expected = Object.keys(files).sort()
+  if (touched.join('\n') !== expected.join('\n')) {
+    problems.push(`commit touches [${touched.join(', ')}], expected [${expected.join(', ')}]`)
+  }
+  for (const [relPath, hash] of Object.entries(files)) {
+    const listed = git(['ls-tree', '--name-only', sha, '--', relPath], { cwd: root })
+    if (hash === 'deleted') {
+      if (listed) problems.push(`${relPath}: still present, expected deleted`)
+      continue
+    }
+    if (!listed) {
+      problems.push(`${relPath}: missing from the commit`)
+      continue
+    }
+    if (sha256(gitBuffer(['cat-file', 'blob', `${sha}:${relPath}`], root)) !== hash) {
+      problems.push(`${relPath}: committed bytes differ from the approved bytes`)
+    }
+  }
+  return problems
+}
+
+// The only mutation of the shared checkout: one explicit-path commit on
+// main, verified against the approval. On any mismatch (another session
+// edited a selected file in the last milliseconds) the commit is undone
+// inside this checkout, the paths are unstaged again, and nothing is pushed.
 // The trailer marks agent-driven runs (CLAUDECODE is set in Claude Code's
 // shell); owner-run ships produce a plain authored commit.
-export function commitAndPush(
+export function commitApproved(
   root,
-  changeSet,
-  { message, trailer = Boolean(process.env.CLAUDECODE), push = true } = {}
+  { baseSha, files },
+  { message, trailer = Boolean(process.env.CLAUDECODE) } = {}
 ) {
+  const paths = Object.keys(files).sort()
+  const head = git(['rev-parse', 'HEAD'], { cwd: root })
+  const branch = git(['rev-parse', '--abbrev-ref', 'HEAD'], { cwd: root })
+  if (branch !== 'main' || head !== baseSha) {
+    throw new Error(`local main must equal origin/main (${baseSha.slice(0, 7)}) to commit; nothing committed`)
+  }
   const body = trailer
     ? `${message}\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>`
     : message
-  git(['add', '--', ...changeSet], { cwd: root })
-  git(['commit', '-q', '-m', body, '--', ...changeSet], { cwd: root })
+  git(['add', '--', ...paths], { cwd: root })
+  git(['commit', '-q', '-m', body, '--', ...paths], { cwd: root })
   const sha = git(['rev-parse', 'HEAD'], { cwd: root })
-  if (push) git(['push', '-q', 'origin', 'main'], { cwd: root })
+  const problems = verifyCommit(root, sha, { baseSha, files })
+  if (problems.length > 0) {
+    if (git(['rev-parse', 'HEAD'], { cwd: root }) === sha) {
+      git(['reset', '-q', '--soft', `${sha}^`], { cwd: root })
+      git(['reset', '-q', '--', ...paths], { cwd: root })
+    }
+    throw new Error(
+      'the commit did not match the approved bytes, so it was undone and nothing was pushed:\n  ' +
+        problems.join('\n  ') +
+        '\nstart over from the preflight'
+    )
+  }
   return sha
 }
 
-// Tracks the currently spawned preview server so a signal (Ctrl+C, external
-// SIGTERM) can still stop it even though it bypasses the `finally` in main.
-// Set by main at spawn time and read by the CLI entry's signal handlers;
-// importing this module for its exports never touches it.
+// Push exactly the verified commit; a moved origin/main makes this a
+// rejected non-fast-forward instead of a silent merge.
+export function pushCommit(root, sha) {
+  git(['push', '-q', 'origin', `${sha}:refs/heads/main`], { cwd: root })
+}
+
+// ---------------------------------------------------------------------------
+// Review server and deploy watch
+
+// Tracks the spawned preview server so a signal can still stop it.
 let activeServer = null
 
-// The preview server is spawned detached (its own process group) because npx
-// is the direct child and astro the grandchild; killing just npx orphans the
-// server on the port. Killing the negated pid signals the whole group.
+// The preview server is spawned detached (its own process group) so the whole
+// group can be signalled; killing only the direct child could orphan it.
 function stopServer(server) {
   if (!server || server.exitCode !== null || server.signalCode !== null) return
   try {
@@ -350,7 +604,7 @@ async function waitForServer(url, { intervalMs = 500, timeoutMs = 15000 } = {}) 
 
 // Returns the deploy conclusion: 'success', a failure conclusion string,
 // or 'unknown' (gh unavailable, or the watch timed out).
-async function watchDeploy(root, sha, slugs) {
+async function watchDeploy(root, sha, urls) {
   const deadline = Date.now() + 5 * 60 * 1000
   while (Date.now() < deadline) {
     let runs
@@ -358,16 +612,7 @@ async function watchDeploy(root, sha, slugs) {
       runs = JSON.parse(
         execFileSync(
           'gh',
-          [
-            'run',
-            'list',
-            '--workflow',
-            'deploy.yml',
-            '--limit',
-            '1',
-            '--json',
-            'status,conclusion,headSha',
-          ],
+          ['run', 'list', '--workflow', 'deploy.yml', '--limit', '1', '--json', 'status,conclusion,headSha'],
           { cwd: root, encoding: 'utf8' }
         )
       )
@@ -379,7 +624,7 @@ async function watchDeploy(root, sha, slugs) {
     if (run && run.headSha === sha && run.status === 'completed') {
       if (run.conclusion === 'success') {
         console.log('deploy complete:')
-        for (const slug of slugs) console.log(`  https://theneverless.com/posts/${slug}/`)
+        for (const url of urls) console.log(`  ${url}`)
       } else {
         console.log(`deploy finished with conclusion ${run.conclusion}; inspect ${ACTIONS_URL}`)
       }
@@ -391,21 +636,46 @@ async function watchDeploy(root, sha, slugs) {
   return 'unknown'
 }
 
-export async function main(values) {
-  const root = git(['rev-parse', '--show-toplevel'])
+async function askYesNo(question) {
+  const rl = createInterface({ input: process.stdin, output: process.stdout })
+  try {
+    return (await rl.question(question)).trim().toLowerCase() === 'y'
+  } finally {
+    rl.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Main flow. `deps` exists for tests; the CLI passes none.
+
+export async function main(values, deps = {}) {
+  const {
+    root = git(['rev-parse', '--show-toplevel']),
+    checks = runChecks,
+    build = buildSite,
+    ask = askYesNo,
+    watch = watchDeploy,
+    linkDeps = true,
+    checkpoint = true,
+    // --review serves until a signal ends the process; tests resolve it.
+    waitForStop = () => new Promise(() => {}),
+  } = deps
   if (values.yes && !values.digest) {
     console.error('--yes requires --digest <d> from a prior --preflight run')
     console.error(USAGE)
     return 1
   }
-  if (values.fast && !(Array.isArray(values.only) && values.only.length > 0)) {
-    console.error('--fast requires --only <path>: the fast lane is for scoped publishes')
+  if (values.review && (values.yes || values.preflight)) {
+    console.error('--review cannot be combined with --yes or --preflight')
     console.error(USAGE)
     return 1
   }
-  save(root, { trigger: 'ship', quiet: true })
+  const dryRun = Boolean(values['dry-run'])
   const only = Array.isArray(values.only) && values.only.length > 0 ? values.only : null
-  const pre = preflight(root, { only, strictSync: Boolean(values.fast) })
+  const include = Array.isArray(values.include) && values.include.length > 0 ? values.include : null
+  if (checkpoint) save(root, { trigger: 'ship', quiet: true })
+  const pre = preflight(root, { only, include, dryRun })
+  for (const note of pre.notes || []) console.log(`note: ${note}`)
   if (pre.status === 'abort') {
     console.error(pre.detail)
     return 1
@@ -415,29 +685,52 @@ export async function main(values) {
     return 0
   }
   console.log(`publish change(s) vs ${pre.baseRef} (${pre.changeSet.length}):`)
-  for (const p of pre.changeSet) console.log('  ' + p)
+  for (const p of pre.changeSet) {
+    console.log(`  ${p}${pre.includes.includes(p) ? '  (--include)' : ''}`)
+  }
+  if (pre.ignored.length > 0) {
+    console.log(
+      `ignoring ${pre.ignored.length} other changed or untracked path(s) in this checkout; ` +
+        'they are not built, checked, or committed'
+    )
+  }
   console.log(`changeset digest: ${pre.digest}`)
-  if (values.preflight) return 0
 
+  const content = checkContentFiles(root, pre.postSet, { baseRef: pre.baseRef })
+  if (content.findings.length > 0) {
+    console.error('content check failed; fix these before shipping:')
+    for (const f of content.findings) console.error('  ' + formatFinding(f))
+    return 1
+  }
+  if (values.preflight) return 0
+  if (values.yes && values.digest !== pre.digest) {
+    console.error(TREE_CHANGED_DETAIL)
+    return 1
+  }
+  const approved = values.yes ? values.digest : pre.digest
+  const recheckOptions = { only, include, dryRun, baseSha: pre.baseSha }
+
+  let ws = null
   let server = null
   try {
+    ws = createShipWorkspace(root, pre, { linkDeps })
+    console.log(`temporary worktree: ${ws.tree}`)
     if (!values.yes) {
-      // The build also runs inside release-check later; the duplication is
-      // the accepted cost of reusing the gates unmodified.
-      console.log('\nbuilding production output...')
-      const build = spawnSync('npm', ['run', 'build'], { cwd: root, stdio: 'inherit' })
-      if (build.status !== 0) {
+      const outDir = join(ws.dir, 'dist')
+      console.log('\nbuilding production output in the temporary worktree...')
+      const built = build(ws.tree, outDir, { stdio: 'inherit' })
+      if (!built.ok) {
+        if (built.output) console.error(built.output.trim())
         console.error('build failed; fix it before shipping')
         return 1
       }
-      const reviewFile = join(root, '.preview', 'review.html')
-      mkdirSync(join(root, '.preview'), { recursive: true })
+      const reviewFile = join(ws.dir, 'review.html')
       writeFileSync(
         reviewFile,
-        renderReviewPage(reviewTargets(root, pre.postSet), { host: 'localhost', port: values.port })
+        renderReviewPage(reviewTargets(ws.tree, pre.changeSet), { host: 'localhost', port: values.port })
       )
-      server = spawn('npx', ['astro', 'preview', '--port', values.port], {
-        cwd: root,
+      server = spawn(astroBin(ws.tree), previewArgs(outDir, { port: values.port }), {
+        cwd: ws.tree,
         stdio: ['ignore', 'ignore', 'inherit'],
         detached: true,
       })
@@ -451,122 +744,112 @@ export async function main(values) {
       console.log(`\nreview page: ${reviewFile}`)
       console.log(`server: http://localhost:${values.port}/`)
       if (!values['no-open']) spawnSync('open', [reviewFile])
-      const rl = createInterface({ input: process.stdin, output: process.stdout })
-      const answer = (
-        await rl.question(`\napprove these ${pre.changeSet.length} file(s) and ship? [y/N] `)
-      ).trim()
-      rl.close()
-      if (answer.toLowerCase() !== 'y') {
+      if (values.review) {
+        const flags = [
+          ...(only || []).map((p) => `--only ${p}`),
+          ...(include || []).map((p) => `--include ${p}`),
+        ].join(' ')
+        console.log(
+          '\nthis is the exact build that would ship. After the owner approves it, stop this ' +
+            'server (Ctrl+C) and run:\n' +
+            `  npm run ship -- --yes --digest ${pre.digest}${flags ? ' ' + flags : ''}`
+        )
+        await waitForStop()
+        console.log('review stopped; nothing recorded')
+        return 0
+      }
+      if (!(await ask(`\napprove these ${pre.changeSet.length} file(s) and ship? [y/N] `))) {
         console.log('not approved; nothing recorded')
         return 0
       }
     }
 
-    // Freshness check, both modes: the approval binds to exactly the
-    // reviewed content. A concurrent session's post edit (or any new
-    // non-post change) landing after the review aborts here.
-    const approved = values.yes ? values.digest : pre.digest
-    const now = recheckApprovedChangeSet(root, approved, {
-      only,
-      strictSync: Boolean(values.fast),
-    })
+    // Freshness check, both modes: the shared checkout must still hold the
+    // approved bytes, since the commit is made there.
+    const now = recheckApprovedChangeSet(root, approved, recheckOptions)
     if (now.status !== 'ok') {
       console.error(now.detail)
       return 1
     }
-    if (!values.fast) {
-      // The fast lane skips the review manifest: there was no review, so
-      // recording an approval would be a false audit trail.
-      writeManifest(root, hashChangeSet(root, now.changeSet), { baseRef: now.baseRef })
-      console.log('approval recorded')
-    }
-    if (server) {
-      stopServer(server)
-      server = null
-      activeServer = null
-    }
+    writeManifest(root, now.files, { baseRef: now.baseRef })
+    console.log('approval recorded')
+    stopServer(server)
+    server = null
+    activeServer = null
 
-    if (values.fast) {
-      console.log('\nrunning fast checks...')
-      const errors = await runFastChecks(root, now.changeSet)
-      if (errors.length > 0) {
-        console.error('fast checks failed:\n  ' + errors.join('\n  '))
-        return 1
-      }
-      console.log(`fast checks passed for ${now.changeSet.length} file(s)`)
-    } else {
-      console.log('\nrunning release checks...')
-      const results = await runChecks(root, { previewChangeSet: now.changeSet })
-      const summary = verdict(results)
-      console.log('\n' + summary)
-      if (!summary.startsWith('VERDICT: GO')) return 1
-    }
-
-    // Checks can take long enough for another session to edit a selected post
-    // or hero. Re-bind the approved digest immediately before the explicit
-    // commit, then use only this final path set below.
-    const final = recheckApprovedChangeSet(root, approved, {
-      only,
-      strictSync: Boolean(values.fast),
+    console.log('\nrunning release checks in the temporary worktree...')
+    const results = await checks(ws.tree, {
+      previewChangeSet: now.changeSet,
+      previewStateRoot: root,
+      skipCheckpoint: 'ship checkpointed the shared checkout; this is its temporary worktree',
     })
+    const summary = verdict(results)
+    console.log('\n' + summary)
+    if (!summary.startsWith('VERDICT: GO')) return 1
+
+    // Checks take minutes; re-bind the approval right before the commit.
+    const final = recheckApprovedChangeSet(root, approved, recheckOptions)
     if (final.status !== 'ok') {
       console.error(final.detail)
       return 1
     }
-
-    const sha = commitAndPush(root, final.changeSet, {
-      message: values.message || commitMessageFor(final.postSet),
-    })
-    console.log(`pushed ${sha.slice(0, 7)} to origin/main`)
-    const conclusion = await watchDeploy(root, sha, [
-      ...new Set(final.postSet.map((p) => routeSlugForPostFile(root, p))),
-    ])
-    if (values.fast && conclusion !== 'success' && conclusion !== 'unknown') {
-      console.error(
-        'deploy failed: the post is NOT live (the site stays on the previous version) ' +
-          'and main is blocked until this is fixed. Fix the post and publish again, ' +
-          'or revert in a regular coding session.'
+    const message = values.message || commitMessageFor(final.changeSet, { includes: final.includes })
+    const urls = reviewTargets(ws.tree, final.changeSet).map((t) => SITE_URL + t)
+    if (dryRun) {
+      console.log(
+        `\ndry run: would commit ${final.changeSet.length} file(s) as "${message.split('\n')[0]}" ` +
+          'and push to origin/main; nothing committed or pushed'
       )
-      return 1
+      return 0
     }
+    const sha = commitApproved(root, final, { message })
+    pushCommit(root, sha)
+    console.log(`pushed ${sha.slice(0, 7)} to origin/main`)
+    await watch(root, sha, urls)
     return 0
   } finally {
     stopServer(server)
     activeServer = null
+    if (ws) removeShipWorkspace(root, ws)
   }
+}
+
+export const CLI_OPTIONS = {
+  message: { type: 'string' },
+  port: { type: 'string', default: '4322' },
+  'no-open': { type: 'boolean', default: false },
+  preflight: { type: 'boolean', default: false },
+  review: { type: 'boolean', default: false },
+  yes: { type: 'boolean', default: false },
+  only: { type: 'string', multiple: true },
+  include: { type: 'string', multiple: true },
+  'dry-run': { type: 'boolean', default: false },
+  digest: { type: 'string' },
 }
 
 // CLI entry (pathToFileURL handles spaces in the repo path)
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   let values
   try {
-    ;({ values } = parseArgs({
-      options: {
-        message: { type: 'string' },
-        port: { type: 'string', default: '4322' },
-        'no-open': { type: 'boolean', default: false },
-        preflight: { type: 'boolean', default: false },
-        yes: { type: 'boolean', default: false },
-        only: { type: 'string', multiple: true },
-        fast: { type: 'boolean', default: false },
-        digest: { type: 'string' },
-      },
-    }))
+    ;({ values } = parseArgs({ options: CLI_OPTIONS }))
   } catch (err) {
     console.error(err.message)
     console.error(USAGE)
     process.exit(1)
   }
-  // A signal death (Ctrl+C at the prompt, an external SIGTERM) bypasses the
-  // `finally` in main; stop the detached preview server here so it never
-  // gets orphaned on the port.
-  for (const signal of ['SIGINT', 'SIGTERM']) {
+  const root = git(['rev-parse', '--show-toplevel'])
+  // A signal (Ctrl+C at the prompt, an external SIGTERM) bypasses the
+  // finally in main: stop the detached preview server and remove the
+  // temporary worktree and build directories here.
+  for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
     process.once(signal, () => {
       stopServer(activeServer)
+      removeActiveWorkspaces(root)
+      removeActiveRunDirs()
       process.exit(130)
     })
   }
-  main(values).then(
+  main(values, { root }).then(
     (code) => process.exit(code),
     (err) => {
       console.error(err.message)

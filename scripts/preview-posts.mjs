@@ -6,12 +6,24 @@
 // This script never pushes and never approves on its own.
 
 import { execFileSync, spawn, spawnSync } from 'node:child_process'
-import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createHash, randomBytes } from 'node:crypto'
+import {
+  closeSync,
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  openSync,
+  readFileSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync,
+  writeSync,
+} from 'node:fs'
 import { networkInterfaces } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
+import { astroBin, buildSite, makeRunDir, previewArgs, removeRunDir } from './build-output.mjs'
 
 // Image-heavy exemplar reviewed whenever a site-wide file changes. Update it
 // when a better exemplar post exists.
@@ -292,14 +304,130 @@ function manifestPath(root) {
   return join(root, '.preview', 'manifest.json')
 }
 
+// Approvals older than this are dropped on the next write so the merged
+// manifest does not grow forever. An approval only ever matches identical
+// bytes, so pruning can only ask for a fresh review, never let one through.
+export const APPROVAL_TTL_DAYS = 30
+const LOCK_TIMEOUT_MS = 10000
+const STALE_LOCK_MS = 2000
+
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms)
+}
+
+function pidAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false
+  try {
+    process.kill(pid, 0)
+    return true
+  } catch (err) {
+    return err.code === 'EPERM'
+  }
+}
+
+// A lock is stale only when its holder is gone AND it is older than the
+// few milliseconds a write takes. The inode check keeps a second cleaner from
+// deleting a fresh lock that replaced the stale one in between.
+function removeStaleLock(lock) {
+  let st
+  let pid
+  try {
+    st = lstatSync(lock)
+    pid = Number.parseInt(readFileSync(lock, 'utf8'), 10)
+  } catch {
+    return true
+  }
+  if (Date.now() - st.mtimeMs < STALE_LOCK_MS || pidAlive(pid)) return false
+  try {
+    if (lstatSync(lock).ino === st.ino) unlinkSync(lock)
+  } catch {
+    // already gone
+  }
+  return true
+}
+
+// Serializes read-merge-write cycles on .preview/manifest.json across
+// processes (preview-posts --approve and ship from concurrent sessions).
+export function withManifestLock(root, fn, { timeoutMs = LOCK_TIMEOUT_MS } = {}) {
+  const dir = join(root, '.preview')
+  mkdirSync(dir, { recursive: true })
+  const lock = join(dir, 'manifest.lock')
+  const deadline = Date.now() + timeoutMs
+  for (;;) {
+    try {
+      const fd = openSync(lock, 'wx')
+      writeSync(fd, `${process.pid}\n`)
+      closeSync(fd)
+      break
+    } catch (err) {
+      if (err.code !== 'EEXIST') throw err
+      if (removeStaleLock(lock)) continue
+      if (Date.now() > deadline) {
+        throw new Error(
+          `.preview/manifest.lock is held by another process (over ${timeoutMs / 1000}s); ` +
+            'if no preview-posts or ship run is active, delete that file and retry'
+        )
+      }
+      sleepSync(10 + Math.floor(Math.random() * 30))
+    }
+  }
+  try {
+    return fn()
+  } finally {
+    try {
+      unlinkSync(lock)
+    } catch {
+      // removed by a stale-lock cleaner; nothing to release
+    }
+  }
+}
+
+// Records an approval for `files` (path -> sha256). Merge-safe: under the
+// lock it re-reads the current manifest, keeps other sessions' approvals,
+// overwrites the entries for these paths, prunes expired ones, and replaces
+// the file atomically (temp file + rename), so concurrent writers never lose
+// each other's entries and readers never see a half-written file.
 // approvedAt and baseRef are informational only; enforcement compares the
 // files map exclusively.
-export function writeManifest(root, files, { baseRef }) {
-  mkdirSync(join(root, '.preview'), { recursive: true })
-  writeFileSync(
-    manifestPath(root),
-    JSON.stringify({ approvedAt: new Date().toISOString(), baseRef, files }, null, 2) + '\n'
-  )
+export function writeManifest(root, files, { baseRef, now = new Date() } = {}) {
+  return withManifestLock(root, () => {
+    const current = readManifest(root)
+    const nowIso = now.toISOString()
+    const cutoff = now.getTime() - APPROVAL_TTL_DAYS * 24 * 60 * 60 * 1000
+    const merged = {}
+    const stamps = {}
+    if (current) {
+      const oldStamps = current.approvedAtByFile || {}
+      for (const [path, hash] of Object.entries(current.files)) {
+        const stamp = oldStamps[path] || current.approvedAt || nowIso
+        const time = Date.parse(stamp)
+        if (Number.isFinite(time) && time < cutoff) continue
+        merged[path] = hash
+        stamps[path] = stamp
+      }
+    }
+    for (const [path, hash] of Object.entries(files)) {
+      merged[path] = hash
+      stamps[path] = nowIso
+    }
+    const sortedFiles = {}
+    const sortedStamps = {}
+    for (const path of Object.keys(merged).sort()) {
+      sortedFiles[path] = merged[path]
+      sortedStamps[path] = stamps[path]
+    }
+    const manifest = {
+      approvedAt: nowIso,
+      baseRef,
+      files: sortedFiles,
+      approvedAtByFile: sortedStamps,
+    }
+    const target = manifestPath(root)
+    const tmp = `${target}.${process.pid}-${randomBytes(4).toString('hex')}.tmp`
+    writeFileSync(tmp, JSON.stringify(manifest, null, 2) + '\n')
+    renameSync(tmp, target)
+    return manifest
+  })
 }
 
 export function readManifest(root) {
@@ -338,7 +466,13 @@ const REMEDIATION =
 // know the comparison base is not origin/main itself.
 // `changeSet` overrides the computed set for scoped publishes (ship --only):
 // the approval then only needs to cover the files actually being shipped.
-export function checkPostPreview(root, { baseRef, changeSet: changeSetOverride } = {}) {
+// `stateRoot` is where .preview/ lives when the checked files sit in a
+// different tree: ship runs the checklist inside a temporary worktree but
+// records approvals in the shared checkout.
+export function checkPostPreview(
+  root,
+  { baseRef, changeSet: changeSetOverride, stateRoot = root } = {}
+) {
   const base = baseRef ?? resolveBaseRef(root)
   const scopedNote = changeSetOverride ? ' (scoped change set)' : ''
   const note =
@@ -348,7 +482,7 @@ export function checkPostPreview(root, { baseRef, changeSet: changeSetOverride }
   const changeSet = changeSetOverride ?? computeChangeSet(root, { baseRef: base })
   if (changeSet.length === 0)
     return { status: 'SKIP', detail: `no preview-relevant changes${note}` }
-  const manifest = readManifest(root)
+  const manifest = readManifest(stateRoot)
   if (!manifest) {
     return {
       status: 'FAIL',
@@ -473,33 +607,45 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   console.log(`preview-relevant changes vs ${baseLabel} (${changeSet.length}):`)
   for (const p of changeSet) console.log('  ' + p)
 
-  console.log('\nbuilding production output...')
-  const build = spawnSync('npm', ['run', 'build'], { cwd: root, stdio: 'inherit' })
-  if (build.status !== 0) {
-    if (build.error) console.error('could not run npm: ' + build.error.message)
-    else console.error('build failed; fix it before previewing')
-    process.exit(build.status ?? 1)
+  // Private build directory for this run: concurrent sessions no longer
+  // overwrite or serve each other's dist/. Removed when the server stops.
+  const runDir = makeRunDir('preview')
+  const outDir = join(runDir, 'dist')
+  let server = null
+  const finish = (code) => {
+    if (server && server.exitCode === null && server.signalCode === null) server.kill('SIGTERM')
+    removeRunDir(runDir)
+    process.exit(code)
+  }
+  for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.once(signal, () => finish(130))
+
+  console.log(`\nbuilding production output into ${outDir} ...`)
+  const build = buildSite(root, outDir, { stdio: 'inherit' })
+  if (!build.ok) {
+    if (build.output) console.error(build.output.trim())
+    console.error('build failed; fix it before previewing')
+    finish(1)
   }
 
   const host = values.host ? localIp() || 'localhost' : 'localhost'
   const targets = reviewTargets(root, changeSet)
-  const reviewFile = join(root, '.preview', 'review.html')
-  mkdirSync(join(root, '.preview'), { recursive: true })
+  const reviewFile = join(runDir, 'review.html')
   writeFileSync(reviewFile, renderReviewPage(targets, { host, port: values.port }))
 
-  const serverArgs = ['astro', 'preview', '--port', values.port]
-  if (values.host) serverArgs.push('--host')
-  const server = spawn('npx', serverArgs, { cwd: root, stdio: 'inherit' })
+  server = spawn(astroBin(root), previewArgs(outDir, { port: values.port, host: values.host }), {
+    cwd: root,
+    stdio: 'inherit',
+  })
   server.on('error', (err) => {
     console.error('could not start the preview server: ' + err.message)
-    process.exit(1)
+    finish(1)
   })
 
   console.log(`\nreview page: ${reviewFile}`)
   console.log(`server: http://${host}:${values.port}/`)
   console.log('when everything looks right: npm run preview-posts -- --approve')
-  console.log('stop the server with Ctrl+C\n')
+  console.log('stop the server with Ctrl+C (the private build directory is removed then)\n')
   if (!values['no-open']) spawnSync('open', [reviewFile])
 
-  server.on('exit', (code) => process.exit(code ?? 0))
+  server.on('exit', (code) => finish(code ?? 0))
 }

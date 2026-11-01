@@ -272,3 +272,75 @@ test('resolveInternalRef maps directory URLs to index.html and blocks traversal'
   assert.equal(resolveInternalRef('/missing/', dist), false)
   assert.equal(resolveInternalRef('/../outside', dist), false)
 })
+
+test('runChecks gives every check one private run directory and removes it afterwards', async (t) => {
+  const { CHECKS, runChecks } = await import('./release-check.mjs')
+  const { existsSync, mkdirSync, writeFileSync } = await import('node:fs')
+  const { tmpdir } = await import('node:os')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const saved = CHECKS.splice(0, CHECKS.length)
+  t.after(() => CHECKS.splice(0, CHECKS.length, ...saved))
+  const seen = []
+  CHECKS.push(
+    { num: 6, name: 'probe build', run: (_root, ctx) => {
+      mkdirSync(ctx.outDir, { recursive: true })
+      writeFileSync(`${ctx.outDir}/index.html`, 'x')
+      seen.push(ctx.outDir)
+      return { status: 'PASS' }
+    } },
+    { num: 9, name: 'probe output', run: (_root, ctx) => {
+      seen.push(ctx.outDir)
+      return { status: existsSync(`${ctx.outDir}/index.html`) ? 'PASS' : 'FAIL' }
+    } }
+  )
+  const log = console.log
+  console.log = () => {}
+  let a
+  let b
+  try {
+    ;[a, b] = await Promise.all([runChecks(root), runChecks(root)])
+  } finally {
+    console.log = log
+  }
+  assert.deepEqual([...a, ...b].map((r) => r.status), ['PASS', 'PASS', 'PASS', 'PASS'])
+  assert.equal(new Set(seen).size, 2, 'each run has its own outDir')
+  for (const dir of seen) {
+    assert.ok(dir.startsWith(tmpdir()), dir)
+    assert.ok(!dir.startsWith(root), 'never inside the checkout')
+    assert.equal(existsSync(dir), false, 'removed after the run')
+  }
+  assert.equal(existsSync(`${root}/dist`), false)
+})
+
+test('check 1 can be skipped for ship worktrees and check 7 never passes R2_LIVE through', async () => {
+  const { CHECKS, imageTestEnv } = await import('./release-check.mjs')
+  const checkpoint = CHECKS.find((c) => c.num === 1)
+  assert.deepEqual(checkpoint.run('/nonexistent', { skipCheckpoint: 'ship worktree' }), {
+    status: 'SKIP',
+    detail: 'ship worktree',
+  })
+  const env = imageTestEnv({ R2_LIVE: '1', PATH: '/bin' })
+  assert.equal(env.R2_LIVE, undefined)
+  assert.equal(env.PATH, '/bin')
+})
+
+test('buildSite runs astro build and pagefind against the given outDir only', async (t) => {
+  const { buildSite } = await import('./build-output.mjs')
+  const { installFakeAstro } = await import('./test-helpers.mjs')
+  const { existsSync, readFileSync } = await import('node:fs')
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const calls = installFakeAstro(root)
+  const outDir = `${root}-out`
+  t.after(() => cleanup(outDir))
+  assert.equal(buildSite(root, outDir).ok, true)
+  assert.equal(readFileSync(calls, 'utf8'), `astro build --outDir ${outDir}\npagefind --site ${outDir}\n`)
+  assert.ok(existsSync(`${outDir}/index.html`))
+  assert.equal(existsSync(`${root}/dist`), false)
+  const missing = makeFixtureRepo()
+  t.after(() => cleanup(missing))
+  const res = buildSite(missing, outDir)
+  assert.equal(res.ok, false)
+  assert.match(res.output, /run npm ci/)
+})
