@@ -5,12 +5,25 @@
 /* ------------------------------------------------------------
    0. FONTS
    ------------------------------------------------------------ */
+/* Pretendard Variable, subset to Latin plus the symbols and CJK punctuation
+   the site uses (Hangul and kana removed; Chinese text uses system fonts).
+   Keep unicode-range in sync with the subset. Regenerate from the full
+   upstream font with fonttools (the name, notdef and glyph-name options keep
+   rendering identical to the full font):
+   pyftsubset PretendardVariable.woff2 --unicodes=<the range below>
+     --layout-features='*' --notdef-outline --glyph-names --name-IDs='*'
+     --name-languages='*' --name-legacy --flavor=woff2
+     --output-file=pretendard-variable.woff2 */
 @font-face {
   font-family: 'Pretendard Variable';
   src: url('../assets/fonts/pretendard-variable.woff2') format('woff2');
   font-weight: 45 920;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
+  unicode-range:
+    U+0000-017F, U+0259, U+0292, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+03A9, U+2000-206F,
+    U+20AC, U+2122, U+2160-216F, U+2190-2199, U+2212, U+2215, U+221A, U+2260, U+2264-2265,
+    U+22EF, U+25BD, U+2605, U+3000-303F, U+FEFF, U+FF00-FFEF, U+FFFD;
 }
 
 @font-face {
