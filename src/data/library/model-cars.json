@@ -2007,5 +2007,93 @@
       "framingEdit": "White margins expanded using the first generated output as the edit target.",
       "intermediateOutputSha256": "e3a08e0d8267b9983828a02435bf760470a727e0d67c24068d3caa0e37acafe9"
     }
+  },
+  {
+    "id": "local-m64x-ferrari-f40-marlboro-40-1-64",
+    "title": "Ferrari F40 LM · PILOT/ALDiX #40",
+    "brand": "M64X",
+    "scale": "1:64",
+    "listingUrl": null,
+    "ownershipPost": null,
+    "officialUrl": null,
+    "officialImage": null,
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/m64x-f40-pilot-40-ai-redraw-db28cea373fb.png",
+    "displaySourceImage": "https://i.ebayimg.com/images/g/hG0AAeSwTyVpsj3W/s-l1600.webp",
+    "displaySourceUrl": "https://www.ebay.com/itm/137120231596",
+    "imageStatus": "available",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on collector photographs of the matching red M64X F40 LM #40 PILOT/ALDiX miniature",
+    "verifiedOn": "2026-11-01",
+    "imageCrop": null,
+    "sourceFilename": null,
+    "imageTreatment": "Single three-quarter miniature illustration on white seamless background with soft contact shadow. All panels closed; case and base omitted. Generated illustration, not an original photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceDimensions": {
+      "width": 1600,
+      "height": 1600
+    },
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageSourceReferences": [
+      "https://www.ebay.com/itm/137120231596"
+    ],
+    "imageSourceAudit": "Owner order image identifies red #40 PILOT/ALDiX with silver five-spoke wheels. Six matching collector photographs inspected. This corrects the rejected red/white Marlboro image. Manufacturer website remains unverified. Fine lettering and geometry are generated interpretations.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "date": "2026-11-01",
+      "referenceImage": "https://i.ebayimg.com/images/g/hG0AAeSwTyVpsj3W/s-l1600.webp",
+      "referenceSha256": "6f768537a6522c1d32236a7a16ee034c8fb5e0fb208bdb4619fa443aaec0f7b7",
+      "outputSha256": "db28cea373fba7a0f8c2605634b5fc03acfe2268f71c8c9165935e94e7d208e1",
+      "intermediateOutputSha256": "5c198724b765343e65c39d2c36996271fb1e05f846ab562eb9d5359ec410db4c",
+      "framingEdit": "Expanded white studio margins while preserving the red #40 model."
+    }
+  },
+  {
+    "id": "MGT01051",
+    "title": "Abarth 595 · LB-WORKS × Abas Works IZTK",
+    "brand": "MINI GT",
+    "scale": "1:64",
+    "listingUrl": null,
+    "ownershipPost": null,
+    "officialUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1782",
+    "officialImage": "https://minigt.tsm-models.com/upload/picfile/2025/08/20250823032841236.jpg",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/mgt01051-ai-redraw-3111fa4de9f3.png",
+    "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile/2025/08/20250823032841236.jpg",
+    "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1782",
+    "imageStatus": "available",
+    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the exact manufacturer reference",
+    "verifiedOn": "2026-10-31",
+    "imageCrop": null,
+    "sourceFilename": null,
+    "imageTreatment": "Single three-quarter miniature illustration on white seamless background with soft contact shadow. All panels closed; no base or packaging. Generated illustration, not an original photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceDimensions": {
+      "width": 900,
+      "height": 600
+    },
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageSourceReferences": [
+      "https://minigt.tsm-models.com/index.php?action=product-detail&id=1782"
+    ],
+    "imageSourceAudit": "Exact manufacturer product page and all five gallery images inspected. Released-model photograph selected over prototype images. Fine lettering and geometry are generated interpretations.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "date": "2026-10-31",
+      "referenceImage": "https://minigt.tsm-models.com/upload/picfile/2025/08/20250823032841236.jpg",
+      "referenceSha256": "b47ba1ad61261768fe6b533d595ebc130243b4fe704246b31a1cf09df0e16d37",
+      "outputSha256": "3111fa4de9f3896d788477abc64347f8e6cd8296fce1184d93be4e67a6f94e29",
+      "intermediateOutputSha256": "def93686c941d4b402be6d6d5d23cb59294db4c63b079ffc7abd87972908ccbc",
+      "framingEdit": "Expanded margins and corrected windshield and bumper lettering against reference."
+    }
   }
 ]
