@@ -48,7 +48,8 @@ function git(args, { cwd, allowFail = false } = {}) {
   } catch (err) {
     if (allowFail) return null
     throw new Error(
-      `git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`
+      `git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`,
+      { cause: err }
     )
   }
 }

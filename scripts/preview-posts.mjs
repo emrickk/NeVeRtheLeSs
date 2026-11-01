@@ -150,7 +150,8 @@ function git(args, { cwd, allowFail = false } = {}) {
   } catch (err) {
     if (allowFail) return null
     throw new Error(
-      `git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`
+      `git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`,
+      { cause: err }
     )
   }
 }
@@ -365,7 +366,8 @@ export function withManifestLock(root, fn, { timeoutMs = LOCK_TIMEOUT_MS } = {})
       if (Date.now() > deadline) {
         throw new Error(
           `.preview/manifest.lock is held by another process (over ${timeoutMs / 1000}s); ` +
-            'if no preview-posts or ship run is active, delete that file and retry'
+            'if no preview-posts or ship run is active, delete that file and retry',
+          { cause: err }
         )
       }
       sleepSync(10 + Math.floor(Math.random() * 30))

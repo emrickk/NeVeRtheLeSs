@@ -26,7 +26,7 @@ function git(args, { cwd, allowFail = false } = {}) {
     }).replace(/\n$/, '')
   } catch (err) {
     if (allowFail) return null
-    throw new Error(`git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`)
+    throw new Error(`git ${args.join(' ')} failed: ${err.stderr ? String(err.stderr).trim() : err.message}`, { cause: err })
   }
 }
 

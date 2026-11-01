@@ -1,5 +1,6 @@
 // @ts-check
 
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import expressiveCode from 'astro-expressive-code';
@@ -49,21 +50,28 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always',
   },
+  // Astro 7 changed the default to 'jsx', which strips whitespace between
+  // inline elements. Keep the HTML-aware compression the site was built with.
+  compressHTML: true,
 
   markdown: {
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          properties: { ariaHidden: true, tabIndex: -1, class: 'heading-anchor' },
-          content: { type: 'text', value: '#' },
-        },
+    // Astro 7 defaults to the Satteri processor, which does not run rehype
+    // plugins. The unified (remark/rehype) pipeline keeps the plugins below.
+    processor: unified({
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'append',
+            properties: { ariaHidden: true, tabIndex: -1, class: 'heading-anchor' },
+            content: { type: 'text', value: '#' },
+          },
+        ],
+        rehypeImageGallery,
+        // Keep last: encrypts the fully processed tree of protected posts.
+        [rehypeProtectedContent, { password: postPassword }],
       ],
-      rehypeImageGallery,
-      // Keep last: encrypts the fully processed tree of protected posts.
-      [rehypeProtectedContent, { password: postPassword }],
-    ],
+    }),
   },
 });
