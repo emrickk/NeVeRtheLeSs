@@ -16,13 +16,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  # Runs every check, builds once, and uploads that build. Deploy only runs
+  # after this job passes. Keep the check steps in sync with ci.yml.
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: npm
       - uses: actions/configure-pages@v6
       - name: Configure Astro for GitHub Pages
@@ -30,17 +32,26 @@ jobs:
         # from astro-theme-config.ts and deploy at the domain root (empty base).
         run: echo "ASTRO_SITE_BASE=" >> "$GITHUB_ENV"
       - run: npm ci
+      - run: npm run check
+      - run: npm run lint
+      - run: npm run lint:css
+      - run: npm run test:images
+      - run: npm run test:rehype
+      - run: npm run test:editor
+      - run: npm run test:safety
+      - run: node --test scripts/check-built-links.test.mjs
       - run: npm run build
         env:
           # Encrypts posts with `protected: true` frontmatter; the build
           # fails if such a post exists and the secret is unset.
           POST_PASSWORD: ${{ secrets.POST_PASSWORD }}
+      - run: npm run check:links
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
   deploy:
-    needs: build
+    needs: verify
     runs-on: ubuntu-latest
     environment:
       name: github-pages
