@@ -20,12 +20,13 @@ For background variants, generate the complete model first, then use that accept
 1. Update the owner's canonical record store before preparing the blog payload. Retain original source URLs, source filenames, status facts and historical evidence. Track the destination as prepared until deployed and verified.
 2. Save generated assets outside the repository and upload them through `scripts/images/config.mjs` and `scripts/images/r2.mjs`. Use immutable keys such as `library/model-cars/<id>-ai-redraw-<sha256-prefix>.png`. Preserve alpha for transparent variants. Never commit credentials, generated binaries or private record evidence.
 3. Set `imageSourceType: ai-generated`, `imagePresentation: generated-illustration`, `imageSourceStatus: generated`, the actual dimensions and generation provenance. Set `imageCrop` to null when the generated frame already supplies the intended composition. Keep the original reference separately from `displayImage`.
-4. For a redraw based on an owner photo, retain its `sourceFilename` and use the existing original-photo CDN URL as its source-image link when no external source page exists. Do not mislabel a retailer reference as the actual generation input.
-5. Compare the before and after payloads. Only selected IDs and image fields should change. Preserve unrelated assets, ordering, facts and presentation. Do not expose purchase or fulfillment states in cards.
+4. Run `npm run library:car-variants -- --only <id>` for every changed `displayImage`, then `npm run library:car-variants -- --verify`.
+5. For a redraw based on an owner photo, retain its `sourceFilename` and use the existing original-photo CDN URL as its source-image link when no external source page exists. Do not mislabel a retailer reference as the actual generation input.
+6. Compare the before and after payloads. Only selected IDs and image fields should change. Preserve unrelated assets, ordering, facts and presentation. Do not expose purchase or fulfillment states in cards; that status lives only in Life Records, never in `model-cars.json`.
 
 ## Review and publication
 
-Build the production site and inspect the actual `/library/#cars` page. Decode all gallery images before captures so lazy loading does not create misleading blank cards. Check every affected card on desktop and mobile, both languages and light/dark themes. Let theme transitions finish before capturing. Inspect full images as well as actual card captures; a successful build or screenshot command is not visual review.
+Build the production site and inspect the actual `/library/cars/` page. Decode all gallery images before captures so lazy loading does not create misleading blank cards. Check every affected card on desktop and mobile, both languages and light/dark themes. Let theme transitions finish before capturing. Inspect full images as well as actual card captures; a successful build or screenshot command is not visual review.
 
 Show the finished gallery first. Keep the source receipts, prompts, diffs and captures available without making the owner read a separate report. Once the owner approves that exact batch, record preview approval, run the full release checklist and browser smoke checks, commit explicit paths, push, wait for deployment, and verify the live image URLs and rendered page. Update destination receipts only after live verification.
 

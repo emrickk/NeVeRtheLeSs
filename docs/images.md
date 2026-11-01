@@ -19,7 +19,7 @@
 5. **Connect the custom domain** to the bucket: R2 -> `anping-blog-images` -> Settings -> Custom Domains -> add `cdn.theneverless.com` (Cloudflare auto-creates the DNS record).
 6. **Create an API token:** R2 -> Manage API Tokens -> Object Read & Write, scoped to `anping-blog-images`. Copy the Account ID, Access Key ID, Secret.
 7. **Local creds:** `cp .env.example .env.local` and fill `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`. Optionally set `NAS_ARCHIVE_PATH` to your mounted SMB share (e.g. `/Volumes/photo/blog-originals`).
-8. **Smoke test:** `npm run test:images`. The R2 live test should now run (not skip).
+8. **Smoke test:** `R2_LIVE=1 npm run test:images`. The R2 live test runs only with `R2_LIVE=1` because it writes and deletes a `_smoketest/` object in the production bucket; without it the test skips.
 
 ## Daily use
 
@@ -60,6 +60,20 @@ Minimum spec for a new cover:
   home-grid slot; this exact bug was fixed in July 2026 by regenerating
   two covers and making the cards' `sizes` attributes account for the
   cover crop (see `src/components/FeaturedPostGrid.astro`).
+
+### Model-car variants
+
+The cars page (`/library/cars/`) serves responsive 480w and 800w WebP
+variants of each car's `displayImage` through `srcset`; `displayImage` stays
+the full-size copy. `npm run library:car-variants` encodes them (same frame,
+no crop), uploads them to R2 under content-hashed keys next to the original
+in `library/model-cars/`, and records them as `displayImageVariants` in
+`src/data/library/model-cars.json`. It never overwrites an existing R2 object
+(the upload is conditional) and skips cars whose variants already match their
+current image. Run it after every new or replaced car image (`-- --only <id>`
+to limit it, `-- --dry-run` to encode without uploading), then
+`npm run library:car-variants -- --verify` to check every recorded variant on
+the CDN. Source: `scripts/library/car-variants.mjs`.
 
 ## One-time migration of existing images
 
