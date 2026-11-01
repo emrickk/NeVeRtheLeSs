@@ -75,9 +75,9 @@
     "typescript-eslint": "^8.46.3"
   },
   "overrides": {
-    "@typescript-eslint/scope-manager": "8.46.3",
-    "@typescript-eslint/types": "8.46.3",
-    "@typescript-eslint/visitor-keys": "8.46.3",
+    "@typescript-eslint/scope-manager": "8.72.1",
+    "@typescript-eslint/types": "8.72.1",
+    "@typescript-eslint/visitor-keys": "8.72.1",
     "yaml-language-server": {
       "yaml": "2.8.4"
     }
