@@ -198,7 +198,7 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
     {
       featuredPosts.length > 0 && (
         <section class="featured-section">
-          {featuredPosts.map((post) => {
+          {featuredPosts.map((post, index) => {
             const text = resolveLangText(post.data, tmap);
 
             return (
@@ -241,7 +241,7 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
                       widths={[400, 720, 960, 1280, 1600]}
                       sizes={featuredThumbSizes(post.data.heroImage)}
                       quality={88}
-                      loading="lazy"
+                      loading={index === 0 ? 'eager' : 'lazy'}
                     />
                   </div>
                 )}

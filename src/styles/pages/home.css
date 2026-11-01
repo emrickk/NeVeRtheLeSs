@@ -439,12 +439,24 @@
     max-width: 20rem;
   }
 
+  /* Tighter gaps around the featured post on phones. */
+  .featured-section {
+    margin-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .posts-section {
+    padding-top: var(--space-8);
+  }
+
   .featured-card {
     grid-template-columns: 1fr;
   }
 
+  /* Phones: the featured image becomes a 3:2 thumbnail above the title. */
   .featured-thumb-wrap {
-    display: none;
+    order: -1;
+    aspect-ratio: 3 / 2;
   }
 
   .hero-divider {
