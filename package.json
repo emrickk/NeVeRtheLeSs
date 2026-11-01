@@ -32,6 +32,7 @@
     "preview-posts": "node scripts/preview-posts.mjs",
     "astro": "astro",
     "check": "astro check",
+    "check:links": "node scripts/check-built-links.mjs",
     "format": "prettier --write \"src/**/*.{astro,ts,css,md,mdx}\"",
     "lint": "eslint \"src/**/*.{js,ts,astro}\" \"*.mjs\" \"scripts/**/*.mjs\" \"scripts/post-editor/ui/*.js\"",
     "lint:css": "stylelint \"src/**/*.{css,astro}\"",
