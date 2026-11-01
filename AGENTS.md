@@ -11,8 +11,10 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 - This file is the canonical repository entry point. `CLAUDE.md` refers here; maintained skills live in `.agents/skills/`, with `.claude/skills/` aliases. Edit the canonical files, not separate copies.
 - Read [completion criteria](docs/completion-criteria.md) for page, collection, image, and publishing work. Match the current accepted result and all applicable criteria together before calling a revision ready.
 - For writing, critique, dictated edits, or translation, read [.agents/skills/writing-posts/SKILL.md](.agents/skills/writing-posts/SKILL.md). For image-pipeline mechanics, read [docs/images.md](docs/images.md).
-- For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
-- **Official-source checks are mandatory for every new or replaced model-car image, including AI generation inputs.** Read the exact manufacturer's official website and full product gallery, inspect the actual photographs, and retain the check before selecting a reference. A convenient retailer image, a search result, or a failed request does not satisfy this gate. See the source requirements in [completion criteria](docs/completion-criteria.md).
+- **Model-car work only** (gallery records, car images, redraws): read the car docs below only for that work; posts and other tasks skip them.
+  - Gallery criteria (identity, source, finished card, accepted choices): [docs/model-car-criteria.md](docs/model-car-criteria.md).
+  - For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
+  - **Official-source checks are mandatory for every new or replaced model-car image, including AI generation inputs.** Read the exact manufacturer's official website and full product gallery, inspect the actual photographs, and retain the check before selecting a reference. A convenient retailer image, a search result, or a failed request does not satisfy this gate. See the source requirements in [model-car criteria](docs/model-car-criteria.md#identity-and-source).
 - The owner's latest explicit direction takes precedence. A correction changes its stated scope; carry forward other accepted choices. A treatment approved for one image is not a general treatment policy.
 - The website workspace's `../drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
 
@@ -63,7 +65,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 
 ### Completion and owner review
 
-Follow [docs/completion-criteria.md](docs/completion-criteria.md), including the accepted collection, source, image, and book-cover decisions. A known unmet requirement stays unfinished unless the owner accepts that specific exception. For car-page changes, show the finished page first; keep source and comparison evidence available without making the owner work through another report. Requested audits still use HTML reports with relevant actual imagery.
+Follow [docs/completion-criteria.md](docs/completion-criteria.md), including the accepted collection, source, image, and book-cover decisions (car decisions are in [docs/model-car-criteria.md](docs/model-car-criteria.md)). A known unmet requirement stays unfinished unless the owner accepts that specific exception. For car-page changes, show the finished page first; keep source and comparison evidence available without making the owner work through another report. Requested audits still use HTML reports with relevant actual imagery.
 
 1. Stage explicit paths only. Never `git add -A` or `git add .`.
 2. No em-dashes in user-facing copy: posts, docs, console messages, commit messages. Use commas, colons, or parentheses.
