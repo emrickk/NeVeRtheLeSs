@@ -11,6 +11,7 @@ import {
   computeChangeSet,
   hashChangeSet,
   isDraftPost,
+  libraryReviewSections,
   manifestDiff,
   parseFrontmatterScalars,
   primaryPostPath,
@@ -395,9 +396,9 @@ test('car data changes put the actual car view in the generated review links', (
   write(root, path, '[{"id":"new-car"}]\n')
 
   const targets = reviewTargets(root, computeChangeSet(root, { baseRef: 'HEAD' }))
-  assert.deepEqual(targets, ['/', '/library/', '/library/#cars', `/posts/${REPRESENTATIVE_POST}/`])
+  assert.deepEqual(targets, ['/', '/library/', '/library/cars/', `/posts/${REPRESENTATIVE_POST}/`])
   const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
-  assert.ok(html.includes('href="http://localhost:4322/library/#cars"'))
+  assert.ok(html.includes('href="http://localhost:4322/library/cars/"'))
 })
 
 test('reviewTargets: collection data links its own section and the library overview', (t) => {
@@ -412,7 +413,7 @@ test('reviewTargets: collection data links its own section and the library overv
     assert.deepEqual(reviewTargets(root, [path]), [
       '/',
       '/library/',
-      `/library/#${section}`,
+      `/library/${section}/`,
       `/posts/${REPRESENTATIVE_POST}/`,
     ])
   }
@@ -427,27 +428,33 @@ test('hotel iframe content changes include the library hotels view for review', 
   assert.deepEqual(targets, [
     '/',
     '/library/',
-    '/library/#hotels',
+    '/library/hotels/',
     `/posts/${REPRESENTATIVE_POST}/`,
   ])
   const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
-  assert.ok(html.includes('href="http://localhost:4322/library/#hotels"'))
+  assert.ok(html.includes('href="http://localhost:4322/library/hotels/"'))
 })
 
-test('reviewTargets: shared library layout and styles include every tab once', (t) => {
+test('reviewTargets: shared library layout and styles include every section page once', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
   const expected = [
     '/',
     '/library/',
-    '/library/#books',
-    '/library/#cars',
-    '/library/#games',
-    '/library/#hotels',
-    '/library/#movies',
+    '/library/books/',
+    '/library/cars/',
+    '/library/games/',
+    '/library/hotels/',
+    '/library/movies/',
     `/posts/${REPRESENTATIVE_POST}/`,
   ]
-  const paths = ['src/pages/library.astro', 'src/styles/pages/library.css']
+  const paths = [
+    'src/pages/library.astro',
+    'src/pages/library/[section].astro',
+    'src/components/library/LibraryPage.astro',
+    'src/components/library/sections.ts',
+    'src/styles/pages/library.css',
+  ]
   for (const path of paths) assert.deepEqual(reviewTargets(root, [path]), expected)
   assert.deepEqual(
     reviewTargets(root, [
@@ -457,6 +464,26 @@ test('reviewTargets: shared library layout and styles include every tab once', (
     ]),
     expected
   )
+})
+
+test('libraryReviewSections: only library files trigger library section review', () => {
+  assert.deepEqual(libraryReviewSections('src/pages/library/[section].astro'), [
+    'movies',
+    'books',
+    'games',
+    'cars',
+    'hotels',
+  ])
+  assert.deepEqual(libraryReviewSections('src/styles/pages/library/cars.css').length, 5)
+  for (const path of [
+    'src/pages/library-old.astro',
+    'src/components/LangText.astro',
+    'src/styles/pages/home.css',
+    'src/styles/pages/library.css.bak',
+    'src/pages/libraryish/index.astro',
+  ]) {
+    assert.deepEqual(libraryReviewSections(path), [], path)
+  }
 })
 
 test('reviewTargets: note changes map to the notes timeline', (t) => {

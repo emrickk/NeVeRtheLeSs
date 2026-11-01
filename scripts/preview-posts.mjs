@@ -44,9 +44,15 @@ const LIBRARY_DATA_SECTIONS = {
   'src/data/library/games.json': 'games',
 }
 
-function libraryReviewSections(path) {
-  if (path === 'src/pages/library.astro' || path === 'src/styles/pages/library.css')
-    return LIBRARY_SECTIONS
+// The overview (src/pages/library.astro), the section route
+// (src/pages/library/[section].astro), the shared LibraryPage component and
+// section list (src/components/library/), and the library styles render
+// every section page.
+const LIBRARY_SHARED_RE =
+  /^src\/pages\/library(?:\.astro$|\/)|^src\/components\/library\/|^src\/styles\/pages\/library(?:\.css$|\/)/
+
+export function libraryReviewSections(path) {
+  if (LIBRARY_SHARED_RE.test(path)) return LIBRARY_SECTIONS
   if (path === 'public/interactive/hyatt-tier-wall/index.html') return ['hotels']
   if (/^src\/data\/library\/movies[^/]*\.json$/.test(path)) return ['movies']
   const section = LIBRARY_DATA_SECTIONS[path]
@@ -268,8 +274,8 @@ export function changedDraftTargets(root, { baseRef = resolveBaseRef(root) } = {
 // sibling still renders on the surviving primary page. Notes have no per-note
 // page, so any note change, including a deletion, reviews the /notes/
 // timeline. Site-wide changes get the homepage plus one image-heavy exemplar.
-// Library changes also need the affected collection views, which those generic
-// targets cannot show. Sorted and deduplicated, '/' first.
+// Library changes also need the affected section pages (/library/<section>/),
+// which those generic targets cannot show. Sorted and deduplicated, '/' first.
 // Route slug for a post file: the frontmatter `slug` when the primary
 // declares one (the glob loader uses data.slug as the entry id), otherwise
 // the filename shorthand. Deleted files fall back to the filename.
@@ -302,7 +308,7 @@ export function reviewTargets(root, changeSet) {
       const sections = libraryReviewSections(path)
       if (sections.length) {
         targets.add('/library/')
-        for (const section of sections) targets.add(`/library/#${section}`)
+        for (const section of sections) targets.add(`/library/${section}/`)
       }
     }
   }

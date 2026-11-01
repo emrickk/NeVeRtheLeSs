@@ -350,6 +350,27 @@ test('check 1 can be skipped for ship worktrees and check 7 never passes R2_LIVE
   assert.equal(env.PATH, '/bin')
 })
 
+test('check 7 runs the image and library test suites and fails on either', async (t) => {
+  const { CHECKS } = await import('./release-check.mjs')
+  const check = CHECKS.find((c) => c.num === 7)
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const pkg = (library) =>
+    JSON.stringify({
+      name: 'fixture',
+      scripts: { 'test:images': 'node -e ""', 'test:library': `node -e "process.exit(${library})"` },
+    })
+  write(root, 'package.json', pkg(0))
+  const pass = check.run(root, {})
+  assert.equal(pass.status, 'PASS')
+  assert.match(pass.detail, /npm run test:images; npm run test:library/)
+  write(root, 'package.json', pkg(1))
+  const fail = check.run(root, {})
+  assert.equal(fail.status, 'FAIL')
+  assert.match(fail.detail, /npm run test:library failed/)
+  assert.doesNotMatch(fail.detail, /test:images failed/)
+})
+
 test('buildSite runs astro build and pagefind against the given outDir only', async (t) => {
   const { buildSite } = await import('./build-output.mjs')
   const { installFakeAstro } = await import('./test-helpers.mjs')
