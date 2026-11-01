@@ -5,11 +5,13 @@ import { rmSync } from 'node:fs'
 import { join } from 'node:path'
 import test from 'node:test'
 import {
+  changedDraftTargets,
   checkPostPreview,
   classifyPath,
   computeChangeSet,
   hashChangeSet,
   isDraftPost,
+  libraryReviewSections,
   manifestDiff,
   parseFrontmatterScalars,
   primaryPostPath,
@@ -155,6 +157,37 @@ test('computeChangeSet: a published post flipped to draft stays in the change se
   const changeSet = computeChangeSet(root, { baseRef: 'HEAD' })
   assert.deepEqual(changeSet, ['src/content/posts/live.md'])
   assert.deepEqual(reviewTargets(root, changeSet), ['/'])
+})
+
+test('changedDraftTargets: changed drafts get their own review URL, published flips do not', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  write(root, 'src/content/posts/live.md', FM + 'body\n')
+  write(root, 'src/content/posts/old-draft.md', '---\ntitle: T\ndraft: true\n---\nv1\n')
+  run(root, ['add', 'src/content/posts/live.md', 'src/content/posts/old-draft.md'])
+  run(root, ['commit', '-q', '-m', 'base'])
+  // edited draft, brand-new draft with a custom slug, a draft sibling, and a
+  // published post flipped to draft (that one stays in the change set)
+  write(root, 'src/content/posts/old-draft.md', '---\ntitle: T\ndraft: true\n---\nv2\n')
+  write(root, 'src/content/posts/new-one.md', "---\ntitle: T\nslug: 'fresh'\ndraft: true\n---\nv1\n")
+  write(root, 'src/content/posts/new-one.en.md', 'english\n')
+  write(root, 'src/content/posts/live.md', '---\ntitle: T\ndraft: true\n---\nbody\n')
+  assert.deepEqual(changedDraftTargets(root, { baseRef: 'HEAD' }), [
+    '/posts/fresh/',
+    '/posts/old-draft/',
+  ])
+  assert.deepEqual(computeChangeSet(root, { baseRef: 'HEAD' }), ['src/content/posts/live.md'])
+})
+
+test('renderReviewPage lists drafts separately and says when there is nothing to approve', () => {
+  const both = renderReviewPage(['/posts/a/'], { host: 'localhost', port: '4322', drafts: ['/posts/wip/'] })
+  assert.match(both, /Drafts \(render only in this review build, never deployed\)/)
+  assert.ok(both.includes('href="http://localhost:4322/posts/wip/"'))
+  assert.match(both, /npm run preview-posts -- --approve/)
+  const draftsOnly = renderReviewPage([], { host: 'localhost', port: '4322', drafts: ['/posts/wip/'] })
+  assert.match(draftsOnly, /nothing to approve/)
+  assert.doesNotMatch(draftsOnly, /--approve/)
+  assert.doesNotMatch(renderReviewPage(['/'], { host: 'localhost', port: '4322' }), /Drafts/)
 })
 
 // Deploys run npm ci && npm run build, so npm script edits other than
@@ -363,9 +396,9 @@ test('car data changes put the actual car view in the generated review links', (
   write(root, path, '[{"id":"new-car"}]\n')
 
   const targets = reviewTargets(root, computeChangeSet(root, { baseRef: 'HEAD' }))
-  assert.deepEqual(targets, ['/', '/library/', '/library/#cars', `/posts/${REPRESENTATIVE_POST}/`])
+  assert.deepEqual(targets, ['/', '/library/', '/library/cars/', `/posts/${REPRESENTATIVE_POST}/`])
   const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
-  assert.ok(html.includes('href="http://localhost:4322/library/#cars"'))
+  assert.ok(html.includes('href="http://localhost:4322/library/cars/"'))
 })
 
 test('reviewTargets: collection data links its own section and the library overview', (t) => {
@@ -380,7 +413,7 @@ test('reviewTargets: collection data links its own section and the library overv
     assert.deepEqual(reviewTargets(root, [path]), [
       '/',
       '/library/',
-      `/library/#${section}`,
+      `/library/${section}/`,
       `/posts/${REPRESENTATIVE_POST}/`,
     ])
   }
@@ -395,27 +428,33 @@ test('hotel iframe content changes include the library hotels view for review', 
   assert.deepEqual(targets, [
     '/',
     '/library/',
-    '/library/#hotels',
+    '/library/hotels/',
     `/posts/${REPRESENTATIVE_POST}/`,
   ])
   const html = renderReviewPage(targets, { host: 'localhost', port: '4322' })
-  assert.ok(html.includes('href="http://localhost:4322/library/#hotels"'))
+  assert.ok(html.includes('href="http://localhost:4322/library/hotels/"'))
 })
 
-test('reviewTargets: shared library layout and styles include every tab once', (t) => {
+test('reviewTargets: shared library layout and styles include every section page once', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
   const expected = [
     '/',
     '/library/',
-    '/library/#books',
-    '/library/#cars',
-    '/library/#games',
-    '/library/#hotels',
-    '/library/#movies',
+    '/library/books/',
+    '/library/cars/',
+    '/library/games/',
+    '/library/hotels/',
+    '/library/movies/',
     `/posts/${REPRESENTATIVE_POST}/`,
   ]
-  const paths = ['src/pages/library.astro', 'src/styles/pages/library.css']
+  const paths = [
+    'src/pages/library.astro',
+    'src/pages/library/[section].astro',
+    'src/components/library/LibraryPage.astro',
+    'src/components/library/sections.ts',
+    'src/styles/pages/library.css',
+  ]
   for (const path of paths) assert.deepEqual(reviewTargets(root, [path]), expected)
   assert.deepEqual(
     reviewTargets(root, [
@@ -425,6 +464,26 @@ test('reviewTargets: shared library layout and styles include every tab once', (
     ]),
     expected
   )
+})
+
+test('libraryReviewSections: only library files trigger library section review', () => {
+  assert.deepEqual(libraryReviewSections('src/pages/library/[section].astro'), [
+    'movies',
+    'books',
+    'games',
+    'cars',
+    'hotels',
+  ])
+  assert.deepEqual(libraryReviewSections('src/styles/pages/library/cars.css').length, 5)
+  for (const path of [
+    'src/pages/library-old.astro',
+    'src/components/LangText.astro',
+    'src/styles/pages/home.css',
+    'src/styles/pages/library.css.bak',
+    'src/pages/libraryish/index.astro',
+  ]) {
+    assert.deepEqual(libraryReviewSections(path), [], path)
+  }
 })
 
 test('reviewTargets: note changes map to the notes timeline', (t) => {
@@ -816,6 +875,8 @@ test('cli: preview-posts builds into its own run directory and removes it on Ctr
   assert.match(log, new RegExp(`astro build --outDir ${outDir}`))
   assert.match(log, new RegExp(`pagefind --site ${outDir}`))
   assert.match(log, new RegExp(`astro preview --outDir ${outDir} --port ${port}`))
+  // review build: draft posts render at their own URLs
+  assert.equal(readFileSync(join(dirname(calls), 'env.log'), 'utf8'), 'SHOW_DRAFTS=1\n')
   assert.equal(existsSync(join(root, 'dist')), false)
   assert.equal(existsSync(join(root, '.preview', 'review.html')), false)
   child.kill('SIGINT')

@@ -1,7 +1,10 @@
 ---
 // Language switch: pick EN or 中文. Mirrors ThemeToggle's data-attr +
 // localStorage pattern. Sets `data-lang` on <html>; CSS (lang.css) shows the
-// active language. English is the default when no preference is stored.
+// active language, and the language script in BaseHead keeps <html lang> and
+// the document title in step. English is the default when no preference is
+// stored. When the URL carries a ?lang= preselection, a click rewrites it to
+// the new choice so a reload or a copied link shows what the reader sees.
 ---
 
 <div class="lang-toggle" role="group" aria-label="Language / 语言">
@@ -39,6 +42,15 @@
             localStorage.setItem('lang', lang);
           } catch {
             /* private mode: persistence unavailable */
+          }
+          try {
+            const url = new URL(location.href);
+            if (url.searchParams.has('lang')) {
+              url.searchParams.set('lang', lang);
+              history.replaceState(history.state, '', url);
+            }
+          } catch {
+            /* URL or History API unavailable: the toggle still works */
           }
           sync();
         });

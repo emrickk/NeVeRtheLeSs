@@ -178,7 +178,7 @@
 }
 
 /* Text-only featured card (no heroImage): drop the thumb column so the copy
-   fills the row — no empty gray rectangle. */
+   fills the row, no empty gray rectangle. */
 .featured-card--text {
   grid-template-columns: 1fr;
 }
@@ -314,7 +314,7 @@
   transform: scale(1.02);
 }
 
-/* ── Grid (asymmetric — restored hovers) ──── */
+/* ── Grid (asymmetric, restored hovers) ──── */
 .posts-section {
   padding-top: var(--space-16);
 }

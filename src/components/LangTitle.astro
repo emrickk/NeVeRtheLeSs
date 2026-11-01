@@ -1,7 +1,10 @@
 ---
 // Renders a post title in both languages; CSS shows the active one.
 // The original-language span is tagged `data-orig` so `auto` mode can show it.
+// Each span's `lang` names the language of the text it actually holds: a
+// missing translation falls back to the original-language text and tag.
 /* global HTMLElementTagNameMap */
+import { htmlLangFor } from '../utils/translations';
 interface Props {
   zh?: string;
   en?: string;
@@ -15,9 +18,14 @@ interface Props {
 const { zh, en, orig, fallback, tag: Tag = 'span', class: cls, meta } = Astro.props;
 const zhText = zh ?? fallback;
 const enText = en ?? fallback;
+const zhLang = htmlLangFor(zh === undefined ? orig : 'zh');
+const enLang = htmlLangFor(en === undefined ? orig : 'en');
 ---
 
 <Tag class:list={['lang-title', cls]} data-pagefind-meta={meta ? `title:${meta}` : undefined}>
-  <span class="lang lang-zh" data-orig={orig === 'zh' ? '' : undefined}>{zhText}</span
-  ><span class="lang lang-en" data-orig={orig === 'en' ? '' : undefined}>{enText}</span>
+  <span class="lang lang-zh" lang={zhLang} data-orig={orig === 'zh' ? '' : undefined}
+    >{zhText}</span
+  ><span class="lang lang-en" lang={enLang} data-orig={orig === 'en' ? '' : undefined}
+    >{enText}</span
+  >
 </Tag>

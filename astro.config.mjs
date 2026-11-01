@@ -23,6 +23,12 @@ const postPassword =
   process.env.POST_PASSWORD ||
   loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '').POST_PASSWORD;
 
+// SHOW_DRAFTS=1 renders draft posts for local review builds (preview-posts,
+// ship); see src/utils/drafts.ts. A deploy build must never carry it.
+if (process.env.SHOW_DRAFTS === '1' && process.env.CI) {
+  throw new Error('SHOW_DRAFTS=1 is for local review builds only; unset it for CI and deploy builds');
+}
+
 const configuredSite = process.env.ASTRO_SITE_URL || config.site.url;
 const configuredBaseValue = process.env.ASTRO_SITE_BASE ?? config.site.base;
 const configuredBase =

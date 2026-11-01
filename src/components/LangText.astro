@@ -8,4 +8,7 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<span class="lang lang-zh" data-orig>{text.zh}</span><span class="lang lang-en">{text.en}</span>
+<span class="lang lang-zh" lang="zh-CN" data-orig>{text.zh}</span><span
+  class="lang lang-en"
+  lang="en">{text.en}</span
+>

@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist --force-language zh-cn",
     "preview": "astro preview",
     "preview-posts": "node scripts/preview-posts.mjs",
     "astro": "astro",
@@ -43,6 +43,7 @@
     "test:rehype": "node --test \"scripts/rehype/*.test.mjs\"",
     "test:editor": "node --test scripts/post-editor/api.test.mjs",
     "test:library": "node --test \"scripts/library/*.test.mjs\"",
+    "test:drafts": "node --test scripts/drafts-build.test.mjs",
     "checkpoint": "node scripts/checkpoint.mjs",
     "release-check": "node scripts/release-check.mjs",
     "ship": "node scripts/ship.mjs",

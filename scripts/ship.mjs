@@ -2,7 +2,8 @@
 // production preview, owner approval, release checks, commit, push, and a
 // deploy watch. Two entry points share this file: the owner runs it
 // interactively, and the ship-posts skill drives it with --preflight, then
-// --review (serves the exact build that would ship), then --yes --digest
+// --review (serves the build that would ship, plus noindex draft pages
+// marked Draft that production never renders), then --yes --digest
 // after the owner approves in chat.
 //
 // The shared checkout is usually dirty (several sessions work in it), so ship
@@ -717,8 +718,8 @@ export async function main(values, deps = {}) {
     console.log(`temporary worktree: ${ws.tree}`)
     if (!values.yes) {
       const outDir = join(ws.dir, 'dist')
-      console.log('\nbuilding production output in the temporary worktree...')
-      const built = build(ws.tree, outDir, { stdio: 'inherit' })
+      console.log('\nbuilding production output plus draft pages in the temporary worktree...')
+      const built = build(ws.tree, outDir, { stdio: 'inherit', showDrafts: true })
       if (!built.ok) {
         if (built.output) console.error(built.output.trim())
         console.error('build failed; fix it before shipping')
@@ -750,7 +751,8 @@ export async function main(values, deps = {}) {
           ...(include || []).map((p) => `--include ${p}`),
         ].join(' ')
         console.log(
-          '\nthis is the exact build that would ship. After the owner approves it, stop this ' +
+          '\nthis is the build that would ship (draft posts, marked Draft, render only here). ' +
+            'After the owner approves it, stop this ' +
             'server (Ctrl+C) and run:\n' +
             `  npm run ship -- --yes --digest ${pre.digest}${flags ? ' ' + flags : ''}`
         )

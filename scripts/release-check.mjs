@@ -211,6 +211,9 @@ export function checkDistDir(dist, { minPages = 300 } = {}) {
     if (text.includes('/uploads/')) failures.push(`${rel}: stale /uploads/ reference`)
     if (text.includes('cdn.anping.us')) failures.push(`${rel}: stale cdn.anping.us reference (domain expires; use cdn.theneverless.com)`)
     if (/(?:href|src)=["']https?:\/\/(?:localhost|127\.0\.0\.1)/.test(text)) failures.push(`${rel}: localhost URL`)
+    // PostLayout marks draft pages, which only dev and SHOW_DRAFTS=1 review
+    // builds render; a production build containing one would publish it.
+    if (rel.endsWith('.html') && text.includes('data-draft-page')) failures.push(`${rel}: draft post page in production output`)
   }
   return { failures, htmlCount: htmlFiles.length }
 }
@@ -231,6 +234,20 @@ export function imageTestEnv(env = process.env) {
   const rest = { ...env }
   delete rest.R2_LIVE
   return rest
+}
+
+// Check 7: the image pipeline and library test suites. The library suite
+// covers the Off Duty data tooling that ships with the site.
+function checkUnitTests(root) {
+  const images = npmRun(root, 'test:images', { env: imageTestEnv() })
+  const library = npmRun(root, 'test:library')
+  if (images.status === 'FAIL' || library.status === 'FAIL') {
+    return {
+      status: 'FAIL',
+      detail: [images, library].filter((r) => r.status === 'FAIL').map((r) => r.detail).join('\n'),
+    }
+  }
+  return { status: 'PASS', detail: `${images.detail}; ${library.detail}` }
 }
 
 function checkBuiltOutput(root, ctx) {
@@ -335,7 +352,7 @@ export const CHECKS = [
   { num: 4, name: 'types (astro check)', run: (root) => npmRun(root, 'check') },
   { num: 5, name: 'lint', run: checkLint },
   { num: 6, name: 'build', run: checkBuild },
-  { num: 7, name: 'image tests', run: (root) => npmRun(root, 'test:images', { env: imageTestEnv() }) },
+  { num: 7, name: 'image and library tests', run: checkUnitTests },
   { num: 8, name: 'rehype tests', run: (root) => npmRun(root, 'test:rehype') },
   { num: 9, name: 'built output', run: checkBuiltOutput },
   { num: 10, name: 'CDN images', full: true, run: checkCdnImages },

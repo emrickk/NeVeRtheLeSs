@@ -54,8 +54,9 @@ export function makeFixtureDist(root, { omit = [], extraHtml = {} } = {}) {
 
 // Stand-ins for node_modules/.bin/astro and pagefind, so CLI tests can drive
 // the build and preview steps without a real Astro project. `astro build`
-// writes one page into --outDir and records its argv; `astro preview` serves
-// --outDir on --port; pagefind records its argv.
+// writes one page into --outDir and records its argv, plus its SHOW_DRAFTS
+// value in env.log; `astro preview` serves --outDir on --port; pagefind
+// records its argv.
 const FAKE_ASTRO = `#!/usr/bin/env node
 const fs = require('node:fs')
 const path = require('node:path')
@@ -64,6 +65,7 @@ const [cmd, ...rest] = process.argv.slice(2)
 const arg = (k) => rest[rest.indexOf(k) + 1]
 fs.appendFileSync(path.join(__dirname, 'calls.log'), 'astro ' + process.argv.slice(2).join(' ') + '\\n')
 if (cmd === 'build') {
+  fs.appendFileSync(path.join(__dirname, 'env.log'), 'SHOW_DRAFTS=' + (process.env.SHOW_DRAFTS ?? '') + '\\n')
   fs.mkdirSync(arg('--outDir'), { recursive: true })
   fs.writeFileSync(path.join(arg('--outDir'), 'index.html'), '<html>fake</html>')
 } else if (cmd === 'preview') {

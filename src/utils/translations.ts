@@ -1,6 +1,20 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE_LANG, SITE_LOCALE } from '../consts';
 
 export type Lang = 'zh' | 'en';
+
+/** BCP 47 value for an html `lang` attribute: `en`, or the site's zh-CN. */
+export function htmlLangFor(lang: Lang): string {
+  return lang === 'en' ? 'en' : SITE_LANG;
+}
+
+/** Open Graph locale for a page whose main content is in `lang`. */
+export function ogLocaleFor(lang: Lang): string {
+  return lang === 'en' ? 'en_US' : SITE_LOCALE;
+}
+
+/** Per-language document title and meta description for the EN/中 toggle. */
+export type PageAlternates = Partial<Record<Lang, { title?: string; description?: string }>>;
 
 /** Per-language display text for a post, resolved by `resolveLangText`. */
 export interface LangText {

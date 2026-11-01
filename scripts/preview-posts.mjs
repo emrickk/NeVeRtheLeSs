@@ -44,9 +44,15 @@ const LIBRARY_DATA_SECTIONS = {
   'src/data/library/games.json': 'games',
 }
 
-function libraryReviewSections(path) {
-  if (path === 'src/pages/library.astro' || path === 'src/styles/pages/library.css')
-    return LIBRARY_SECTIONS
+// The overview (src/pages/library.astro), the section route
+// (src/pages/library/[section].astro), the shared LibraryPage component and
+// section list (src/components/library/), and the library styles render
+// every section page.
+const LIBRARY_SHARED_RE =
+  /^src\/pages\/library(?:\.astro$|\/)|^src\/components\/library\/|^src\/styles\/pages\/library(?:\.css$|\/)/
+
+export function libraryReviewSections(path) {
+  if (LIBRARY_SHARED_RE.test(path)) return LIBRARY_SECTIONS
   if (path === 'public/interactive/hyatt-tier-wall/index.html') return ['hotels']
   if (/^src\/data\/library\/movies[^/]*\.json$/.test(path)) return ['movies']
   const section = LIBRARY_DATA_SECTIONS[path]
@@ -156,9 +162,9 @@ function git(args, { cwd, allowFail = false } = {}) {
   }
 }
 
-// Drafts are excluded from the build, so a post that was already a draft at
-// the base ref has nothing to review; a draft flip back to false re-enters
-// the change set as a normal edit.
+// Drafts never deploy, so a post that was already a draft at the base ref
+// needs no approval; a draft flip back to false re-enters the change set as
+// a normal edit. Review builds still render drafts (see changedDraftPosts).
 export function isDraftPost(root, path) {
   const p = join(root, primaryPostPath(path))
   if (!existsSync(p)) return false
@@ -228,12 +234,15 @@ export function packageJsonAffectsSite(root, baseRef) {
 // and they would silently fail classifyPath). The diff call fails closed:
 // a git error throws, and release-check turns the throw into a FAIL, rather
 // than shrinking the change set to untracked-only.
-export function computeChangeSet(root, { baseRef = resolveBaseRef(root) } = {}) {
-  const diffBase = resolveDiffBase(root, baseRef).ref
+function changedPaths(root, diffBase) {
   const diff = git(['diff', '--no-renames', '--name-only', '-z', diffBase], { cwd: root }) || ''
   const untracked = git(['ls-files', '--others', '--exclude-standard', '-z'], { cwd: root }) || ''
-  const all = new Set([...diff.split('\0'), ...untracked.split('\0')].filter(Boolean))
-  return [...all]
+  return [...new Set([...diff.split('\0'), ...untracked.split('\0')].filter(Boolean))]
+}
+
+export function computeChangeSet(root, { baseRef = resolveBaseRef(root) } = {}) {
+  const diffBase = resolveDiffBase(root, baseRef).ref
+  return changedPaths(root, diffBase)
     .filter((path) => {
       const kind = classifyPath(path)
       if (kind === null) return false
@@ -245,13 +254,29 @@ export function computeChangeSet(root, { baseRef = resolveBaseRef(root) } = {}) 
     .sort()
 }
 
+// Changed posts left out of the change set because they are drafts now and
+// were drafts (or absent) at the base ref. They need no approval since they
+// never deploy, but review builds render them at their own URL (SHOW_DRAFTS=1),
+// so preview-posts lists them for a look. Returns the review URLs, sorted.
+export function changedDraftTargets(root, { baseRef = resolveBaseRef(root) } = {}) {
+  const diffBase = resolveDiffBase(root, baseRef).ref
+  const targets = new Set()
+  for (const path of changedPaths(root, diffBase)) {
+    if (classifyPath(path) !== 'post') continue
+    if (!existsSync(join(root, primaryPostPath(path)))) continue
+    if (isDraftPost(root, path) && wasDraftAtBase(root, path, diffBase))
+      targets.add(`/posts/${routeSlugForPostFile(root, path)}/`)
+  }
+  return [...targets].sort()
+}
+
 // Pages the owner must look at for a given change set. A deleted primary post
 // sends review to the homepage (the post should vanish from lists); a deleted
 // sibling still renders on the surviving primary page. Notes have no per-note
 // page, so any note change, including a deletion, reviews the /notes/
 // timeline. Site-wide changes get the homepage plus one image-heavy exemplar.
-// Library changes also need the affected collection views, which those generic
-// targets cannot show. Sorted and deduplicated, '/' first.
+// Library changes also need the affected section pages (/library/<section>/),
+// which those generic targets cannot show. Sorted and deduplicated, '/' first.
 // Route slug for a post file: the frontmatter `slug` when the primary
 // declares one (the glob loader uses data.slug as the entry id), otherwise
 // the filename shorthand. Deleted files fall back to the filename.
@@ -270,8 +295,9 @@ export function reviewTargets(root, changeSet) {
   for (const path of changeSet) {
     const kind = classifyPath(path)
     if (kind === 'post') {
-      // A currently-draft post has no page of its own (a published-to-draft
-      // flip removes one), so review goes to the homepage like a deletion.
+      // A currently-draft post has no page in production (a published-to-
+      // draft flip removes one), so review goes to the homepage like a
+      // deletion; review builds still render the draft itself.
       if (existsSync(join(root, primaryPostPath(path))) && !isDraftPost(root, path))
         targets.add(`/posts/${routeSlugForPostFile(root, path)}/`)
       else targets.add('/')
@@ -283,7 +309,7 @@ export function reviewTargets(root, changeSet) {
       const sections = libraryReviewSections(path)
       if (sections.length) {
         targets.add('/library/')
-        for (const section of sections) targets.add(`/library/#${section}`)
+        for (const section of sections) targets.add(`/library/${section}/`)
       }
     }
   }
@@ -514,13 +540,25 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;')
 }
 
-export function renderReviewPage(targets, { host, port }) {
-  const items = targets
-    .map((t) => {
-      const safe = escapeHtml(t)
-      return `      <li><a href="http://${host}:${port}${safe}" target="_blank">${safe}</a></li>`
-    })
-    .join('\n')
+export function renderReviewPage(targets, { host, port, drafts = [] }) {
+  const list = (paths) =>
+    paths
+      .map((t) => {
+        const safe = escapeHtml(t)
+        return `      <li><a href="http://${host}:${port}${safe}" target="_blank">${safe}</a></li>`
+      })
+      .join('\n')
+  const items = list(targets)
+  const draftSection = drafts.length
+    ? `<h2>Drafts (render only in this review build, never deployed)</h2>
+<ul>
+${list(drafts)}
+</ul>
+`
+    : ''
+  const approveLine = targets.length
+    ? '<p>When everything looks right, approve with: <code>npm run preview-posts -- --approve</code></p>'
+    : '<p>Only drafts changed; drafts never deploy, so there is nothing to approve.</p>'
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -537,14 +575,14 @@ export function renderReviewPage(targets, { host, port }) {
 <ul>
 ${items}
 </ul>
-<h2>Checklist</h2>
+${draftSection}<h2>Checklist</h2>
 <ul>
   <li>Both languages (use the language toggle)</li>
   <li>Dark mode and light mode</li>
   <li>A narrow window or a real phone</li>
   <li>Images load and grids lay out correctly</li>
 </ul>
-<p>When everything looks right, approve with: <code>npm run preview-posts -- --approve</code></p>
+${approveLine}
 </body>
 </html>
 `
@@ -602,12 +640,17 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     process.exit(0)
   }
 
-  if (changeSet.length === 0) {
+  const draftTargets = changedDraftTargets(root, { baseRef })
+  if (changeSet.length === 0 && draftTargets.length === 0) {
     console.log('nothing to preview: no preview-relevant changes vs ' + baseLabel)
     process.exit(0)
   }
   console.log(`preview-relevant changes vs ${baseLabel} (${changeSet.length}):`)
   for (const p of changeSet) console.log('  ' + p)
+  if (draftTargets.length) {
+    console.log(`changed drafts (review only, never deployed, nothing to approve) (${draftTargets.length}):`)
+    for (const t of draftTargets) console.log('  ' + t)
+  }
 
   // Private build directory for this run: concurrent sessions no longer
   // overwrite or serve each other's dist/. Removed when the server stops.
@@ -621,8 +664,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   }
   for (const signal of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.once(signal, () => finish(130))
 
-  console.log(`\nbuilding production output into ${outDir} ...`)
-  const build = buildSite(root, outDir, { stdio: 'inherit' })
+  console.log(`\nbuilding production output plus draft pages into ${outDir} ...`)
+  const build = buildSite(root, outDir, { stdio: 'inherit', showDrafts: true })
   if (!build.ok) {
     if (build.output) console.error(build.output.trim())
     console.error('build failed; fix it before previewing')
@@ -632,7 +675,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const host = values.host ? localIp() || 'localhost' : 'localhost'
   const targets = reviewTargets(root, changeSet)
   const reviewFile = join(runDir, 'review.html')
-  writeFileSync(reviewFile, renderReviewPage(targets, { host, port: values.port }))
+  writeFileSync(
+    reviewFile,
+    renderReviewPage(targets, { host, port: values.port, drafts: draftTargets })
+  )
 
   server = spawn(astroBin(root), previewArgs(outDir, { port: values.port, host: values.host }), {
     cwd: root,
@@ -645,7 +691,11 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
 
   console.log(`\nreview page: ${reviewFile}`)
   console.log(`server: http://${host}:${values.port}/`)
-  console.log('when everything looks right: npm run preview-posts -- --approve')
+  console.log(
+    changeSet.length
+      ? 'when everything looks right: npm run preview-posts -- --approve'
+      : 'only drafts changed; there is nothing to approve'
+  )
   console.log('stop the server with Ctrl+C (the private build directory is removed then)\n')
   if (!values['no-open']) spawnSync('open', [reviewFile])
 

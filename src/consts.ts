@@ -1,5 +1,5 @@
 /**
- * consts.ts — re-export values from astro-theme-config.ts.
+ * consts.ts: re-export values from astro-theme-config.ts.
  * Components can keep importing { SITE_TITLE } from '../consts'.
  */
 import config from '../astro-theme-config';
