@@ -45,6 +45,7 @@ const {
   showHero,
   readingTime,
   focusEffect,
+  draft = false,
   protected: isProtected = false,
   relatedPosts = [],
   olderPost,
@@ -101,6 +102,7 @@ const jsonLd = serializeScriptJson({
   langs={pageLangs}
   alternates={alternates}
   locale={ogLocaleFor(origLang)}
+  robots={draft ? 'noindex' : undefined}
   bodyClass="post-page"
 >
   <Fragment slot="head">
@@ -110,12 +112,15 @@ const jsonLd = serializeScriptJson({
   {focusEffect && <ScrollFocus variant={focusEffect} />}
 
   <main id="main-content" class="post-main">
-    <article data-pagefind-body>
+    {/* Draft pages exist only in dev and review builds (src/utils/drafts.ts);
+        they stay out of the Pagefind index and carry a visible marker. */}
+    <article data-pagefind-body={draft ? undefined : ''} data-draft-page={draft ? '' : undefined}>
       <a href={postsBase} class="back-link">{tr.backLink}</a>
 
       <header class="post-header">
         <div class="post-accent"></div>
         <div class="post-meta">
+          {draft && <span class="draft-marker">Draft · 草稿</span>}
           <FormattedDate class="meta-date" date={pubDate} />
           {
             readingTime && (

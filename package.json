@@ -43,6 +43,7 @@
     "test:rehype": "node --test \"scripts/rehype/*.test.mjs\"",
     "test:editor": "node --test scripts/post-editor/api.test.mjs",
     "test:library": "node --test \"scripts/library/*.test.mjs\"",
+    "test:drafts": "node --test scripts/drafts-build.test.mjs",
     "checkpoint": "node scripts/checkpoint.mjs",
     "release-check": "node scripts/release-check.mjs",
     "ship": "node scripts/ship.mjs",

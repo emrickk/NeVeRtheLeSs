@@ -2,38 +2,50 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import readingTimeLib from 'reading-time';
 import PostLayout from '../../layouts/PostLayout.astro';
+import { SHOW_DRAFTS } from '../../utils/drafts';
 import { buildTranslationMap, htmlLangFor } from '../../utils/translations';
 
 export async function getStaticPaths() {
-  const allPosts = (await getCollection('posts'))
-    .filter((p) => !p.data.draft)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  // Neighbors and related posts come from published posts only, so a review
+  // build links exactly like production; drafts get a page of their own and
+  // no older/newer links.
+  const allPosts = posts.filter((p) => !p.data.draft);
+  const drafts = SHOW_DRAFTS ? posts.filter((p) => p.data.draft) : [];
 
-  return allPosts.map((post, index) => {
-    const slug = post.id;
-    return {
-      params: { slug },
+  const relatedTo = (post: CollectionEntry<'posts'>) =>
+    allPosts
+      .filter((p) => p.id !== post.id && p.data.pubDate >= new Date('2023-01-01T00:00:00Z'))
+      .sort((a, b) => {
+        const sameCategoryA = a.data.category && a.data.category === post.data.category ? 1 : 0;
+        const sameCategoryB = b.data.category && b.data.category === post.data.category ? 1 : 0;
+        if (sameCategoryA !== sameCategoryB) return sameCategoryB - sameCategoryA;
+        // Within the category, prefer posts closest in time to this one so
+        // every post gets its own trio instead of the category's newest 3.
+        const distA = Math.abs(a.data.pubDate.valueOf() - post.data.pubDate.valueOf());
+        const distB = Math.abs(b.data.pubDate.valueOf() - post.data.pubDate.valueOf());
+        return distA - distB;
+      })
+      .slice(0, 3);
+
+  return [
+    ...allPosts.map((post, index) => ({
+      params: { slug: post.id },
       props: {
         post,
         // allPosts is sorted newest-first, so neighbors are chronological.
         newerPost: allPosts[index - 1],
         olderPost: allPosts[index + 1],
-        relatedPosts: allPosts
-          .filter((p) => p.id !== post.id && p.data.pubDate >= new Date('2023-01-01T00:00:00Z'))
-          .sort((a, b) => {
-            const sameCategoryA = a.data.category && a.data.category === post.data.category ? 1 : 0;
-            const sameCategoryB = b.data.category && b.data.category === post.data.category ? 1 : 0;
-            if (sameCategoryA !== sameCategoryB) return sameCategoryB - sameCategoryA;
-            // Within the category, prefer posts closest in time to this one so
-            // every post gets its own trio instead of the category's newest 3.
-            const distA = Math.abs(a.data.pubDate.valueOf() - post.data.pubDate.valueOf());
-            const distB = Math.abs(b.data.pubDate.valueOf() - post.data.pubDate.valueOf());
-            return distA - distB;
-          })
-          .slice(0, 3),
+        relatedPosts: relatedTo(post),
       },
-    };
-  });
+    })),
+    ...drafts.map((post) => ({
+      params: { slug: post.id },
+      props: { post, relatedPosts: relatedTo(post) },
+    })),
+  ];
 }
 
 interface Props {

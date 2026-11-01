@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { createServer } from 'node:http'
+import { dirname, join } from 'node:path'
 import { makeFixtureRepo, makeFixtureDist, cleanup, run, write } from './test-helpers.mjs'
 import {
   findForbiddenPaths,
@@ -206,6 +207,30 @@ test('checkDistDir fails on localhost URLs in attributes', (t) => {
   assert.ok(failures.some((f) => f.includes('localhost')))
 })
 
+test('checkDistDir fails on a draft post page', (t) => {
+  const root = makeFixtureRepo()
+  t.after(() => cleanup(root))
+  const dist = makeFixtureDist(root, {
+    extraHtml: { 'posts/wip/index.html': '<html><body><article data-draft-page>wip</article></body></html>' },
+  })
+  const { failures } = checkDistDir(dist, { minPages: 1 })
+  assert.deepEqual(failures, ['posts/wip/index.html: draft post page in production output'])
+})
+
+test('buildEnv: review builds set SHOW_DRAFTS=1, production builds drop it', async () => {
+  const { buildEnv } = await import('./build-output.mjs')
+  assert.equal(buildEnv({ PATH: '/bin', SHOW_DRAFTS: '1' }).SHOW_DRAFTS, undefined)
+  assert.equal(buildEnv({ PATH: '/bin' }, { showDrafts: true }).SHOW_DRAFTS, '1')
+  assert.equal(buildEnv({ PATH: '/bin' }, { showDrafts: true }).PATH, '/bin')
+})
+
+test('npm run build passes the same Pagefind language flag as buildSite', async () => {
+  const { PAGEFIND_LANGUAGE_ARGS } = await import('./build-output.mjs')
+  const { readFileSync } = await import('node:fs')
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+  assert.ok(pkg.scripts.build.includes(`pagefind --site dist ${PAGEFIND_LANGUAGE_ARGS.join(' ')}`))
+})
+
 test('checkDistDir fails on missing rss, sitemap, or pagefind', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
@@ -334,8 +359,14 @@ test('buildSite runs astro build and pagefind against the given outDir only', as
   const calls = installFakeAstro(root)
   const outDir = `${root}-out`
   t.after(() => cleanup(outDir))
-  assert.equal(buildSite(root, outDir).ok, true)
-  assert.equal(readFileSync(calls, 'utf8'), `astro build --outDir ${outDir}\npagefind --site ${outDir}\n`)
+  // A SHOW_DRAFTS exported in the calling shell must not reach a
+  // production build.
+  assert.equal(buildSite(root, outDir, { env: { ...process.env, SHOW_DRAFTS: '1' } }).ok, true)
+  assert.equal(
+    readFileSync(calls, 'utf8'),
+    `astro build --outDir ${outDir}\npagefind --site ${outDir} --force-language zh-cn\n`
+  )
+  assert.equal(readFileSync(join(dirname(calls), 'env.log'), 'utf8'), 'SHOW_DRAFTS=\n')
   assert.ok(existsSync(`${outDir}/index.html`))
   assert.equal(existsSync(`${root}/dist`), false)
   const missing = makeFixtureRepo()

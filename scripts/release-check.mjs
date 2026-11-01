@@ -211,6 +211,9 @@ export function checkDistDir(dist, { minPages = 300 } = {}) {
     if (text.includes('/uploads/')) failures.push(`${rel}: stale /uploads/ reference`)
     if (text.includes('cdn.anping.us')) failures.push(`${rel}: stale cdn.anping.us reference (domain expires; use cdn.theneverless.com)`)
     if (/(?:href|src)=["']https?:\/\/(?:localhost|127\.0\.0\.1)/.test(text)) failures.push(`${rel}: localhost URL`)
+    // PostLayout marks draft pages, which only dev and SHOW_DRAFTS=1 review
+    // builds render; a production build containing one would publish it.
+    if (rel.endsWith('.html') && text.includes('data-draft-page')) failures.push(`${rel}: draft post page in production output`)
   }
   return { failures, htmlCount: htmlFiles.length }
 }

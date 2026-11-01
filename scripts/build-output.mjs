@@ -30,11 +30,28 @@ function bin(root, name) {
 // `npm run build` in package.json passes the same flag.
 export const PAGEFIND_LANGUAGE_ARGS = ['--force-language', 'zh-cn']
 
+// Environment for one build. Production builds (release-check) drop any
+// SHOW_DRAFTS the calling shell exported; review builds (preview-posts,
+// ship) set it so draft posts render at their own URLs, marked Draft and
+// noindex (src/utils/drafts.ts).
+export function buildEnv(env = process.env, { showDrafts = false } = {}) {
+  const out = { ...env }
+  delete out.SHOW_DRAFTS
+  if (showDrafts) out.SHOW_DRAFTS = '1'
+  return out
+}
+
 // astro build --outDir <outDir>, then pagefind --site <outDir>: the same two
 // steps as `npm run build`, aimed at a private directory. Uses the project's
 // own binaries (no npx resolution or network). `stdio: 'inherit'` streams
 // output for interactive commands; 'pipe' returns it for check summaries.
-export function buildSite(root, outDir, { stdio = 'pipe', env = process.env } = {}) {
+// `showDrafts` makes it a review build; the default is the production output.
+export function buildSite(
+  root,
+  outDir,
+  { stdio = 'pipe', env = process.env, showDrafts = false } = {}
+) {
+  const buildEnvironment = buildEnv(env, { showDrafts })
   const steps = [
     ['astro', ['build', '--outDir', outDir]],
     ['pagefind', ['--site', outDir, ...PAGEFIND_LANGUAGE_ARGS]],
@@ -47,7 +64,7 @@ export function buildSite(root, outDir, { stdio = 'pipe', env = process.env } = 
     }
     const res = spawnSync(exe, args, {
       cwd: root,
-      env,
+      env: buildEnvironment,
       stdio: stdio === 'inherit' ? 'inherit' : ['ignore', 'pipe', 'pipe'],
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
