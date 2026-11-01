@@ -1,10 +1,6 @@
 ---
 title: '坐在 Tahoe 看湖'
-titleZh: '坐在 Tahoe 看湖'
-titleEn: 'A Seat by Lake Tahoe'
 description: '窗边、沙滩和松树底下，找个地方坐着看湖'
-descriptionZh: '窗边、沙滩和松树底下，找个地方坐着看湖'
-descriptionEn: 'A window seat, a beach umbrella, and chairs beneath the pines'
 pubDate: '2026-09-18'
 heroImage: '../../assets/hero/2026/09/tahoe-cover.webp'
 category: 'Journal'

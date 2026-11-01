@@ -11,27 +11,29 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 - This file is the canonical repository entry point. `CLAUDE.md` refers here; maintained skills live in `.agents/skills/`, with `.claude/skills/` aliases. Edit the canonical files, not separate copies.
 - Read [completion criteria](docs/completion-criteria.md) for page, collection, image, and publishing work. Match the current accepted result and all applicable criteria together before calling a revision ready.
 - For writing, critique, dictated edits, or translation, read [.agents/skills/writing-posts/SKILL.md](.agents/skills/writing-posts/SKILL.md). For image-pipeline mechanics, read [docs/images.md](docs/images.md).
-- For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
-- **Official-source checks are mandatory for every new or replaced model-car image, including AI generation inputs.** Read the exact manufacturer's official website and full product gallery, inspect the actual photographs, and retain the check before selecting a reference. A convenient retailer image, a search result, or a failed request does not satisfy this gate. See the source requirements in [completion criteria](docs/completion-criteria.md).
+- **Model-car work only** (gallery records, car images, redraws): read the car docs below only for that work; posts and other tasks skip them.
+  - Gallery criteria (identity, source, finished card, accepted choices): [docs/model-car-criteria.md](docs/model-car-criteria.md).
+  - For explicitly authorized model-car AI redraws and background variants, follow [docs/model-car-redraws.md](docs/model-car-redraws.md), including reference preservation, per-model prompts, actual gallery inspection and scoped publication.
+  - **Official-source checks are mandatory for every new or replaced model-car image, including AI generation inputs.** Read the exact manufacturer's official website and full product gallery, inspect the actual photographs, and retain the check before selecting a reference. A convenient retailer image, a search result, or a failed request does not satisfy this gate. See the source requirements in [model-car criteria](docs/model-car-criteria.md#identity-and-source).
 - The owner's latest explicit direction takes precedence. A correction changes its stated scope; carry forward other accepted choices. A treatment approved for one image is not a general treatment policy.
-- The website workspace's `../Drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
+- The website workspace's `../drafts/current-work.md` is a dated local handoff, not authority over newer messages, files, or deployment evidence. Keep public repository documentation free of private records and conversation transcripts.
 
 ## Commands
 
-| Command                                          | Action                                                                                                                                    |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit                               |
-| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                              |
-| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                   |
-| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                         |
-| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                               |
-| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials                                                  |
-| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                        |
-| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                  |
-| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                 |
-| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                 |
-| `npm run ship`                                   | One-command publish for post edits and directly referenced changed hero covers: review, approve, release-check, commit, push (see Safety) |
-| `npm run test:safety`                            | Test suite for the three safety CLIs                                                                                                      |
+| Command                                          | Action                                                                                                                                                                |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev` / `build` / `preview`              | Standard Astro workflow (build also runs Pagefind); dev server also serves the local post editor at /\_edit                                                           |
+| `npm run preview-posts`                          | Build and serve the site for owner review of changed posts; `-- --approve` records the approval (see Safety)                                                          |
+| `npm run check` / `lint` / `lint:css` / `format` | Type check, ESLint, Stylelint, Prettier                                                                                                                               |
+| `npm run images`                                 | Daily image pipeline: optimize + upload staged photos (see below)                                                                                                     |
+| `npm run images:migrate`                         | One-time backfill CLI, already executed; dry-run by default                                                                                                           |
+| `npm run test:images`                            | Image pipeline test suite (`node:test`); the R2 live test self-skips without credentials                                                                              |
+| `npm run test:rehype`                            | Rehype plugin test suite (image gallery detection)                                                                                                                    |
+| `npm run test:editor`                            | Post editor API test suite (`node:test`)                                                                                                                              |
+| `npm run checkpoint`                             | Working-tree snapshots: `save` / `list` / `diff` / `restore` (see Safety)                                                                                             |
+| `npm run release-check`                          | Pre-push checklist, `-- --full` adds CDN + link verification (see Safety)                                                                                             |
+| `npm run ship`                                   | One-command publish for post edits, directly referenced changed hero covers, and `src/data/library/*.json`: review, approve, release-check, commit, push (see Safety) |
+| `npm run test:safety`                            | Test suite for the three safety CLIs                                                                                                                                  |
 
 ## Architecture
 
@@ -48,10 +50,9 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 ## Safety
 
 - **Checkpoints** (`npm run checkpoint`, skill: [.agents/skills/checkpoint/SKILL.md](.agents/skills/checkpoint/SKILL.md)): file-level snapshots in hidden local refs. Release checks save one. `.claude/settings.json` also defines a Claude SessionStart hook; do not assume a Codex session ran that hook. Save a labeled checkpoint before the risky operations listed in the skill.
-- **Release checklist** (`npm run release-check`, skill: [.agents/skills/release-check/SKILL.md](.agents/skills/release-check/SKILL.md)): required before manual or agent-driven pushes to `main`. GO describes checked technical conditions, not visual acceptance or publication authorization. With the owner's authorization for the reviewed scope, finish the commit, push, and deployment verification without asking for the same permission again. The Nevertheless Editor scoped fast lane is the explicit exception below.
+- **Release checklist** (`npm run release-check`, skill: [.agents/skills/release-check/SKILL.md](.agents/skills/release-check/SKILL.md)): required before manual or agent-driven pushes to `main`. GO describes checked technical conditions, not visual acceptance or publication authorization. With the owner's authorization for the reviewed scope, finish the commit, push, and deployment verification without asking for the same permission again.
 - **Preview gate** (`npm run preview-posts`, skill: [.agents/skills/preview-posts/SKILL.md](.agents/skills/preview-posts/SKILL.md)): finish and inspect the changed result before showing its actual production-preview page. Approval is hash-keyed in git-ignored `.preview/`; release-check check 12 is NO-GO when preview-relevant files changed without it. A generic homepage or sample post does not establish review of the car gallery.
-- **Ship** (`npm run ship`, skill: [.agents/skills/ship-posts/SKILL.md](.agents/skills/ship-posts/SKILL.md)): publishes changed posts and directly referenced changed local hero covers with approval bound to the reviewed bytes. Other changes use the normal scoped commit and release flow.
-- **Nevertheless Editor fast lane** (`npm run ship -- --fast --only ...`): scoped to the open post, its existing translation sibling, and only their directly referenced changed hero cover. It requires local `main` to equal `origin/main`, binds every selected byte into the digest, runs focused post and image checks, commits explicit paths, and treats the GitHub Actions build as the final deploy gate. It intentionally does not create a production-preview approval or run the whole-tree release checklist.
+- **Ship** (`npm run ship`, skill: [.agents/skills/ship-posts/SKILL.md](.agents/skills/ship-posts/SKILL.md)): publishes changed posts, directly referenced changed local hero covers, and `src/data/library/*.json` with approval bound to the reviewed bytes, building and committing from a temporary worktree of `origin/main` plus only the selected files, so unrelated dirty files do not block it. Other changes use the normal scoped commit and release flow.
 - **Post-deploy rollback**: `git revert` the bad commit(s) on `main` and push; the Pages workflow redeploys the previous good state.
 
 ## Established workflows
@@ -64,7 +65,7 @@ Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 6 + the a
 
 ### Completion and owner review
 
-Follow [docs/completion-criteria.md](docs/completion-criteria.md), including the accepted collection, source, image, and book-cover decisions. A known unmet requirement stays unfinished unless the owner accepts that specific exception. For car-page changes, show the finished page first; keep source and comparison evidence available without making the owner work through another report. Requested audits still use HTML reports with relevant actual imagery.
+Follow [docs/completion-criteria.md](docs/completion-criteria.md), including the accepted collection, source, image, and book-cover decisions (car decisions are in [docs/model-car-criteria.md](docs/model-car-criteria.md)). A known unmet requirement stays unfinished unless the owner accepts that specific exception. For car-page changes, show the finished page first; keep source and comparison evidence available without making the owner work through another report. Requested audits still use HTML reports with relevant actual imagery.
 
 1. Stage explicit paths only. Never `git add -A` or `git add .`.
 2. No em-dashes in user-facing copy: posts, docs, console messages, commit messages. Use commas, colons, or parentheses.

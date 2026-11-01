@@ -27,19 +27,6 @@
 2. `npm run images`: archives originals to the NAS, uploads optimized WebP to R2, prints markdown snippets.
 3. Paste the snippets into your post, delete the staged files, commit the post.
 
-### Dropping images in Astro Editor
-
-The Astro Editor fork (the `wlog` branch of `~/Blog/astro-editor`) runs
-`node scripts/images/drop.mjs <image>` for any image dropped into the
-editor (configured per project as the Image Drop Command setting). The
-script stages the file in a private temp dir, runs the same pipeline as
-`npm run images` (archive original, optimize to WebP, upload to R2), and
-the editor inserts the returned `![](https://cdn.theneverless.com/...)`
-snippet at the cursor. Failures insert nothing and show a toast instead.
-Only .jpg/.jpeg/.png sources are accepted, and dedupe against earlier
-uploads still works through the shared manifest. Alt text stays empty
-for the author to fill in.
-
 ### Photo galleries
 
 A markdown list where every item is a bare image renders as a 2-column

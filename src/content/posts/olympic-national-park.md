@@ -1,10 +1,6 @@
 ---
 title: 'Olympic 国家公园'
-titleZh: 'Olympic 国家公园'
-titleEn: 'Olympic National Park'
 description: '山上的大雾，湖边的早餐，和暑假里难得宽松的森林'
-descriptionZh: '山上的大雾，湖边的早餐，和暑假里难得宽松的森林'
-descriptionEn: 'Fog on the ridge, breakfast by the lake, and room to walk in a summer forest'
 pubDate: '2026-09-17'
 heroImage: '../../assets/hero/2026/09/olympic-cover.webp'
 category: 'Journal'

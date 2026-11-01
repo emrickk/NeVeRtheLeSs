@@ -35,15 +35,8 @@ text is not kept anywhere), "Overwrite" saves your text over the newer file.
 
 ## Shipping your edits
 
-Three entry points share the same guarded Git scope:
+Two entry points share the same guarded Git scope:
 
-- **Nevertheless Editor**: Publish saves the open post, selects it and its
-  existing translation sibling, and uses the scoped fast lane. If that post
-  references a changed local hero cover under `src/assets/hero/`, the cover is
-  included automatically. The exact post and cover bytes are digest-bound,
-  validated, committed with explicit paths, pushed, and watched through the
-  deploy. An unrelated image, a cover shared with an unselected post, or any
-  changed non-post file stops the publish.
 - **Terminal**: `npm run ship`. It builds the production site and opens the
   review page, asks one `approve these N file(s) and ship? [y/N]`, then runs
   the release checklist, commits the posts and any directly referenced changed
@@ -54,9 +47,7 @@ Three entry points share the same guarded Git scope:
 
 Every entry point binds its decision to the exact file bytes printed by
 preflight. If anything changes in between, ship aborts instead of publishing a
-different tree. The editor fast lane is deliberately scoped and automated; it
-does not record a production-preview approval or run the whole-tree release
-check. Use the terminal or conversation flow whenever you want the full
+different tree. Use the terminal or conversation flow whenever you want the full
 production review, and always for templates, config, notes, or unrelated
 assets. Manual fallback: `npm run preview-posts`, then
 `npm run preview-posts -- --approve`, then `npm run release-check`, then commit
@@ -67,11 +58,6 @@ explicit paths and push.
 Saving a post changes its content hash, which invalidates any preview-posts
 approval covering that file. That is the intended gate behavior: edited
 posts need a fresh review before release-check goes GO.
-
-The Nevertheless Editor fast lane does not write `.preview/manifest.json`.
-Its safety boundary is the selected post pair plus its referenced changed hero,
-strict local/remote synchronization, a content digest, focused validators, and
-the GitHub Actions production build.
 
 ## Troubleshooting (for owners and agents)
 
