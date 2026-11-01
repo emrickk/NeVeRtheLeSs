@@ -28,7 +28,7 @@ If check 13 fails, a changed post has a content problem, listed as `file:line`: 
    - the language toggle switches title and body
    - the giscus comment iframe is present on a post
    - dark mode renders correctly
-3. Also inspect the actual affected pages and interactions, including `/library/#cars` for car changes. Capture relevant evidence. Show the finished page when that is the requested deliverable; keep the check log and comparison evidence available rather than requiring a separate report on every revision.
+3. Also inspect the actual affected pages and interactions, including `/library/cars/` for car changes. Capture relevant evidence. Show the finished page when that is the requested deliverable; keep the check log and comparison evidence available rather than requiring a separate report on every revision.
 
 ## Report format
 

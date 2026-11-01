@@ -35,21 +35,26 @@ text is not kept anywhere), "Overwrite" saves your text over the newer file.
 
 ## Shipping your edits
 
-Two entry points share the same guarded Git scope:
+Ship publishes changed posts with their translation siblings, the changed
+hero covers they reference, changed `src/data/library/*.json`, and any paths
+named with `--include`. It builds and checks a temporary worktree of
+`origin/main` that contains only those files, so other sessions' uncommitted
+edits are ignored rather than blocking the publish. Two entry points share it:
 
-- **Terminal**: `npm run ship`. It builds the production site and opens the
+- **Terminal**: `npm run ship`. It builds the selected files, opens the
   review page, asks one `approve these N file(s) and ship? [y/N]`, then runs
-  the release checklist, commits the posts and any directly referenced changed
-  hero covers, pushes, and watches the deploy.
-- **Conversation**: open any Claude Code session and say "push my edits". The ship-posts
-  skill walks the same gates: you get the production review link, you say
-  "approved" (or "push"), and it ships.
+  the release checklist, commits the selected paths, pushes, and watches the
+  deploy.
+- **Conversation**: open any Claude Code session and say "push my edits". The
+  ship-posts skill runs `npm run ship -- --preflight`, serves the exact build
+  with `--review`, and after you say "approved" (or "push") runs
+  `--yes --digest <d>`. `--dry-run` rehearses everything except the commit and
+  push.
 
-Every entry point binds its decision to the exact file bytes printed by
-preflight. If anything changes in between, ship aborts instead of publishing a
-different tree. Use the terminal or conversation flow whenever you want the full
-production review, and always for templates, config, notes, or unrelated
-assets. Manual fallback: `npm run preview-posts`, then
+Both bind the decision to the exact file bytes printed by preflight. If
+anything changes in between, ship aborts instead of publishing a different
+tree. Templates, config, and other files outside ship's scope that a post does
+not need go through the manual flow: `npm run preview-posts`, then
 `npm run preview-posts -- --approve`, then `npm run release-check`, then commit
 explicit paths and push.
 

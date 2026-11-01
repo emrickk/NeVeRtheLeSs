@@ -1,6 +1,6 @@
 # Model-car criteria
 
-Completion criteria for the model-car gallery at `/library/#cars`. They apply together with the general [completion criteria](completion-criteria.md). For explicitly authorized AI redraws and background variants, also follow [model-car redraws](model-car-redraws.md).
+Completion criteria for the model-car gallery at `/library/cars/`. They apply together with the general [completion criteria](completion-criteria.md). For explicitly authorized AI redraws and background variants, also follow [model-car redraws](model-car-redraws.md).
 
 ## Identity and source
 
@@ -17,6 +17,8 @@ Completion criteria for the model-car gallery at `/library/#cars`. They apply to
 - Use uniform **3:2 frames** while preserving original proportions and the accepted rounded card treatment. All scales share the same card size (the owner dropped the larger 1:18 card requirement on 2026-11-01); match apparent subject scale and balance within each scale. Keep the complete car, open parts, included accessories/base, and natural shadow visible; reject avoidable clipping and empty space that makes the subject tiny. Do not stretch, upscale a weak source to disguise poor quality, or invent missing detail. The card's background treatment does not authorize repainting the photograph's original background.
 - Preserve original subject pixels, color, lighting, background, and natural shadows. Prefer a conservative rectangular crop. No AI redraw, silhouette masking, invented shadows, or generic background repainting without an explicit treatment decision. Permission to clean one image does not authorize the same treatment for the collection.
 - Inspect each affected original and final image at useful detail, then in its card. Check focus, whole-subject framing, shadow edges, all four corners, background seams, stray text, logos, and neighboring-card consistency. After fixes, review the whole affected set again. A contact sheet supplements this inspection; it does not replace it.
+- After adding or replacing a car image, run `npm run library:car-variants` and then `npm run library:car-variants -- --verify`. The cars page serves those 480/800 px WebP variants; see [images](images.md#model-car-variants).
+- Purchase and fulfillment status is private. It lives only in the owner's Life Records, never in `src/data/library/model-cars.json`.
 - Clicking a car image navigates to its related ownership post when one exists. Otherwise it does nothing. Do not add a lightbox, hover enlargement, or unrelated destination without a new request.
 
 ## Accepted choices to carry forward
