@@ -1,30 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
 import { withBase } from '../utils/paths';
-import { serializeScriptJson } from '../utils/serialize-script-json';
-import { buildTranslationMap, resolveLangText } from '../utils/translations';
+import { getSearchPaletteJson, SEARCH_PALETTE_DATA_PATH } from '../utils/search-palette-data';
 
-const posts = (await getCollection('posts'))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const tmap = await buildTranslationMap();
-
-const items = posts.map((post) => {
-  const text = resolveLangText(post.data, tmap);
-  return {
-    title: post.data.title,
-    titleZh: text.titleZh ?? post.data.title,
-    titleEn: text.titleEn ?? post.data.title,
-    lang: post.data.lang ?? 'zh',
-    description: post.data.description,
-    category: post.data.category ?? 'Post',
-    href: withBase(`/posts/${post.id}/`),
-  };
-});
+// The post index is a separate static file, fetched on first open, so pages
+// do not each inline it. The content hash in the URL busts stale caches.
+const { hash } = await getSearchPaletteJson();
+const dataSrc = `${withBase(SEARCH_PALETTE_DATA_PATH)}?v=${hash}`;
 ---
 
-<dialog class="search-palette" data-search-palette aria-label="Search posts">
+<dialog
+  class="search-palette"
+  data-search-palette
+  data-search-palette-src={dataSrc}
+  aria-label="Search posts"
+>
   <div class="search-palette-panel">
     <div class="search-palette-field">
       <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -53,13 +42,6 @@ const items = posts.map((post) => {
     <div class="search-palette-results" data-search-palette-results></div>
   </div>
 </dialog>
-
-<script
-  is:inline
-  type="application/json"
-  id="search-palette-data"
-  set:html={serializeScriptJson(items)}
-/>
 
 <script>
   import { mountSearchPaletteTriggers } from '../scripts/search-palette-loader';

@@ -15,16 +15,22 @@ function normalize(value: string) {
   return value.toLocaleLowerCase().trim();
 }
 
-function getItems(): SearchItem[] {
-  const data = document.getElementById('search-palette-data');
-  if (!data?.textContent) return [];
+let itemsRequest: Promise<SearchItem[]> | null = null;
 
-  try {
-    const parsed = JSON.parse(data.textContent);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
+// Fetch the post index once, on first open. A failed request is forgotten so
+// the next open (or keystroke) tries again.
+function loadItems(src: string): Promise<SearchItem[]> {
+  itemsRequest ??= fetch(src)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Search index request failed: ${response.status}`);
+      return response.json();
+    })
+    .then((parsed: unknown) => (Array.isArray(parsed) ? (parsed as SearchItem[]) : []))
+    .catch((error: unknown) => {
+      itemsRequest = null;
+      throw error;
+    });
+  return itemsRequest;
 }
 
 function scoreItem(item: SearchItem, query: string) {
@@ -82,7 +88,10 @@ export function mountSearchPalette(root: ParentNode = document) {
   const closeButton = dialog.querySelector('[data-search-palette-close]');
   if (!(input instanceof HTMLInputElement) || !(results instanceof HTMLElement)) return;
 
-  const items = getItems();
+  const src = dialog.dataset.searchPaletteSrc ?? '';
+  let items: SearchItem[] | null = null;
+  let loadFailed = false;
+  let loadPending = false;
   let activeIndex = 0;
   let renderedItems: SearchItem[] = [];
 
@@ -92,7 +101,40 @@ export function mountSearchPalette(root: ParentNode = document) {
     });
   };
 
+  const showStatus = (message: string) => {
+    renderedItems = [];
+    results.innerHTML = `<p class="search-palette-empty" role="status">${message}</p>`;
+  };
+
+  const ensureItems = () => {
+    if (items || loadPending) return;
+    loadPending = true;
+    results.setAttribute('aria-busy', 'true');
+    loadItems(src)
+      .then((loaded) => {
+        items = loaded;
+      })
+      .catch(() => {
+        loadFailed = true;
+      })
+      .finally(() => {
+        loadPending = false;
+        results.removeAttribute('aria-busy');
+        if (dialog.open) render();
+      });
+  };
+
   const render = () => {
+    if (!items) {
+      if (loadFailed) {
+        showStatus('Search could not load. Check your connection and try again.');
+      } else {
+        showStatus('Loading posts…');
+        ensureItems();
+      }
+      return;
+    }
+
     const query = normalize(input.value);
     renderedItems = items
       .map((item) => ({ item, score: scoreItem(item, query) }))
@@ -137,6 +179,7 @@ export function mountSearchPalette(root: ParentNode = document) {
     dialog.showModal();
     input.value = '';
     activeIndex = 0;
+    loadFailed = false;
     render();
     requestAnimationFrame(() => input.focus());
   };
@@ -180,6 +223,7 @@ export function mountSearchPalette(root: ParentNode = document) {
 
   input.addEventListener('input', () => {
     activeIndex = 0;
+    if (!items) loadFailed = false;
     render();
   });
 
