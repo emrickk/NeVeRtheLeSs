@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import readingTimeLib from 'reading-time';
 import PostLayout from '../../layouts/PostLayout.astro';
-import { buildTranslationMap } from '../../utils/translations';
+import { buildTranslationMap, htmlLangFor } from '../../utils/translations';
 
 export async function getStaticPaths() {
   const allPosts = (await getCollection('posts'))
@@ -81,10 +81,10 @@ const readingTime =
   {
     Sibling ? (
       <>
-        <div class={`lang lang-${orig}`} data-orig>
+        <div class={`lang lang-${orig}`} lang={htmlLangFor(orig)} data-orig>
           <Content />
         </div>
-        <div class={`lang lang-${otherLang}`}>
+        <div class={`lang lang-${otherLang}`} lang={htmlLangFor(otherLang)}>
           <Sibling />
         </div>
       </>

@@ -6,6 +6,7 @@ import pretendardFontUrl from '../assets/fonts/pretendard-variable.woff2';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR, SITE_LOCALE } from '../consts';
 import { withBase } from '../utils/paths';
 import { serializeScriptJson } from '../utils/serialize-script-json';
+import type { PageAlternates } from '../utils/translations';
 
 // Enable with PUBLIC_VERCEL_ANALYTICS=true.
 const analyticsEnabled = import.meta.env.PUBLIC_VERCEL_ANALYTICS === 'true';
@@ -32,6 +33,12 @@ interface Props {
   pageUrl?: string;
   /** Open Graph locale override for localized routes. */
   locale?: string;
+  /**
+   * Per-language title and description. The language script swaps the
+   * document title and meta description to the language the page shows;
+   * crawlers read the server-rendered (primary language) values.
+   */
+  alternates?: PageAlternates;
 }
 
 const {
@@ -46,13 +53,19 @@ const {
   canonicalUrl,
   pageUrl,
   locale,
+  alternates,
 } = Astro.props;
 
 const canonicalURL = canonicalUrl
   ? new URL(canonicalUrl, Astro.site)
   : new URL(Astro.url.pathname, Astro.site);
 const ogLocale = locale ?? SITE_LOCALE;
-const documentTitle = title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`;
+const formatTitle = (t: string) => (t === SITE_TITLE ? t : `${t} · ${SITE_TITLE}`);
+const documentTitle = formatTitle(title);
+const titleZh = alternates?.zh?.title;
+const titleEn = alternates?.en?.title;
+const descriptionZh = alternates?.zh?.description;
+const descriptionEn = alternates?.en?.description;
 const fallbackOgImageUrl = config.site.defaultOgImage;
 const ogImage = ogImageUrl
   ? new URL(withBase(ogImageUrl), Astro.site)
@@ -114,16 +127,54 @@ const websiteJsonLd =
 </script>
 
 <!-- Language init: runs early to prevent a flash of both languages -->
+{
+  /* A ?lang=en or ?lang=zh query preselects the language for this load only
+     (shared links); otherwise the stored toggle choice, then English. The
+     script also keeps the html lang attribute, the document title, and the
+     meta description on the language the page actually shows: data-langs
+     lists the languages the main content exists in, and data-page-lang is
+     the one shown otherwise. */
+}
 <script is:inline>
   (function () {
-    let lang;
+    const root = document.documentElement;
+    function pick(value) {
+      const v = String(value || '').toLowerCase();
+      if (v === 'en' || v.indexOf('en-') === 0) return 'en';
+      if (v === 'zh' || v.indexOf('zh-') === 0) return 'zh';
+      return null;
+    }
+    let lang = null;
     try {
-      lang = localStorage.getItem('lang');
+      lang = pick(new URLSearchParams(location.search).get('lang'));
     } catch {
       lang = null;
     }
-    if (lang !== 'zh' && lang !== 'en') lang = 'en';
-    document.documentElement.setAttribute('data-lang', lang);
+    if (!lang) {
+      try {
+        lang = pick(localStorage.getItem('lang'));
+      } catch {
+        lang = null;
+      }
+    }
+    root.setAttribute('data-lang', lang || 'en');
+
+    function sync() {
+      const wanted = root.getAttribute('data-lang');
+      const primary = root.getAttribute('data-page-lang') === 'en' ? 'en' : 'zh';
+      const langs = (root.getAttribute('data-langs') || primary).split(' ');
+      const shown = langs.indexOf(wanted) >= 0 ? wanted : primary;
+      const code = shown === 'en' ? 'en' : 'zh-CN';
+      if (root.getAttribute('lang') !== code) root.setAttribute('lang', code);
+      const key = 'data-' + shown;
+      const title = document.querySelector('title[' + key + ']');
+      if (title && document.title !== title.getAttribute(key)) document.title = title.getAttribute(key);
+      const desc = document.querySelector('meta[name="description"][' + key + ']');
+      if (desc) desc.setAttribute('content', desc.getAttribute(key));
+    }
+    sync();
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync, { once: true });
   })();
 </script>
 
@@ -152,9 +203,16 @@ const websiteJsonLd =
 <link rel="canonical" href={canonicalHref} />
 
 <!-- Primary Meta Tags -->
-<title>{documentTitle}</title>
+<title data-zh={titleZh && formatTitle(titleZh)} data-en={titleEn && formatTitle(titleEn)}
+  >{documentTitle}</title
+>
 <meta name="title" content={title} />
-<meta name="description" content={description} />
+<meta
+  name="description"
+  content={description}
+  data-zh={descriptionZh}
+  data-en={descriptionEn}
+/>
 <meta name="author" content={SITE_AUTHOR} />
 
 <!-- Open Graph -->

@@ -27,5 +27,8 @@ const enDate = date.toLocaleDateString('en-US', {
 ---
 
 <time class={className} datetime={date.toISOString()}>
-  <span class="lang lang-zh" data-orig>{zhDate}</span><span class="lang lang-en">{enDate}</span>
+  <span class="lang lang-zh" lang="zh-CN" data-orig>{zhDate}</span><span
+    class="lang lang-en"
+    lang="en">{enDate}</span
+  >
 </time>

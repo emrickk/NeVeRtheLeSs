@@ -141,8 +141,9 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
       </h1>
 
       <p class="hero-desc">
-        <span class="lang lang-zh" data-orig>{SITE_DESCRIPTION_ZH}</span><span class="lang lang-en"
-          >{SITE_DESCRIPTION_EN}</span
+        <span class="lang lang-zh" lang="zh-CN" data-orig>{SITE_DESCRIPTION_ZH}</span><span
+          class="lang lang-en"
+          lang="en">{SITE_DESCRIPTION_EN}</span
         >
       </p>
 
@@ -173,12 +174,12 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
                     </span>
                     <span class="hero-recent-date">
                       <time datetime={post.data.pubDate.toISOString()}>
-                        <span class="lang lang-zh" data-orig>
+                        <span class="lang lang-zh" lang="zh-CN" data-orig>
                           {heroDate.zhParts.map((part) => (
                             <span class={`hero-recent-date-${part.type}`}>{part.value}</span>
                           ))}
                         </span>
-                        <span class="lang lang-en">
+                        <span class="lang lang-en" lang="en">
                           {heroDate.enParts.map((part) => (
                             <span class={`hero-recent-date-${part.type}`}>{part.value}</span>
                           ))}

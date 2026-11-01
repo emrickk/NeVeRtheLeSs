@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import SearchPalette from '../components/SearchPalette.astro';
+import { htmlLangFor, type Lang, type PageAlternates } from '../utils/translations';
 
 interface Props {
   title: string;
@@ -17,7 +18,16 @@ interface Props {
   robots?: string;
   canonicalUrl?: string;
   pageUrl?: string;
-  lang?: string;
+  /** Language of the page's server-rendered (no-JS) main content. Defaults to zh. */
+  lang?: Lang;
+  /**
+   * Languages the page's main content exists in. The toggle sets
+   * document.documentElement.lang to the selected language only when the page
+   * has it; otherwise the page keeps `lang`. Defaults to both.
+   */
+  langs?: Lang[];
+  /** Per-language document title and description, swapped by the toggle. */
+  alternates?: PageAlternates;
   locale?: string;
   bodyClass?: string;
 }
@@ -33,15 +43,22 @@ const {
   robots,
   canonicalUrl,
   pageUrl,
-  lang,
+  lang = 'zh',
+  langs = ['zh', 'en'],
+  alternates,
   locale,
   bodyClass,
 } = Astro.props;
-const htmlLang = lang ?? config.site.lang;
+const htmlLang = htmlLangFor(lang);
 ---
 
 <!doctype html>
-<html lang={htmlLang} data-smooth-scroll={config.behavior.smoothScroll ? 'true' : 'false'}>
+<html
+  lang={htmlLang}
+  data-page-lang={lang}
+  data-langs={langs.join(' ')}
+  data-smooth-scroll={config.behavior.smoothScroll ? 'true' : 'false'}
+>
   <head>
     <BaseHead
       title={title}
@@ -55,6 +72,7 @@ const htmlLang = lang ?? config.site.lang;
       canonicalUrl={canonicalUrl}
       pageUrl={pageUrl}
       locale={locale}
+      alternates={alternates}
     />
     <slot name="head" />
   </head>

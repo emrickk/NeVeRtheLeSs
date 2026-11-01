@@ -71,9 +71,15 @@ function titleSpans(item: SearchItem) {
   const orig = item.lang === 'en' ? 'en' : 'zh';
   const zh = escapeHtml(item.titleZh ?? item.title);
   const en = escapeHtml(item.titleEn ?? item.title);
+  // Each span's lang names the text it holds. The index fills a missing
+  // translation with the original title, so a span equal to it keeps the
+  // original language.
+  const code = (lang: 'zh' | 'en') => (lang === 'en' ? 'en' : 'zh-CN');
+  const zhLang = code(orig === 'zh' || zh === escapeHtml(item.title) ? orig : 'zh');
+  const enLang = code(orig === 'en' || en === escapeHtml(item.title) ? orig : 'en');
   return (
-    `<span class="lang lang-zh"${orig === 'zh' ? ' data-orig' : ''}>${zh}</span>` +
-    `<span class="lang lang-en"${orig === 'en' ? ' data-orig' : ''}>${en}</span>`
+    `<span class="lang lang-zh" lang="${zhLang}"${orig === 'zh' ? ' data-orig' : ''}>${zh}</span>` +
+    `<span class="lang lang-en" lang="${enLang}"${orig === 'en' ? ' data-orig' : ''}>${en}</span>`
   );
 }
 

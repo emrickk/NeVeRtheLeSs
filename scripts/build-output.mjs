@@ -23,6 +23,13 @@ function bin(root, name) {
   return join(root, 'node_modules', '.bin', name)
 }
 
+// Pagefind splits its index by each page's <html lang>, and the search UI
+// loads only the index matching the page it runs on. English-primary posts
+// carry lang="en" and the language toggle rewrites <html lang>, so the site
+// is indexed as one language to keep every post searchable from every page.
+// `npm run build` in package.json passes the same flag.
+export const PAGEFIND_LANGUAGE_ARGS = ['--force-language', 'zh-cn']
+
 // astro build --outDir <outDir>, then pagefind --site <outDir>: the same two
 // steps as `npm run build`, aimed at a private directory. Uses the project's
 // own binaries (no npx resolution or network). `stdio: 'inherit'` streams
@@ -30,7 +37,7 @@ function bin(root, name) {
 export function buildSite(root, outDir, { stdio = 'pipe', env = process.env } = {}) {
   const steps = [
     ['astro', ['build', '--outDir', outDir]],
-    ['pagefind', ['--site', outDir]],
+    ['pagefind', ['--site', outDir, ...PAGEFIND_LANGUAGE_ARGS]],
   ]
   let output = ''
   for (const [name, args] of steps) {

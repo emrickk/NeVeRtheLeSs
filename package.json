@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist --force-language zh-cn",
     "preview": "astro preview",
     "preview-posts": "node scripts/preview-posts.mjs",
     "astro": "astro",

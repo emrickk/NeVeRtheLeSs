@@ -12,11 +12,18 @@ import ImageLightbox from '../components/ImageLightbox.astro';
 import ProtectedGate from '../components/ProtectedGate.astro';
 import ScrollFocus from '../components/ScrollFocus.astro';
 import BaseLayout from './BaseLayout.astro';
-import { SITE_AUTHOR, SITE_LANG, SITE_TITLE } from '../consts';
+import { SITE_AUTHOR, SITE_TITLE } from '../consts';
 import { getUiText } from '../ui';
 import { withBase } from '../utils/paths';
 import { serializeScriptJson } from '../utils/serialize-script-json';
-import { buildTranslationMap, resolveLangText } from '../utils/translations';
+import {
+  buildTranslationMap,
+  htmlLangFor,
+  ogLocaleFor,
+  resolveLangText,
+  type Lang,
+  type PageAlternates,
+} from '../utils/translations';
 
 type Props = CollectionEntry<'posts'>['data'] & {
   slug?: string;
@@ -51,6 +58,16 @@ const postsBase = withBase('/posts');
 // language from the sibling translation file.
 const tmap = await buildTranslationMap();
 const text = resolveLangText({ title, description, lang: origLang, translationKey }, tmap);
+const otherLang: Lang = origLang === 'zh' ? 'en' : 'zh';
+// The page has the other language only when the sibling translation exists:
+// its body renders beside the primary and the toggle can show it.
+const hasSibling = Boolean(translationKey && tmap.has(`${translationKey}:${otherLang}`));
+const pageLangs: Lang[] = hasSibling ? [origLang, otherLang] : [origLang];
+const alternates: PageAlternates = {
+  zh: { title: text.titleZh ?? title, description: text.descriptionZh ?? description },
+  en: { title: text.titleEn ?? title, description: text.descriptionEn ?? description },
+};
+if (!hasSibling) delete alternates[otherLang];
 const olderText = olderPost ? resolveLangText(olderPost.data, tmap) : undefined;
 const newerText = newerPost ? resolveLangText(newerPost.data, tmap) : undefined;
 
@@ -69,7 +86,7 @@ const jsonLd = serializeScriptJson({
   ...(heroImage && { image: new URL(heroImage.src, Astro.site).href }),
   author: { '@type': 'Person', name: SITE_AUTHOR },
   publisher: { '@type': 'Organization', name: SITE_TITLE },
-  inLanguage: SITE_LANG,
+  inLanguage: htmlLangFor(origLang),
 });
 ---
 
@@ -80,6 +97,10 @@ const jsonLd = serializeScriptJson({
   type="article"
   pubDate={pubDateISO}
   updatedDate={updatedDateISO}
+  lang={origLang}
+  langs={pageLangs}
+  alternates={alternates}
+  locale={ogLocaleFor(origLang)}
   bodyClass="post-page"
 >
   <Fragment slot="head">
