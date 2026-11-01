@@ -25,14 +25,27 @@ const isActive =
 .nav-link {
   display: inline-flex;
   align-items: center;
+  position: relative;
   padding: 0;
   font-size: var(--text-caption-1);
+  white-space: nowrap;
   font-weight: var(--weight-regular);
   color: var(--label-secondary);
   text-decoration: none;
   transition:
     color var(--duration-fast) var(--ease-out),
     opacity var(--duration-fast) var(--ease-out);
+}
+
+/* Invisible 44px-tall hit area; the visible layout stays the same. */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  left: -4px;
+  height: 44px;
+  transform: translateY(-50%);
 }
 
 .nav-link:hover {

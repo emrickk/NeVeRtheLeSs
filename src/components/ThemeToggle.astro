@@ -65,6 +65,7 @@
 
 <style>
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -78,6 +79,17 @@
     color var(--duration-fast) var(--ease-out),
     opacity var(--duration-fast) var(--ease-out);
   flex-shrink: 0;
+}
+
+/* Invisible 44px-tall hit area around the 32px button. */
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 44px;
+  transform: translateY(-50%);
 }
 
 .theme-toggle:hover {
