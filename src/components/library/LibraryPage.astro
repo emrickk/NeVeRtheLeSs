@@ -1,0 +1,556 @@
+---
+// Off Duty library. /library/ renders the overview (a short preview of every
+// shelf); /library/<section>/ renders one complete section. Each page carries
+// only its own items, so a visit no longer downloads every collection.
+import '../../styles/pages/library.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LangText from '../LangText.astro';
+import importedMovies from '../../data/library/movies.json';
+import localMovies from '../../data/library/movies-local.json';
+import games from '../../data/library/games.json';
+import books from '../../data/library/books.json';
+import modelCars from '../../data/library/model-cars.json';
+import { withBase } from '../../utils/paths';
+import {
+  LIBRARY_SECTIONS,
+  OVERVIEW_CARS_PER_SCALE,
+  OVERVIEW_GRID_ITEMS,
+  type LibraryView,
+} from './sections';
+
+interface Props {
+  view: LibraryView;
+}
+const { view } = Astro.props;
+const overview = view === 'overview';
+const shows = (id: string) => overview || view === id;
+const preview = <T,>(items: T[], limit: number) => (overview ? items.slice(0, limit) : items);
+const sectionHref = (id: string) => withBase(`/library/${id}/`);
+
+// Owner-written entries stay separate from the regenerated media snapshot.
+const localMovieIds = new Set(localMovies.map((movie) => movie.id));
+const movies = [...localMovies, ...importedMovies.filter((movie) => !localMovieIds.has(movie.id))];
+
+// Inventory membership does not depend on whether a photograph is available.
+const carIds = new Set<string>();
+for (const car of modelCars) {
+  if (!car.id || !car.title || !car.brand || carIds.has(car.id)) {
+    throw new Error(`Invalid or duplicate model-car record: ${car.id}`);
+  }
+  carIds.add(car.id);
+  // Manufacturer provenance may use HTTP; displayed images must still use the HTTPS CDN.
+  const sourceIsVerified =
+    car.imageSourceType === 'owner-provided'
+      ? /^IMG_\d+\.jpeg$/.test(car.sourceFilename || '')
+      : /^https?:\/\//.test(car.displaySourceImage || car.officialImage || '') &&
+        /^https?:\/\//.test(car.displaySourceUrl || car.officialUrl || '');
+  if (
+    car.displayImage &&
+    (!car.imageCredit ||
+      !car.verifiedOn ||
+      !sourceIsVerified ||
+      !car.displayImage.startsWith('https://cdn.theneverless.com/library/model-cars/'))
+  ) {
+    throw new Error(`Incomplete model-car image source: ${car.id}`);
+  }
+  // Cards load the 480/800 px variants; displayImage is the full-size copy.
+  if (
+    import.meta.env.PROD &&
+    car.displayImage &&
+    car.displayImageVariants?.source !== car.displayImage
+  ) {
+    throw new Error(
+      `Model car ${car.id} has no responsive variants for its displayImage; run npm run library:car-variants`
+    );
+  }
+}
+const carScales = ['1:18', '1:64', '1:43', '1:32'];
+// Keep pocket-size Tomica models together while retaining each card's exact scale.
+const pocketScales = new Set(['1:64', '1:62']);
+const hasOneTo62 = modelCars.some((car) => car.scale === '1:62');
+const counts: Record<string, number | null> = {
+  movies: movies.length,
+  books: books.length,
+  games: games.length,
+  cars: modelCars.length,
+  hotels: null,
+};
+const current = LIBRARY_SECTIONS.find((section) => section.id === view);
+
+// Card widths in the model-car grid: 2 columns up to 900px (16px or 24px page
+// gutters, 20px gap), then 3 columns inside the 1080px page (24px gutters, 20px gaps).
+const CAR_IMAGE_SIZES =
+  '(max-width: 600px) calc(50vw - 26px), (max-width: 900px) calc(50vw - 34px), (max-width: 1080px) calc(33.33vw - 30px), 331px';
+type CarVariants = {
+  source: string;
+  images: { width: number; height: number; url: string }[];
+};
+const carImage = (car: { displayImage?: string; displayImageVariants?: CarVariants }) => {
+  const variants =
+    car.displayImageVariants?.source === car.displayImage ? car.displayImageVariants : undefined;
+  if (!car.displayImage) return null;
+  if (!variants) return { src: car.displayImage, width: 1200, height: 800 };
+  const largest = variants.images[variants.images.length - 1];
+  return {
+    src: largest.url,
+    srcset: variants.images.map((image) => `${image.url} ${image.width}w`).join(', '),
+    sizes: CAR_IMAGE_SIZES,
+    width: largest.width,
+    height: largest.height,
+  };
+};
+
+// Cover thumbnails live on R2; scripts/library/build-snapshot.mjs uploads them.
+const CDN = 'https://cdn.theneverless.com/library';
+
+// Half-star ratings render letterboxd-style: ★★★★½.
+const stars = (r: number) => '★'.repeat(Math.floor(r)) + (r % 1 >= 0.5 ? '½' : '');
+
+type Row = {
+  id: string;
+  t: string;
+  y?: number;
+  tv?: boolean;
+  s?: string;
+  h?: number;
+  r?: number;
+  seasonRatings?: { s: string; r: number }[];
+  c?: string;
+  m?: string;
+  w?: boolean;
+  cv?: string;
+  nc?: boolean;
+};
+
+const movieRows = movies as Row[];
+const gameRows = games as Row[];
+---
+
+<BaseLayout
+  title={current ? `${current.en} · Off Duty` : 'Off Duty'}
+  description="Films watched, books read, games played, model cars collected, and places stayed."
+>
+  <script
+    is:inline
+    slot="head"
+    data-library-base={withBase('/library/')}
+    data-library-sections={LIBRARY_SECTIONS.map((section) => section.id).join(' ')}
+    data-library-view={view}
+  >
+    // Old in-page links (/library/#cars) open the section's own page.
+    (() => {
+      const data = document.currentScript?.dataset;
+      if (!data) return;
+      const sections = (data.librarySections || '').split(' ');
+      const open = () => {
+        const id = location.hash.slice(1);
+        if (id !== data.libraryView && sections.includes(id)) {
+          location.replace(`${data.libraryBase}${id}/${location.search}`);
+        }
+      };
+      open();
+      window.addEventListener('hashchange', open);
+    })();
+  </script>
+  <main id="main-content" class="library-main" data-section={view}>
+    <header class="library-header">
+      <h1 class="library-title"><LangText text={{ zh: '没干正事', en: 'Off Duty' }} /></h1>
+      <p class="library-desc">
+        <LangText
+          text={{
+            zh: '看过的电影，读过的书，玩过的游戏，收藏的小车，还有住过的酒店。',
+            en: 'Films, books, games, little cars, and places along the way.',
+          }}
+        />
+      </p>
+    </header>
+
+    <nav class="library-tabs" aria-label="Collection sections">
+      <a
+        class="library-tab"
+        href={withBase('/library/')}
+        data-tab="overview"
+        aria-current={overview ? 'page' : undefined}
+        ><LangText text={{ zh: '全部', en: 'Overview' }} /></a
+      >
+      {
+        LIBRARY_SECTIONS.map((section) => (
+          <a
+            class="library-tab"
+            href={sectionHref(section.id)}
+            data-tab={section.id}
+            aria-current={view === section.id ? 'page' : undefined}
+          >
+            <LangText text={{ zh: section.zh, en: section.en }} />
+            {counts[section.id] !== null && <b>{counts[section.id]}</b>}
+          </a>
+        ))
+      }
+    </nav>
+
+    {
+      shows('movies') && (
+        <section
+          id="movies"
+          class="collection-section"
+          data-panel="movies"
+          aria-labelledby="movies-heading"
+        >
+          <div class="collection-heading">
+            <h2 id="movies-heading">
+              <LangText text={{ zh: '看过的影视', en: 'On screen' }} />
+              <span class="collection-count">{movieRows.length}</span>
+            </h2>
+            {overview && (
+              <a class="collection-expand" href={sectionHref('movies')}>
+                <LangText text={{ zh: '展开全部', en: 'View all films' }} /> ↗
+              </a>
+            )}
+          </div>
+          <div class="library-grid" data-grid="movies">
+            {preview(movieRows, OVERVIEW_GRID_ITEMS).map((d) => (
+              <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+                <div class="lib-poster">
+                  {d.nc ? (
+                    <div class="lib-spine">{d.t}</div>
+                  ) : (
+                    <img
+                      src={`${CDN}/movies/${d.cv}`}
+                      alt={d.t}
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="600"
+                    />
+                  )}
+                  {d.w && (
+                    <span class="lib-chip">
+                      <LangText text={{ zh: '在看', en: 'Watching' }} />
+                    </span>
+                  )}
+                </div>
+                {d.c && (
+                  <aside class="lib-note">
+                    <p class="c">{d.c}</p>
+                    <div class="m">
+                      {d.r ? (
+                        <span class="stars" aria-hidden="true">
+                          {stars(d.r)}
+                        </span>
+                      ) : null}
+                      <span class="d">{d.m}</span>
+                    </div>
+                  </aside>
+                )}
+                <div class="lib-title">{d.t}</div>
+                <div class="lib-meta">
+                  <span>
+                    {d.y}
+                    {d.tv && d.s ? `${d.y ? ' · ' : ''}S${d.s}` : ''}
+                  </span>
+                  {d.r ? (
+                    <span class="stars" aria-label={`${d.r} / 5`}>
+                      {stars(d.r)}
+                    </span>
+                  ) : null}
+                </div>
+                {d.seasonRatings?.map((rating) => (
+                  <div class="lib-meta">
+                    <span>S{rating.s}</span>
+                    <span class="stars" aria-label={`${rating.r} / 5`}>
+                      {stars(rating.r)}
+                    </span>
+                  </div>
+                ))}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      shows('books') && (
+        <section
+          id="books"
+          class="collection-section"
+          data-panel="books"
+          aria-labelledby="books-heading"
+        >
+          <div class="collection-heading">
+            <h2 id="books-heading">
+              <LangText text={{ zh: '读过的书', en: 'Between the pages' }} />
+              <span class="collection-count">{books.length}</span>
+            </h2>
+            {overview && (
+              <a class="collection-expand" href={sectionHref('books')}>
+                <LangText text={{ zh: '展开全部', en: 'View all books' }} /> ↗
+              </a>
+            )}
+          </div>
+          <div class="library-grid" data-grid="books">
+            {preview(books, OVERVIEW_GRID_ITEMS).map((book) => (
+              <article class="lib-card" lang={book.lang}>
+                <a
+                  href={book.coverSource || book.url}
+                  class="book-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div class="lib-poster">
+                    <div
+                      class:list={[
+                        'lib-spine',
+                        { 'book-text-cover': book.coverKind === 'typographic' },
+                      ]}
+                    >
+                      {book.coverKind === 'typographic' ? (
+                        <>
+                          <span>{book.author}</span>
+                          <strong>{book.t}</strong>
+                          <small>Fiction · Poetry · Essays</small>
+                        </>
+                      ) : (
+                        book.t
+                      )}
+                    </div>
+                    {book.image && (
+                      <img
+                        src={book.image}
+                        alt={book.t}
+                        loading="lazy"
+                        decoding="async"
+                        width="400"
+                        height="600"
+                      />
+                    )}
+                  </div>
+                  <div class="lib-title">{book.t}</div>
+                </a>
+                <div class="lib-meta">
+                  <span>{book.author}</span>
+                  {book.r && (
+                    <span class="stars" aria-label={`${book.r} / 5`}>
+                      {stars(book.r)}
+                    </span>
+                  )}
+                </div>
+                <p class="book-description">{book.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      shows('games') && (
+        <section
+          id="games"
+          class="collection-section"
+          data-panel="games"
+          aria-labelledby="games-heading"
+        >
+          <div class="collection-heading">
+            <h2 id="games-heading">
+              <LangText text={{ zh: '玩过的游戏', en: 'Press play' }} />
+              <span class="collection-count">{gameRows.length}</span>
+            </h2>
+            {overview && (
+              <a class="collection-expand" href={sectionHref('games')}>
+                <LangText text={{ zh: '展开全部', en: 'View all games' }} /> ↗
+              </a>
+            )}
+          </div>
+          <p class="collection-caption">
+            <LangText text={{ zh: '按游戏时长排序', en: 'By hours played' }} />
+          </p>
+          <div class="library-grid" data-grid="games">
+            {preview(gameRows, OVERVIEW_GRID_ITEMS).map((d) => (
+              <article class={`lib-card${d.c ? ' has-note' : ''}`}>
+                <div class="lib-poster">
+                  {d.nc ? (
+                    <div class="lib-spine">{d.t}</div>
+                  ) : (
+                    <img
+                      src={`${CDN}/games/${d.cv}`}
+                      alt={d.t}
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="600"
+                    />
+                  )}
+                </div>
+                {d.c && (
+                  <aside class="lib-note">
+                    <p class="c">{d.c}</p>
+                    <div class="m">
+                      {d.r ? (
+                        <span class="stars" aria-hidden="true">
+                          {stars(d.r)}
+                        </span>
+                      ) : null}
+                      <span class="d">{d.m}</span>
+                    </div>
+                  </aside>
+                )}
+                <div class="lib-title">{d.t}</div>
+                <div class="lib-meta">
+                  {d.h ? <span class="hrs">{d.h} h</span> : <span>{d.y}</span>}
+                  {d.r ? (
+                    <span class="stars" aria-label={`${d.r} / 5`}>
+                      {stars(d.r)}
+                    </span>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      shows('cars') && (
+        <section id="cars" class="collection-section" data-panel="cars" aria-label="Model cars">
+          {overview && (
+            <a class="collection-expand car-expand" href={sectionHref('cars')}>
+              <LangText text={{ zh: '展开全部', en: 'View all' }} /> ↗
+            </a>
+          )}
+          {carScales.map((scale) => (
+            <section
+              class="car-scale-section"
+              aria-label={`${scale === '1:64' && hasOneTo62 ? '1:64 and 1:62' : scale} model cars`}
+            >
+              <header class="car-shelf-heading">
+                <h3>{scale === '1:64' && hasOneTo62 ? '1:64 · 1:62' : scale}</h3>
+                {['1:18', '1:64'].includes(scale) && (
+                  <span class="car-shelf-label">
+                    <LangText
+                      text={
+                        scale === '1:18'
+                          ? { zh: '大比例陈列', en: 'The display cabinet' }
+                          : { zh: '掌心里的车库', en: 'The pocket garage' }
+                      }
+                    />
+                  </span>
+                )}
+              </header>
+              <div class="model-car-grid">
+                {preview(
+                  modelCars.filter((car) =>
+                    scale === '1:64' ? pocketScales.has(car.scale) : car.scale === scale
+                  ),
+                  OVERVIEW_CARS_PER_SCALE
+                ).map((car) => {
+                  const ImageTag = car.ownershipPost ? 'a' : 'div';
+                  const image = carImage(car);
+                  return (
+                    <article class="model-car" data-car-id={car.id} data-car-scale={car.scale}>
+                      <ImageTag
+                        class:list={[
+                          'car-image',
+                          {
+                            'image-pending': !car.displayImage,
+                          },
+                        ]}
+                        style={`--car-photo-background: ${car.imageFrameColor || '#fff'}`}
+                        href={car.ownershipPost ? withBase(car.ownershipPost) : undefined}
+                      >
+                        <span class="car-image-fallback">
+                          <LangText
+                            text={
+                              car.displayImage
+                                ? { zh: '图片暂不可用', en: 'Image unavailable' }
+                                : { zh: '照片待补', en: 'Photo pending' }
+                            }
+                          />
+                        </span>
+                        {image && (
+                          <img
+                            src={image.src}
+                            srcset={image.srcset}
+                            sizes={image.sizes}
+                            alt={`${car.brand} ${car.title}, ${car.scale}, ${car.imageSourceType === 'ai-generated' ? 'AI-generated model illustration' : 'product image'}`}
+                            loading="lazy"
+                            decoding="async"
+                            width={image.width}
+                            height={image.height}
+                          />
+                        )}
+                      </ImageTag>
+                      <div class="car-meta">
+                        <span>{car.brand}</span>
+                        <b>{car.scale}</b>
+                      </div>
+                      <h4>{car.title}</h4>
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      shows('hotels') && (
+        <section id="hotels" class="collection-section" data-panel="hotels" aria-label="Hotels">
+          <div class="collection-heading">
+            <a
+              href={withBase('/interactive/hyatt-tier-wall/index.html')}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LangText text={{ zh: '全屏打开', en: 'Open full screen' }} /> ↗
+            </a>
+          </div>
+          <iframe
+            class="hotel-wall"
+            title="Hyatt hotel rating wall"
+            src={withBase('/interactive/hyatt-tier-wall/index.html')}
+            loading="lazy"
+          />
+        </section>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<script>
+  const grids = document.querySelectorAll<HTMLElement>('[data-grid]');
+
+  function placeNotes() {
+    grids.forEach((grid) => {
+      if (!grid.getClientRects().length) return;
+      const right = grid.getBoundingClientRect().right;
+      grid.querySelectorAll<HTMLElement>('.lib-card.has-note').forEach((card) => {
+        const poster = card.querySelector<HTMLElement>('.lib-poster');
+        if (poster) card.style.setProperty('--lib-poster-height', `${poster.offsetHeight}px`);
+        card.classList.toggle('note-flip', card.getBoundingClientRect().right + 260 > right);
+      });
+    });
+  }
+
+  window.addEventListener('resize', placeNotes);
+  placeNotes();
+
+  grids.forEach((grid) =>
+    grid.addEventListener('click', (event) => {
+      if (event.target instanceof Element)
+        event.target.closest('.lib-card.has-note')?.classList.toggle('open');
+    })
+  );
+  // Keep the source link and a useful fallback if a remote image is unavailable.
+  document.querySelectorAll<HTMLImageElement>('.book-link img, .car-image img').forEach((img) => {
+    const showFallback = () => {
+      img.hidden = true;
+      img.closest('.car-image')?.classList.add('image-unavailable');
+    };
+    img.addEventListener('error', showFallback);
+    if (img.complete && img.naturalWidth === 0) showFallback();
+  });
+</script>
