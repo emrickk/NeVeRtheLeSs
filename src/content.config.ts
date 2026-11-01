@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const posts = defineCollection({
-  // Primary posts only — exclude `*.en.md` / `*.zh.md` sibling translations so
+  // Primary posts only: exclude `*.en.md` / `*.zh.md` sibling translations so
   // routes, list views, and RSS come from primaries and URLs stay unchanged.
   loader: glob({
     base: './src/content/posts',

@@ -1,5 +1,5 @@
 /* ============================================================
-   Tone Design Tokens — Global Tokens & Base Styles
+   Tone Design Tokens: Global Tokens & Base Styles
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -119,7 +119,7 @@
   --color-link: var(--color-blue);
 
   /* ------------------------------------------------------------
-     3. SPACING — 4pt base grid
+     3. SPACING: 4pt base grid
      ------------------------------------------------------------ */
   --space-1: 0.25rem; /* 4pt */
   --space-2: 0.5rem; /* 8pt */
@@ -151,7 +151,7 @@
   --btn-glass-color: var(--label-primary);
 
   /* ------------------------------------------------------------
-     5. SHADOWS — Subtle, layered
+     5. SHADOWS: Subtle, layered
      ------------------------------------------------------------ */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -179,7 +179,7 @@
   --nav-height: 52px;
 }
 
-/* Dark Mode — media query OR data-theme attribute (JS toggle) */
+/* Dark Mode: media query OR data-theme attribute (JS toggle) */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --label-primary: rgba(255, 255, 255, 1);

@@ -15,7 +15,7 @@
   box-decoration-break: clone;
 }
 
-/* Code blocks — rendered by astro-expressive-code */
+/* Code blocks, rendered by astro-expressive-code */
 .expressive-code {
   --ec-codePadBlk: clamp(0.8rem, 0.658rem + 0.606vw, 1.05rem);
   --ec-codePadInl: clamp(0.875rem, 0.661rem + 0.909vw, 1.25rem);

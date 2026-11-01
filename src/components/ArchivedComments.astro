@@ -37,7 +37,7 @@ const comments: ArchivedComment[] = files[key]?.default ?? [];
               <time class="archived-comment__date">{c.date}</time>
             </div>
             {/* Bodies are sanitized HTML exported in Task 6 (scripts/styles/iframes
-                removed, on* attrs stripped, javascript: URLs neutered) — safe to render. */}
+                removed, on* attrs stripped, javascript: URLs neutered), safe to render. */}
             <div class="archived-comment__body" set:html={c.body} />
           </li>
         ))}
@@ -108,9 +108,9 @@ const comments: ArchivedComment[] = files[key]?.default ?? [];
   line-height: var(--leading-relaxed);
 }
 
-/* Injected (set:html) body content — needs :global to reach past scoping.
+/* Injected (set:html) body content: needs :global to reach past scoping.
    Evidence-based coverage: a scan of all 82 src/data/comments/*.json bodies
-   found exactly two tags in the corpus — <p> (358) and <img> (22) — so only
+   found exactly two tags in the corpus, <p> (358) and <img> (22), so only
    those get rules. Re-scan before adding more. */
 .archived-comment__body :global(> :first-child) {
   margin-block-start: 0;
