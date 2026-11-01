@@ -1,0 +1,12 @@
+---
+import LibraryPage from '../../components/library/LibraryPage.astro';
+import { LIBRARY_SECTIONS } from '../../components/library/sections';
+
+export function getStaticPaths() {
+  return LIBRARY_SECTIONS.map(({ id }) => ({ params: { section: id }, props: { section: id } }));
+}
+
+const { section } = Astro.props;
+---
+
+<LibraryPage view={section} />
