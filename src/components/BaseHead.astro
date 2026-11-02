@@ -145,7 +145,7 @@ const websiteJsonLd =
       if (v === 'zh' || v.indexOf('zh-') === 0) return 'zh';
       return null;
     }
-    let lang = null;
+    let lang;
     try {
       lang = pick(new URLSearchParams(location.search).get('lang'));
     } catch {
