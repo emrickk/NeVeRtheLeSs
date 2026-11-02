@@ -78,9 +78,11 @@ export function buildSite(
   return { ok: true, output }
 }
 
-// Arguments for `astro preview` serving a run directory.
+// Arguments for `astro preview` serving a run directory. `--ignore-lock`
+// keeps the server in the foreground: Astro 7 otherwise detaches it when an
+// agent runs the command, and this tool would then delete the build it serves.
 export function previewArgs(outDir, { port, host = false } = {}) {
-  const args = ['preview', '--outDir', outDir, '--port', String(port)]
+  const args = ['preview', '--outDir', outDir, '--port', String(port), '--ignore-lock']
   if (host) args.push('--host')
   return args
 }

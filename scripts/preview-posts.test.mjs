@@ -883,3 +883,8 @@ test('cli: preview-posts builds into its own run directory and removes it on Ctr
   assert.equal(await exited, 130)
   assert.equal(existsSync(runDir), false)
 })
+
+test('previewArgs keeps the preview server in the foreground under Astro 7', async () => {
+  const { previewArgs } = await import('./build-output.mjs')
+  assert.ok(previewArgs('/tmp/x', { port: 4321 }).includes('--ignore-lock'))
+})
