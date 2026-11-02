@@ -13,7 +13,7 @@ export function loadEnvFile(path = '.env.local') {
   try {
     process.loadEnvFile(path)
   } catch {
-    // no local env file — that's OK for dry-runs and CI
+    // no local env file, that's OK for dry-runs and CI
   }
 }
 

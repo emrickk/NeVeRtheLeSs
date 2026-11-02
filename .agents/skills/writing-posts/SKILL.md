@@ -9,12 +9,12 @@ The owner's latest direction and accepted prose are the standard. Read the curre
 
 ## Match the requested work
 
-| Request | Mode | Action |
-| --- | --- | --- |
-| “What do you think?”, critique, or audit | Reader review | Read the whole piece and images. Explain substantive strengths and weaknesses; do not edit unless authorized. |
-| Apply pasted or dictated edits | Faithful application | Keep typed/pasted wording verbatim. Compose dictated meaning fluently, preserving load-bearing words and jokes, with sibling sync and mechanics as needed. |
-| Draft, rewrite, restructure, or translate | Composition | Make editorial choices within the requested scope, using the source material and the piece's register. |
-| Check for AI tells | Lint review | Report contextual findings; do not bulk-rewrite. Read [the lint reference](references/ai-tell-review.md). |
+| Request                                   | Mode                 | Action                                                                                                                                                     |
+| ----------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| “What do you think?”, critique, or audit  | Reader review        | Read the whole piece and images. Explain substantive strengths and weaknesses; do not edit unless authorized.                                              |
+| Apply pasted or dictated edits            | Faithful application | Keep typed/pasted wording verbatim. Compose dictated meaning fluently, preserving load-bearing words and jokes, with sibling sync and mechanics as needed. |
+| Draft, rewrite, restructure, or translate | Composition          | Make editorial choices within the requested scope, using the source material and the piece's register.                                                     |
+| Check for AI tells                        | Lint review          | Report contextual findings; do not bulk-rewrite. Read [the lint reference](references/ai-tell-review.md).                                                  |
 
 A request to edit one passage does not authorize polishing its neighbors. An authorized rewrite requires judgment, not transcription. Clarify a consequential ambiguity when the established scope and source material cannot resolve it.
 
@@ -59,7 +59,7 @@ For the established travel-post workflow, Chinese is the ground truth and receiv
 
 Read every changed sibling in full. Check continuity, repeated ideas, phrasing, punctuation, CJK-Latin spacing, names, casing, and metadata. Correct alt text made stale or wrong by the edit. When composing a post, provide descriptive alt text in each file's language. Previously empty or thin alt text outside a narrow edit's scope is an issue to flag, not permission to rewrite every caption.
 
-Meet the repository's [completion criteria](../../../docs/completion-criteria.md). Inspect the actual changed page and images; a known mismatch remains unfinished unless the owner accepts that exception. Verify that the preview opens and serves the current result.
+Meet the repository's [completion criteria](../../../docs/completion-criteria.md). Inspect the actual changed page and images; a known mismatch remains unfinished unless the owner accepts that exception. Verify that the preview opens and serves the current result. To look at a `draft: true` post, open its normal `/posts/<slug>/` URL under `npm run dev` (it renders marked Draft); no one-off render script is needed.
 
 For prose review, show original and proposed context side by side in HTML, with changes highlighted and language switching when both languages are reviewed. Number alternatives clearly when selection is needed. For a finished-page request, show the actual production-preview page first. A methodology summary or separate report cannot replace the requested result.
 

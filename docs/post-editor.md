@@ -47,7 +47,8 @@ edits are ignored rather than blocking the publish. Two entry points share it:
   deploy.
 - **Conversation**: open any Claude Code session and say "push my edits". The
   ship-posts skill runs `npm run ship -- --preflight`, serves the exact build
-  with `--review`, and after you say "approved" (or "push") runs
+  with `--review` (a review build: draft posts render at their own URL,
+  marked Draft and noindex, and never deploy), and after you say "approved" (or "push") runs
   `--yes --digest <d>`. `--dry-run` rehearses everything except the commit and
   push.
 

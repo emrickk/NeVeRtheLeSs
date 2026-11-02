@@ -9,10 +9,10 @@ Pushing to `main` deploys to https://theneverless.com. This checklist reports GO
 
 ## Quick mode (default)
 
-1. Run `npm run release-check` from the repo root. It saves a checkpoint, then runs git hygiene, secret scan, types, lint, build, image tests, rehype tests, and built-output verification (checks 1 to 9), check 12 (post preview approval), and check 13 (post content).
+1. Run `npm run release-check` from the repo root. It saves a checkpoint, then runs git hygiene, secret scan, types, lint, build, image and library tests, rehype tests, and built-output verification (checks 1 to 9), check 12 (post preview approval), and check 13 (post content).
 2. Report the per-check results and the verdict.
 
-The build (check 6) goes into a private temporary directory that checks 9 to 11 read and that is removed afterwards; release-check never writes or reads the shared `dist/`, so concurrent sessions cannot verify each other's output. Check 7 never runs the R2 live test (it only runs with `R2_LIVE=1`, which release-check strips); run `R2_LIVE=1 npm run test:images` deliberately when the R2 connection itself needs proof, since it writes and deletes an object in the production bucket.
+The build (check 6) goes into a private temporary directory that checks 9 to 11 read and that is removed afterwards; release-check never writes or reads the shared `dist/`, so concurrent sessions cannot verify each other's output. Check 9 also fails when any built page carries the draft marker (`data-draft-page`), since a production build must not contain a draft post. Check 7 never runs the R2 live test (it only runs with `R2_LIVE=1`, which release-check strips); run `R2_LIVE=1 npm run test:images` deliberately when the R2 connection itself needs proof, since it writes and deletes an object in the production bucket.
 
 If check 12 fails, preview-relevant files changed without an owner-approved preview: run `npm run preview-posts`, let the owner review in the browser, then `npm run preview-posts -- --approve` once they approve (see the preview-posts skill).
 

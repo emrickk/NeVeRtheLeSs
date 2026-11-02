@@ -44,8 +44,10 @@ Ctrl+C.
    printed file list, the ignored count, and the `changeset digest`.
 2. Run `npm run ship -- --review --no-open --port N` with the same selection
    flags, in the background. It builds the temporary worktree into a private
-   directory and serves exactly the build that would ship. Give the owner the
-   review link and the file list from step 1.
+   directory and serves exactly the build that would ship. It is a review
+   build (`SHOW_DRAFTS=1`), so any draft post in it renders at its own URL,
+   marked Draft and noindex; production never renders drafts. Give the owner
+   the review link and the file list from step 1.
 3. Use the owner's explicit approval ("approved", "push", "ship it") of the
    reviewed scope and bytes. Recoverable approval of an earlier review of the
    identical result remains valid; do not require a new exchange just because
