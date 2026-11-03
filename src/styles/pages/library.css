@@ -615,3 +615,23 @@
 .library-main[data-section='overview'] #cars .car-scale-section .model-car:nth-child(n + 5) {
   display: none;
 }
+
+/* Dark mode: dim covers, car photos and the hotel wall so they do not glare
+   against the dark page. Post images and the home page are not dimmed. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .library-main img {
+    filter: brightness(0.86);
+  }
+
+  :root:not([data-theme='light']) .library-main .hotel-wall {
+    filter: brightness(0.78);
+  }
+}
+
+[data-theme='dark'] .library-main img {
+  filter: brightness(0.86);
+}
+
+[data-theme='dark'] .library-main .hotel-wall {
+  filter: brightness(0.78);
+}
