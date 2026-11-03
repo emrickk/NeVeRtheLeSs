@@ -13,6 +13,7 @@ import modelCars from '../../data/library/model-cars.json';
 import hotelWallHtml from '../../../public/interactive/hyatt-tier-wall/index.html?raw';
 import posterVariants from '../../data/library/poster-variants.json';
 import { withBase } from '../../utils/paths';
+import { groupTvSeasons } from '../../utils/tv-seasons';
 import {
   LIBRARY_SECTIONS,
   OVERVIEW_CARS_PER_SCALE,
@@ -31,7 +32,11 @@ const sectionHref = (id: string) => withBase(`/library/${id}/`);
 
 // Owner-written entries stay separate from the regenerated media snapshot.
 const localMovieIds = new Set(localMovies.map((movie) => movie.id));
-const movies = [...localMovies, ...importedMovies.filter((movie) => !localMovieIds.has(movie.id))];
+// Then one card per TV show: a show's season rows merge into a single card.
+const movies = groupTvSeasons([
+  ...localMovies,
+  ...importedMovies.filter((movie) => !localMovieIds.has(movie.id)),
+]);
 
 // Inventory membership does not depend on whether a photograph is available.
 const carIds = new Set<string>();
@@ -135,7 +140,7 @@ const stars = (r: number) => '★'.repeat(Math.floor(r)) + (r % 1 >= 0.5 ? '½' 
 type Row = {
   id: string;
   t: string;
-  y?: number;
+  y?: number | string;
   tv?: boolean;
   s?: string;
   h?: number;

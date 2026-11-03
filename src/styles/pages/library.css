@@ -358,6 +358,8 @@
   font-size: var(--text-footnote);
   line-height: 1.7;
   color: var(--lib-note-ink);
+  /* A grouped TV show puts each season's note on its own line. */
+  white-space: pre-line;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;

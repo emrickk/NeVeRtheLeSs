@@ -19,6 +19,7 @@ import {
 } from '../consts';
 import { getUiText, langPair } from '../ui';
 import { withBase } from '../utils/paths';
+import { groupTvSeasons } from '../utils/tv-seasons';
 import { buildTranslationMap, resolveLangText } from '../utils/translations';
 const tr = getUiText();
 
@@ -111,7 +112,8 @@ const LIBRARY_CDN = 'https://cdn.theneverless.com/library';
 
 type LibRow = { t: string; cv?: string; nc?: boolean };
 
-// First N rows with a cover, deduped by title (series seasons collapse to one).
+// First N rows with a cover, deduped by title. Film rows are grouped first, so
+// a series shows the same card (and cover) as on the library page.
 // movies.json is already sorted by date watched; games.json by hours played.
 const shelfPick = (rows: LibRow[], base: string, n: number) => {
   const seen = new Set<string>();
@@ -125,7 +127,7 @@ const shelfPick = (rows: LibRow[], base: string, n: number) => {
   return out;
 };
 
-const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'games', 2)];
+const libraryShelf = [...shelfPick(groupTvSeasons(movies), 'movies', 6), ...shelfPick(games, 'games', 2)];
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
