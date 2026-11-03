@@ -3,6 +3,7 @@
   "allow": [
     "^public/favicon\\.svg:9j/4",
     "^src/content/posts/[^:]+\\.md:com/20\\d{2}/\\d{2}/",
+    "^src/data/image-dimensions\\.json:com/20\\d{2}/\\d{2}/",
     "^src\\/content\\/posts\\/300sl\\-and\\-two\\-934s(?:\\.en)?\\.md:com\\/marsClassic\\/en\\/instance\\/ko\\/Types\\-300\\-SL\\-Coup\\-and\\-300\\-SL\\-Roadster\\-W\\-198\\-1954\\-\\-\\-1963$",
     "^src\\/content\\/posts\\/300sl\\-and\\-two\\-934s(?:\\.en)?\\.md:com\\/product\\/1\\-18\\/racing\\-legends\\/1976\\-79\\-exoto\\-porsche\\-934\\-rsr\\/rlg19095\\-gt\\-winner\\-1977\\-silverstone\\-6\\-hours\\-vittorio\\-brambilla\\-gianpiero\\-moretti$",
     "^src\\/data\\/library\\/books\\.j(?:)son:com\\/titles\\/thomas-w-(?:)malone\\/superminds\\/978031(?:)6349109$",

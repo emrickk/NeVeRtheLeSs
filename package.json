@@ -38,6 +38,7 @@
     "lint:css": "stylelint \"src/**/*.{css,astro}\"",
     "images": "node scripts/images/process.mjs",
     "images:migrate": "node scripts/images/migrate.mjs",
+    "images:dimensions": "node scripts/images/dimensions.mjs",
     "library:car-variants": "node scripts/library/car-variants.mjs",
     "test:images": "node --test \"scripts/images/*.test.mjs\"",
     "test:rehype": "node --test \"scripts/rehype/*.test.mjs\"",

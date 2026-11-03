@@ -7,7 +7,8 @@ import { optimizeToWebp } from './optimize.mjs'
 import { archiveOriginal } from './archive.mjs'
 import { makeClient, putObject, objectExists } from './r2.mjs'
 import { loadManifest, saveManifest, hasHash, addEntry, hashBuffer } from './manifest.mjs'
-import { deriveKey, snippetFor } from './references.mjs'
+import { deriveKey, publicUrl, snippetFor } from './references.mjs'
+import { DIMENSIONS_JSON, saveDimensions } from './dimensions.mjs'
 
 const DEFAULT_STAGING = 'image-staging'
 const DEFAULT_MANIFEST = 'scripts/images/.manifest.json'
@@ -31,10 +32,12 @@ export async function run({
   log = console.log,
   prefix = null,
   archive = true,
+  dimensionsPath = DIMENSIONS_JSON,
+  client: injectedClient = null,
 } = {}) {
   const files = listStaged(stagingDir)
   const base = config?.publicBase ?? DEFAULT_BASE
-  const client = config && !dryRun ? makeClient(config) : null
+  const client = config && !dryRun ? (injectedClient ?? makeClient(config)) : null
   const manifest = loadManifest(manifestPath)
   const snippets = []
 
@@ -60,7 +63,7 @@ export async function run({
       const arch = archiveOriginal(file, config)
       log(`  archived original -> ${arch.dest} (${arch.location})${arch.skipped ? ' [already archived]' : ''}`)
     }
-    const { buffer, width, bytes } = await optimizeToWebp(file, { watermark: true })
+    const { buffer, width, height, bytes } = await optimizeToWebp(file, { watermark: true })
     if (dryRun || !config) {
       log(`  [dry-run] ${key} (${width}px, ${(bytes / 1024).toFixed(0)} KB)`)
     } else {
@@ -69,6 +72,14 @@ export async function run({
       // Saved per upload, not once at the end: a mid-batch failure must not
       // lose the dedupe entries of files already on the CDN.
       saveManifest(manifestPath, manifest)
+      // Width and height for the build (scripts/rehype/image-dimensions.mjs);
+      // commit src/data/image-dimensions.json together with the post. The
+      // image is already live, so a failure here warns instead of stopping.
+      try {
+        saveDimensions({ [publicUrl(key, base)]: [width, height] }, dimensionsPath)
+      } catch (err) {
+        log(`  ! dimensions not recorded for ${key}: ${err.message} (run npm run images:dimensions)`)
+      }
       log(`  ✓ uploaded ${key} (${width}px, ${(bytes / 1024).toFixed(0)} KB)`)
     }
     snippets.push(snippetFor(key, base))

@@ -40,6 +40,29 @@ pair inside prose (charts, before/after), the manual
 original aspect ratios and collapses to one column on phones, while
 galleries crop to 16:9 and stay two-up everywhere.
 
+### Image dimensions (layout stability)
+
+Every post and note image gets `width` and `height` attributes at build
+time, so the page reserves each photo's box before it arrives and the text
+does not jump while images load. The sizes come from
+`src/data/image-dimensions.json` (CDN URL to `[width, height]`), which is
+committed; the build never contacts the CDN. `npm run images` adds an entry
+for every image it uploads, so commit that file together with the post
+(with `npm run ship`, pass `--include src/data/image-dimensions.json`).
+
+- `npm run images:dimensions -- --check` lists referenced images missing
+  from the map (no network).
+- `npm run images:dimensions` probes the missing ones on the CDN (ranged
+  reads of the file header, read-only) and adds them.
+
+A missing entry never fails the build: the image renders without
+dimensions and the build prints an `[image-dimensions]` warning naming the
+file. The plugin is `scripts/rehype/image-dimensions.mjs`; it also sizes
+`<img>` tags inside raw HTML such as `img-grid` blocks, and leaves alone any
+image that already has a width or height, or an inline style that sets one.
+A change to the map changes Astro's config digest, so the cached rendered
+Markdown is rebuilt automatically.
+
 ### Hero covers (`src/assets/hero/`)
 
 Hero covers live in the repo (not on R2) and feed three surfaces at once:
