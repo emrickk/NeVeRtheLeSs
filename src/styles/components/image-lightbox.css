@@ -98,18 +98,6 @@
 }
 
 @media (max-width: 600px) {
-  /* The desktop corner position overhangs the screen edge and covers the
-     photo; on phones the close button sits above the photo's right corner,
-     on the dark backdrop, inside the dialog's 4vw side margin. */
-  .lightbox-inner {
-    padding-top: 52px;
-  }
-
-  .lightbox-close {
-    top: 0;
-    right: max(0px, env(safe-area-inset-right) - 4vw);
-  }
-
   .lightbox-prev {
     left: 6px;
   }
@@ -126,15 +114,6 @@
   border-radius: var(--radius-lg);
   object-fit: contain;
   border: none !important;
-}
-
-/* Phones: leave room above the photo for the close button. */
-@media (max-width: 600px) {
-  .lightbox-img {
-    max-height: calc(
-      86dvh - 52px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
-    );
-  }
 }
 
 .lightbox-caption {
