@@ -155,8 +155,9 @@ function mergeSeasons<T extends SeasonFields>(leader: T, group: T[]): GroupedRow
   delete merged.r;
   if (years.length) merged.y = from === to ? from : `${from}-${to}`;
   if (notes.length) merged.c = notes.join('\n');
-  if (seasonRatings.length) merged.seasonRatings = seasonRatings;
-  // Two or more season lines replace the card rating, as on The Office.
+  // Two or more season lines replace the card rating, as on The Office. A
+  // single line would repeat the card's stars, so it becomes the card rating.
+  if (seasonRatings.length > 1) merged.seasonRatings = seasonRatings;
   if (seasonRatings.length === 1) merged.r = seasonRatings[0].r;
   return merged as GroupedRow<T>;
 }

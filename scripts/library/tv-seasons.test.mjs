@@ -133,7 +133,7 @@ test('gaps, unrated seasons, one year and range seasons', () => {
   ]);
   assert.equal(card.s, '1-4, 6');
   assert.equal(card.y, 2020);
-  assert.deepEqual(card.seasonRatings, [{ s: '1-4', r: 5 }]);
+  assert.equal('seasonRatings' in card, false);
   assert.equal(card.r, 5, 'a single rated season keeps the card rating');
   assert.equal('c' in card, false);
 
@@ -141,7 +141,7 @@ test('gaps, unrated seasons, one year and range seasons', () => {
     season('1', { r: 4, m: '2024-01-01' }),
     season('2', { r: 4, m: '2024-01-02' }),
   ]);
-  assert.deepEqual(same.seasonRatings, [{ s: '1-2', r: 4 }]);
+  assert.equal('seasonRatings' in same, false, 'no line that repeats the card stars');
   assert.equal(same.r, 4, 'one merged line keeps the card rating');
 
   const [unrated] = groupTvSeasons([season('1'), season('2')]);
