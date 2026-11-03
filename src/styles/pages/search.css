@@ -1,7 +1,12 @@
 .search-main {
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: var(--space-10) var(--space-6) var(--space-16);
+}
+
+/* Same content column as the header and the other pages. */
+.search-main > * {
+  max-width: var(--max-width-content);
 }
 
 .search-header {

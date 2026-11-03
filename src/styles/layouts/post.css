@@ -195,7 +195,7 @@
 
 .post-nav-date {
   font-size: var(--text-footnote);
-  color: var(--label-quaternary);
+  color: var(--label-tertiary);
   font-variant-numeric: tabular-nums;
 }
 
