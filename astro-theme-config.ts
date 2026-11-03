@@ -1,7 +1,7 @@
 type NavItem = {
   label: string;
   href: string;
-  /** Optional zh label; when set the header renders a toggle-aware pair. */
+  /** Optional zh label; when set the header and footer render a toggle-aware pair. */
   labelZh?: string;
 };
 
@@ -42,9 +42,9 @@ const config = {
 
   // Footer links stay visible by default so readers have a stable way to move around.
   footerNav: [
-    { label: 'Posts', href: '/posts' },
-    { label: 'About', href: '/about' },
-    { label: 'Search', href: '/search' },
+    { label: 'Posts', labelZh: '文章', href: '/posts' },
+    { label: 'About', labelZh: '关于', href: '/about' },
+    { label: 'Search', labelZh: '搜索', href: '/search' },
   ] as NavItem[],
 
   content: {

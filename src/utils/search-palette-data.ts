@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { getCollection } from 'astro:content';
+import config from '../../astro-theme-config';
 import { withBase } from './paths';
 import { buildTranslationMap, resolveLangText } from './translations';
 
@@ -12,9 +13,21 @@ export type SearchPaletteItem = {
   titleEn: string;
   lang: 'zh' | 'en';
   description: string;
+  /** Raw frontmatter key (stable identifier), kept for matching. */
   category: string;
+  /** Display label from categoryLabels, rendered in the reader's language. */
+  categoryZh: string;
+  categoryEn: string;
   href: string;
 };
+
+// Posts without a category still get a readable label in both languages.
+const UNCATEGORIZED = { key: 'Post', zh: '文章', en: 'Post' };
+
+export function categoryLabelFor(category: string | undefined) {
+  if (!category) return { zh: UNCATEGORIZED.zh, en: UNCATEGORIZED.en };
+  return config.content.categoryLabels[category] ?? { zh: category, en: category };
+}
 
 async function buildSearchPaletteJson() {
   const posts = (await getCollection('posts'))
@@ -25,13 +38,16 @@ async function buildSearchPaletteJson() {
 
   const items: SearchPaletteItem[] = posts.map((post) => {
     const text = resolveLangText(post.data, tmap);
+    const label = categoryLabelFor(post.data.category);
     return {
       title: post.data.title,
       titleZh: text.titleZh ?? post.data.title,
       titleEn: text.titleEn ?? post.data.title,
       lang: post.data.lang ?? 'zh',
       description: post.data.description,
-      category: post.data.category ?? 'Post',
+      category: post.data.category ?? UNCATEGORIZED.key,
+      categoryZh: label.zh,
+      categoryEn: label.en,
       href: withBase(`/posts/${post.id}/`),
     };
   });

@@ -1,14 +1,28 @@
 ---
 import '../styles/pages/search.css';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
 import LangText from '../components/LangText.astro';
+import LangTitle from '../components/LangTitle.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getUiText } from '../ui';
 import { withBase } from '../utils/paths';
+import { categoryLabelFor } from '../utils/search-palette-data';
+import { buildTranslationMap, resolveLangText } from '../utils/translations';
 
 const copy = {
   title: { zh: '搜索', en: 'Search' },
   loading: { zh: '搜索加载中', en: 'Loading search...' },
   description: { zh: '搜索这个博客的文章', en: 'Search posts' },
+  recent: getUiText().search.recent,
 };
+
+// Shown under the empty search box until the reader types (search-page.ts).
+const tmap = await buildTranslationMap();
+const recentPosts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8);
 ---
 
 <BaseLayout
@@ -40,6 +54,42 @@ const copy = {
         </p>
       </noscript>
     </div>
+
+    {
+      recentPosts.length > 0 && (
+        <nav class="search-recent" aria-labelledby="search-recent-heading" data-search-recent>
+          <h2 id="search-recent-heading" class="search-recent-heading eyebrow-accent">
+            <LangText text={copy.recent} />
+          </h2>
+          <ul class="search-recent-list">
+            {recentPosts.map((post) => {
+              const text = resolveLangText(post.data, tmap);
+
+              return (
+                <li>
+                  <a href={withBase(`/posts/${post.id}/`)} class="search-recent-item">
+                    <LangTitle
+                      tag="span"
+                      class="search-recent-title"
+                      zh={text.titleZh}
+                      en={text.titleEn}
+                      orig={post.data.lang ?? 'zh'}
+                      fallback={post.data.title}
+                    />
+                    <span class="search-recent-meta">
+                      <FormattedDate date={post.data.pubDate} class="search-recent-date" />
+                      <span class="search-recent-category">
+                        <LangText text={categoryLabelFor(post.data.category)} />
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )
+    }
   </main>
 
   <script>
@@ -49,3 +99,84 @@ const copy = {
     onReady(mountSearchPage);
   </script>
 </BaseLayout>
+
+<style>
+  .search-recent {
+    margin-top: var(--space-8);
+  }
+
+  .search-recent[hidden] {
+    display: none;
+  }
+
+  .search-recent-heading.eyebrow-accent {
+    margin: 0 0 var(--space-3);
+    font-weight: var(--weight-accent-label);
+  }
+
+  .search-recent-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--separator);
+  }
+
+  .search-recent-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--fill-tertiary);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .search-recent-item:hover {
+    opacity: 1;
+  }
+
+  .search-recent-item :global(.search-recent-title) {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--label-primary);
+    font-size: var(--text-callout);
+    font-weight: 500;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .search-recent-item:hover :global(.search-recent-title) {
+    color: var(--color-blue);
+  }
+
+  .search-recent-meta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    white-space: nowrap;
+  }
+
+  .search-recent-meta :global(.search-recent-date) {
+    color: var(--label-tertiary);
+    font-size: var(--text-footnote);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .search-recent-category {
+    color: var(--color-blue);
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-accent-label);
+  }
+
+  @media (max-width: 600px) {
+    .search-recent-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

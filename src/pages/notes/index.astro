@@ -2,6 +2,7 @@
 import '../../styles/pages/notes.css';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import LangText from '../../components/LangText.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getUiText } from '../../ui';
 
@@ -30,11 +31,11 @@ for (const entry of entries) {
 const years = [...byYear.keys()];
 ---
 
-<BaseLayout title={tr.notes.title} description={tr.notes.description} langs={['zh']}>
+<BaseLayout title={tr.notes.title.en} description={tr.notes.description} langs={['zh']}>
   <main id="main-content" class="notes-main">
     <div class="notes-header">
-      <p class="notes-label eyebrow-accent">{tr.notes.eyebrow}</p>
-      <h1 class="notes-title">{tr.notes.title}</h1>
+      <p class="notes-label eyebrow-accent"><LangText text={tr.notes.eyebrow} /></p>
+      <h1 class="notes-title"><LangText text={tr.notes.title} /></h1>
     </div>
     <div class="notes-timeline">
       {
@@ -48,7 +49,7 @@ const years = [...byYear.keys()];
                     <FormattedDate date={note.data.date} />
                   </a>
                   <a class="note-source" href={note.data.source} target="_blank" rel="noopener noreferrer">
-                    {tr.notes.onX}
+                    <LangText text={tr.notes.onX} />
                   </a>
                 </header>
                 <div class="note-body">
@@ -59,7 +60,7 @@ const years = [...byYear.keys()];
           </section>
         ))
       }
-      {entries.length === 0 && <p class="notes-empty">{tr.notes.empty}</p>}
+      {entries.length === 0 && <p class="notes-empty"><LangText text={tr.notes.empty} /></p>}
     </div>
   </main>
 </BaseLayout>

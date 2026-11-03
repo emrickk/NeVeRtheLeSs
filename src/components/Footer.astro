@@ -1,6 +1,8 @@
 ---
 import config from '../../astro-theme-config';
+import { getUiText, langPair } from '../ui';
 import { withBase } from '../utils/paths';
+import LangText from './LangText.astro';
 
 const today = new Date();
 const footerTitle = config.site.logoLabel || config.site.title;
@@ -15,13 +17,13 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
     </p>
     {
       footerLinks.length > 0 && (
-        <nav class="footer-links" aria-label="Footer navigation">
+        <nav class="footer-links" aria-label={langPair(getUiText().footer.label)}>
           {footerLinks.map((item) => (
             <a
               href={withBase(item.href)}
               data-search-palette-trigger={item.href === '/search' ? 'true' : undefined}
             >
-              {item.label}
+              {item.labelZh ? <LangText text={{ zh: item.labelZh, en: item.label }} /> : item.label}
             </a>
           ))}
         </nav>

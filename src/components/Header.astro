@@ -4,15 +4,19 @@ import HeaderLink from './HeaderLink.astro';
 import LangText from './LangText.astro';
 import LangToggle from './LangToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import { getUiText, langPair } from '../ui';
 import { withBase } from '../utils/paths';
 
-const skipLinkLabel = 'Skip to content';
-const navAriaLabel = 'Primary navigation';
+const headerText = getUiText().header;
+const navAriaLabel = langPair(headerText.navLabel);
 const headerTitle = config.site.logoLabel || config.site.title;
 const navItems = config.nav;
+const searchLabel = getUiText().search.open;
 ---
 
-<a href="#main-content" class="skip-link" tabindex="0">{skipLinkLabel}</a>
+<a href="#main-content" class="skip-link" tabindex="0">
+  <LangText text={headerText.skipLink} />
+</a>
 <header class="site-header glass">
   <nav class="nav-inner" aria-label={navAriaLabel}>
     <a href={withBase('/')} class="nav-logo">{headerTitle}</a>
@@ -27,6 +31,27 @@ const navItems = config.nav;
         }
       </div>
       <LangToggle />
+      {/* Opens the search palette (search-palette-loader.ts); without JS the
+          link goes to the /search page. */}
+      <a
+        href={withBase('/search')}
+        class="search-toggle"
+        data-search-palette-trigger="true"
+        title={`${searchLabel.zh} / ${searchLabel.en}`}
+      >
+        <svg
+          class="search-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="19"
+          height="19"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <circle cx="8.6" cy="8.6" r="5.6"></circle>
+          <path d="m14.2 14.2 3.1 3.1"></path>
+        </svg>
+        <span class="sr-only"><LangText text={searchLabel} /></span>
+      </a>
       <ThemeToggle />
     </div>
   </nav>
@@ -174,6 +199,51 @@ const navItems = config.nav;
   gap: var(--space-4);
 }
 
+/* Same box, color, hit area and focus ring as ThemeToggle. */
+.search-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--label-secondary);
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.search-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
+.search-toggle:hover {
+  color: var(--label-primary);
+  opacity: 1;
+}
+
+.search-toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 0.25rem;
+}
+
+.search-icon {
+  display: block;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+}
+
 @media (min-width: 55rem) {
   .nav-right {
     margin-right: calc(var(--max-width-wide) - var(--max-width-content) - var(--space-12));
@@ -196,13 +266,18 @@ const navItems = config.nav;
 }
 
 /* Narrow phones: tighten spacing so the logo and nav keep a clear gap. */
-@media (max-width: 400px) {
-  .nav-right,
-  .nav-links {
-    gap: 10px;
+@media (max-width: 440px) {
+  .nav-logo {
+    font-size: 1rem;
   }
 
-  .nav-right :global(.theme-toggle) {
+  .nav-right,
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-right :global(.theme-toggle),
+  .search-toggle {
     width: 24px;
   }
 
@@ -212,19 +287,9 @@ const navItems = config.nav;
   }
 }
 
-@media (max-width: 374px) {
-  .nav-logo {
-    font-size: 1rem;
-  }
-
-  .nav-right,
-  .nav-links {
-    gap: 8px;
-  }
-}
-
-/* Too narrow for one row: logo and toggles on top, nav links below. */
-@media (max-width: 354px) {
+/* Too narrow for one row (logo, three links and three controls need about
+   386px): logo and controls on top, nav links below. */
+@media (max-width: 385px) {
   :global(:root) {
     --nav-height: 88px;
   }
@@ -232,7 +297,7 @@ const navItems = config.nav;
   .nav-inner {
     display: grid;
     grid-template-rows: 46px 42px;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
     align-items: center;
     column-gap: 8px;
   }
@@ -259,9 +324,14 @@ const navItems = config.nav;
     grid-column: 2;
   }
 
-  .nav-right :global(.theme-toggle) {
+  .search-toggle {
     grid-row: 1;
     grid-column: 3;
+  }
+
+  .nav-right :global(.theme-toggle) {
+    grid-row: 1;
+    grid-column: 4;
   }
 }
 

@@ -1,6 +1,8 @@
 ---
 import config from '../../astro-theme-config';
+import { getUiText, langPair } from '../ui';
 import { withBase, withoutBase } from '../utils/paths';
+import LangText from './LangText.astro';
 
 const comments = config.comments;
 const giscus = {
@@ -28,8 +30,8 @@ const giscusMapping = giscus.mapping === 'pathname' ? 'specific' : giscus.mappin
 
 {
   canRenderGiscus && (
-    <section class="comments-section" data-pagefind-ignore="all" aria-label="Comments">
-      <p class="comments-label">Comments</p>
+    <section class="comments-section" data-pagefind-ignore="all" aria-label={langPair(getUiText().comments)}>
+      <p class="comments-label"><LangText text={getUiText().comments} /></p>
       <div
         id="giscus-container"
         class="giscus"

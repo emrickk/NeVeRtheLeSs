@@ -17,7 +17,7 @@ import {
   SITE_DESCRIPTION_ZH,
   SITE_DESCRIPTION_EN,
 } from '../consts';
-import { getUiText } from '../ui';
+import { getUiText, langPair } from '../ui';
 import { withBase } from '../utils/paths';
 import { buildTranslationMap, resolveLangText } from '../utils/translations';
 const tr = getUiText();
@@ -151,7 +151,7 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
 
       {
         heroPosts.length > 0 && (
-          <nav class="hero-recent" aria-label="Selected posts">
+          <nav class="hero-recent" aria-label={langPair(tr.selectedPosts)}>
             <div class="hero-recent-list">
               {heroPosts.map((post) => {
                 const heroDate = getHeroDateParts(post.data.pubDate);
@@ -228,7 +228,9 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
                       />
                     </p>
                   )}
-                  <span class="featured-cta">{tr.readLink}</span>
+                  <span class="featured-cta">
+                    <LangText text={tr.readLink} />
+                  </span>
                 </div>
                 {post.data.heroImage && (
                   <div class="featured-thumb-wrap" style={featuredPlaceholderStyle(post.id)}>
@@ -255,7 +257,7 @@ const libraryShelf = [...shelfPick(movies, 'movies', 6), ...shelfPick(games, 'ga
         <section class="posts-section">
           <div class="posts-header">
             <a href={withBase('/posts')} class="view-all">
-              {tr.viewAll}
+              <LangText text={tr.viewAll} />
             </a>
           </div>
           <FeaturedPostGrid posts={gridPosts} />

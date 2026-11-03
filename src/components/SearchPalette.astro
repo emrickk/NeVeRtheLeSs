@@ -13,6 +13,9 @@ const dataSrc = `${withBase(SEARCH_PALETTE_DATA_PATH)}?v=${hash}`;
   data-search-palette
   data-search-palette-src={dataSrc}
   aria-label="Search posts"
+  data-lang-attrs="aria-label"
+  data-zh-aria-label="搜索文章"
+  data-en-aria-label="Search posts"
 >
   <div class="search-palette-panel">
     <div class="search-palette-field">
@@ -26,12 +29,20 @@ const dataSrc = `${withBase(SEARCH_PALETTE_DATA_PATH)}?v=${hash}`;
         placeholder="Search posts"
         autocomplete="off"
         aria-label="Search posts"
+        data-lang-attrs="placeholder aria-label"
+        data-zh-placeholder="搜索文章"
+        data-en-placeholder="Search posts"
+        data-zh-aria-label="搜索文章"
+        data-en-aria-label="Search posts"
       />
       <button
         class="search-palette-close"
         type="button"
         data-search-palette-close
         aria-label="Close search"
+        data-lang-attrs="aria-label"
+        data-zh-aria-label="关闭搜索"
+        data-en-aria-label="Close search"
       >
         <svg viewBox="0 0 20 20" aria-hidden="true">
           <path d="M5 5l10 10M15 5 5 15"></path>

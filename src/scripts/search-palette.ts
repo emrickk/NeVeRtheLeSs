@@ -5,7 +5,20 @@ type SearchItem = {
   lang?: 'zh' | 'en';
   description: string;
   category: string;
+  categoryZh?: string;
+  categoryEn?: string;
   href: string;
+};
+
+type LangPair = { zh: string; en: string };
+
+const STATUS = {
+  failed: {
+    zh: '搜索没能加载。请检查网络后重试。',
+    en: 'Search could not load. Check your connection and try again.',
+  },
+  loading: { zh: '正在加载文章…', en: 'Loading posts…' },
+  empty: { zh: '没有找到相关文章。', en: 'No matching posts.' },
 };
 
 const MAX_RESULTS = 6;
@@ -39,7 +52,9 @@ function scoreItem(item: SearchItem, query: string) {
   const titles = [item.title, item.titleZh ?? '', item.titleEn ?? '']
     .map(normalize)
     .filter(Boolean);
-  const category = normalize(item.category);
+  const category = [item.category, item.categoryZh ?? '', item.categoryEn ?? '']
+    .map(normalize)
+    .join(' ');
   const description = normalize(item.description);
   const haystack = `${titles.join(' ')} ${category} ${description}`;
 
@@ -83,6 +98,33 @@ function titleSpans(item: SearchItem) {
   );
 }
 
+// Plain UI text in both languages, shown by lang.css like LangText.
+function pairSpans(text: LangPair) {
+  return (
+    `<span class="lang lang-zh" lang="zh-CN" data-orig>${escapeHtml(text.zh)}</span>` +
+    `<span class="lang lang-en" lang="en">${escapeHtml(text.en)}</span>`
+  );
+}
+
+function categorySpans(item: SearchItem) {
+  return pairSpans({
+    zh: item.categoryZh ?? item.category,
+    en: item.categoryEn ?? item.category,
+  });
+}
+
+// Attributes cannot hold two spans, so the placeholder and accessible names
+// follow the toggle: each element lists its pair in data-zh-* / data-en-*.
+function syncLangAttributes(dialog: HTMLElement) {
+  const lang = document.documentElement.getAttribute('data-lang') === 'zh' ? 'zh' : 'en';
+  [dialog, ...dialog.querySelectorAll<HTMLElement>('[data-lang-attrs]')].forEach((el) => {
+    (el.dataset.langAttrs ?? '').split(' ').forEach((attr) => {
+      const value = el.getAttribute(`data-${lang}-${attr}`);
+      if (value) el.setAttribute(attr, value);
+    });
+  });
+}
+
 export function mountSearchPalette(root: ParentNode = document) {
   const dialog = root.querySelector('[data-search-palette]');
   if (!(dialog instanceof HTMLDialogElement)) return;
@@ -107,10 +149,16 @@ export function mountSearchPalette(root: ParentNode = document) {
     });
   };
 
-  const showStatus = (message: string) => {
+  const showStatus = (message: LangPair) => {
     renderedItems = [];
-    results.innerHTML = `<p class="search-palette-empty" role="status">${message}</p>`;
+    results.innerHTML = `<p class="search-palette-empty" role="status">${pairSpans(message)}</p>`;
   };
+
+  syncLangAttributes(dialog);
+  new MutationObserver(() => syncLangAttributes(dialog)).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-lang'],
+  });
 
   const ensureItems = () => {
     if (items || loadPending) return;
@@ -133,9 +181,9 @@ export function mountSearchPalette(root: ParentNode = document) {
   const render = () => {
     if (!items) {
       if (loadFailed) {
-        showStatus('Search could not load. Check your connection and try again.');
+        showStatus(STATUS.failed);
       } else {
-        showStatus('Loading posts…');
+        showStatus(STATUS.loading);
         ensureItems();
       }
       return;
@@ -152,7 +200,7 @@ export function mountSearchPalette(root: ParentNode = document) {
     activeIndex = Math.min(activeIndex, Math.max(renderedItems.length - 1, 0));
 
     if (renderedItems.length === 0) {
-      results.innerHTML = '<p class="search-palette-empty">No matching posts.</p>';
+      results.innerHTML = `<p class="search-palette-empty">${pairSpans(STATUS.empty)}</p>`;
       return;
     }
 
@@ -169,7 +217,7 @@ export function mountSearchPalette(root: ParentNode = document) {
               <span class="search-palette-item-title">${titleSpans(item)}</span>
               <span class="search-palette-item-desc">${escapeHtml(item.description)}</span>
             </span>
-            <span class="search-palette-item-meta">${escapeHtml(item.category)}</span>
+            <span class="search-palette-item-meta">${categorySpans(item)}</span>
           </a>
         `
       )
