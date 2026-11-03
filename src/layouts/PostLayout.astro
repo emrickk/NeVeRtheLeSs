@@ -113,10 +113,10 @@ const jsonLd = serializeScriptJson({
   {focusEffect && <ScrollFocus variant={focusEffect} />}
 
   <main id="main-content" class="post-main">
-    {/* Draft pages exist only in dev and review builds (src/utils/drafts.ts);
-        they stay out of the Pagefind index and carry a visible marker. */}
-    <article data-pagefind-body={draft ? undefined : ''} data-draft-page={draft ? '' : undefined}>
-      <a href={postsBase} class="back-link" data-pagefind-ignore>
+    {/* Draft pages exist only in dev and review builds (src/utils/drafts.ts)
+        and carry a visible marker. */}
+    <article data-draft-page={draft ? '' : undefined}>
+      <a href={postsBase} class="back-link">
         <LangText text={tr.backLink} />
       </a>
 
@@ -129,7 +129,7 @@ const jsonLd = serializeScriptJson({
             readingTime && (
               <>
                 <span class="dot">·</span>
-                <span class="meta-item" data-pagefind-ignore>
+                <span class="meta-item">
                   <LangText text={tr.readingTime(readingTime)} />
                 </span>
               </>
@@ -153,7 +153,6 @@ const jsonLd = serializeScriptJson({
           en={text.titleEn}
           orig={origLang}
           fallback={title}
-          meta={title}
         />
         {
           description && (
@@ -194,7 +193,7 @@ const jsonLd = serializeScriptJson({
 
       {
         (olderPost || newerPost) && (
-          <nav class="post-nav" aria-label={langPair(tr.postNav.label)} data-pagefind-ignore="all">
+          <nav class="post-nav" aria-label={langPair(tr.postNav.label)}>
             {olderPost && (
               <a href={`${postsBase}/${olderPost.id}/`} class="post-nav-card post-nav-older">
                 <span class="post-nav-label">
@@ -231,7 +230,7 @@ const jsonLd = serializeScriptJson({
 
       {
         relatedPosts.length > 0 && (
-          <section class="related-section" data-pagefind-ignore="all">
+          <section class="related-section">
             <div class="related-header">
               <p class="related-label">
                 <LangText text={tr.relatedPosts} />

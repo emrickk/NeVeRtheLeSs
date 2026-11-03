@@ -12,8 +12,6 @@ function initPostFeeds(root: ParentNode = document) {
     const filterScrollButtons = [
       ...feed.querySelectorAll<HTMLButtonElement>('[data-feed-filter-scroll]'),
     ];
-    const search = feed.querySelector<HTMLInputElement>('[data-feed-search]');
-    const searchWrap = search?.closest<HTMLElement>('.feed-search');
     const more = feed.querySelector<HTMLButtonElement>('[data-feed-more]');
     const empty = feed.querySelector<HTMLElement>('[data-feed-empty]');
     const sentinel = feed.querySelector<HTMLElement>('[data-feed-sentinel]');
@@ -28,15 +26,8 @@ function initPostFeeds(root: ParentNode = document) {
       return false;
     };
 
-    const matchesQuery = (item: HTMLElement) => {
-      const query = (search?.value || '').trim().toLocaleLowerCase();
-      if (!query) return true;
-      return (item.dataset.search || '').includes(query);
-    };
-
     const render = () => {
-      const matching = items.filter((item) => matchesFilter(item) && matchesQuery(item));
-      searchWrap?.classList.toggle('has-query', Boolean((search?.value || '').trim()));
+      const matching = items.filter(matchesFilter);
       items.forEach((item) => {
         const index = matching.indexOf(item);
         item.hidden = index === -1 || index >= visible;
@@ -155,11 +146,6 @@ function initPostFeeds(root: ParentNode = document) {
 
     more?.addEventListener('click', () => {
       visible += pageSize;
-      render();
-    });
-
-    search?.addEventListener('input', () => {
-      visible = useMore ? pageSize : Number.POSITIVE_INFINITY;
       render();
     });
 

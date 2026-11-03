@@ -24,7 +24,6 @@ If check 13 fails, a changed post has a content problem, listed as `file:line`: 
 2. After the script passes, smoke-test the production build in a browser (never the dev server): `npm run preview-posts -- --no-open --port N` serves a private build when preview-relevant files changed; otherwise `npm run build && npm run preview` (shared `dist/`, so avoid it while another session builds). Then verify:
    - homepage renders with the post list
    - one image-heavy post loads and its images come from cdn.theneverless.com
-   - search returns results (Pagefind)
    - the language toggle switches title and body
    - the giscus comment iframe is present on a post
    - dark mode renders correctly

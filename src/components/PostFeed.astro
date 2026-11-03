@@ -69,92 +69,61 @@ const filters = categories.map((category) => ({
   data-show-more={showMore ? 'true' : 'false'}
 >
   {
-    showFilters && (
+    showFilters && filters.length > 0 && (
       <div class="feed-controls">
-        <label class="feed-search">
-          <span class="sr-only">
-            <LangText text={labels.searchLabel} />
-          </span>
-          <span class="feed-search-icon" aria-hidden="true">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              focusable="false"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="m16 16 4 4" />
+        <div class="feed-filter-rail" data-feed-filter-rail>
+          <button
+            type="button"
+            class="feed-filter-scroll feed-filter-scroll-prev"
+            data-feed-filter-scroll="prev"
+            aria-label={langPair(labels.previousCategories)}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m15 18-6-6 6-6" />
             </svg>
-          </span>
-          <input
-            type="search"
-            class="feed-search-input"
-            data-feed-search
-            placeholder=" "
-            autocomplete="off"
-            spellcheck="false"
-          />
-        </label>
-        {filters.length > 0 && (
-          <div class="feed-filter-rail" data-feed-filter-rail>
+          </button>
+          <div
+            class="feed-filters"
+            data-feed-filters
+            role="group"
+            aria-label={langPair(labels.filterLabel)}
+          >
             <button
               type="button"
-              class="feed-filter-scroll feed-filter-scroll-prev"
-              data-feed-filter-scroll="prev"
-              aria-label={langPair(labels.previousCategories)}
+              class="feed-filter is-active"
+              data-feed-filter="all"
+              aria-pressed="true"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="m15 18-6-6 6-6" />
-              </svg>
+              <span>
+                <LangText text={labels.all} />
+              </span>
+              <span class="feed-filter-count">{posts.length}</span>
             </button>
-            <div
-              class="feed-filters"
-              data-feed-filters
-              role="group"
-              aria-label={langPair(labels.filterLabel)}
-            >
+            {filters.map((filter) => (
               <button
                 type="button"
-                class="feed-filter is-active"
-                data-feed-filter="all"
-                aria-pressed="true"
+                class="feed-filter"
+                data-feed-filter={filter.key}
+                aria-pressed="false"
               >
                 <span>
-                  <LangText text={labels.all} />
+                  <LangText text={filter.label} />
                 </span>
-                <span class="feed-filter-count">{posts.length}</span>
+                <span class="feed-filter-count">{filter.count}</span>
               </button>
-              {filters.map((filter) => (
-                <button
-                  type="button"
-                  class="feed-filter"
-                  data-feed-filter={filter.key}
-                  aria-pressed="false"
-                >
-                  <span>
-                    <LangText text={filter.label} />
-                  </span>
-                  <span class="feed-filter-count">{filter.count}</span>
-                </button>
-              ))}
-            </div>
-            <button
-              type="button"
-              class="feed-filter-scroll feed-filter-scroll-next"
-              data-feed-filter-scroll="next"
-              aria-label={langPair(labels.nextCategories)}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
+            ))}
           </div>
-        )}
+          <button
+            type="button"
+            class="feed-filter-scroll feed-filter-scroll-next"
+            data-feed-filter-scroll="next"
+            aria-label={langPair(labels.nextCategories)}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
       </div>
     )
   }
@@ -169,7 +138,6 @@ const filters = categories.map((category) => ({
             class="feed-item"
             data-feed-item
             data-category={post.data.category ?? ''}
-            data-search={`${post.data.title} ${text.titleZh ?? ''} ${text.titleEn ?? ''} ${post.data.description} ${text.descriptionZh ?? ''} ${text.descriptionEn ?? ''} ${post.data.category ? `${categoryLabel(post.data.category).zh} ${categoryLabel(post.data.category).en}` : ''}`.toLocaleLowerCase()}
             data-index={index}
           >
             <a href={withBase(`${basePath}/${postSlug(post.id)}/`)} class="feed-link">
@@ -248,17 +216,13 @@ const filters = categories.map((category) => ({
     gap: var(--space-6);
   }
 
+  /* min-width: 0 keeps the scrolling filter rail from widening the feed. */
   .feed-controls {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: var(--space-5);
-    align-items: end;
+    min-width: 0;
     border-bottom: 1px solid var(--separator);
   }
 
   .feed-filter-rail {
-    grid-column: 1;
-    grid-row: 1;
     position: relative;
     width: min(100%, 38rem);
     min-width: 0;
@@ -414,130 +378,6 @@ const filters = categories.map((category) => ({
     }
   }
 
-  .feed-search {
-    --feed-search-mark-height: 1.25rem;
-    --feed-search-inline-padding: 0.65rem;
-
-    grid-column: 2;
-    grid-row: 1;
-    position: relative;
-    display: grid;
-    align-items: center;
-    justify-self: end;
-    box-sizing: border-box;
-    width: 3rem;
-    height: calc(var(--feed-control-height) + var(--space-3));
-    min-width: 0;
-    padding-left: var(--feed-search-inline-padding);
-    padding-right: var(--feed-search-inline-padding);
-    color: var(--label-tertiary);
-    font-size: var(--text-footnote);
-    overflow: hidden;
-    transition:
-      width 180ms var(--ease-out),
-      color var(--duration-fast) var(--ease-out);
-  }
-
-  .feed-search::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 1px;
-    height: var(--feed-search-mark-height);
-    border-radius: var(--radius-full);
-    background: var(--separator);
-    pointer-events: none;
-    transform: translateY(-50%) scaleY(0);
-    transform-origin: center;
-    transition: transform var(--duration-fast) var(--ease-out);
-  }
-
-  .feed-search:focus-within {
-    width: min(13rem, 34vw);
-    color: var(--label-primary);
-  }
-
-  .feed-search.has-query {
-    width: min(13rem, 34vw);
-  }
-
-  .feed-search:focus-within::after,
-  .feed-search.has-query::after {
-    transform: translateY(-50%) scaleY(1);
-  }
-
-  .feed-search-icon {
-    position: absolute;
-    top: 50%;
-    left: calc(100% - var(--feed-search-inline-padding) - 1em);
-    display: inline-grid;
-    place-items: center;
-    width: 1em;
-    height: 1em;
-    color: currentColor;
-    font-size: inherit;
-    line-height: 1;
-    transform: translateY(-50%);
-    transition: left 180ms var(--ease-out);
-  }
-
-  .feed-search:focus-within .feed-search-icon,
-  .feed-search.has-query .feed-search-icon {
-    left: var(--feed-search-inline-padding);
-  }
-
-  .feed-search-icon svg {
-    display: block;
-    width: 1em;
-    height: 1em;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.875;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .feed-search-input {
-    width: 100%;
-    min-width: 0;
-    height: var(--feed-control-height);
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: var(--label-primary);
-    font: inherit;
-    font-size: inherit;
-    font-weight: var(--weight-semibold);
-    outline: none;
-    padding: 0 0 0 calc(1em + var(--space-2));
-    opacity: 1;
-    transition: opacity 70ms var(--ease-out) 120ms;
-  }
-
-  .feed-search:not(:focus-within, .has-query) .feed-search-input {
-    opacity: 0;
-    pointer-events: none;
-    transition-duration: 50ms;
-    transition-delay: 0ms;
-  }
-
-  .feed-search-input::placeholder {
-    color: transparent;
-  }
-
-  .feed-search-input::-webkit-search-cancel-button {
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-left: var(--space-2);
-    background: var(--label-primary);
-    cursor: pointer;
-    opacity: 0.72;
-    -webkit-appearance: none;
-    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.22 3.28 8 7.06l3.78-3.78.94.94L8.94 8l3.78 3.78-.94.94L8 8.94l-3.78 3.78-.94-.94L7.06 8 3.28 4.22l.94-.94Z'/%3E%3C/svg%3E")
-      center / contain no-repeat;
-  }
-
   .feed-list {
     list-style: none;
     margin: 0;
@@ -667,25 +507,7 @@ const filters = categories.map((category) => ({
   }
 
   @media (max-width: 42.5rem) {
-    .feed-controls {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--space-3);
-    }
-
-    .feed-search {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: end;
-    }
-
-    .feed-search:focus-within,
-    .feed-search.has-query {
-      width: min(10.5rem, 42vw);
-    }
-
     .feed-filter-rail {
-      grid-column: 1;
-      grid-row: 1;
       width: 100%;
     }
 

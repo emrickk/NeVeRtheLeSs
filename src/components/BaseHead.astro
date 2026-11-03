@@ -76,7 +76,6 @@ const ogImage = ogImageUrl
       : null;
 const canonicalHref = canonicalURL.toString();
 const siteHref = new URL(withBase('/'), Astro.site).toString();
-const searchHref = new URL(withBase('/search'), Astro.site).toString();
 const rssHref = new URL(withBase('/rss.xml'), Astro.site).toString();
 const rssEnHref = new URL(withBase('/rss.en.xml'), Astro.site).toString();
 const sitemapHref = new URL(withBase('/sitemap-index.xml'), Astro.site).toString();
@@ -93,14 +92,6 @@ const websiteJsonLd =
         description: SITE_DESCRIPTION,
         url: siteHref,
         author: { '@type': 'Person', name: SITE_AUTHOR },
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: `${searchHref}?q={search_term_string}`,
-          },
-          'query-input': 'required name=search_term_string',
-        },
       })
     : null;
 ---

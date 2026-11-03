@@ -203,7 +203,6 @@ export function checkDistDir(dist, { minPages = 300 } = {}) {
     const p = join(dist, rel)
     if (!existsSync(p) || statSync(p).size === 0) failures.push(`${rel} missing or empty`)
   }
-  if (!existsSync(join(dist, 'pagefind', 'pagefind.js'))) failures.push('pagefind index missing')
   const scanFiles = [...htmlFiles, ...walkFiles(dist, ['.xml'])]
   for (const p of scanFiles) {
     const text = readFileSync(p, 'utf8')
@@ -218,11 +217,11 @@ export function checkDistDir(dist, { minPages = 300 } = {}) {
   return { failures, htmlCount: htmlFiles.length }
 }
 
-// Check 6: astro build + pagefind into this run's private output directory,
+// Check 6: astro build into this run's private output directory,
 // so concurrent sessions never read or overwrite each other's build.
 function checkBuild(root, ctx) {
   const res = buildSite(root, ctx.outDir)
-  if (res.ok) return { status: 'PASS', detail: 'astro build + pagefind into a private run directory' }
+  if (res.ok) return { status: 'PASS', detail: 'astro build into a private run directory' }
   const tail = res.output.trim().split('\n').slice(-15).join('\n')
   return { status: 'FAIL', detail: `build failed:\n${tail}` }
 }
@@ -255,7 +254,7 @@ function checkBuiltOutput(root, ctx) {
   if (failures.length) {
     return { status: 'FAIL', detail: failures.slice(0, 20).join('\n') + (failures.length > 20 ? `\n... and ${failures.length - 20} more` : '') }
   }
-  return { status: 'PASS', detail: `${htmlCount} pages, rss + sitemap + pagefind present, no stale references` }
+  return { status: 'PASS', detail: `${htmlCount} pages, rss + sitemap present, no stale references` }
 }
 
 export function extractCdnUrls(text) {

@@ -22,11 +22,7 @@ const comments: ArchivedComment[] = files[key]?.default ?? [];
 
 {
   comments.length > 0 && (
-    <section
-      class="archived-comments"
-      data-pagefind-ignore="all"
-      aria-label="Archived comments"
-    >
+    <section class="archived-comments" aria-label="Archived comments">
       <h2 class="archived-comments__label">历史评论 · Archived comments</h2>
       <ol class="archived-comments__list">
         {comments.map((c) => (

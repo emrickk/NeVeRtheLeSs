@@ -1183,7 +1183,6 @@ test('cli: Ctrl+C at the approval prompt stops the server and removes the tempor
     const outDir = join(dirname(tree), 'dist')
     const log = readFileSync(calls, 'utf8')
     assert.match(log, new RegExp(`astro build --outDir ${outDir}`))
-    assert.match(log, new RegExp(`pagefind --site ${outDir}`))
     assert.match(log, new RegExp(`astro preview --outDir ${outDir} --port ${port}`))
     // the review build renders drafts (marked, noindex); release checks build without
     assert.equal(readFileSync(join(dirname(calls), 'env.log'), 'utf8'), 'SHOW_DRAFTS=1\n')

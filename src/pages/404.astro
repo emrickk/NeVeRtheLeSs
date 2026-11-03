@@ -54,7 +54,6 @@ const firstPhoto = photoPool[0];
 
 const copy = {
   title: { zh: '找不到这个页面', en: 'Page not found' },
-  search: { zh: '搜索', en: 'Search' },
   home: { zh: '首页', en: 'Home' },
   recent: { zh: '最近的文章', en: 'Recent posts' },
 };
@@ -72,10 +71,7 @@ const copy = {
       <p class="not-found-code" aria-hidden="true">404</p>
       <h1 class="not-found-title"><LangText text={copy.title} /></h1>
       <div class="not-found-actions">
-        <a href={withBase('/search')} class="btn btn-primary" data-search-palette-trigger="true">
-          <LangText text={copy.search} />
-        </a>
-        <a href={withBase('/')} class="btn btn-secondary"><LangText text={copy.home} /></a>
+        <a href={withBase('/')} class="btn btn-primary"><LangText text={copy.home} /></a>
       </div>
 
       {

@@ -19,10 +19,7 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
       footerLinks.length > 0 && (
         <nav class="footer-links" aria-label={langPair(getUiText().footer.label)}>
           {footerLinks.map((item) => (
-            <a
-              href={withBase(item.href)}
-              data-search-palette-trigger={item.href === '/search' ? 'true' : undefined}
-            >
+            <a href={withBase(item.href)}>
               {item.labelZh ? <LangText text={{ zh: item.labelZh, en: item.label }} /> : item.label}
             </a>
           ))}

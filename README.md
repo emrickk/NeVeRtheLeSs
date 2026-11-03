@@ -5,13 +5,13 @@
 ## Stack
 
 - [Astro](https://astro.build) 6 with the [astro-tone](https://github.com/hanityx/astro-tone) theme, migrated from an 18-year WordPress archive (migration tooling in `scripts/migrate/`).
-- Static build with a Pagefind search index, deployed to GitHub Pages by `.github/workflows/deploy.yml` on push to `main`.
+- Static build, deployed to GitHub Pages by `.github/workflows/deploy.yml` on push to `main`.
 - Post images are served from Cloudflare R2 at `cdn.theneverless.com`, not stored in this repository (see [docs/images.md](docs/images.md)).
 
 ```sh
 npm ci
 npm run dev      # local dev server
-npm run build    # production build + Pagefind index
+npm run build    # production build
 ```
 
 ## Working on this repository

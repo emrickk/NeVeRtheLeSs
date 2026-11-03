@@ -2,8 +2,7 @@
 // Internal link check for the built site: scans dist/**/*.html for href, src
 // and srcset values that point at this site (root-relative, page-relative, or
 // absolute https://theneverless.com/...) and verifies each target exists in
-// dist. Pagefind asset paths referenced from bundled JS are checked as well.
-// External URLs and the image CDN are ignored. Exits 1 when any link is
+// dist. External URLs and the image CDN are ignored. Exits 1 when any link is
 // broken, 2 when dist is missing.
 //
 // Usage: node scripts/check-built-links.mjs [distDir]
@@ -66,12 +65,6 @@ export function extractRefs(html) {
   return refs
 }
 
-// The search UI loads Pagefind at runtime from bundled JS, not from markup,
-// so quoted /pagefind/... literals in dist JS count as links too.
-export function extractPagefindRefs(js) {
-  return [...js.matchAll(/["'`](\/pagefind\/[^"'`\s?#]+)/g)].map((m) => m[1])
-}
-
 // The page's own URL on the site, used as the base for relative links.
 export function pageUrlFor(relPath) {
   if (relPath === 'index.html') return `${SITE_ORIGIN}/`
@@ -111,7 +104,6 @@ export function resolvesTo(pathname, files) {
 export function checkBuiltLinks(dist) {
   const files = listFiles(dist)
   const pages = [...files].filter((f) => f.endsWith('.html')).sort()
-  const scripts = [...files].filter((f) => f.endsWith('.js') && !f.startsWith('pagefind/')).sort()
   const broken = new Map()
   let checked = 0
   const verify = (from, pathname) => {
@@ -127,9 +119,6 @@ export function checkBuiltLinks(dist) {
       const pathname = internalPath(ref, pageUrl)
       if (pathname !== null) verify(page, pathname)
     }
-  }
-  for (const script of scripts) {
-    for (const ref of extractPagefindRefs(readFileSync(join(dist, script), 'utf8'))) verify(script, ref)
   }
   return { pages: pages.length, checked, broken }
 }

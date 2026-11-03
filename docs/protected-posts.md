@@ -49,13 +49,13 @@ Protected:
 
 - The full post body, including image URLs, headings, and galleries. The
   built HTML contains only an AES-256-GCM ciphertext (key derived with
-  PBKDF2-SHA256, 600k iterations). Pagefind search, the reading rail, and
-  page source see ciphertext only.
+  PBKDF2-SHA256, 600k iterations). The reading rail and page source see
+  ciphertext only.
 
 Not protected (choose them accordingly):
 
 - The title, description, publication date, category, and hero image. They
-  stay visible on the post page, home page, archive, RSS, search, and social
+  stay visible on the post page, home page, archive, RSS, and social
   previews. Do not put anything private in them.
 - Giscus comments on the post, if any.
 - The images themselves. CDN image URLs are public and unauthenticated, and

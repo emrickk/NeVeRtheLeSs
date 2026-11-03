@@ -19,15 +19,14 @@
     "blog",
     "personal-blog",
     "bilingual",
-    "markdown",
-    "pagefind"
+    "markdown"
   ],
   "engines": {
     "node": ">=22.23.4"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist --force-language zh-cn",
+    "build": "astro build",
     "preview": "astro preview",
     "preview-posts": "node scripts/preview-posts.mjs",
     "astro": "astro",
@@ -74,7 +73,6 @@
     "eslint": "^10.14.0",
     "eslint-plugin-astro": "^3.2.1",
     "globals": "^17.14.0",
-    "pagefind": "^1.5.2",
     "postcss-html": "^1.8.1",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^1.1.2",

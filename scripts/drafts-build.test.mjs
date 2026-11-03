@@ -52,11 +52,6 @@ function cleanEnv(extra = {}) {
   return env
 }
 
-function pagefindPageCount(dist) {
-  const entry = JSON.parse(readFileSync(join(dist, 'pagefind/pagefind-entry.json'), 'utf8'))
-  return Object.values(entry.languages).reduce((n, l) => n + l.page_count, 0)
-}
-
 // Every built text file except the draft's own page.
 function filesMentioningDraft(dist) {
   return walkFiles(dist, ['.html', '.xml', '.json'])
@@ -92,18 +87,16 @@ test('draft posts: absent from production builds, rendered and unlisted in revie
   assert.match(page, /class="draft-marker"[^>]*>Draft/)
   assert.match(page, /data-draft-page/)
   assert.match(page, /<html lang="en"/)
-  assert.doesNotMatch(page, /data-pagefind-body/)
   // Published pages keep normal indexing in the same build.
   const published = readFileSync(join(review, 'posts', '1269', 'index.html'), 'utf8')
   assert.match(published, /<meta name="robots" content="index, follow">/)
   assert.doesNotMatch(published, /data-draft-page/)
-  // Lists, feeds, the search palette, and Pagefind never see it. The review
+  // Lists, feeds, and other pages never mention it. The review
   // build's sitemap may list it (review builds are never deployed).
   assert.deepEqual(
     filesMentioningDraft(review).filter((f) => !f.startsWith('sitemap-')),
     []
   )
-  assert.equal(pagefindPageCount(review), pagefindPageCount(prod))
 
   // A review build refuses to run under CI.
   const ci = buildSite(site, join(site, 'out-ci'), {

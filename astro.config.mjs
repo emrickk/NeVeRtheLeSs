@@ -18,7 +18,6 @@ import config from './astro-theme-config.ts';
 import { toneExpressiveCodeOptions } from './src/config/expressive-code.ts';
 
 // https://astro.build/config
-const sitemapExcludedPaths = new Set(['/search/']);
 // Password for posts with `protected: true` frontmatter. Read from the
 // process env (CI secret) or .env.local (local builds); never committed.
 const postPassword =
@@ -37,22 +36,13 @@ const configuredBase =
   configuredBaseValue === '/' ? '' : configuredBaseValue.replace(/\/$/, '');
 
 /** @param {string} pathname */
-function withoutConfiguredBase(pathname) {
-  if (!configuredBase) return pathname;
-  if (!pathname.startsWith(configuredBase)) return pathname;
-
-  return pathname.slice(configuredBase.length) || '/';
-}
-
 export default defineConfig({
   site: configuredSite,
   base: configuredBase || undefined,
   integrations: [
     expressiveCode(toneExpressiveCodeOptions),
     mdx(),
-    sitemap({
-      filter: (page) => !sitemapExcludedPaths.has(withoutConfiguredBase(new URL(page).pathname)),
-    }),
+    sitemap(),
     postEditor(),
   ],
   build: {

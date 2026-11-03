@@ -28,7 +28,7 @@ const config = {
     descriptionZh: '一些成果：常常随机，时而混乱，很少算得上完成。',
     descriptionEn: 'Some outcomes here: often random, sometimes chaotic, rarely ready.',
     author: 'NeVeRtheLeSs',
-    /** Optional absolute or root-relative image URL for homepage/search/about social previews. */
+    /** Optional absolute or root-relative image URL for homepage/about social previews. */
     defaultOgImage: '/og.png',
   },
 
@@ -44,7 +44,6 @@ const config = {
   footerNav: [
     { label: 'Posts', labelZh: '文章', href: '/posts' },
     { label: 'About', labelZh: '关于', href: '/about' },
-    { label: 'Search', labelZh: '搜索', href: '/search' },
   ] as NavItem[],
 
   content: {

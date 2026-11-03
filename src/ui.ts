@@ -32,7 +32,6 @@ const ui = {
     filterLabel: { zh: '按分类筛选文章', en: 'Filter posts by category' },
     previousCategories: { zh: '向左滚动分类', en: 'Scroll categories left' },
     nextCategories: { zh: '向右滚动分类', en: 'Scroll categories right' },
-    searchLabel: { zh: '搜索文章', en: 'Search posts' },
     empty: { zh: '没有符合条件的文章。', en: 'No posts match this filter.' },
     more: { zh: '加载更多', en: 'Load more' },
     read: { zh: '阅读', en: 'Read' },
@@ -43,10 +42,6 @@ const ui = {
     description: '2010 年至今的微博客存档 · microblog archive from X/Twitter',
     onX: { zh: 'X 原帖', en: 'on X' },
     empty: { zh: '还没有随记。', en: 'No notes yet.' },
-  },
-  search: {
-    open: { zh: '搜索', en: 'Search' },
-    recent: { zh: '最近的文章', en: 'Recent posts' },
   },
   header: {
     skipLink: { zh: '跳到正文', en: 'Skip to content' },

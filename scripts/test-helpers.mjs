@@ -42,7 +42,6 @@ export function makeFixtureDist(root, { omit = [], extraHtml = {} } = {}) {
       '<html><body><img src="https://cdn.theneverless.com/2020/02/foo.webp"><a href="/">home</a></body></html>',
     'rss.xml': '<rss><channel><title>t</title></channel></rss>',
     'sitemap-index.xml': '<sitemapindex></sitemapindex>',
-    'pagefind/pagefind.js': '// pagefind stub',
     ...extraHtml,
   }
   for (const [rel, content] of Object.entries(files)) {
@@ -52,11 +51,10 @@ export function makeFixtureDist(root, { omit = [], extraHtml = {} } = {}) {
   return dist
 }
 
-// Stand-ins for node_modules/.bin/astro and pagefind, so CLI tests can drive
+// Stand-in for node_modules/.bin/astro, so CLI tests can drive
 // the build and preview steps without a real Astro project. `astro build`
 // writes one page into --outDir and records its argv, plus its SHOW_DRAFTS
-// value in env.log; `astro preview` serves --outDir on --port; pagefind
-// records its argv.
+// value in env.log; `astro preview` serves --outDir on --port.
 const FAKE_ASTRO = `#!/usr/bin/env node
 const fs = require('node:fs')
 const path = require('node:path')
@@ -72,17 +70,10 @@ if (cmd === 'build') {
   http.createServer((req, res) => res.end('fake preview')).listen(Number(arg('--port')))
 }
 `
-const FAKE_PAGEFIND = `#!/usr/bin/env node
-const fs = require('node:fs')
-const path = require('node:path')
-fs.appendFileSync(path.join(__dirname, 'calls.log'), 'pagefind ' + process.argv.slice(2).join(' ') + '\\n')
-`
 
 export function installFakeAstro(root) {
   write(root, 'node_modules/.bin/astro', FAKE_ASTRO)
-  write(root, 'node_modules/.bin/pagefind', FAKE_PAGEFIND)
   chmodSync(join(root, 'node_modules/.bin/astro'), 0o755)
-  chmodSync(join(root, 'node_modules/.bin/pagefind'), 0o755)
   return join(root, 'node_modules/.bin/calls.log')
 }
 

@@ -229,7 +229,7 @@ test('computeChangeSet: package.json build script changes stay preview-relevant'
   t.after(() => cleanup(root))
   commitPackageJson(root, BASE_PKG)
   const pkg = structuredClone(BASE_PKG)
-  pkg.scripts.build = 'astro build && pagefind --site dist'
+  pkg.scripts.build = 'astro build --verbose'
   write(root, 'package.json', JSON.stringify(pkg, null, 2) + '\n')
   assert.deepEqual(computeChangeSet(root, { baseRef: 'HEAD' }), ['package.json'])
 })
@@ -873,7 +873,6 @@ test('cli: preview-posts builds into its own run directory and removes it on Ctr
   }
   const log = readFileSync(calls, 'utf8')
   assert.match(log, new RegExp(`astro build --outDir ${outDir}`))
-  assert.match(log, new RegExp(`pagefind --site ${outDir}`))
   assert.match(log, new RegExp(`astro preview --outDir ${outDir} --port ${port}`))
   // review build: draft posts render at their own URLs
   assert.equal(readFileSync(join(dirname(calls), 'env.log'), 'utf8'), 'SHOW_DRAFTS=1\n')

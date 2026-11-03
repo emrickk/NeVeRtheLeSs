@@ -8,7 +8,6 @@ import { fileURLToPath } from 'node:url'
 import { cleanup, write } from './test-helpers.mjs'
 import {
   checkBuiltLinks,
-  extractPagefindRefs,
   extractRefs,
   internalPath,
   pageUrlFor,
@@ -43,7 +42,7 @@ test('internalPath keeps site links and drops external, CDN and non-http refs', 
   const page = pageUrlFor('posts/a/index.html')
   assert.equal(page, 'https://theneverless.com/posts/a/')
   assert.equal(internalPath('/about/#team', page), '/about/')
-  assert.equal(internalPath('/search/?q=x', page), '/search/')
+  assert.equal(internalPath('/posts/?lang=en', page), '/posts/')
   assert.equal(internalPath('https://theneverless.com/rss.xml', page), '/rss.xml')
   assert.equal(internalPath('https://www.theneverless.com/', page), '/')
   assert.equal(internalPath('//theneverless.com/library/', page), '/library/')
@@ -59,13 +58,12 @@ test('internalPath keeps site links and drops external, CDN and non-http refs', 
 })
 
 test('resolvesTo handles index pages, files, extensionless pages and case', () => {
-  const files = new Set(['index.html', 'posts/a/index.html', 'rss.xml', '404.html', 'pagefind/pagefind.js'])
+  const files = new Set(['index.html', 'posts/a/index.html', 'rss.xml', '404.html'])
   assert.ok(resolvesTo('/', files))
   assert.ok(resolvesTo('/posts/a/', files))
   assert.ok(resolvesTo('/posts/a', files))
   assert.ok(resolvesTo('/rss.xml', files))
   assert.ok(resolvesTo('/404', files))
-  assert.ok(resolvesTo('/pagefind/pagefind.js', files))
   assert.ok(!resolvesTo('/posts/b/', files))
   assert.ok(!resolvesTo('/rss.xml/', files))
   assert.ok(!resolvesTo('/Posts/a/', files))
@@ -83,22 +81,6 @@ test('checkBuiltLinks groups broken targets by the pages that reference them', (
   assert.equal(checked, 4)
   assert.deepEqual([...broken.keys()], ['/missing/'])
   assert.deepEqual([...broken.get('/missing/')].sort(), ['index.html', 'posts/a/index.html'])
-})
-
-test('Pagefind paths in bundled JS are checked, Pagefind internals are not scanned', (t) => {
-  assert.deepEqual(extractPagefindRefs('import("/pagefind/pagefind-ui.js");x=`/pagefind/pagefind-ui.css`'), [
-    '/pagefind/pagefind-ui.js',
-    '/pagefind/pagefind-ui.css',
-  ])
-  const { root, dist } = makeDist({
-    'index.html': '<script type="module" src="/_astro/search.js"></script>',
-    '_astro/search.js': 'await import("/pagefind/pagefind-ui.js");load("/pagefind/pagefind-ui.css")',
-    'pagefind/pagefind-ui.js': 'fetch("/pagefind/not-scanned.pf_meta")',
-  })
-  t.after(() => cleanup(root))
-  const { broken } = checkBuiltLinks(dist)
-  assert.deepEqual([...broken.keys()], ['/pagefind/pagefind-ui.css'])
-  assert.deepEqual([...broken.get('/pagefind/pagefind-ui.css')], ['_astro/search.js'])
 })
 
 test('CLI exits 0 on a clean dist, 1 on broken links, 2 when dist is missing', (t) => {

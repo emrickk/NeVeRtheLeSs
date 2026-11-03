@@ -224,20 +224,13 @@ test('buildEnv: review builds set SHOW_DRAFTS=1, production builds drop it', asy
   assert.equal(buildEnv({ PATH: '/bin' }, { showDrafts: true }).PATH, '/bin')
 })
 
-test('npm run build passes the same Pagefind language flag as buildSite', async () => {
-  const { PAGEFIND_LANGUAGE_ARGS } = await import('./build-output.mjs')
-  const { readFileSync } = await import('node:fs')
-  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
-  assert.ok(pkg.scripts.build.includes(`pagefind --site dist ${PAGEFIND_LANGUAGE_ARGS.join(' ')}`))
-})
-
-test('checkDistDir fails on missing rss, sitemap, or pagefind', (t) => {
+test('checkDistDir fails on missing rss or sitemap', (t) => {
   const root = makeFixtureRepo()
   t.after(() => cleanup(root))
-  const dist = makeFixtureDist(root, { omit: ['rss.xml', 'pagefind/pagefind.js'] })
+  const dist = makeFixtureDist(root, { omit: ['rss.xml', 'sitemap-index.xml'] })
   const { failures } = checkDistDir(dist, { minPages: 1 })
   assert.ok(failures.some((f) => f.includes('rss.xml')))
-  assert.ok(failures.some((f) => f.includes('pagefind')))
+  assert.ok(failures.some((f) => f.includes('sitemap-index.xml')))
 })
 
 test('checkDistDir enforces the minimum page count', (t) => {
@@ -282,8 +275,8 @@ test('extractInternalRefs keeps root-relative refs, drops externals and fragment
     <a href="https://example.com/x">ext</a>
     <a href="//cdn.example.com/y">protocol-relative</a>
     <a href="#local">frag</a>
-    <img src="/pagefind/pagefind.js">`
-  assert.deepEqual(extractInternalRefs(html).sort(), ['/about', '/pagefind/pagefind.js', '/posts/a/'])
+    <img src="/og.png">`
+  assert.deepEqual(extractInternalRefs(html).sort(), ['/about', '/og.png', '/posts/a/'])
 })
 
 test('resolveInternalRef maps directory URLs to index.html and blocks traversal', (t) => {
@@ -293,7 +286,7 @@ test('resolveInternalRef maps directory URLs to index.html and blocks traversal'
   assert.equal(resolveInternalRef('/', dist), true)
   assert.equal(resolveInternalRef('/posts/a/', dist), true)
   assert.equal(resolveInternalRef('/posts/a', dist), true)
-  assert.equal(resolveInternalRef('/pagefind/pagefind.js', dist), true)
+  assert.equal(resolveInternalRef('/rss.xml', dist), true)
   assert.equal(resolveInternalRef('/missing/', dist), false)
   assert.equal(resolveInternalRef('/../outside', dist), false)
 })
@@ -371,7 +364,7 @@ test('check 7 runs the image and library test suites and fails on either', async
   assert.doesNotMatch(fail.detail, /test:images failed/)
 })
 
-test('buildSite runs astro build and pagefind against the given outDir only', async (t) => {
+test('buildSite runs astro build against the given outDir only', async (t) => {
   const { buildSite } = await import('./build-output.mjs')
   const { installFakeAstro } = await import('./test-helpers.mjs')
   const { existsSync, readFileSync } = await import('node:fs')
@@ -385,7 +378,7 @@ test('buildSite runs astro build and pagefind against the given outDir only', as
   assert.equal(buildSite(root, outDir, { env: { ...process.env, SHOW_DRAFTS: '1' } }).ok, true)
   assert.equal(
     readFileSync(calls, 'utf8'),
-    `astro build --outDir ${outDir}\npagefind --site ${outDir} --force-language zh-cn\n`
+    `astro build --outDir ${outDir}\n`
   )
   assert.equal(readFileSync(join(dirname(calls), 'env.log'), 'utf8'), 'SHOW_DRAFTS=\n')
   assert.ok(existsSync(`${outDir}/index.html`))

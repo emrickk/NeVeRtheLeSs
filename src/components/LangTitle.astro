@@ -12,17 +12,15 @@ interface Props {
   fallback: string;
   tag?: keyof HTMLElementTagNameMap;
   class?: string;
-  /** When set, adds `data-pagefind-meta="title:<meta>"` (single canonical title for search). */
-  meta?: string;
 }
-const { zh, en, orig, fallback, tag: Tag = 'span', class: cls, meta } = Astro.props;
+const { zh, en, orig, fallback, tag: Tag = 'span', class: cls } = Astro.props;
 const zhText = zh ?? fallback;
 const enText = en ?? fallback;
 const zhLang = htmlLangFor(zh === undefined ? orig : 'zh');
 const enLang = htmlLangFor(en === undefined ? orig : 'en');
 ---
 
-<Tag class:list={['lang-title', cls]} data-pagefind-meta={meta ? `title:${meta}` : undefined}>
+<Tag class:list={['lang-title', cls]}>
   <span class="lang lang-zh" lang={zhLang} data-orig={orig === 'zh' ? '' : undefined}
     >{zhText}</span
   ><span class="lang lang-en" lang={enLang} data-orig={orig === 'en' ? '' : undefined}
