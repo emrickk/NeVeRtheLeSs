@@ -40,6 +40,29 @@ pair inside prose (charts, before/after), the manual
 original aspect ratios and collapses to one column on phones, while
 galleries crop to 16:9 and stay two-up everywhere.
 
+### Image dimensions (layout stability)
+
+Every post and note image gets `width` and `height` attributes at build
+time, so the page reserves each photo's box before it arrives and the text
+does not jump while images load. The sizes come from
+`src/data/image-dimensions.json` (CDN URL to `[width, height]`), which is
+committed; the build never contacts the CDN. `npm run images` adds an entry
+for every image it uploads, so commit that file together with the post
+(with `npm run ship`, pass `--include src/data/image-dimensions.json`).
+
+- `npm run images:dimensions -- --check` lists referenced images missing
+  from the map (no network).
+- `npm run images:dimensions` probes the missing ones on the CDN (ranged
+  reads of the file header, read-only) and adds them.
+
+A missing entry never fails the build: the image renders without
+dimensions and the build prints an `[image-dimensions]` warning naming the
+file. The plugin is `scripts/rehype/image-dimensions.mjs`; it also sizes
+`<img>` tags inside raw HTML such as `img-grid` blocks, and leaves alone any
+image that already has a width or height, or an inline style that sets one.
+A change to the map changes Astro's config digest, so the cached rendered
+Markdown is rebuilt automatically.
+
 ### Hero covers (`src/assets/hero/`)
 
 Hero covers live in the repo (not on R2) and feed three surfaces at once:
@@ -74,6 +97,33 @@ current image. Run it after every new or replaced car image (`-- --only <id>`
 to limit it, `-- --dry-run` to encode without uploading), then
 `npm run library:car-variants -- --verify` to check every recorded variant on
 the CDN. Source: `scripts/library/car-variants.mjs`.
+
+### Film, book and game poster variants
+
+The film, book and game shelves (and the `/library/` overview rows) can
+serve 240, 360 and 480 px wide WebP variants of each poster through
+`srcset`. Tiles render 108 to about 205 CSS px wide, so 240 covers 1x
+screens, 360 covers the common 2x and 3x tiles (111 px on a 390 px phone,
+159 px on a 1280 px desktop) and 480 the widest 2x tiles. A width is skipped
+when the source is not wider; film and game covers are 400 px JPEG
+thumbnails, so they get 240 and 360 and keep the original as the largest
+candidate.
+
+`npm run library:poster-variants` is a dry run by default: it downloads
+every poster, encodes the variants and reports bytes, without touching R2
+or the repository (`-- --out-dir <dir>` also saves the encodes and a
+`report.json`; `-- --shelf books` limits the run). `-- --upload` uploads
+missing variants to R2 next to each original under content-hashed keys,
+never overwriting an existing object, and only then adds entries to
+`src/data/library/poster-variants.json`, keyed by the original URL. Map
+entries are only ever added. `-- --verify` checks every recorded file on the
+CDN. The map is separate from `movies.json`, `games.json` and `books.json` so
+that `build-snapshot.mjs` refreshes keep it; a replaced cover has a new
+content-hashed URL and falls back to its plain `src` until the next upload
+run. `LibraryPage.astro` renders `srcset`/`sizes` only for posters with an
+entry; its `POSTER_SIZES` mirrors the `.library-grid` columns in
+`src/styles/pages/library.css` and must change with them. Source:
+`scripts/library/poster-variants.mjs`.
 
 ## One-time migration of existing images
 

@@ -137,7 +137,7 @@ function parseArgs(argv) {
   return opts
 }
 
-async function download(url) {
+export async function download(url) {
   const res = await fetch(url)
   if (!res.ok) throw new Error(`GET ${url}: HTTP ${res.status}`)
   const type = res.headers.get('content-type') || ''
@@ -154,7 +154,7 @@ async function headCdn(url) {
   }
 }
 
-async function verifyOnCdn(url, bytes) {
+export async function verifyOnCdn(url, bytes) {
   const head = await headCdn(url)
   if (head.status !== 200 || head.type !== CONTENT_TYPE || head.length !== bytes) {
     throw new Error(
@@ -163,7 +163,7 @@ async function verifyOnCdn(url, bytes) {
   }
 }
 
-async function verifyOnR2(client, bucket, key, bytes) {
+export async function verifyOnR2(client, bucket, key, bytes) {
   const head = await client.send(new HeadObjectCommand({ Bucket: bucket, Key: key }))
   if (head.ContentType !== CONTENT_TYPE || head.ContentLength !== bytes) {
     throw new Error(
@@ -174,7 +174,7 @@ async function verifyOnR2(client, bucket, key, bytes) {
 
 /** Upload only when the key is absent; an existing key must already hold
  *  an object of the same type and size (same content hash in its name). */
-async function uploadIfAbsent(client, bucket, key, buffer) {
+export async function uploadIfAbsent(client, bucket, key, buffer) {
   if (await objectExists(client, bucket, key)) {
     await verifyOnR2(client, bucket, key, buffer.length)
     return 'reused'

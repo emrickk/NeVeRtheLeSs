@@ -9,8 +9,10 @@ import process from 'node:process';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { loadEnv } from 'vite';
+import rehypeImageDimensions from './scripts/rehype/image-dimensions.mjs';
 import rehypeImageGallery from './scripts/rehype/image-gallery.mjs';
 import rehypeProtectedContent from './scripts/rehype/protected-content.mjs';
+import { loadDimensions } from './scripts/images/dimensions.mjs';
 import postEditor from './scripts/post-editor/integration.mjs';
 import config from './astro-theme-config.ts';
 import { toneExpressiveCodeOptions } from './src/config/expressive-code.ts';
@@ -74,6 +76,11 @@ export default defineConfig({
             content: { type: 'text', value: '#' },
           },
         ],
+        // Width and height for post images from the committed map
+        // (src/data/image-dimensions.json). Passing the map as an option also
+        // puts it in Astro's config digest, so a map change clears the cached
+        // rendered Markdown.
+        [rehypeImageDimensions, { dimensions: loadDimensions() }],
         rehypeImageGallery,
         // Keep last: encrypts the fully processed tree of protected posts.
         [rehypeProtectedContent, { password: postPassword }],
