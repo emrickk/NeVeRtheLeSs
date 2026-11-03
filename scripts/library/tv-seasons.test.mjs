@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { groupTvSeasons, seasonLabel } from '../../src/utils/tv-seasons.ts';
+import { groupTvSeasons, seasonLabel, seasonRatingLines } from '../../src/utils/tv-seasons.ts';
 
 const DATA = join(import.meta.dirname, '..', '..', 'src', 'data', 'library');
 const read = (name) => JSON.parse(readFileSync(join(DATA, name), 'utf8'));
@@ -22,6 +22,59 @@ test('seasonLabel uses a range for contiguous seasons and a list otherwise', () 
   assert.equal(seasonLabel(['1-4', '5-7', '8-9']), '1-9');
   assert.equal(seasonLabel(['1-4', '6']), '1-4, 6');
   assert.equal(seasonLabel(['3']), '3');
+  const simpsons = [...Array(25).keys()]
+    .map((i) => `${i + 1}`)
+    .filter((s) => !['14', '16'].includes(s));
+  assert.equal(seasonLabel(simpsons), '1-13, 15, 17-25');
+  assert.equal(seasonLabel(['1', '2', '4', '5', '7']), '1-2, 4-5, 7');
+});
+
+test('seasonRatingLines merges consecutive seasons with the same rating', () => {
+  const lines = (rows) => seasonRatingLines(rows.map(([s, r]) => ({ s, r })));
+  assert.deepEqual(
+    lines([
+      ['1', 5],
+      ['2', 5],
+      ['3', 5],
+      ['4', 5],
+      ['5', 4],
+      ['6', 4],
+      ['7', 4],
+      ['8', 5],
+    ]),
+    [
+      { s: '1-4', r: 5 },
+      { s: '5-7', r: 4 },
+      { s: '8', r: 5 },
+    ]
+  );
+  // A gap in the logged seasons, or an unrated season, ends the run.
+  assert.deepEqual(
+    lines([
+      ['1', 4],
+      ['3', 4],
+      ['4', 4],
+      ['5', undefined],
+      ['6', 4],
+    ]),
+    [
+      { s: '1', r: 4 },
+      { s: '3-4', r: 4 },
+      { s: '6', r: 4 },
+    ]
+  );
+  // Half stars only merge with the same half star; range seasons extend runs.
+  assert.deepEqual(
+    lines([
+      ['1-2', 4.5],
+      ['3', 4.5],
+      ['4', 4],
+    ]),
+    [
+      { s: '1-3', r: 4.5 },
+      { s: '4', r: 4 },
+    ]
+  );
 });
 
 test('films and single-season shows pass through unchanged', () => {
@@ -66,10 +119,7 @@ test('seasons merge into one card at the latest logged season', () => {
 });
 
 test('the latest log date wins over a higher season number', () => {
-  const out = groupTvSeasons([
-    season('1', { m: '2026-01-01' }),
-    season('2', { m: '2025-01-01' }),
-  ]);
+  const out = groupTvSeasons([season('1', { m: '2026-01-01' }), season('2', { m: '2025-01-01' })]);
   assert.equal(out.length, 1);
   assert.equal(out[0].id, 'show-1');
   assert.equal(out[0].cv, 'show-1.jpg');
@@ -86,6 +136,13 @@ test('gaps, unrated seasons, one year and range seasons', () => {
   assert.deepEqual(card.seasonRatings, [{ s: '1-4', r: 5 }]);
   assert.equal(card.r, 5, 'a single rated season keeps the card rating');
   assert.equal('c' in card, false);
+
+  const [same] = groupTvSeasons([
+    season('1', { r: 4, m: '2024-01-01' }),
+    season('2', { r: 4, m: '2024-01-02' }),
+  ]);
+  assert.deepEqual(same.seasonRatings, [{ s: '1-2', r: 4 }]);
+  assert.equal(same.r, 4, 'one merged line keeps the card rating');
 
   const [unrated] = groupTvSeasons([season('1'), season('2')]);
   assert.equal('r' in unrated, false);

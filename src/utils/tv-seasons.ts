@@ -1,7 +1,8 @@
 // The media snapshot logs each TV season as its own row. The library shows one
 // card per show: groupTvSeasons merges a show's season rows (same exact title)
 // into the card shape movies-local.json already uses for The Office, with the
-// seasons in `s` and one rating line per season in `seasonRatings`.
+// seasons in `s` and one rating line per run of same-rated seasons in
+// `seasonRatings`.
 
 export type SeasonRating = { s: string; r: number };
 
@@ -36,17 +37,62 @@ const bySeason = (a: string, b: string) => {
   return x - y;
 };
 
-/** "4-6" when the seasons run without a gap, otherwise "4, 6" (input sorted). */
+/**
+ * Splits season-sorted items into runs of consecutive seasons (each starts
+ * one after the previous run's last) for which `sameRun` also holds, and
+ * labels each run "4" or "4-6". A season that is not a number stands alone.
+ */
+function seasonRuns<T>(items: T[], season: (item: T) => string, sameRun: (a: T, b: T) => boolean) {
+  const runs: { s: string; first: number; last: number; items: T[] }[] = [];
+  for (const item of items) {
+    const [first, last] = seasonBounds(season(item));
+    const run = runs[runs.length - 1];
+    if (
+      run &&
+      !Number.isNaN(first) &&
+      first === run.last + 1 &&
+      sameRun(run.items[run.items.length - 1], item)
+    ) {
+      run.last = last;
+      run.items.push(item);
+    } else {
+      runs.push({ s: season(item), first, last, items: [item] });
+    }
+  }
+  return runs.map((run) => ({
+    ...run,
+    s: Number.isNaN(run.first)
+      ? run.s
+      : run.first === run.last
+        ? `${run.first}`
+        : `${run.first}-${run.last}`,
+  }));
+}
+
+/** Seasons (sorted) as "1-13, 15, 17-25": consecutive seasons become a range. */
 export function seasonLabel(seasons: string[]) {
-  const bounds = seasons.map(seasonBounds);
-  const contiguous = bounds.every(
-    ([first, last], i) =>
-      !Number.isNaN(first) && (i === 0 || first === bounds[i - 1][1] + 1) && last >= first
-  );
-  if (!contiguous) return seasons.join(', ');
-  const first = bounds[0][0];
-  const last = bounds[bounds.length - 1][1];
-  return first === last ? String(first) : `${first}-${last}`;
+  return seasonRuns(
+    seasons,
+    (s) => s,
+    () => true
+  )
+    .map((run) => run.s)
+    .join(', ');
+}
+
+/**
+ * One rating line per run of consecutive seasons with the same rating, the
+ * way The Office reads ("1-4" 5 stars, "5-7" 4 stars). An unrated season
+ * breaks the run and gets no line.
+ */
+export function seasonRatingLines(seasons: { s: string; r?: number }[]): SeasonRating[] {
+  return seasonRuns(
+    seasons,
+    (row) => row.s,
+    (a, b) => Boolean(a.r) && a.r === b.r
+  )
+    .filter((run) => run.items[0].r)
+    .map((run) => ({ s: run.s, r: run.items[0].r! }));
 }
 
 /**
@@ -93,7 +139,7 @@ export function groupTvSeasons<T extends SeasonFields>(rows: T[]): GroupedRow<T>
 
 function mergeSeasons<T extends SeasonFields>(leader: T, group: T[]): GroupedRow<T> {
   const seasons = [...group].sort((a, b) => bySeason(a.s!, b.s!));
-  const seasonRatings = seasons.filter((row) => row.r).map((row) => ({ s: row.s!, r: row.r! }));
+  const seasonRatings = seasonRatingLines(seasons.map((row) => ({ s: row.s!, r: row.r })));
   const years = seasons.map((row) => row.y).filter((y): y is number => typeof y === 'number');
   const from = Math.min(...years);
   const to = Math.max(...years);
