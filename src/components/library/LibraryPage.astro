@@ -115,7 +115,7 @@ const CDN = 'https://cdn.theneverless.com/library';
 // minmax(150px, 1fr) with 16px gaps inside 24px gutters and a 1080px page.
 // Keep in step with that grid. Variants come from npm run library:poster-variants.
 const POSTER_SIZES =
-  '(max-width: 379px) calc(50vw - 22px), (max-width: 499px) calc(33.33vw - 18px), (max-width: 600px) calc(25vw - 17px), (max-width: 695px) calc(33.33vw - 26px), (max-width: 831px) calc(25vw - 24px), (max-width: 879px) 184px, 118px';
+  '(max-width: 379px) calc(50vw - 22px), (max-width: 499px) calc(33.33vw - 18px), (max-width: 600px) calc(25vw - 17px), (max-width: 695px) calc(33.33vw - 26px), (max-width: 861px) calc(25vw - 24px), (max-width: 1027px) calc(20vw - 22px), (max-width: 1079px) calc(16.67vw - 21px), 159px';
 type PosterVariants = { images: { width: number; url: string }[] };
 const posterVariantMap: Record<string, PosterVariants | undefined> = posterVariants;
 // A poster with recorded variants gets srcset/sizes; any other keeps its plain src.

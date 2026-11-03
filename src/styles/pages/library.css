@@ -6,7 +6,7 @@
 
 .library-main {
   scroll-margin-top: 5rem;
-  max-width: var(--max-width-wide);
+  max-width: 1080px;
   margin: 0 auto;
   padding: var(--space-16) var(--space-6) var(--space-24);
 
@@ -18,11 +18,6 @@
 
   /* Star ratings: a deeper amber than --color-warning keeps 3:1 on white. */
   --lib-stars: #c77700;
-}
-
-/* Same content column as the header and the other pages. */
-.library-main > * {
-  max-width: var(--max-width-content);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -226,14 +221,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--space-8) var(--space-4);
-}
-
-/* Once the page reaches the shared content column, keep six columns so a
-   six-item overview shelf stays one full row (auto-fill would give 4 + 2). */
-@media (min-width: 55rem) {
-  .library-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
 }
 
 .library-grid[hidden] {
