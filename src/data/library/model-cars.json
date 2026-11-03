@@ -2302,68 +2302,6 @@
     }
   },
   {
-    "id": "CMC-M-080",
-    "title": "Ferrari 250 Testa Rossa · Lucybelle #22, 1958",
-    "brand": "CMC",
-    "scale": "1:18",
-    "listingUrl": "https://www.ebay.com/itm/800802625817",
-    "officialImage": null,
-    "officialUrl": null,
-    "displaySourceImage": "https://www.cmc-modelcarshop.de/media/images/org/cmcm-080-2.jpg",
-    "displaySourceUrl": "https://www.cmc-modelcarshop.de/en/CMC-Rarities/CMC-Ferrari-250-Testa-Rossa-white-22-1958-Limited-Edition-3000.html",
-    "imageSourceType": "ai-generated",
-    "imageStatus": "available",
-    "verifiedOn": "2026-10-19",
-    "displayImage": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f.png",
-    "displayImageVariants": {
-      "source": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f.png",
-      "sourceWidth": 1536,
-      "sourceHeight": 1024,
-      "images": [
-        {
-          "width": 480,
-          "height": 320,
-          "bytes": 14580,
-          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f-480w-aad6540ee516.webp"
-        },
-        {
-          "width": 800,
-          "height": 533,
-          "bytes": 31260,
-          "url": "https://cdn.theneverless.com/library/model-cars/cmc-m-080-ai-redraw-0e4e6008960f-800w-4d3f46a8d4c8.webp"
-        }
-      ]
-    },
-    "ownershipPost": null,
-    "imageCredit": "AI illustration generated with OpenAI image_gen, based on the cited exact product reference",
-    "imageTreatment": "Single three-quarter miniature illustration on a white seamless background with a soft contact shadow. Complete car and selected panel configuration preserved. Generated illustration, not an original photograph.",
-    "sourceFilename": null,
-    "imageFrameColor": "#ffffff",
-    "imagePresentation": "generated-illustration",
-    "imageSourceStatus": "generated",
-    "imageSourceAudit": "Exact product reference: specialist-retailer product gallery. Main variant, livery, panel state and framing reviewed. Fine lettering and geometry are generated interpretations.",
-    "imageSourceDimensions": {
-      "width": 1200,
-      "height": 619
-    },
-    "imageSourceReferences": [
-      "https://www.ebay.com/itm/800802625817"
-    ],
-    "imageCrop": null,
-    "imageGeneratedDimensions": {
-      "width": 1536,
-      "height": 1024
-    },
-    "imageGeneration": {
-      "tool": "OpenAI image_gen",
-      "authorization": "Owner request, 2026-10-19",
-      "date": "2026-10-19",
-      "referenceImage": "https://www.cmc-modelcarshop.de/media/images/org/cmcm-080-2.jpg",
-      "referenceSha256": "5889347ac117ee3376d577d3a112c2f418d2146822db7dbb5869de30fb8cbc8e",
-      "outputSha256": "0e4e6008960ff95e1ad3c3d0539d934eab0b64e73236890f32b960a6d6abcc5f"
-    }
-  },
-  {
     "id": "S70-01",
     "title": "BMW E30 Pandem · Silver / Blue",
     "brand": "POP RACE × Xcartoys",
@@ -3121,6 +3059,133 @@
       "outputSha256": "3111fa4de9f3896d788477abc64347f8e6cd8296fce1184d93be4e67a6f94e29",
       "intermediateOutputSha256": "def93686c941d4b402be6d6d5d23cb59294db4c63b079ffc7abd87972908ccbc",
       "framingEdit": "Expanded margins and corrected windshield and bumper lettering against reference."
+    }
+  },
+  {
+    "id": "LSRC079",
+    "title": "Ferrari 488 GT3 · Team Great Britain #93, Motorsport Games 2019",
+    "brand": "Looksmart",
+    "scale": "1:43",
+    "officialUrl": "https://looksmartmodels.com/product/team-great-britain-ferrari-488-gt3-no-93-fia-motorsport-games-gt-cup-vallelunga-2019-143/",
+    "officialImage": "https://looksmartmodels.com/wp-content/uploads/2021/08/LSRC079-7.jpg",
+    "verifiedOn": "2026-11-02",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/lsrc079-ai-redraw-eac9924e8251.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/lsrc079-ai-redraw-eac9924e8251.png",
+      "sourceWidth": 1086,
+      "sourceHeight": 724,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 25876,
+          "url": "https://cdn.theneverless.com/library/model-cars/lsrc079-ai-redraw-eac9924e8251-480w-56e46dcb3b75.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 55492,
+          "url": "https://cdn.theneverless.com/library/model-cars/lsrc079-ai-redraw-eac9924e8251-800w-d053455c2b83.webp"
+        }
+      ]
+    },
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageStatus": "available",
+    "displaySourceImage": "https://looksmartmodels.com/wp-content/uploads/2021/08/LSRC079-7.jpg",
+    "displaySourceUrl": "https://looksmartmodels.com/product/team-great-britain-ferrari-488-gt3-no-93-fia-motorsport-games-gt-cup-vallelunga-2019-143/",
+    "imageTreatment": "Owner-requested AI redraw: single model car in a front-left three-quarter view on a white studio background with a soft contact shadow. Display base and plaque removed. White body with Union Jack hood and roof, red-orange to purple lower band with UNITED KINGDOM, black #93 on hood and door, sky and HUBLOT logos, HUBLOT rear wing and lime-green front wheel nuts retained. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "Owner chose a Codex studio redraw for this car on 2026-11-02. Reference is the official Looksmart front three-quarter photograph LSRC079-7; LSRC079-9 (rear) used to check the rear livery. Number, flag placement, lower band, UNITED KINGDOM lettering, sky and HUBLOT logos, wing and wheel nuts reviewed against the reference; generated geometry, fine logos and small lettering are interpretations and not verified documentary details.",
+    "imageSourceDimensions": {
+      "width": 1620,
+      "height": 1080
+    },
+    "imageSourceReferences": [
+      "https://looksmartmodels.com/wp-content/uploads/2021/08/LSRC079-9.jpg"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "Owner request, 2026-11-02",
+      "referenceImage": "https://looksmartmodels.com/wp-content/uploads/2021/08/LSRC079-7.jpg",
+      "referenceSha256": "6e8903cae599e1839707963187f1b26a096d9097bccb604abd36e13984e1a1c9",
+      "outputSha256": "1907f84b07afb3b93714ceb5048c296a32e5d447c5362f24c2340d8d7e2936e4",
+      "refinement": "One framing-only edit pass to scale the car to about 70 percent of the canvas width",
+      "date": "2026-11-02",
+      "displaySha256": "eac9924e8251f52586a6251e2eadab689f5552e43e75a03675371cafd0b965bf"
+    },
+    "imageCrop": {
+      "x": 232,
+      "y": 147,
+      "width": 1086,
+      "height": 724,
+      "of": "generated output",
+      "reason": "3:2 crop of the 1536x1024 generated image so the car fills about 94% of the width, matching the other 1:43 redraws"
+    }
+  },
+  {
+    "id": "WHELART-H-005LE",
+    "title": "Jaguar XJR-9 · Silk Cut #2 Le Mans Winner, 1988 · Weathered",
+    "brand": "WHELART",
+    "scale": "1:64",
+    "officialUrl": "http://www.whelart.com/en/product/jaguar-xjr-9-weathered-limited-edition/",
+    "officialImage": "http://www.whelart.com/wp-content/uploads/2026/11/11-1.png",
+    "verifiedOn": "2026-11-02",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/whelart-h-005le-ai-redraw-e674741491fc.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/whelart-h-005le-ai-redraw-e674741491fc.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 21794,
+          "url": "https://cdn.theneverless.com/library/model-cars/whelart-h-005le-ai-redraw-e674741491fc-480w-b578c9b0ad4f.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 50716,
+          "url": "https://cdn.theneverless.com/library/model-cars/whelart-h-005le-ai-redraw-e674741491fc-800w-3d19f58c7c9e.webp"
+        }
+      ]
+    },
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageStatus": "available",
+    "displaySourceImage": "http://www.whelart.com/wp-content/uploads/2026/11/11-1.png",
+    "displaySourceUrl": "http://www.whelart.com/en/product/jaguar-xjr-9-weathered-limited-edition/",
+    "imageTreatment": "1:64 default AI redraw: single model car in a front-left three-quarter view on a white studio background with a soft contact shadow. Diorama base removed; all body panels closed. Weathered Silk Cut livery retained: grime speckle on body and windshield, #2 Castrol nose, Silk Cut door and wing, orange stripes with green edging, enclosed rear wheels, black front wheels with blue nuts. Generated illustration, not an original product photograph.",
+    "imageSourceType": "ai-generated",
+    "imageFrameColor": "#ffffff",
+    "imagePresentation": "generated-illustration",
+    "imageSourceStatus": "generated",
+    "imageSourceAudit": "New 1:64 addition, studio redraw by default (owner decision 2026-11-02). Reference is the official WHELART front-left three-quarter photograph 11-1.png; xy-9 (front) and xy-5 (rear-left) used to check nose, door and wing livery. Number, sponsors, stripe colors, weathering, wheels and panel state reviewed against the reference; generated geometry, fine logos and small lettering are interpretations and not verified documentary details.",
+    "imageSourceDimensions": {
+      "width": 800,
+      "height": 533
+    },
+    "imageSourceReferences": [
+      "http://www.whelart.com/wp-content/uploads/2026/11/xy-9-1.jpg",
+      "http://www.whelart.com/wp-content/uploads/2026/11/xy-5-1-scaled.jpg"
+    ],
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "authorization": "1:64 redraw default, owner decision 2026-11-02",
+      "referenceImage": "http://www.whelart.com/wp-content/uploads/2026/11/11-1.png",
+      "referenceSha256": "1d2e88cbd1938082624e8137127566f2d52a649987e8a09c6a56a13023d9dc64",
+      "outputSha256": "e674741491fccbb800afc0ad439899d687c7ccb4b2cb971441f6a4b15468653e",
+      "date": "2026-11-02"
     }
   }
 ]
