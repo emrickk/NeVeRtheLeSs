@@ -10,7 +10,6 @@ import localMovies from '../../data/library/movies-local.json';
 import games from '../../data/library/games.json';
 import books from '../../data/library/books.json';
 import modelCars from '../../data/library/model-cars.json';
-import hotelWallHtml from '../../../public/interactive/hyatt-tier-wall/index.html?raw';
 import posterVariants from '../../data/library/poster-variants.json';
 import { withBase } from '../../utils/paths';
 import {
@@ -70,17 +69,12 @@ const carScales = ['1:18', '1:64', '1:43', '1:32'];
 // Keep pocket-size Tomica models together while retaining each card's exact scale.
 const pocketScales = new Set(['1:64', '1:62']);
 const hasOneTo62 = modelCars.some((car) => car.scale === '1:62');
-// The hotels page embeds the Hyatt rating wall, whose inline `hotels` array
-// is the list it shows; count that array so the tab matches the wall.
-const hotelList = hotelWallHtml.match(/const hotels = \[([\s\S]*?)\n\s*\];/)?.[1];
-const hotelCount = hotelList?.match(/\{name:/g)?.length;
-if (!hotelCount) throw new Error('Could not count the hotels in the Hyatt rating wall');
-const counts: Record<string, number> = {
+const counts: Record<string, number | null> = {
   movies: movies.length,
   books: books.length,
   games: games.length,
   cars: modelCars.length,
-  hotels: hotelCount,
+  hotels: null,
 };
 const current = LIBRARY_SECTIONS.find((section) => section.id === view);
 
@@ -191,49 +185,27 @@ const gameRows = games as Row[];
       </p>
     </header>
 
-    <nav class="library-tabs" aria-label="Collection sections" data-library-tabs>
-      <button
-        type="button"
-        class="library-tabs-scroll library-tabs-scroll-prev"
-        data-library-tabs-scroll="prev"
-        aria-label="Scroll sections left"
+    <nav class="library-tabs" aria-label="Collection sections">
+      <a
+        class="library-tab"
+        href={withBase('/library/')}
+        data-tab="overview"
+        aria-current={overview ? 'page' : undefined}
+        ><LangText text={{ zh: '全部', en: 'Overview' }} /></a
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="m15 18-6-6 6-6"></path>
-        </svg>
-      </button>
-      <div class="library-tab-list" data-library-tab-list>
-        <a
-          class="library-tab"
-          href={withBase('/library/')}
-          data-tab="overview"
-          aria-current={overview ? 'page' : undefined}
-          ><LangText text={{ zh: '全部', en: 'Overview' }} /></a
-        >
-        {
-          LIBRARY_SECTIONS.map((section) => (
-            <a
-              class="library-tab"
-              href={sectionHref(section.id)}
-              data-tab={section.id}
-              aria-current={view === section.id ? 'page' : undefined}
-            >
-              <LangText text={{ zh: section.zh, en: section.en }} />
-              <b>{counts[section.id]}</b>
-            </a>
-          ))
-        }
-      </div>
-      <button
-        type="button"
-        class="library-tabs-scroll library-tabs-scroll-next"
-        data-library-tabs-scroll="next"
-        aria-label="Scroll sections right"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="m9 18 6-6-6-6"></path>
-        </svg>
-      </button>
+      {
+        LIBRARY_SECTIONS.map((section) => (
+          <a
+            class="library-tab"
+            href={sectionHref(section.id)}
+            data-tab={section.id}
+            aria-current={view === section.id ? 'page' : undefined}
+          >
+            <LangText text={{ zh: section.zh, en: section.en }} />
+            {counts[section.id] !== null && <b>{counts[section.id]}</b>}
+          </a>
+        ))
+      }
     </nav>
 
     {
@@ -567,13 +539,6 @@ const gameRows = games as Row[];
     }
   </main>
 </BaseLayout>
-
-<script>
-  import { onReady } from '../../scripts/mount';
-  import { mountLibraryTabs } from '../../scripts/library-tabs';
-
-  onReady(mountLibraryTabs);
-</script>
 
 <script>
   const grids = document.querySelectorAll<HTMLElement>('[data-grid]');

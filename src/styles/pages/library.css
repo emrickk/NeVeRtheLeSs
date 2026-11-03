@@ -61,117 +61,17 @@
 
 /* ── Tabs ───────────────────────────────────────────────── */
 
-/* One row that scrolls sideways when it does not fit, like the post feed's
-   category filters: edge fades show there is more, and arrow buttons appear
-   for mouse users (library-tabs.ts keeps the state classes in sync). */
 .library-tabs {
-  position: relative;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
   margin: var(--space-6) 0;
   border-bottom: 1px solid var(--separator);
 }
 
-/* The 6px block padding (cancelled by the negative margin) leaves room for
-   the tabs' 44px hit areas inside the scroll box, which clips overflow. */
-.library-tab-list {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: baseline;
-  gap: var(--space-5);
-  margin-block: -6px;
-  padding-block: 6px;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scroll-padding-inline: var(--space-8);
-  scrollbar-width: none;
-}
-
-.library-tab-list::-webkit-scrollbar {
-  display: none;
-}
-
-.library-tabs.has-overflow:not(.is-at-start, .is-at-end) .library-tab-list {
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 1.75rem,
-    #000 calc(100% - 1.75rem),
-    transparent
-  );
-}
-
-.library-tabs.has-overflow.is-at-start:not(.is-at-end) .library-tab-list {
-  mask-image: linear-gradient(90deg, #000 calc(100% - 1.75rem), transparent);
-}
-
-.library-tabs.has-overflow.is-at-end:not(.is-at-start) .library-tab-list {
-  mask-image: linear-gradient(90deg, transparent, #000 1.75rem);
-}
-
-.library-tabs-scroll {
-  display: none;
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  bottom: var(--space-3);
-  place-items: center;
-  width: 1.875rem;
-  border: 0;
-  padding: 0;
-  background: color-mix(in srgb, var(--bg-primary) 86%, transparent);
-  color: var(--label-secondary);
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out);
-}
-
-.library-tabs-scroll:hover {
-  color: var(--label-primary);
-}
-
-.library-tabs-scroll:disabled {
-  cursor: default;
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-.library-tabs-scroll svg {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.library-tabs-scroll-prev {
-  left: 0;
-}
-
-.library-tabs-scroll-next {
-  right: 0;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .library-tabs-scroll {
-    display: grid;
-  }
-
-  .library-tabs:hover .library-tabs-scroll:not(:disabled),
-  .library-tabs:focus-within .library-tabs-scroll:not(:disabled) {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
 .library-tab {
-  position: relative;
   display: inline-flex;
-  flex: 0 0 auto;
   align-items: center;
   gap: var(--space-2);
   height: var(--space-8);
@@ -183,20 +83,8 @@
   font-family: var(--font-sans);
   font-size: var(--text-footnote);
   font-weight: 450;
-  white-space: nowrap;
   color: var(--label-tertiary);
   transition: color var(--duration-fast) var(--ease-out);
-}
-
-/* Invisible 44px-tall hit area around the 32px tab; layout is unchanged. */
-.library-tab::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  height: 44px;
-  transform: translateY(-50%);
 }
 
 .library-tab:hover {
@@ -689,8 +577,8 @@
 }
 
 @media (max-width: 600px) {
-  .library-tab-list {
-    gap: 1rem;
+  .library-tabs {
+    gap: 0.5rem 1rem;
   }
   .collection-section {
     margin-top: 2.5rem;
