@@ -10,6 +10,7 @@ import localMovies from '../../data/library/movies-local.json';
 import games from '../../data/library/games.json';
 import books from '../../data/library/books.json';
 import modelCars from '../../data/library/model-cars.json';
+import posterVariants from '../../data/library/poster-variants.json';
 import { withBase } from '../../utils/paths';
 import {
   LIBRARY_SECTIONS,
@@ -102,6 +103,25 @@ const carImage = (car: { displayImage?: string; displayImageVariants?: CarVarian
 
 // Cover thumbnails live on R2; scripts/library/build-snapshot.mjs uploads them.
 const CDN = 'https://cdn.theneverless.com/library';
+
+// Poster tile widths in .library-grid (styles/pages/library.css): up to 600px,
+// minmax(108px, 1fr) columns with 12px gaps inside 16px gutters; above,
+// minmax(150px, 1fr) with 16px gaps inside 24px gutters and a 1080px page.
+// Keep in step with that grid. Variants come from npm run library:poster-variants.
+const POSTER_SIZES =
+  '(max-width: 379px) calc(50vw - 22px), (max-width: 499px) calc(33.33vw - 18px), (max-width: 600px) calc(25vw - 17px), (max-width: 695px) calc(33.33vw - 26px), (max-width: 861px) calc(25vw - 24px), (max-width: 1027px) calc(20vw - 22px), (max-width: 1079px) calc(16.67vw - 21px), 159px';
+type PosterVariants = { images: { width: number; url: string }[] };
+const posterVariantMap: Record<string, PosterVariants | undefined> = posterVariants;
+// A poster with recorded variants gets srcset/sizes; any other keeps its plain src.
+const poster = (src: string) => {
+  const images = posterVariantMap[src]?.images;
+  if (!images?.length) return { src };
+  return {
+    src: images[images.length - 1].url,
+    srcset: images.map((image) => `${image.url} ${image.width}w`).join(', '),
+    sizes: POSTER_SIZES,
+  };
+};
 
 // Half-star ratings render letterboxd-style: ★★★★½.
 const stars = (r: number) => '★'.repeat(Math.floor(r)) + (r % 1 >= 0.5 ? '½' : '');
@@ -215,7 +235,7 @@ const gameRows = games as Row[];
                     <div class="lib-spine">{d.t}</div>
                   ) : (
                     <img
-                      src={`${CDN}/movies/${d.cv}`}
+                      {...poster(`${CDN}/movies/${d.cv}`)}
                       alt={d.t}
                       loading="lazy"
                       decoding="async"
@@ -316,7 +336,7 @@ const gameRows = games as Row[];
                     </div>
                     {book.image && (
                       <img
-                        src={book.image}
+                        {...poster(book.image)}
                         alt={book.t}
                         loading="lazy"
                         decoding="async"
@@ -373,7 +393,7 @@ const gameRows = games as Row[];
                     <div class="lib-spine">{d.t}</div>
                   ) : (
                     <img
-                      src={`${CDN}/games/${d.cv}`}
+                      {...poster(`${CDN}/games/${d.cv}`)}
                       alt={d.t}
                       loading="lazy"
                       decoding="async"

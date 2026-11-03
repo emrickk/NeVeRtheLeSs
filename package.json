@@ -40,6 +40,7 @@
     "images:migrate": "node scripts/images/migrate.mjs",
     "images:dimensions": "node scripts/images/dimensions.mjs",
     "library:car-variants": "node scripts/library/car-variants.mjs",
+    "library:poster-variants": "node scripts/library/poster-variants.mjs",
     "test:images": "node --test \"scripts/images/*.test.mjs\"",
     "test:rehype": "node --test \"scripts/rehype/*.test.mjs\"",
     "test:editor": "node --test scripts/post-editor/api.test.mjs",
