@@ -61,6 +61,22 @@ Minimum spec for a new cover:
   two covers and making the cards' `sizes` attributes account for the
   cover crop (see `src/components/FeaturedPostGrid.astro`).
 
+### Model-car display images
+
+`npm run library:car-image -- --id <car-id> --file <absolute path> --label ai-redraw`
+uploads one finished car image (png, jpg or webp) to R2 as
+`library/model-cars/<id>-<label>-<first 12 hex of sha256>.<ext>`, with the id
+lowercased as in the existing keys, then downloads it from the CDN and fails
+unless the SHA-256 matches the local file. It never overwrites: a key that
+already exists holds the same bytes, so the upload is skipped (and the put is
+conditional). It prints one JSON result (`displayImage`, `key`, `sha256`,
+`bytes`, `width`, `height`, `contentType`, `uploaded`, `verifiedAt`);
+`-- --receipt <path>` also writes it to a file, and `-- --dry-run` computes the
+key and URL without credentials or network. It does not edit
+`model-cars.json` or any other record; put the printed `displayImage` into the
+car record separately, then run `library:car-variants` below. Source:
+`scripts/library/car-image.mjs`.
+
 ### Model-car variants
 
 The cars page (`/library/cars/`) serves responsive 480w and 800w WebP

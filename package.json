@@ -39,6 +39,7 @@
     "images": "node scripts/images/process.mjs",
     "images:migrate": "node scripts/images/migrate.mjs",
     "library:car-variants": "node scripts/library/car-variants.mjs",
+    "library:car-image": "node scripts/library/car-image.mjs",
     "test:images": "node --test \"scripts/images/*.test.mjs\"",
     "test:rehype": "node --test \"scripts/rehype/*.test.mjs\"",
     "test:editor": "node --test scripts/post-editor/api.test.mjs",
