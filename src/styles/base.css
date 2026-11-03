@@ -75,6 +75,13 @@ body {
   padding: 0;
   overflow-wrap: break-word;
   transition: background-color var(--duration-fast) var(--ease-out);
+
+  /* Sticky footer: on short pages main grows so the footer sits at the
+     bottom of the viewport; long pages are unaffected. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ------------------------------------------------------------
@@ -164,6 +171,11 @@ main {
   max-width: var(--max-width-content);
   margin: 0 auto;
   padding: var(--space-8) var(--space-4);
+}
+
+/* Sticky footer (see body): main takes the leftover height. */
+body > main {
+  flex: 1 0 auto;
 }
 
 /* ------------------------------------------------------------

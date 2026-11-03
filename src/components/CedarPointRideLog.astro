@@ -143,20 +143,8 @@ const ratingBand = (score: string) =>
 </script>
 
 <style is:global>
-  @media (max-width: 1559px) {
-    body:has(.cedar-point-log) .toc-rail {
-      display: none;
-    }
-  }
-
-  /* This long illustrated post uses the blog's typography and colors, with
-     a wider reading area only for this page. Other posts are untouched. */
-  .post-main:has(.cedar-point-log) {
-    max-width: 1120px;
-  }
-  .prose:has(.cedar-point-log) {
-    max-width: none;
-  }
+  /* This long illustrated log uses the blog's typography, colors and post
+     column, so its edges line up with the header like every other post. */
   .cedar-point-log [data-rating='high'] {
     --ride-color: #087e8b;
   }

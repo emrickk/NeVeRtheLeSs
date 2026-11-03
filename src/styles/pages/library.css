@@ -6,7 +6,7 @@
 
 .library-main {
   scroll-margin-top: 5rem;
-  max-width: 1080px;
+  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: var(--space-16) var(--space-6) var(--space-24);
 
@@ -15,6 +15,14 @@
   --lib-note-ink: rgba(24, 31, 36, 0.92);
   --lib-note-ink2: rgba(24, 31, 36, 0.4);
   --lib-chip-bg: rgba(255, 255, 255, 0.78);
+
+  /* Star ratings: a deeper amber than --color-warning keeps 3:1 on white. */
+  --lib-stars: #c77700;
+}
+
+/* Same content column as the header and the other pages. */
+.library-main > * {
+  max-width: var(--max-width-content);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +31,7 @@
     --lib-note-ink: rgba(239, 247, 250, 0.88);
     --lib-note-ink2: rgba(239, 247, 250, 0.38);
     --lib-chip-bg: rgba(16, 20, 22, 0.78);
+    --lib-stars: var(--color-warning);
   }
 }
 
@@ -31,6 +40,7 @@
   --lib-note-ink: rgba(239, 247, 250, 0.88);
   --lib-note-ink2: rgba(239, 247, 250, 0.38);
   --lib-chip-bg: rgba(16, 20, 22, 0.78);
+  --lib-stars: var(--color-warning);
 }
 
 /* ── Header ─────────────────────────────────────────────── */
@@ -56,17 +66,117 @@
 
 /* ── Tabs ───────────────────────────────────────────────── */
 
+/* One row that scrolls sideways when it does not fit, like the post feed's
+   category filters: edge fades show there is more, and arrow buttons appear
+   for mouse users (library-tabs.ts keeps the state classes in sync). */
 .library-tabs {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
+  position: relative;
   margin: var(--space-6) 0;
   border-bottom: 1px solid var(--separator);
 }
 
+/* The 6px block padding (cancelled by the negative margin) leaves room for
+   the tabs' 44px hit areas inside the scroll box, which clips overflow. */
+.library-tab-list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: var(--space-5);
+  margin-block: -6px;
+  padding-block: 6px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: var(--space-8);
+  scrollbar-width: none;
+}
+
+.library-tab-list::-webkit-scrollbar {
+  display: none;
+}
+
+.library-tabs.has-overflow:not(.is-at-start, .is-at-end) .library-tab-list {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 1.75rem,
+    #000 calc(100% - 1.75rem),
+    transparent
+  );
+}
+
+.library-tabs.has-overflow.is-at-start:not(.is-at-end) .library-tab-list {
+  mask-image: linear-gradient(90deg, #000 calc(100% - 1.75rem), transparent);
+}
+
+.library-tabs.has-overflow.is-at-end:not(.is-at-start) .library-tab-list {
+  mask-image: linear-gradient(90deg, transparent, #000 1.75rem);
+}
+
+.library-tabs-scroll {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: var(--space-3);
+  place-items: center;
+  width: 1.875rem;
+  border: 0;
+  padding: 0;
+  background: color-mix(in srgb, var(--bg-primary) 86%, transparent);
+  color: var(--label-secondary);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.library-tabs-scroll:hover {
+  color: var(--label-primary);
+}
+
+.library-tabs-scroll:disabled {
+  cursor: default;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.library-tabs-scroll svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.library-tabs-scroll-prev {
+  left: 0;
+}
+
+.library-tabs-scroll-next {
+  right: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .library-tabs-scroll {
+    display: grid;
+  }
+
+  .library-tabs:hover .library-tabs-scroll:not(:disabled),
+  .library-tabs:focus-within .library-tabs-scroll:not(:disabled) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .library-tab {
+  position: relative;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: var(--space-2);
   height: var(--space-8);
@@ -78,8 +188,20 @@
   font-family: var(--font-sans);
   font-size: var(--text-footnote);
   font-weight: 450;
+  white-space: nowrap;
   color: var(--label-tertiary);
   transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Invisible 44px-tall hit area around the 32px tab; layout is unchanged. */
+.library-tab::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 44px;
+  transform: translateY(-50%);
 }
 
 .library-tab:hover {
@@ -104,6 +226,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--space-8) var(--space-4);
+}
+
+/* Once the page reaches the shared content column, keep six columns so a
+   six-item overview shelf stays one full row (auto-fill would give 4 + 2). */
+@media (min-width: 55rem) {
+  .library-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 
 .library-grid[hidden] {
@@ -195,7 +325,7 @@
 }
 
 .lib-meta .stars {
-  color: var(--color-warning);
+  color: var(--lib-stars);
   letter-spacing: 0.08em;
 }
 
@@ -258,7 +388,7 @@
 
 .lib-note .m .stars {
   display: none;
-  color: var(--color-warning);
+  color: var(--lib-stars);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
@@ -572,8 +702,8 @@
 }
 
 @media (max-width: 600px) {
-  .library-tabs {
-    gap: 0.5rem 1rem;
+  .library-tab-list {
+    gap: 1rem;
   }
   .collection-section {
     margin-top: 2.5rem;
