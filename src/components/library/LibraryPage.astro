@@ -73,7 +73,6 @@ for (const car of modelCars) {
 const carScales = ['1:18', '1:64', '1:43', '1:32'];
 // Keep pocket-size Tomica models together while retaining each card's exact scale.
 const pocketScales = new Set(['1:64', '1:62']);
-const hasOneTo62 = modelCars.some((car) => car.scale === '1:62');
 const counts: Record<string, number | null> = {
   movies: movies.length,
   books: books.length,
@@ -447,10 +446,10 @@ const gameRows = games as Row[];
           {carScales.map((scale) => (
             <section
               class="car-scale-section"
-              aria-label={`${scale === '1:64' && hasOneTo62 ? '1:64 and 1:62' : scale} model cars`}
+              aria-label={`${scale} model cars`}
             >
               <header class="car-shelf-heading">
-                <h3>{scale === '1:64' && hasOneTo62 ? '1:64 · 1:62' : scale}</h3>
+                <h3>{scale}</h3>
                 {['1:18', '1:64'].includes(scale) && (
                   <span class="car-shelf-label">
                     <LangText
