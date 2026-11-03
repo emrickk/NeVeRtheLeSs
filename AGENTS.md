@@ -4,7 +4,7 @@ Guidance for AI agents and new contributors working in this repository.
 
 ## What this is
 
-Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 7 + the astro-tone theme. Deploys to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main` once its checks pass (see Safety); served at https://theneverless.com (DNS on Cloudflare, registration at GoDaddy; anping.us 301-redirects here but will be allowed to expire, so nothing may reference it; images are on https://cdn.theneverless.com).
+Personal blog "NeVeRtheLeSs" (2005 to present, bilingual zh/en). Astro 7 + the astro-tone theme. Deploys to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main` once its checks pass (see Safety); served at https://theneverless.com (DNS on Cloudflare, registration at GoDaddy; anping.us is retired (offline since 2026-11-02, registration lapses 2027-07-12), so nothing may reference it; images are on https://cdn.theneverless.com).
 
 ## Start with the relevant guidance
 
