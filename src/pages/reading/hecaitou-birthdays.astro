@@ -1,0 +1,273 @@
+---
+// Standalone reading page: 和菜头's birthday essays, reposted with his
+// permission. Hidden on purpose: noindex, left out of the sitemap
+// (astro.config.mjs), and not linked from nav, post lists, feeds or Related.
+import 'toc-rail/style.css';
+import '../../styles/layouts/post.css';
+import '../../styles/pages/reading.css';
+import LangText from '../../components/LangText.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import zhSections from '../../data/reading/hecaitou-birthdays.json';
+import enSections from '../../data/reading/hecaitou-birthdays.en.json';
+import { htmlLangFor, type Lang } from '../../utils/translations';
+
+const title = { zh: '生日倒带', en: 'Birthdays in Rewind' };
+const description = {
+  zh: '和菜头的生日文章，从 2026 年倒着读到 2008 年。缺 2009 和 2011。',
+  en: 'Hecaitou’s birthday essays, read backward from 2026 to 2008. 2009 and 2011 are missing.',
+};
+const byline = { zh: '文 / 和菜头', en: 'By Hecaitou' };
+const credit = {
+  zh: '以下全部文章作者为和菜头，原载于他的博客与公众号「槽边往事」，版权归原作者所有。',
+  en: 'Every essay here is by Hecaitou, first published on the author’s blog and WeChat account Caobian Wangshi. Copyright belongs to the author. The English is an unofficial translation, not the author’s own.',
+};
+const yearsLabel = { zh: '年份', en: 'Years' };
+const undated = { zh: '年份未标', en: 'Undated' };
+const ageLabel = {
+  zh: (age: number) => `${age} 岁`,
+  en: (age: number) => `age ${age}`,
+};
+const replyHeading = { zh: 'Anping 的回复', en: 'Anping’s reply' };
+const reply = {
+  zh: '恶趣味发作，从今年这篇开始，一年一年往回翻你的生日快乐。51 岁离我当然很远，权当看热闹。49，48……翻着翻着，惊觉已经看到 2008 年，你 33 岁。……我也已经 33 岁了。突然感觉刚才看的公众号一篇一篇就是时光隧道，51 岁也不太远了。出门找答案去。',
+  en: 'On a mischievous whim, I started with this year’s essay and went back through your birthday posts one year at a time. 51 is a long way off for me, of course, so I was only here for the show. 49, 48... and then, with a start, I found I’d reached 2008, when you were 33. ...I’m 33 too. Suddenly those posts felt like a time tunnel, and 51 doesn’t seem so far off after all. I’m heading out to look for answers.',
+};
+
+const bodies: { lang: Lang; sections: typeof zhSections; idPrefix: string }[] = [
+  { lang: 'zh', sections: zhSections, idPrefix: '' },
+  { lang: 'en', sections: enSections, idPrefix: 'en-' },
+];
+
+const replyId = (idPrefix: string) => `${idPrefix}reply`;
+const yearId = (idPrefix: string, key: string) => `${idPrefix}y${key}`;
+
+// The only two presentation rules over the source text. Both go by position
+// ("section:essay"), so they apply identically to the two languages.
+const TITLE_LINES: Record<string, number> = { '2026:0': 0, '2025:0': 0, '2013:0': 3 };
+const LIST_LINES: Record<string, { first: number; last: number }> = {
+  '2024:0': { first: 12, last: 15 },
+};
+
+type Block = { kind: 'title' | 'paragraph'; text: string } | { kind: 'list'; items: string[] };
+
+function blocksFor(sectionKey: string, essayIndex: number, paragraphs: string[]): Block[] {
+  const position = `${sectionKey}:${essayIndex}`;
+  const titleLine = TITLE_LINES[position];
+  const list = LIST_LINES[position];
+  const blocks: Block[] = [];
+  paragraphs.forEach((text, i) => {
+    if (list && i >= list.first && i <= list.last) {
+      const item = text.replace(/^\* /, '');
+      const last = blocks.at(-1);
+      if (last?.kind === 'list') last.items.push(item);
+      else blocks.push({ kind: 'list', items: [item] });
+    } else {
+      blocks.push({ kind: i === titleLine ? 'title' : 'paragraph', text });
+    }
+  });
+  return blocks;
+}
+
+// One entry per dated year, plus one for the undated essays, which sit
+// together at the end and share a link to the first of them.
+const yearLinks = (lang: Lang, sections: typeof zhSections, idPrefix: string) =>
+  sections
+    .filter((s, i) => s.year || sections.findIndex((t) => !t.year) === i)
+    .map((s) => ({
+      href: `#${yearId(idPrefix, s.key)}`,
+      label: s.year ? String(s.year) : undated[lang],
+    }));
+---
+
+<BaseLayout
+  title={title.zh}
+  description={description.zh}
+  lang="zh"
+  alternates={{
+    zh: { title: title.zh, description: description.zh },
+    en: { title: title.en, description: description.en },
+  }}
+  robots="noindex"
+  bodyClass="post-page"
+>
+  <Fragment slot="head">
+    {/* The site-wide default is English, but this link already circulates as
+         a Chinese page: a first-time visitor, with no ?lang= and no stored
+         choice, gets Chinese. Runs after the BaseHead language script. Writes
+         nothing to localStorage, so the visitor's choice stays unmade. */}
+    <script is:inline>
+      (function () {
+        function valid(value) {
+          return /^(en|zh)(-|$)/.test(String(value || '').toLowerCase());
+        }
+        let chosen = false;
+        try {
+          chosen = valid(new URLSearchParams(location.search).get('lang'));
+        } catch {
+          /* no URL API: treat as no preselection */
+        }
+        if (!chosen) {
+          try {
+            chosen = valid(localStorage.getItem('lang'));
+          } catch {
+            /* storage blocked: treat as no stored choice */
+          }
+        }
+        if (!chosen) document.documentElement.setAttribute('data-lang', 'zh');
+      })();
+    </script>
+  </Fragment>
+
+  <main id="main-content" class="post-main">
+    <article>
+      <header class="post-header">
+        <div class="post-accent"></div>
+        <div class="post-meta">
+          <span class="meta-item">
+            <LangText text={byline} />
+          </span>
+        </div>
+        <h1 class="post-title">
+          <LangText text={title} />
+        </h1>
+        <p class="post-description">
+          <LangText text={description} />
+        </p>
+        <p class="reading-credit">
+          <LangText text={credit} />
+        </p>
+        {bodies.map(({ lang, sections, idPrefix }) => (
+          <nav
+            class={`lang lang-${lang} reading-years`}
+            lang={htmlLangFor(lang)}
+            data-orig={lang === 'zh' ? '' : undefined}
+            aria-label={yearsLabel[lang]}
+          >
+            <ul>
+              {yearLinks(lang, sections, idPrefix).map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </header>
+
+      <div class="post-divider"></div>
+
+      <div class="prose" id="prose-content">
+        {bodies.map(({ lang, sections, idPrefix }) => (
+          <div
+            class={`lang lang-${lang}`}
+            lang={htmlLangFor(lang)}
+            data-orig={lang === 'zh' ? '' : undefined}
+          >
+            {sections.map((s) => (
+              <>
+                <h2 id={yearId(idPrefix, s.key)}>
+                  {s.year && s.age ? (
+                    <>
+                      <span>{s.year}</span> <span class="reading-age">{ageLabel[lang](s.age)}</span>
+                    </>
+                  ) : (
+                    undated[lang]
+                  )}
+                  <a
+                    class="heading-anchor"
+                    href={`#${yearId(idPrefix, s.key)}`}
+                    aria-hidden="true"
+                    tabindex="-1"
+                  >
+                    #
+                  </a>
+                </h2>
+                {s.essays.map((essay, essayIndex) => (
+                  <>
+                    {essayIndex > 0 && <hr />}
+                    {blocksFor(s.key, essayIndex, essay).map((block) =>
+                      block.kind === 'title' ? (
+                        <h3 class="reading-essay-title">{block.text}</h3>
+                      ) : block.kind === 'list' ? (
+                        <ul>
+                          {block.items.map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>{block.text}</p>
+                      )
+                    )}
+                  </>
+                ))}
+              </>
+            ))}
+            <hr />
+            <h2 id={replyId(idPrefix)}>
+              {replyHeading[lang]}
+              <a
+                class="heading-anchor"
+                href={`#${replyId(idPrefix)}`}
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                #
+              </a>
+            </h2>
+            <p class="reading-reply">{reply[lang]}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  </main>
+
+  <script>
+    import { mountReadingRailLoader } from '../../scripts/reading-rail-loader';
+
+    mountReadingRailLoader();
+
+    // Keep the reader near the same place across a language toggle: reopen the
+    // same section, by position, in the newly shown body. The toggle hides the
+    // body being left, so the position is read in the capture phase, before its
+    // click handler runs. -1 means the reader is still in the page header.
+    const root = document.documentElement;
+    const shownLang = () => (root.getAttribute('data-lang') === 'en' ? 'en' : 'zh');
+    const sectionHeadings = () =>
+      Array.from(
+        document.querySelectorAll<HTMLElement>(`#prose-content > .lang-${shownLang()} > h2[id]`)
+      );
+
+    let lastLang = shownLang();
+    let currentSection = -1;
+
+    document.addEventListener(
+      'click',
+      (event) => {
+        if (!(event.target instanceof Element) || !event.target.closest('[data-set-lang]')) return;
+        const headings = sectionHeadings();
+        const line = parseFloat(getComputedStyle(headings[0]).scrollMarginTop) + 8;
+        // The reply is too short to scroll its heading up to the line, so a
+        // reader at the end of the page, or with it in the upper half of the
+        // screen, is in it.
+        const atEnd = window.innerHeight + window.scrollY >= root.scrollHeight - 2;
+        const lastTop = headings[headings.length - 1].getBoundingClientRect().top;
+        currentSection =
+          atEnd || lastTop < window.innerHeight / 2
+            ? headings.length - 1
+            : headings.findLastIndex((h) => h.getBoundingClientRect().top <= line);
+      },
+      true
+    );
+
+    // Attached after the head scripts set data-lang, so it never fires on load.
+    new MutationObserver(() => {
+      const lang = shownLang();
+      if (lang === lastLang) return;
+      lastLang = lang;
+      if (currentSection < 0) return;
+      // 'instant' also overrides the page's CSS smooth scrolling, so this
+      // never animates, with or without prefers-reduced-motion.
+      sectionHeadings()[currentSection]?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+  </script>
+</BaseLayout>

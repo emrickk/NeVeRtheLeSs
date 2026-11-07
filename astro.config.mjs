@@ -42,7 +42,10 @@ export default defineConfig({
   integrations: [
     expressiveCode(toneExpressiveCodeOptions),
     mdx(),
-    sitemap(),
+    sitemap({
+      // Hidden reading page: noindex and kept out of every listing.
+      filter: (page) => !page.includes('/reading/hecaitou-birthdays/'),
+    }),
     postEditor(),
   ],
   build: {

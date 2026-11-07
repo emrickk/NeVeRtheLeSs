@@ -1,0 +1,77 @@
+/* Standalone reading pages (src/pages/reading/). They reuse the post layout
+   (layouts/post.css) and prose styles; this only adds the pieces a post does
+   not have. */
+
+/* ── Header ─────────────────────────────── */
+.reading-credit {
+  max-width: 520px;
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-footnote);
+  line-height: 1.64;
+  color: var(--label-tertiary);
+}
+
+.reading-years {
+  max-width: 520px;
+  margin-top: var(--space-4);
+}
+
+.reading-years ul {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-footnote);
+  font-variant-numeric: tabular-nums;
+}
+
+.reading-years a {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--label-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.reading-years a:hover {
+  color: var(--color-blue);
+  opacity: 1;
+}
+
+/* ── Body ───────────────────────────────── */
+.reading-age {
+  margin-left: var(--space-1);
+  font-size: var(--text-subheadline);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--label-tertiary);
+}
+
+.prose h3.reading-essay-title {
+  font-size: var(--text-headline);
+  font-weight: 500;
+  color: var(--label-secondary);
+}
+
+/* The reply is a different voice: the post description's bar and tone. */
+.prose p.reading-reply {
+  border-left: 2px solid var(--separator);
+  padding-left: var(--space-4);
+  color: var(--label-secondary);
+}
+
+/* ── Mobile ─────────────────────────────── */
+@media (max-width: 600px) {
+  /* The 44px rows carry their own air; take it back from the margins so the
+     grid sits the same distance from the credit and the divider as on desktop. */
+  .reading-years {
+    max-width: none;
+    margin-block: var(--space-2) calc(-1 * var(--space-2));
+  }
+
+  .reading-years a {
+    min-height: 44px;
+  }
+}
