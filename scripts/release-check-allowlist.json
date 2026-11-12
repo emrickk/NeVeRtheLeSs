@@ -166,6 +166,14 @@
     "^src\\/data\\/library\\/m(?:)odel\\-cars\\.json:de\\/(?:)wp\\-content\\/uploads(?:)\\/2025\\/08\\/M\\-263\\-Fer(?:)rari250LM\\-21\\-4649$",
     "^src\\/data\\/library\\/m(?:)odel\\-cars\\.json:de\\/(?:)en\\/produkt\\/cmc\\-fer(?:)rari\\-250\\-lm\\-winner(?:)\\-24h\\-france\\-1965\\-2(?:)1\\-chassis\\-5893\\-rin(?:)dt\\-gregory\\-rhd$",
     "^src/data/library/model(?:)-cars\\.json:com/wp-content/(?:)uploads/2025/07/IN64-(?:)R89C-CAL23-1$",
-    "^src/data/library/model-cars\\.json:com/library/model-cars/[a-z0-9-]+-[0-9a-f]{12}-(?:480|800)w-[0-9a-f]{12}$"
+    "^src/data/library/model-cars\\.json:com/library/model-cars/[a-z0-9-]+-[0-9a-f]{12}-(?:480|800)w-[0-9a-f]{12}$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/exoto-front34(?:)-studio-white-6683(?:)ab0dcc9a$",
+    "^src/data/library/model(?:)-cars\\.json:com/wp-content/upl(?:)oads/2025/02/rlg88(?:)102-exoto-nissan-r(?:)89c-1989-le-mans-2(?:)4-hours-masahiro-h(?:)asemi-kazuyoshi-ho(?:)shino-toshio-suzuk(?:)i-works-nissan-cal(?:)sonic-1392-2400x16(?:)00-1$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/mclaren-front(?:)34-studio-white-8c(?:)5dcb8675e0$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/silvia-front3(?:)4-studio-white-ab8(?:)919274c90$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/abarth-front3(?:)4-studio-white-4f1(?:)a8fc97031$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/supra-grey-fr(?:)ont34-studio-white(?:)-d695aa45b70f$",
+    "^src/data/library/model(?:)-cars\\.json:com/library/model-(?:)cars/supra-gold-fr(?:)ont34-studio-white(?:)-9bb85f5c4343$",
+    "^src/data/library/model(?:)-cars\\.json:com/lx6anpd6/image(?:)/upload/v179147132(?:)8/diecastbd/produc(?:)ts/jrpewrul0gieutg(?:)ts3yp$"
   ]
 }

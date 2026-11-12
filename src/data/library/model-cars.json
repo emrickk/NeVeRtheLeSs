@@ -3187,5 +3187,299 @@
       "outputSha256": "e674741491fccbb800afc0ad439899d687c7ccb4b2cb971441f6a4b15468653e",
       "date": "2026-11-02"
     }
+  },
+  {
+    "id": "RLG88102",
+    "title": "Exoto 1:18 Nissan R89C · Calsonic Nismo · Le Mans 1989 #23",
+    "brand": "Exoto",
+    "scale": "1:18",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/exoto-front34-studio-white-6683ab0dcc9a.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/exoto-front34-studio-white-6683ab0dcc9a.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 22432,
+          "url": "https://cdn.theneverless.com/library/model-cars/exoto-front34-studio-white-6683ab0dcc9a-480w-14b8649dc0b2.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 48062,
+          "url": "https://cdn.theneverless.com/library/model-cars/exoto-front34-studio-white-6683ab0dcc9a-800w-21db624da255.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://exoto.com/wp-content/uploads/2025/02/rlg88102-exoto-nissan-r89c-1989-le-mans-24-hours-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki-works-nissan-calsonic-1392-2400x1600-1.jpg",
+    "displaySourceUrl": "https://exoto.com/product/1-18/racing-legends/1989-91-exoto-nissan-r89c-r90v-r91c/rlg88102-1989-le-mans-24-hours-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki-works-nissan-calsonic/",
+    "officialImage": "https://exoto.com/wp-content/uploads/2025/02/rlg88102-exoto-nissan-r89c-1989-le-mans-24-hours-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki-works-nissan-calsonic-1392-2400x1600-1.jpg",
+    "officialUrl": "https://exoto.com/product/1-18/racing-legends/1989-91-exoto-nissan-r89c-r90v-r91c/rlg88102-1989-le-mans-24-hours-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki-works-nissan-calsonic/",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageFrameColor": "#ffffff",
+    "imageSourceDimensions": {
+      "width": 2400,
+      "height": 1600
+    },
+    "verifiedOn": "2026-11-11",
+    "imageSourceAudit": "Manufacturer product gallery checked against this model and reference view. Fine lettering and geometry are generated interpretations.",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://exoto.com/wp-content/uploads/2025/02/rlg88102-exoto-nissan-r89c-1989-le-mans-24-hours-masahiro-hasemi-kazuyoshi-hoshino-toshio-suzuki-works-nissan-calsonic-1392-2400x1600-1.jpg",
+      "referenceSha256": "52643a02af655986fc81a1a9422c4dac81dab04497ac6e376dcff3cef1df4297",
+      "outputSha256": "6683ab0dcc9aefec4104b8423394b669a1892b83680dec11de67caa6e4453593",
+      "date": "2026-11-11"
+    }
+  },
+  {
+    "id": "MGT01318",
+    "title": "McLaren F1 GTR 1995",
+    "brand": "MINI GT",
+    "scale": "1:64",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/mclaren-front34-studio-white-8c5dcb8675e0.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/mclaren-front34-studio-white-8c5dcb8675e0.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 16264,
+          "url": "https://cdn.theneverless.com/library/model-cars/mclaren-front34-studio-white-8c5dcb8675e0-480w-361aeaec630d.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 36780,
+          "url": "https://cdn.theneverless.com/library/model-cars/mclaren-front34-studio-white-8c5dcb8675e0-800w-0f8374f0ff7a.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/eee45b2acfaa7ebfbe97153f0923aec020260616181441408.JPG",
+    "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2255",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "verifiedOn": "2026-11-11",
+    "imageFrameColor": "#ffffff",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://minigt.tsm-models.com/upload/picfile_list/eee45b2acfaa7ebfbe97153f0923aec020260616181441408.JPG",
+      "referenceSha256": "9db078d8969e0de0499b4fca8eba4a243dc86a89579aa6172566dfe12e879fee",
+      "outputSha256": "8c5dcb8675e0b3a813e5dac3c4e206b73b5b39fb0013aa2a374c337b94d0e1ee",
+      "date": "2026-11-11"
+    },
+    "imageSourceAudit": "Manufacturer product gallery checked against this model and reference view. Fine lettering and geometry are generated interpretations."
+  },
+  {
+    "id": "MGT01239",
+    "title": "Nissan Silvia S15",
+    "brand": "MINI GT",
+    "scale": "1:64",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/silvia-front34-studio-white-ab8919274c90.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/silvia-front34-studio-white-ab8919274c90.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 18396,
+          "url": "https://cdn.theneverless.com/library/model-cars/silvia-front34-studio-white-ab8919274c90-480w-bf8eb875b447.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 40598,
+          "url": "https://cdn.theneverless.com/library/model-cars/silvia-front34-studio-white-ab8919274c90-800w-e00655627c48.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/4f598e8274e346f2fec6c71df6bcd8ba20260502050427557.JPG",
+    "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=2219",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "verifiedOn": "2026-11-11",
+    "imageFrameColor": "#ffffff",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://minigt.tsm-models.com/upload/picfile_list/4f598e8274e346f2fec6c71df6bcd8ba20260502050427557.JPG",
+      "referenceSha256": "30329bba9f0339af2fef7049c63f90133da972b137c6ddb3e2007ccbf16aaaec",
+      "outputSha256": "ab8919274c90e72d5d74f902928116e6c403a3703a8b3e3b343a7bff7d9eadca",
+      "date": "2026-11-11"
+    },
+    "imageSourceAudit": "Manufacturer product gallery checked against this model and reference view. Fine lettering and geometry are generated interpretations."
+  },
+  {
+    "id": "MGT00809",
+    "title": "Abarth 595 · LB-WORKS × Abas Works Gara White",
+    "brand": "MINI GT",
+    "scale": "1:64",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/abarth-front34-studio-white-4f1a8fc97031.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/abarth-front34-studio-white-4f1a8fc97031.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 17872,
+          "url": "https://cdn.theneverless.com/library/model-cars/abarth-front34-studio-white-4f1a8fc97031-480w-8d3f8f6fc335.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 39450,
+          "url": "https://cdn.theneverless.com/library/model-cars/abarth-front34-studio-white-4f1a8fc97031-800w-a3eae85ea621.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://minigt.tsm-models.com/upload/picfile_list/188befa05e7c456c44d746d78ae7ceae20240724024814825.JPG",
+    "displaySourceUrl": "https://minigt.tsm-models.com/index.php?action=product-detail&id=1504",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "verifiedOn": "2026-11-11",
+    "imageFrameColor": "#ffffff",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://minigt.tsm-models.com/upload/picfile_list/188befa05e7c456c44d746d78ae7ceae20240724024814825.JPG",
+      "referenceSha256": "6b6d4d7fec676a4dbb09bc52a72db64817bd1fe802e96fb3f1a5f2c39e06604c",
+      "outputSha256": "4f1a8fc97031983a910ba021b7b7f7a6b4e8a03d2b22acc919b995724f72208a",
+      "date": "2026-11-11"
+    },
+    "imageSourceAudit": "Manufacturer product gallery checked against this model and reference view. Fine lettering and geometry are generated interpretations."
+  },
+  {
+    "id": "IN64-A90DP-MGRAY",
+    "title": "Toyota Supra A90 · Darwin PRO matte grey",
+    "brand": "INNO64",
+    "scale": "1:64",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/supra-grey-front34-studio-white-d695aa45b70f.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/supra-grey-front34-studio-white-d695aa45b70f.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 11694,
+          "url": "https://cdn.theneverless.com/library/model-cars/supra-grey-front34-studio-white-d695aa45b70f-480w-019607e3bd06.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 24532,
+          "url": "https://cdn.theneverless.com/library/model-cars/supra-grey-front34-studio-white-d695aa45b70f-800w-b3eacc226c4a.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://www.inno-models.com/wp-content/uploads/2026/04/A90-MG-1.jpg",
+    "displaySourceUrl": "https://speedzone-web.com/products/toyota-supra-a90-wbk-darwinpro-matt-gray-1-64-by-inno-models-in64-a90dp-mgray",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "verifiedOn": "2026-11-11",
+    "imageFrameColor": "#ffffff",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://www.inno-models.com/wp-content/uploads/2026/04/A90-MG-1.jpg",
+      "referenceSha256": "58e2496b80421be75f13b3af3e921667e890145b2c106ee3111ab199a00ff8d5",
+      "outputSha256": "d695aa45b70ff58ed19c7c00693d074964fa1ed05af5cb99aafec242ec88b562",
+      "date": "2026-11-11"
+    },
+    "imageSourceAudit": "Manufacturer product gallery checked against this model and reference view. Fine lettering and geometry are generated interpretations."
+  },
+  {
+    "id": "S40-02",
+    "title": "Toyota Supra GT300 · Top Secret gold chrome",
+    "brand": "Tiny / XCARTOYS POP RACE",
+    "scale": "1:64",
+    "displayImage": "https://cdn.theneverless.com/library/model-cars/supra-gold-front34-studio-white-9bb85f5c4343.png",
+    "displayImageVariants": {
+      "source": "https://cdn.theneverless.com/library/model-cars/supra-gold-front34-studio-white-9bb85f5c4343.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "images": [
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 22234,
+          "url": "https://cdn.theneverless.com/library/model-cars/supra-gold-front34-studio-white-9bb85f5c4343-480w-c22acf371ab4.webp"
+        },
+        {
+          "width": 800,
+          "height": 533,
+          "bytes": 51036,
+          "url": "https://cdn.theneverless.com/library/model-cars/supra-gold-front34-studio-white-9bb85f5c4343-800w-8a87a083c473.webp"
+        }
+      ]
+    },
+    "displaySourceImage": "https://res.cloudinary.com/lx6anpd6/image/upload/v1791471328/diecastbd/products/jrpewrul0gieutgts3yp.jpg",
+    "displaySourceUrl": "https://diecastbd.com/products/pop-race-toyota-supra-a80-top-secret-gt300-chrome-gold-1-64-diecast-model-car-s40-02",
+    "imageCredit": "AI redraw generated with OpenAI image_gen, based on the cited reference photograph",
+    "imageSourceType": "ai-generated",
+    "imageSourceStatus": "generated",
+    "imagePresentation": "generated-illustration",
+    "imageStatus": "available",
+    "verifiedOn": "2026-11-11",
+    "imageFrameColor": "#ffffff",
+    "imageGeneratedDimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "imageTreatment": "Front three-quarter studio redraw of the miniature on a seamless white background with a soft contact shadow. Complete model retained without external catalog graphics. Generated illustration, not an original product photograph.",
+    "imageGeneration": {
+      "tool": "OpenAI image_gen",
+      "referenceImage": "https://res.cloudinary.com/lx6anpd6/image/upload/v1791471328/diecastbd/products/jrpewrul0gieutgts3yp.jpg",
+      "referenceSha256": "6a85f56ecd48e98ce51e1f0f364e95a3b20426acdbb28c62c274096c8c6c5984",
+      "outputSha256": "9bb85f5c434327c0170850c09ea5f69b16ab66b3290b35f4a2405be847b556e8",
+      "date": "2026-11-11"
+    },
+    "imageSourceAudit": "Reference photos identify the S40-02 gold-chrome release. Official POP RACE PR640274 material was checked for comparison; equivalence of those catalog codes is not asserted. Fine lettering and geometry are generated interpretations."
   }
 ]
